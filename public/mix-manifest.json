@@ -1,0 +1,15 @@
+{
+    "/assets/js/app.js": "/assets/js/app.js",
+    "/assets/css/app.css": "/assets/css/app.css",
+    "/customer.js": "/customer.js",
+    "/customer~dashboard~enquiry~package~payment~product~staff~user.js": "/customer~dashboard~enquiry~package~payment~product~staff~user.js",
+    "/customer~enquiry~package~payment~product~staff.js": "/customer~enquiry~package~payment~product~staff.js",
+    "/dashboard.js": "/dashboard.js",
+    "/enquiry.js": "/enquiry.js",
+    "/package.js": "/package.js",
+    "/payment.js": "/payment.js",
+    "/product.js": "/product.js",
+    "/staff.js": "/staff.js",
+    "/user.js": "/user.js",
+    "/vendors~customer~enquiry~package~payment~product~staff.js": "/vendors~customer~enquiry~package~payment~product~staff.js"
+}
