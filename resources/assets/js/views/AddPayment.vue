@@ -18,17 +18,23 @@
 	            <form  @submit.prevent="submitForm()">
                     <div class="position-relative form-group">
                         <label for="subscription_id">Customer</label>
-                        <select class="form-control" name="subscription_id" v-model="payment.subscription_id" id="subscription_id" required>
-							<option v-for="subscription in subscriptions" :key="subscription.id" :value="subscription.id" :selected="payment.subscription_id ===  subscription.id">{{subscription.user.first_name}} {{subscription.user.last_name}}</option>
+                        <select class="form-control" name="user_id" v-model="payment.user_id" id="user_id" @change="onChange($event)" required>
+							<option v-for="(user, index) in customers" :key="index" :value="index" :selected="payment.user_id ===  index">{{user}}</option>
+                        </select>
+                    </div>
+					<div class="position-relative form-group">
+                        <label for="package_id">Package</label>
+						<select class="form-control" name="package_id" v-model="payment.package_id" @change="onPackageChange($event)" required>
+                        	<option v-for="packageData in packages" :key="packageData.id" :value="packageData.id" :selected="payment.package_id ===  packageData.id">{{packageData.name}}</option>
                         </select>
                     </div>
 	            	<div class="position-relative form-group">
                         <label for="paid_amount">Paid Amount</label>
-                        <input type="number" class="form-control" name="paid_amount" v-model="payment.paid_amount" id="paid_amount" required>
+                        <input type="number" class="form-control" name="paid_amount" v-model="payment.paid_amount" v-on:keyup="paidAmount" id="paid_amount" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="remaining_amount">Remaining Amount</label>
-                        <input type="number" class="form-control" name="remaining_amount" v-model="payment.remaining_amount" id="remaining_amount" required>
+                        <input type="number" class="form-control" name="remaining_amount" v-model="payment.remaining_amount" id="remaining_amount" readonly required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="payment_source">Payment Source</label>
@@ -68,12 +74,15 @@ export default {
 		return {
 			payment:{
 				subscription_id: null,
-				paid_amount: null,
-                remaining_amount: null,
+				paid_amount: 0,
+                remaining_amount: 0,
                 payment_source:'cash',
-				remark:null
+				remark:null,
+				package_id: null,
+				user_id: null
 			},
-			subscriptions:null,
+			customers: null,
+			packages: null,
 			
 		}
 	},
@@ -86,11 +95,13 @@ export default {
 				this.payment = res.data.data
 			}
 			
-			let subscriptionRes = await axios.get('http://localhost:8000/api/v1/payment/customer', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-		    this.subscriptions = subscriptionRes.data.data
+			let customersRes = await axios.get('http://localhost:8000/api/v1/payment/customer', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			this.customers = customersRes.data.data
+			
 			
 		} catch (err) {
-			this.$snotify.error(null, err.message);
+			console.log(err)
+			// this.$snotify.error(null, err.message);
 		}
 	},
 	methods: {
@@ -99,6 +110,8 @@ export default {
 			try{
 			 	if(this.payment) 
 			 	{
+					this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
+
 			 		let res = null
 			 		if(this.$route.params.id != null)
 			 		{
@@ -107,25 +120,52 @@ export default {
 			 		{
 						res = await axios.post('http://localhost:8000/api/v1/payment/create', this.payment ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 						console.log(res.data.message);
-						this.$snotify.success("aaa");
+						//this.$snotify.success("aaa");
 			 		}
 		    
 		        	if(res.data.status == "success")
 		        	{
 						this.resetForm();
-						this.$snotify.success(null, res.data.message);
+						//this.$snotify.success(null, res.data.message);
 						this.$router.push('/payment-list');
 						
 		        	}
 		      	}
 		  	}
 		  	catch(err){
-		  		this.$snotify.error(null, err.message);
+				console.log(err)
+		  		//this.$snotify.error(null, err.message);
 		  	}
 
 		},
 		resetForm() {
 			this.payment = null;	
+		},
+		async onChange(event)
+		{
+			let res = await axios.get('http://localhost:8000/api/v1/payment/package/'+event.target.value,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			this.packages = res.data.data;
+			console.log(this.packages)
+		},
+		async onPackageChange(event)
+		{
+			
+			let res = await axios.post('http://localhost:8000/api/v1/payment/amount',{user_id: this.payment.user_id,package_id:event.target.value} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			if(res.data.message == 'lastpayment')
+			{
+				this.payment.subscription_id = res.data.data.subscription_id
+				this.payment.remaining_amount = res.data.data.remaining_amount
+			}
+			if(res.data.message == 'subscription')
+			{
+				this.payment.subscription_id = res.data.data.id
+				this.payment.remaining_amount = res.data.data.amount
+			}
+			
+		},
+		paidAmount: function(event)
+		{
+			console.log(event.target.value);
 		}
 	}
 }

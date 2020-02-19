@@ -27,12 +27,12 @@ class PackageController extends Controller
         //return $request->all();
         try
         {
-            $package           = new Package;
-            $package->user_id  = Auth::user()->id;
-            $package->name     = $request->get('name');
-            $package->price    = $request->get('price');
-            $package->duration = $request->get('duration');
-            $package->detail   = $request->get('detail');
+            $package                   = new Package;
+            $package->staff_member_id  = Auth::user()->id;
+            $package->name             = $request->get('name');
+            $package->price            = $request->get('price');
+            $package->duration         = $request->get('duration');
+            $package->detail           = $request->get('detail');
             $package = $this->uploadImage($package, $request->file('packageImage'));
             $package->save();
 

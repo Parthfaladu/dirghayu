@@ -9,9 +9,11 @@ use Spatie\Permission\Models\Role;
 use Spatie\Fractalistic\ArraySerializer;
 use App\Models\Payment;
 use App\Models\Subscription;
+use App\Models\Package;
 use App\User;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
@@ -42,21 +44,59 @@ class PaymentController extends Controller
 		
         if($id != null)
     	{
-    		$payments = Payment::with('subscription.user')->where('id',$id)->first();
+    		$payments = Payment::with('subscription.user','subscription.package')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $payments])->setStatusCode(200);
 
     	}else{
-    		$payments = Payment::with('subscription.user')->get();
+    		$payments = Payment::with('subscription.user','subscription.package')->get();
             return Datatables::of($payments)->make(true);
     	}
 	}
 
+	public function getPackages($id)
+	{
+		try{
+			$packageIds = Subscription::where('user_id',$id)->pluck('package_id');
+			$packages = Package::whereIn('id',$packageIds)->get();
+			return response()->json(["status" => "success", "data" => $packages]);
+        }
+        catch (\Exception $e) 
+    	{
+	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
+    	}
+			
+	}
+	public function getAmount(Request $request)
+	{
+		try{
+			$subscription = Subscription::where('user_id', $request->get('user_id'))
+										  ->where('package_id',$request->get('package_id'))
+										  ->first();
+			$lastPayment = Payment::where('subscription_id', $subscription->id)->latest('updated_at')->first();
+			
+			if ( !empty ( $lastPayment ) ) {
+				return response()->json(["status" => "success", "data" => $lastPayment, "message" => "lastpayment"]);
+			}else{
+				return response()->json(["status" => "success", "data" => $subscription, "message" => "subscription"]);
+			}
+        }
+        catch (\Exception $e) 
+    	{
+	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
+    	}
+			
+	}
 	public function activeSubscriptionList()
 	{
 		try
         {
 			$subscriptions = Subscription::with('user')->where('status', 1)->get();
-			return response()->json(["status" => "success", "data" => $subscriptions]);
+			$customers = [];
+			foreach($subscriptions as $subscription)
+			{
+				$customers[$subscription->user['id']] = $subscription->user['first_name'].' '.$subscription->user['last_name'];
+			}
+			return response()->json(["status" => "success", "data" => $customers]);
         }
         catch (\Exception $e) 
     	{

@@ -34,7 +34,10 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 	Route::post('/payment/delete', 'PaymentController@delete');
 	Route::post('/payment/status', 'PaymentController@changePaymentStatus');
 	Route::get('/payment/customer', 'PaymentController@activeSubscriptionList');
-	
+	Route::get('/payment/package/{id}', 'PaymentController@getPackages');
+	Route::post('/payment/amount', 'PaymentController@getAmount');
+
+
 	Route::get('/customer/list/{id?}', 'CustomerController@customerList');
 	Route::post('/customer/create', 'CustomerController@create');
 	Route::post('/customer/update', 'CustomerController@update');

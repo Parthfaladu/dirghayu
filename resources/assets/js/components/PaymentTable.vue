@@ -2,6 +2,7 @@
     <VueDatatable :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
 		<th>Subscriber Name</th>
+		<th>Package</th>
 		<th>Paid Amount</th>
 		<th>Remaining Amount</th>
 		<th>Payment Source</th>
@@ -28,13 +29,16 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 			        {data:function(data){
 						return data.subscription.user.first_name+' '+data.subscription.user.last_name;
 					}, name:'subscription_id'},
+					{data:function(data){
+						return data.subscription.package.name;
+					}, name:'subscription_id'},
 			        {data:'paid_amount', name:'paid_amount'},
 			        {data:'remaining_amount', name:'remaining_amount'},
                     {data:'payment_source', name:'payment_source'},
                     {data:'updated_at', name:'updated_at'},
                     {data:'remark', name:'remark'},
 			        {data:function(data){
-		            	return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata="+data.id+">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
+		            	return " <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
 		          	}, name:'action'}
 			    ],
 			    url: 'http://localhost:8000/api/v1/payment/list',
