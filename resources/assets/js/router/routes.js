@@ -200,6 +200,30 @@ const router = new Router({
             }
         },
         {
+            path: '/subscription-list',
+            name: 'subscriptionlist',
+            component: () => import(/* webpackChunkName: "subscription" */ '@views/SubscriptionList.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/add-subscription',
+            name: 'addsubscription',
+            component: () => import(/* webpackChunkName: "user" */ '@views/AddSubscription.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/update-subscription/:id',
+            name: 'updatesubscription',
+            component: () => import(/* webpackChunkName: "subscription" */ '@views/AddSubscription.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
             path: '/init',
             name: 'init',
             component: () => import(/* webpackChunkName: "product" */ '@views/InitializeView.vue'),

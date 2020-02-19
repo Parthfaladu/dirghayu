@@ -40,7 +40,7 @@
                         </router-link>
                     </li>
                     <li class="app-sidebar__heading">UI Components</li>
-                    <li>
+                   <!--  <li>
                         <router-link to="#">
                             <i class="metismenu-icon pe-7s-diamond"></i>
                             Package
@@ -108,7 +108,7 @@
                                 </router-link>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>
                         <router-link to="#">
                             <i class="metismenu-icon pe-7s-diamond"></i>
@@ -168,6 +168,27 @@
                                 <router-link to="/add-customer">
                                     <i class="metismenu-icon"></i>
                                     Add Customer
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <router-link to="#">
+                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            Subscription
+                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                        </router-link>
+                        <ul>
+                            <li>
+                                <router-link to="/subscription-list">
+                                    <i class="metismenu-icon"></i>
+                                    Subscription List
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to="/add-subscription">
+                                    <i class="metismenu-icon"></i>
+                                    Add Subscription
                                 </router-link>
                             </li>
                         </ul>

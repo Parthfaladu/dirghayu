@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Subscription;
+use App\Models\Payment;
 use App\User;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
@@ -15,11 +16,21 @@ class SubscriptionController extends Controller
     {
     	if($id != null)
     	{
-    		$subscriptions = Subscription::with('user')->where('id',$id)->first();
+    		$subscriptions = Subscription::with('user','package')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $subscriptions])->setStatusCode(200);
 
     	}else{
-    		$subscriptions = Subscription::with('user')->get();
+    		$subscriptions = Subscription::with('user','package')->get();
+            $lastPayment = [];
+            foreach($subscriptions as $subscription)
+            {
+                $payment = Payment::where('subscription_id', $subscription->id)->latest('updated_at')->first();
+                if(!empty($payment) && $payment != null )
+                {
+                    $lastPayment[] = $payment; 
+                }
+            }
+           return $lastPayment;
             return Datatables::of($subscriptions)->make(true);
     	}
     	
@@ -31,7 +42,7 @@ class SubscriptionController extends Controller
         try
         {
             $subscription                  = new subscription;
-            $subscription->user_id         = Auth::user()->id;
+            $subscription->user_id         = $request->get('user_id');
             $subscription->package_id      = $request->get('package_id');
             $subscription->amount          = $request->get('amount');
             $subscription->duration        = $request->get('duration');

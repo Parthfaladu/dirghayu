@@ -65,7 +65,9 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 
 
 	Route::get('/subscription/list/{id?}', 'SubscriptionController@subscriptionList');
-	
+	Route::post('/subscription/create', 'SubscriptionController@create');
+	Route::post('/subscription/update', 'SubscriptionController@update');
+	Route::post('/subscription/delete', 'SubscriptionController@delete');
 
 
 

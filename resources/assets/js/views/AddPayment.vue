@@ -110,8 +110,11 @@ export default {
 			try{
 			 	if(this.payment) 
 			 	{
-					this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
-
+			 		if(this.payment.remaining_amount >= 0)
+			 		{
+			 			this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
+			 		}
+					
 			 		let res = null
 			 		if(this.$route.params.id != null)
 			 		{
