@@ -35,7 +35,8 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 			        {data:'start_date', name:'start_date'},
 			        {data:'duration', name:'duration'},
 			        {data:'end_date', name:'end_date'},
-			        {data:'tiral', name:'tiral'},
+			        {data:'duration', name:'duration'},
+			         {data:'duration', name:'duration'},
 			        {data:function(data){
 		            	return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata="+data.id+">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
 		          	}, name:'action'}

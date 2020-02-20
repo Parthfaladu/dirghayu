@@ -13,7 +13,7 @@
 		        </div>
 		    </div>            
 		    <div class="main-card mb-3 card">
-		        <div class="card-body col-sm-10 offset-sm-1">
+		        <div class="card-body col-sm-12">
 		            <h5 class="card-title mt-4">
 		            	<router-link to="/add-staff-member" class="btn btn-info mb-5">Add New Staff</router-link>
 		            </h5>

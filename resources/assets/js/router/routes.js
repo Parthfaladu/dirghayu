@@ -210,7 +210,7 @@ const router = new Router({
         {
             path: '/add-subscription',
             name: 'addsubscription',
-            component: () => import(/* webpackChunkName: "user" */ '@views/AddSubscription.vue'),
+            component: () => import(/* webpackChunkName: "subscription" */ '@views/AddSubscription.vue'),
             meta: {
                 authenticated: true,
             }
@@ -219,6 +219,30 @@ const router = new Router({
             path: '/update-subscription/:id',
             name: 'updatesubscription',
             component: () => import(/* webpackChunkName: "subscription" */ '@views/AddSubscription.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/notice-list',
+            name: 'noticelist',
+            component: () => import(/* webpackChunkName: "notice" */ '@views/NoticeList.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/add-notice',
+            name: 'addnotice',
+            component: () => import(/* webpackChunkName: "notice" */ '@views/AddNotice.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/update-notice/:id',
+            name: 'updatenotice',
+            component: () => import(/* webpackChunkName: "notice" */ '@views/AddNotice.vue'),
             meta: {
                 authenticated: true,
             }

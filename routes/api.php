@@ -69,6 +69,11 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 	Route::post('/subscription/update', 'SubscriptionController@update');
 	Route::post('/subscription/delete', 'SubscriptionController@delete');
 
+	Route::get('/notice/list/{id?}', 'NoticeController@noticeList');
+	Route::post('/notice/create', 'NoticeController@create');
+	Route::post('/notice/update', 'NoticeController@update');
+	Route::post('/notice/delete', 'NoticeController@delete');
+
 
 
 	Route::group(['middleware' => ['auth']], function()

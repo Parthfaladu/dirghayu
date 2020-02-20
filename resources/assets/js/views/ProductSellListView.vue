@@ -13,7 +13,7 @@
 	        </div>
 	    </div>            
 	    <div class="main-card mb-3 card">
-	        <div class="card-body col-sm-10 offset-sm-1">
+	        <div class="card-body col-sm-12">
 	            <h5 class="card-title"></h5>
 	            <router-link to="/add-product-sell" class="btn btn-info float-right mb-5">Add New</router-link>
 				<div class="table-responsive">

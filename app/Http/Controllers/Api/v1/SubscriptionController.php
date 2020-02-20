@@ -21,16 +21,16 @@ class SubscriptionController extends Controller
 
     	}else{
     		$subscriptions = Subscription::with('user','package')->get();
-            $lastPayment = [];
-            foreach($subscriptions as $subscription)
-            {
-                $payment = Payment::where('subscription_id', $subscription->id)->latest('updated_at')->first();
-                if(!empty($payment) && $payment != null )
-                {
-                    $lastPayment[] = $payment; 
-                }
-            }
-           return $lastPayment;
+           //  $lastPayment = [];
+           //  foreach($subscriptions as $subscription)
+           //  {
+           //      $payment = Payment::where('subscription_id', $subscription->id)->latest('updated_at')->first();
+           //      if(!empty($payment) && $payment != null )
+           //      {
+           //          $lastPayment[] = $payment; 
+           //      }
+           //  }
+           // return $lastPayment;
             return Datatables::of($subscriptions)->make(true);
     	}
     	

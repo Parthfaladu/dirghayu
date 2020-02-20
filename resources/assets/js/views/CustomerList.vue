@@ -13,7 +13,7 @@
 	        </div>
 	    </div>            
 	    <div class="main-card mb-3 card">
-	        <div class="card-body col-sm-10 offset-sm-1">
+	        <div class="card-body col-sm-12">
 	            <h5 class="card-title">
 	            	<router-link to="/add-customer" class="btn btn-info mb-5">Add Customer</router-link>
 	            </h5>

@@ -108,7 +108,7 @@
                                 </router-link>
                             </li>
                         </ul>
-                    </li> -->
+                    </li> 
                     <li>
                         <router-link to="#">
                             <i class="metismenu-icon pe-7s-diamond"></i>
@@ -129,7 +129,7 @@
                                 </router-link>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li>
                         <router-link to="#">
                             <i class="metismenu-icon pe-7s-diamond"></i>
@@ -189,6 +189,27 @@
                                 <router-link to="/add-subscription">
                                     <i class="metismenu-icon"></i>
                                     Add Subscription
+                                </router-link>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <router-link to="#">
+                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            Notice
+                            <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                        </router-link>
+                        <ul>
+                            <li>
+                                <router-link to="/notice-list">
+                                    <i class="metismenu-icon"></i>
+                                    Notice List
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link to="/add-notice">
+                                    <i class="metismenu-icon"></i>
+                                    Add Notice
                                 </router-link>
                             </li>
                         </ul>

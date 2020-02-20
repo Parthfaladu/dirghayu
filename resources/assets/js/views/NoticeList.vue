@@ -8,16 +8,18 @@
 	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
-	                <div>ENQUIRY LIST</div>
+	                <div>NOTICE LIST</div>
 	            </div>    
 	        </div>
 	    </div>            
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-12">
 	            <h5 class="card-title">
-	            	<router-link to="/add-enquiry" class="btn btn-info mb-5">Add Enquiry</router-link>
+	            	<router-link to="/add-notice" class="btn btn-info mb-5">Add Notice</router-link>
 	            </h5>
-	           <EnquiryTable></EnquiryTable>
+				<div class="table-responsive">
+	           		<NoticeTable></NoticeTable>
+				</div>
 			</div>
 	    </div>
 	</div>
@@ -25,13 +27,13 @@
 </template>
 
 <script>
-import EnquiryTable from '@components/EnquiryTable';
+import NoticeTable from '@components/NoticeTable';
 import DashboardPage from '@layouts/DashboardPage';
 
 export default {
-	name: 'EnquiryList',
+	name: 'NoticeListView',
 	components: {
-		EnquiryTable,
+		NoticeTable,
 		DashboardPage
 	}
 }
