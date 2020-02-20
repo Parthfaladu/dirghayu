@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"customer~dashboard~enquiry~package~payment~product~staff~user":"customer~dashboard~enquiry~package~payment~product~staff~user","dashboard":"dashboard","user":"user","vendors~customer~enquiry~package~payment~product~staff":"vendors~customer~enquiry~package~payment~product~staff","customer~enquiry~package~payment~product~staff":"customer~enquiry~package~payment~product~staff","customer":"customer","enquiry":"enquiry","package":"package","payment":"payment","product":"product","staff":"staff"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"customer~dashboard~enquiry~package~payment~product~staff~subscription~user":"customer~dashboard~enquiry~package~payment~product~staff~subscription~user","dashboard":"dashboard","subscription~user":"subscription~user","user":"user","vendors~customer~enquiry~package~payment~product~staff~subscription":"vendors~customer~enquiry~package~payment~product~staff~subscription","customer~enquiry~package~payment~product~staff~subscription":"customer~enquiry~package~payment~product~staff~subscription","customer":"customer","enquiry":"enquiry","package":"package","payment":"payment","product":"product","staff":"staff","subscription":"subscription"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -78919,7 +78919,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/dashboard',
     name: 'dashboard',
     component: function component() {
-      return Promise.all(/*! import() | dashboard */[__webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @views/Dashboard.vue */ "./resources/assets/js/views/Dashboard.vue"));
+      return Promise.all(/*! import() | dashboard */[__webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @views/Dashboard.vue */ "./resources/assets/js/views/Dashboard.vue"));
     },
     meta: {
       authenticated: true
@@ -78928,7 +78928,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/package-list',
     name: 'packagelistview',
     component: function component() {
-      return Promise.all(/*! import() | package */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/PackageListView.vue */ "./resources/assets/js/views/PackageListView.vue"));
+      return Promise.all(/*! import() | package */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/PackageListView.vue */ "./resources/assets/js/views/PackageListView.vue"));
     },
     meta: {
       authenticated: true
@@ -78937,7 +78937,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-package',
     name: 'addpackageview',
     component: function component() {
-      return Promise.all(/*! import() | package */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/AddPackageView.vue */ "./resources/assets/js/views/AddPackageView.vue"));
+      return Promise.all(/*! import() | package */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/AddPackageView.vue */ "./resources/assets/js/views/AddPackageView.vue"));
     },
     meta: {
       authenticated: true
@@ -78946,7 +78946,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-package/:id',
     name: 'updatepackageview',
     component: function component() {
-      return Promise.all(/*! import() | package */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/AddPackageView.vue */ "./resources/assets/js/views/AddPackageView.vue"));
+      return Promise.all(/*! import() | package */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/AddPackageView.vue */ "./resources/assets/js/views/AddPackageView.vue"));
     },
     meta: {
       authenticated: true
@@ -78955,7 +78955,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/product-list',
     name: 'productlistview',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductListView.vue */ "./resources/assets/js/views/ProductListView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductListView.vue */ "./resources/assets/js/views/ProductListView.vue"));
     },
     meta: {
       authenticated: true
@@ -78964,7 +78964,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-product',
     name: 'addproductview',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/AddProductView.vue */ "./resources/assets/js/views/AddProductView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/AddProductView.vue */ "./resources/assets/js/views/AddProductView.vue"));
     },
     meta: {
       authenticated: true
@@ -78973,7 +78973,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-product/:id',
     name: 'updateproductview',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/AddProductView.vue */ "./resources/assets/js/views/AddProductView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/AddProductView.vue */ "./resources/assets/js/views/AddProductView.vue"));
     },
     meta: {
       authenticated: true
@@ -78982,7 +78982,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/productsell-list',
     name: 'productselllistview',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellListView.vue */ "./resources/assets/js/views/ProductSellListView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellListView.vue */ "./resources/assets/js/views/ProductSellListView.vue"));
     },
     meta: {
       authenticated: true
@@ -78991,7 +78991,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-product-sell',
     name: 'addproductsellview',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellView.vue */ "./resources/assets/js/views/ProductSellView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellView.vue */ "./resources/assets/js/views/ProductSellView.vue"));
     },
     meta: {
       authenticated: true
@@ -79000,7 +79000,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-product-sell/:id',
     name: 'updateproductsellview',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellView.vue */ "./resources/assets/js/views/ProductSellView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellView.vue */ "./resources/assets/js/views/ProductSellView.vue"));
     },
     meta: {
       authenticated: true
@@ -79009,7 +79009,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/staff-member-list',
     name: 'staffmemberlist',
     component: function component() {
-      return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/StaffMemberList.vue */ "./resources/assets/js/views/StaffMemberList.vue"));
+      return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/StaffMemberList.vue */ "./resources/assets/js/views/StaffMemberList.vue"));
     },
     meta: {
       authenticated: true
@@ -79018,7 +79018,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-staff-member',
     name: 'addstaffmember',
     component: function component() {
-      return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/AddStaffMember.vue */ "./resources/assets/js/views/AddStaffMember.vue"));
+      return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/AddStaffMember.vue */ "./resources/assets/js/views/AddStaffMember.vue"));
     },
     meta: {
       authenticated: true
@@ -79027,7 +79027,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-staff-member/:id',
     name: 'updatestaffmember',
     component: function component() {
-      return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/AddStaffMember.vue */ "./resources/assets/js/views/AddStaffMember.vue"));
+      return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/AddStaffMember.vue */ "./resources/assets/js/views/AddStaffMember.vue"));
     },
     meta: {
       authenticated: true
@@ -79036,7 +79036,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/payment-list',
     name: 'paymentlist',
     component: function component() {
-      return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/PaymentList.vue */ "./resources/assets/js/views/PaymentList.vue"));
+      return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/PaymentList.vue */ "./resources/assets/js/views/PaymentList.vue"));
     },
     meta: {
       authenticated: true
@@ -79045,7 +79045,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-payment',
     name: 'addpayment',
     component: function component() {
-      return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/AddPayment.vue */ "./resources/assets/js/views/AddPayment.vue"));
+      return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/AddPayment.vue */ "./resources/assets/js/views/AddPayment.vue"));
     },
     meta: {
       authenticated: true
@@ -79054,7 +79054,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-payment/:id',
     name: 'updatepayment',
     component: function component() {
-      return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/AddPayment.vue */ "./resources/assets/js/views/AddPayment.vue"));
+      return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/AddPayment.vue */ "./resources/assets/js/views/AddPayment.vue"));
     },
     meta: {
       authenticated: true
@@ -79063,7 +79063,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/enquiry-list',
     name: 'enquirylist',
     component: function component() {
-      return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/EnquiryList.vue */ "./resources/assets/js/views/EnquiryList.vue"));
+      return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/EnquiryList.vue */ "./resources/assets/js/views/EnquiryList.vue"));
     },
     meta: {
       authenticated: true
@@ -79072,7 +79072,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-enquiry',
     name: 'addenquiry',
     component: function component() {
-      return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/AddEnquiry.vue */ "./resources/assets/js/views/AddEnquiry.vue"));
+      return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/AddEnquiry.vue */ "./resources/assets/js/views/AddEnquiry.vue"));
     },
     meta: {
       authenticated: true
@@ -79081,7 +79081,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-enquiry/:id',
     name: 'updateenquiry',
     component: function component() {
-      return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/AddEnquiry.vue */ "./resources/assets/js/views/AddEnquiry.vue"));
+      return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/AddEnquiry.vue */ "./resources/assets/js/views/AddEnquiry.vue"));
     },
     meta: {
       authenticated: true
@@ -79090,7 +79090,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/customer-list',
     name: 'customerlist',
     component: function component() {
-      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/CustomerList.vue */ "./resources/assets/js/views/CustomerList.vue"));
+      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/CustomerList.vue */ "./resources/assets/js/views/CustomerList.vue"));
     },
     meta: {
       authenticated: true
@@ -79099,7 +79099,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/add-customer',
     name: 'addcustomer',
     component: function component() {
-      return Promise.all(/*! import() | user */[__webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("user")]).then(__webpack_require__.bind(null, /*! @views/AddCustomer.vue */ "./resources/assets/js/views/AddCustomer.vue"));
+      return Promise.all(/*! import() | user */[__webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("subscription~user"), __webpack_require__.e("user")]).then(__webpack_require__.bind(null, /*! @views/AddCustomer.vue */ "./resources/assets/js/views/AddCustomer.vue"));
     },
     meta: {
       authenticated: true
@@ -79108,7 +79108,34 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-customer/:id',
     name: 'updatecustomer',
     component: function component() {
-      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/UpdateCustomer.vue */ "./resources/assets/js/views/UpdateCustomer.vue"));
+      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/UpdateCustomer.vue */ "./resources/assets/js/views/UpdateCustomer.vue"));
+    },
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/subscription-list',
+    name: 'subscriptionlist',
+    component: function component() {
+      return Promise.all(/*! import() | subscription */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("subscription~user"), __webpack_require__.e("subscription")]).then(__webpack_require__.bind(null, /*! @views/SubscriptionList.vue */ "./resources/assets/js/views/SubscriptionList.vue"));
+    },
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/add-subscription',
+    name: 'addsubscription',
+    component: function component() {
+      return Promise.all(/*! import() | user */[__webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("subscription~user"), __webpack_require__.e("user")]).then(__webpack_require__.bind(null, /*! @views/AddSubscription.vue */ "./resources/assets/js/views/AddSubscription.vue"));
+    },
+    meta: {
+      authenticated: true
+    }
+  }, {
+    path: '/update-subscription/:id',
+    name: 'updatesubscription',
+    component: function component() {
+      return Promise.all(/*! import() | subscription */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("subscription~user"), __webpack_require__.e("subscription")]).then(__webpack_require__.bind(null, /*! @views/AddSubscription.vue */ "./resources/assets/js/views/AddSubscription.vue"));
     },
     meta: {
       authenticated: true
@@ -79117,7 +79144,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/init',
     name: 'init',
     component: function component() {
-      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/InitializeView.vue */ "./resources/assets/js/views/InitializeView.vue"));
+      return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("customer~dashboard~enquiry~package~payment~product~staff~subscription~user"), __webpack_require__.e("customer~enquiry~package~payment~product~staff~subscription"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/InitializeView.vue */ "./resources/assets/js/views/InitializeView.vue"));
     },
     meta: {
       authenticated: true

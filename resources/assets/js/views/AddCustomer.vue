@@ -150,7 +150,7 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="startDate">Start Date</label>
-                                <input type="text" class="form-control" name="startDate" v-model="customer.startDate" id="startDate" @keydown="onKeyDown($event)" placeholder="yyyy-mm-dd" required>
+                                <input type="text" class="form-control" name="startDate" v-model="customer.startDate" id="startDate" v-on:keypress="findEndDate($event)" @change="findEndDate($event)" placeholder="yyyy-mm-dd" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="duration">Duration(In Month)</label>
@@ -320,7 +320,7 @@ export default {
                 }
             }
         },
-        onKeyDown(event)
+        findEndDate(event)
         {
             let moment = require('moment');
             let currentDate = moment(this.customer.startDate);

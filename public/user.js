@@ -402,7 +402,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }
     },
-    onKeyDown: function onKeyDown(event) {
+    findEndDate: function findEndDate(event) {
       var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 
       var currentDate = moment(this.customer.startDate);
@@ -1414,8 +1414,11 @@ var render = function() {
                       },
                       domProps: { value: _vm.customer.startDate },
                       on: {
-                        keydown: function($event) {
-                          return _vm.onKeyDown($event)
+                        keypress: function($event) {
+                          return _vm.findEndDate($event)
+                        },
+                        change: function($event) {
+                          return _vm.findEndDate($event)
                         },
                         input: function($event) {
                           if ($event.target.composing) {

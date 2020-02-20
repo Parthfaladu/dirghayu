@@ -321,7 +321,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
+                if (this.payment.remaining_amount >= 0) {
+                  this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
+                }
+
                 res = null;
 
                 if (!(this.$route.params.id != null)) {
