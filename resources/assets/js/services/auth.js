@@ -3,7 +3,7 @@ import store from 'store'
 import Api from "./api/api";
 
 // const api = new Api(process.env.VUE_APP_BASE_URL, '/auth');
-const api = new Api('http://localhost:8000/api/v1', '/auth');
+const api = new Api('/api/v1', '/auth');
 
 export const Storage = {
 	tokenKey: 'gym-auth.token'

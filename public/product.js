@@ -49,9 +49,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'product'
       }, {
         data: function data(_data2) {
-          return _data2.customer.user.first_name;
+          return _data2.user.first_name + ' ' + _data2.user.last_name;
         },
-        name: 'customer'
+        name: 'user_id'
       }, {
         data: 'quantity',
         name: 'quantity'
@@ -64,7 +64,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/productsell/list'
+      url: '/api/v1/productsell/list'
     };
   },
   methods: {
@@ -89,7 +89,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 productSellId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/productsell/delete', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/productsell/delete', {
                   id: productSellId
                 }, {
                   headers: {
@@ -187,7 +187,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/product/list'
+      url: '/api/v1/product/list'
     };
   },
   methods: {
@@ -212,7 +212,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 productId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/product/delete', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/product/delete', {
                   id: productId
                 }, {
                   headers: {
@@ -354,7 +354,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               id = this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/product/list/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/product/list/' + id, {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -412,7 +412,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/product/update', this.product, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/product/update', this.product, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -425,7 +425,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/product/create', this.product, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/product/create', this.product, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -515,9 +515,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.initialized();
 
             case 3:
-              this.$router.push({
-                path: '/dashboard'
-              });
+              if (this.$route.query && this.$route.query.redirectFrom) {
+                this.$router.push({
+                  path: this.$route.query.redirectFrom
+                });
+              } else {
+                this.$router.push({
+                  path: '/dashboard'
+                });
+              }
+
               _context.next = 9;
               break;
 
@@ -731,19 +738,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       productSell: {
         product_id: null,
-        customer_id: null,
+        user_id: null,
         quantity: null,
         paid_amount: null
       },
       products: null,
-      customers: null
+      users: null
     };
   },
   mounted: function () {
     var _mounted = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var id, res, productRes, customerRes;
+      var id, res, productRes, userRes;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -757,7 +764,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               id = this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/productsell/list/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/productsell/list/' + id, {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -770,7 +777,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 8:
               _context.next = 10;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/product/list', {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/product/list', {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -780,15 +787,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               productRes = _context.sent;
               this.products = productRes.data.data;
               _context.next = 14;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/customer/list', {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/customer/list', {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 14:
-              customerRes = _context.sent;
-              this.customers = customerRes.data.data;
+              userRes = _context.sent;
+              this.users = userRes.data.data;
               _context.next = 21;
               break;
 
@@ -836,7 +843,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/productsell/update', this.productSell, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/productsell/update', this.productSell, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -849,7 +856,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/productsell/create', this.productSell, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/productsell/create', this.productSell, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -1253,7 +1260,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c("div", { staticClass: "card-body col-sm-10 offset-sm-1" }, [
+        _c("div", { staticClass: "card-body col-sm-12" }, [
           _c(
             "h5",
             { staticClass: "card-title" },
@@ -1323,7 +1330,7 @@ var render = function() {
       _c("div", { staticClass: "main-card mb-3 card" }, [
         _c(
           "div",
-          { staticClass: "card-body col-sm-10 offset-sm-1" },
+          { staticClass: "card-body col-sm-12" },
           [
             _c("h5", { staticClass: "card-title" }),
             _vm._v(" "),
@@ -1416,12 +1423,12 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.productSell.customer_id,
-                        expression: "productSell.customer_id"
+                        value: _vm.productSell.user_id,
+                        expression: "productSell.user_id"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { name: "customer_id" },
+                    attrs: { name: "user_id" },
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -1434,7 +1441,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.productSell,
-                          "customer_id",
+                          "user_id",
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
@@ -1442,17 +1449,21 @@ var render = function() {
                       }
                     }
                   },
-                  _vm._l(_vm.customers, function(customer) {
+                  _vm._l(_vm.users, function(user) {
                     return _c(
                       "option",
                       {
-                        key: customer.id,
+                        key: user.id,
                         domProps: {
-                          value: customer.id,
-                          selected: _vm.productSell.customer_id === customer.id
+                          value: user.id,
+                          selected: _vm.productSell.user_id === user.id
                         }
                       },
-                      [_vm._v(_vm._s(customer.user.first_name))]
+                      [
+                        _vm._v(
+                          _vm._s(user.first_name) + " " + _vm._s(user.last_name)
+                        )
+                      ]
                     )
                   }),
                   0

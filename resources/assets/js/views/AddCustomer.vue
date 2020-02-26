@@ -20,7 +20,7 @@
                             <div class="position-relative form-group">
                                 <label for="branchId">Branch</label>
                                 <select class="form-control" name="branchId" v-model="customer.branchId" id="branchId" required>
-                                    <option value="1">1</option>
+                                    <option v-for="branch in branches" :key="branch.id" :value="branch.id" :selected="customer.branchId ===  branch.id">{{branch.name}}</option>
                                 </select>
                             </div>
                             <div class="position-relative form-group">
@@ -150,7 +150,7 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="startDate">Start Date</label>
-                                <input type="text" class="form-control" name="startDate" v-model="customer.startDate" id="startDate" v-on:keypress="findEndDate($event)" @change="findEndDate($event)" placeholder="yyyy-mm-dd" required>
+                                <input type="text" class="form-control" name="startDate" v-model="customer.startDate" id="startDate" placeholder="yyyy-mm-dd" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="duration">Duration(In Month)</label>
@@ -158,7 +158,7 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="endDate">End Date</label>
-                                <input type="text" class="form-control" name="endDate" v-model="customer.endDate" id="endDate" placeholder="yyyy-mm-dd" required readonly>
+                                <input type="text" class="form-control" name="endDate" v-model="endDate" id="endDate" placeholder="yyyy-mm-dd" required readonly>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="trialDays">Trial Days</label>
@@ -226,14 +226,28 @@ export default {
                 profileImage: null
             },
             packages: null,
+            branches: null,
 			profile_img_path: null,
 			showPreview: false,
 		}
-	},
+    },
+    computed:{
+        endDate()
+		{
+			let moment = require('moment');
+			let endDate = null;
+            let currentDate = moment(this.customer.startDate);
+			endDate = moment(currentDate).add(this.customer.duration, 'M').endOf('month').format('YYYY-MM-DD');
+			return endDate;
+		}
+    },
 	async mounted() {
 		try {
-            let res      = await axios.get('http://localhost:8000/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+            let res      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
             this.packages = res.data.data
+
+            let branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+            this.branches = branchRes.data.data
 			
 		} catch (err) {
 			this.$snotify.error(null, err.message);
@@ -272,17 +286,17 @@ export default {
                     customerData.append('amount', this.customer.amount)
 					customerData.append('startDate', this.customer.startDate)
                     customerData.append('duration', this.customer.duration)
-                    customerData.append('endDate', this.customer.endDate)
+                    customerData.append('endDate', this.endDate)
                     customerData.append('trialDays', this.customer.trialDays)
                     customerData.append('remark', this.customer.remark)
                     customerData.append('profileImage', this.customer.profileImage)
 
-		        	res = await axios.post('http://localhost:8000/api/v1/customer/create', customerData ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
+		        	res = await axios.post('/api/v1/customer/create', customerData ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
 		        	if(res.data.status == "success")
 		        	{
 		        		this.resetForm();
 						this.$router.push('/customer-list');
-						this.$snotify.success(null, res.data.message);
+						this.$snotify.success(null, res.message);
 		        	}
 		      	}
 		  	}
@@ -311,22 +325,15 @@ export default {
         	}
         },
         onChange(event) {
-            for(let i = 0;i <= this.packages.length; i++ )
-            {
-                if(this.packages[i].id == event.target.value )
+            this.packages.forEach((packageDetail) => {
+				if(packageDetail.id == event.target.value )
                 {
-                    this.customer.amount = this.packages[i].price
-                    this.customer.duration = this.packages[i].duration
+                    this.customer.amount = packageDetail.price
+                    this.customer.duration = packageDetail.duration
                 }
-            }
+			});
         },
-        findEndDate(event)
-        {
-            let moment = require('moment');
-            let currentDate = moment(this.customer.startDate);
-            this.customer.endDate = moment(currentDate).add(this.customer.duration, 'M').endOf('month').format('YYYY-MM-DD');
-                       
-        }
+        
 	}
 }
 </script>

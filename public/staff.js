@@ -75,7 +75,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/staff/member/list',
+      url: '/api/v1/staff/member/list',
       type: 'POST'
     };
   },
@@ -102,7 +102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 memberId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('http://localhost:8000/api/v1/staff/member/' + memberId, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/v1/staff/member/' + memberId, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -128,7 +128,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 14;
                 _memberId = action.data;
                 _context.next = 18;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/staff/member/status', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/status', {
                   id: _memberId
                 }, {
                   headers: {
@@ -303,14 +303,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         profileImage: null
       },
       profile_img_path: null,
-      showPreview: false
+      showPreview: false,
+      branches: null
     };
   },
   mounted: function () {
     var _mounted = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var id, res;
+      var id, res, branchRes;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -324,7 +325,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               id = this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/staff/member/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/staff/member/' + id, {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -337,20 +338,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               this.showPreview = true;
 
             case 9:
-              _context.next = 14;
-              break;
+              _context.next = 11;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/branch/list', {
+                headers: {
+                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                }
+              });
 
             case 11:
-              _context.prev = 11;
+              branchRes = _context.sent;
+              this.branches = branchRes.data.data;
+              _context.next = 18;
+              break;
+
+            case 15:
+              _context.prev = 15;
               _context.t0 = _context["catch"](0);
               this.$snotify.error(null, _context.t0.message);
 
-            case 14:
+            case 18:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 11]]);
+      }, _callee, this, [[0, 15]]);
     }));
 
     function mounted() {
@@ -397,7 +408,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 data.append('id', this.staff.id);
                 _context2.next = 19;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/staff/member/update', data, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/update', data, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
@@ -411,7 +422,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 22:
                 _context2.next = 24;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/staff/member', data, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member', data, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
@@ -424,18 +435,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 25:
                 if (res.data.status == "success") {
                   this.resetForm();
-                  this.$router.push('/staff-member-list'); //this.$snotify.success(null, res.data.message);
+                  this.$router.push('/staff-member-list');
+                  this.$snotify.success(null, res.data.message);
                 }
 
               case 26:
-                _context2.next = 30;
+                _context2.next = 31;
                 break;
 
               case 28:
                 _context2.prev = 28;
                 _context2.t0 = _context2["catch"](0);
+                this.$snotify.error(null, _context2.t0.message);
 
-              case 30:
+              case 31:
               case "end":
                 return _context2.stop();
             }
@@ -649,7 +662,20 @@ var render = function() {
                       }
                     }
                   },
-                  [_c("option", { attrs: { value: "1" } }, [_vm._v("1")])]
+                  _vm._l(_vm.branches, function(branch) {
+                    return _c(
+                      "option",
+                      {
+                        key: branch.id,
+                        domProps: {
+                          value: branch.id,
+                          selected: _vm.staff.branchId === branch.id
+                        }
+                      },
+                      [_vm._v(_vm._s(branch.name))]
+                    )
+                  }),
+                  0
                 )
               ]),
               _vm._v(" "),
@@ -1114,7 +1140,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c("div", { staticClass: "card-body col-sm-10 offset-sm-1" }, [
+        _c("div", { staticClass: "card-body col-sm-12" }, [
           _c(
             "h5",
             { staticClass: "card-title mt-4" },

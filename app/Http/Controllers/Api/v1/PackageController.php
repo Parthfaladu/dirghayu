@@ -73,7 +73,8 @@ class PackageController extends Controller
 	    	$package->name     = $request->get('name');
 	    	$package->price    = $request->get('price');
 	    	$package->duration = $request->get('duration');
-	    	$package->detail   = $request->get('detail');
+            $package->detail   = $request->get('detail');
+            $package = $this->uploadImage($package, $request->file('packageImage'));
 	    	$package->update();
 
 	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package updated."])->setStatusCode(200);

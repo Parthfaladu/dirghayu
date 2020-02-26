@@ -20,7 +20,7 @@
 	                <div class="position-relative form-group">
                         <label for="branchId">Branch</label>
                         <select class="form-control" name="branchId" v-model="staff.branchId" id="branchId" required>
-                        	<option value="1">1</option>
+                        	<option v-for="branch in branches" :key="branch.id" :value="branch.id" :selected="staff.branchId ===  branch.id">{{branch.name}}</option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
@@ -119,6 +119,7 @@ export default {
 			},
 			profile_img_path: null,
 			showPreview: false,
+			branches: null,
 		}
 	},
 	async mounted() {
@@ -126,12 +127,14 @@ export default {
 			if(this.$route.params.id != null)
 			{
 				let id           = this.$route.params.id
-				let res          = await axios.get('http://localhost:8000/api/v1/staff/member/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res          = await axios.get('/api/v1/staff/member/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.staff = res.data.data
 				this.profile_img_path = this.staff.photoUrl;
                 this.showPreview = true;
 		    }
-			
+			let branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			this.branches = branchRes.data.data
+
 		} catch (err) {
 			this.$snotify.error(null, err.message);
 		}
@@ -159,10 +162,10 @@ export default {
 			 		if(this.$route.params.id != null)
 			 		{
                         data.append('id', this.staff.id)
-			 			res = await axios.post('http://localhost:8000/api/v1/staff/member/update', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
+			 			res = await axios.post('/api/v1/staff/member/update', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
 			 		}else
 			 		{
-		        		res = await axios.post('http://localhost:8000/api/v1/staff/member', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
+		        		res = await axios.post('/api/v1/staff/member', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
 			 		}
 		        
 
@@ -170,12 +173,12 @@ export default {
 		        	{
 		        		this.resetForm();
 						this.$router.push('/staff-member-list');
-						//this.$snotify.success(null, res.data.message);
+						this.$snotify.success(null, res.data.message);
 		        	}
 		      	}
 		  	}
 		  	catch(err){
-		  		//this.$snotify.error(null, err.message);
+		  		this.$snotify.error(null, err.message);
 		  	}
 
 		},

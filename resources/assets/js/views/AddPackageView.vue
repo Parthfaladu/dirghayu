@@ -87,10 +87,11 @@ export default {
 			if(this.$route.params.id != null)
 			{
 				let id           = this.$route.params.id
-				let res          = await axios.get('http://localhost:8000/api/v1/package/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res          = await axios.get('/api/v1/package/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.packageData = res.data.data
 				this.package_img_path = this.packageData.image;
-                this.showPreview = true;
+				this.showPreview = true;
+
 		    }
 			
 		} catch (err) {
@@ -114,10 +115,10 @@ export default {
 
 			 		if(this.$route.params.id != null)
 			 		{
-			 			res = await axios.post('http://localhost:8000/api/v1/package/update', data , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} })
+			 			res = await axios.post('/api/v1/package/update', data , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} })
 			 		}else
 			 		{
-		        		res = await axios.post('http://localhost:8000/api/v1/package/create', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
+		        		res = await axios.post('/api/v1/package/create', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
 			 		}
 
 		        	if(res.data.status == "success")

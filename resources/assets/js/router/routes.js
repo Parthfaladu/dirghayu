@@ -11,10 +11,6 @@ const router = new Router({
     mode: 'history',
     routes: [
         {
-          path: '*',
-          redirect: '/'
-        },
-        {
           path: '/',
           redirect: '/dashboard'
         },
@@ -248,6 +244,86 @@ const router = new Router({
             }
         },
         {
+            path: '/expense-list',
+            name: 'expenselist',
+            component: () => import(/* webpackChunkName: "expense" */ '@views/ExpenseList.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/add-expense',
+            name: 'addexpense',
+            component: () => import(/* webpackChunkName: "expense" */ '@views/AddExpense.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/update-expense/:id',
+            name: 'updateexpense',
+            component: () => import(/* webpackChunkName: "expense" */ '@views/AddExpense.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/branch-list',
+            name: 'branchlist',
+            component: () => import(/* webpackChunkName: "branch" */ '@views/BranchList.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/add-branch',
+            name: 'addbranch',
+            component: () => import(/* webpackChunkName: "branch" */ '@views/AddBranch.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/update-branch/:id',
+            name: 'updatebranch',
+            component: () => import(/* webpackChunkName: "branch" */ '@views/AddBranch.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/invoice-list',
+            name: 'invoicelist',
+            component: () => import(/* webpackChunkName: "invoice" */ '@views/InvoiceList.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/add-invoice',
+            name: 'addinvoice',
+            component: () => import(/* webpackChunkName: "invoice" */ '@views/AddInvoice.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/update-invoice/:id',
+            name: 'updateinvoice',
+            component: () => import(/* webpackChunkName: "invoice" */ '@views/AddInvoice.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/payment-invoice/:id',
+            name: 'paymentinvoice',
+            component: () => import(/* webpackChunkName: "invoice" */ '@views/PaymentInvoice.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
             path: '/init',
             name: 'init',
             component: () => import(/* webpackChunkName: "product" */ '@views/InitializeView.vue'),
@@ -255,6 +331,10 @@ const router = new Router({
                 authenticated: true,
             }
         },
+        // {
+        //     path: '*',
+        //     redirect: '/'
+        // },
     ]
 })
 

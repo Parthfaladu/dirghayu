@@ -18,8 +18,8 @@
 	            <form  @submit.prevent="submitForm()" class="mt-4">
 	            	<div class="position-relative form-group">
                         <label for="detail">Customer Name</label>
-                        <select class="form-control" name="customer_id" v-model="productSell.customer_id">
-                        	<option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="productSell.customer_id ===  customer.id">{{customer.user.first_name}}</option>
+                        <select class="form-control" name="user_id" v-model="productSell.user_id">
+                        	<option v-for="user in users" :key="user.id" :value="user.id" :selected="productSell.user_id ===  user.id">{{user.first_name}} {{user.last_name}}</option>
                         </select>
                     </div>
 	            	<div class="position-relative form-group">
@@ -65,12 +65,12 @@ export default {
 		return {
 			productSell:{
 				product_id: null,
-				customer_id: null,
+				user_id: null,
 				quantity: null,
 				paid_amount:null
 			},
 			products: null,
-			customers: null
+			users: null
 			
 		}
 	},
@@ -79,17 +79,17 @@ export default {
 			if(this.$route.params.id != null)
 			{
 				let id       = this.$route.params.id
-				let res      = await axios.get('http://localhost:8000/api/v1/productsell/list/'+id ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res      = await axios.get('/api/v1/productsell/list/'+id ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				console.log(res.data.data)
 				this.productSell = res.data.data
 		    }
 		    
 
-		    	let productRes = await axios.get('http://localhost:8000/api/v1/product/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+		    	let productRes = await axios.get('/api/v1/product/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 		    	this.products = productRes.data.data
 
-		    	let customerRes = await axios.get('http://localhost:8000/api/v1/customer/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-				this.customers = customerRes.data.data
+		    	let userRes = await axios.get('/api/v1/customer/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				this.users = userRes.data.data
 			
 		} catch (err) {
 			this.$snotify.error(null, err.message);
@@ -105,10 +105,10 @@ export default {
 			 		let res = null
 			 		if(this.$route.params.id != null)
 			 		{
-			 			res = await axios.post('http://localhost:8000/api/v1/productsell/update', this.productSell, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			 			res = await axios.post('/api/v1/productsell/update', this.productSell, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}else
 			 		{
-		        		res = await axios.post('http://localhost:8000/api/v1/productsell/create', this.productSell, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+		        		res = await axios.post('/api/v1/productsell/create', this.productSell, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}
 		    
 		        	if(res.data.status == "success")

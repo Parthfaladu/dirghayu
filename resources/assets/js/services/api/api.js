@@ -3,7 +3,7 @@ import axios from 'axios'
 class Api {
     constructor(baseurl, resource) {
         this.resource = resource
-        this.baseurl  = baseurl
+        this.baseurl  = `${window.location.origin}${baseurl}`
         this.client = axios.create({
             baseURL: this.baseurl
         })
@@ -20,13 +20,14 @@ class Api {
     }
 
     call(method, url, params, data, headers, responseType = 'json') {
+        
         headers = headers || {}
 
         const h = {
             ...this.defaultHeaders,
             ...headers,
         }
-
+        
         return this.client.request({
             method: method,
             url: `${this.baseurl}${url}`,

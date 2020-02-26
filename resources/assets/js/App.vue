@@ -2,7 +2,6 @@
   <div id="app">
   	<DashboardComp>
     	<router-view></router-view>
-		<vue-snotify></vue-snotify>
     </DashboardComp>
   </div>
 </template>
@@ -13,7 +12,7 @@ export default {
 	name: 'App',
 	components: {
 		DashboardComp
-	}
+	},
 }
 </script>
 

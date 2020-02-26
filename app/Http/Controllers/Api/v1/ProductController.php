@@ -90,11 +90,11 @@ class ProductController extends Controller
 
         if($id != null)
         {
-            $productSell = ProductSell::with('customer.user','product')->where('id',$id)->first();
+            $productSell = ProductSell::with('user','product')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $productSell])->setStatusCode(200);
 
         }else{
-            $productSell = ProductSell::with('customer.user','product')->get();
+            $productSell = ProductSell::with('user','product')->get();
             return Datatables::of($productSell)->make(true);
         }
         
@@ -104,12 +104,12 @@ class ProductController extends Controller
         //return $request->all();
         try
         {
-            $productSell              = new ProductSell;
-            $productSell->user_id     = Auth::user()->id;
-            $productSell->product_id  = $request->get('product_id');
-            $productSell->customer_id = $request->get('customer_id');
-            $productSell->quantity    = $request->get('quantity');
-            $productSell->paid_amount = $request->get('paid_amount');
+            $productSell                  = new ProductSell;
+            $productSell->user_id         = $request->get('user_id');
+            $productSell->product_id      = $request->get('product_id');
+            $productSell->staff_member_id = Auth::user()->id;
+            $productSell->quantity        = $request->get('quantity');
+            $productSell->paid_amount     = $request->get('paid_amount');
             $productSell->save();
 
             return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product created."])->setStatusCode(200);
@@ -127,7 +127,7 @@ class ProductController extends Controller
         {
             $productSell              = ProductSell::where('id', $request->get('id'))->first();
             $productSell->product_id  = $request->get('product_id');
-            $productSell->customer_id = $request->get('customer_id');
+            $productSell->user_id     = $request->get('user_id');
             $productSell->quantity    = $request->get('quantity');
             $productSell->paid_amount = $request->get('paid_amount');
             $productSell->update();

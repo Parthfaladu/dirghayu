@@ -9,7 +9,12 @@ export default {
 	async mounted() {
 		try {
 			await this.initialized()
-			this.$router.push({ path: '/dashboard' })
+			if(this.$route.query && this.$route.query.redirectFrom) {
+				this.$router.push({ path: this.$route.query.redirectFrom })	
+			}
+			else {
+				this.$router.push({ path: '/dashboard' })
+			}
 		} catch(err) {
 			console.log(err)
 		}

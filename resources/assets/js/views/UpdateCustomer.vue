@@ -20,7 +20,7 @@
                             <div class="position-relative form-group">
                                 <label for="branch_id">Branch</label>
                                 <select class="form-control" name="branch_id" v-model="user.branch_id" id="branch_id" required>
-                                    <option value="1">1</option>
+                                    <option v-for="branch in branches" :key="branch.id" :value="branch.id" :selected="user.branch_id ===  branch.id">{{branch.name}}</option>
                                 </select>
                             </div>
                             <div class="position-relative form-group">
@@ -183,29 +183,25 @@ export default {
                 profileImage: null
             },
             packages: null,
+            branches: null,
 			profile_img_path: null,
 			showPreview: false,
 		}
 	},
 	async mounted() {
 		try {
-            let res      = await axios.get('http://localhost:8000/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+            let res      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
             this.packages = res.data.data
+
+            let branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+            this.branches = branchRes.data.data
 
             if(this.$route.params.id != null)
 			{
 				let id        = this.$route.params.id
-				let res       = await axios.get('http://localhost:8000/api/v1/customer/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-                this.customer = res.data.data
-                this.user     = res.data.data.user
-                // this.customer.branch_id = res.data.data.user.branch_id
-                // this.customer.first_name = res.data.data.user.first_name
-                // this.customer.last_name = res.data.data.user.last_name
-                // this.customer.gender = res.data.data.user.gender
-                // this.customer.email = res.data.data.user.email
-                // this.customer.password = res.data.data.user.password
-                // this.customer.phone = res.data.data.user.phone
-                // this.customer.address = res.data.data.user.address
+				let res       = await axios.get('/api/v1/customer/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+                this.customer = res.data.data.customer
+                this.user     = res.data.data
 				this.profile_img_path = this.user.photo_url;
                 this.showPreview = true;
 		    }
@@ -246,7 +242,7 @@ export default {
                     customerData.append('profileImage', this.user.profileImage)
                     customerData.append('user_id', this.$route.params.id)
 
-		        	res = await axios.post('http://localhost:8000/api/v1/customer/update', customerData ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
+		        	res = await axios.post('/api/v1/customer/update', customerData ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
 		        	if(res.data.status == "success")
 		        	{
 		        		this.resetForm();

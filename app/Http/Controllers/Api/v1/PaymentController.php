@@ -103,7 +103,21 @@ class PaymentController extends Controller
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
 	}
-
+	public function getSubscription($id)
+	{
+		try
+		{
+			$payment       = Payment::where('id',$id)->first();
+			$subscriptions = Subscription::with('user','package','staff')
+										->where('id', $payment->subscription_id)
+										->first();
+			return response()->json(["status" => "success", "data" => $subscriptions]);
+		}
+		catch(\Exception $e)
+		{
+	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
+		}
+	}
     public function update(Request $request)
     {
 

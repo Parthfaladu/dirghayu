@@ -45,34 +45,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'id'
       }, {
         data: function data(_data) {
-          return _data.user.first_name + ' ' + _data.user.last_name;
+          return _data.first_name + ' ' + _data.last_name;
         },
         name: 'name'
       }, {
-        data: function data(_data2) {
-          return _data2.user.email;
-        },
+        data: 'email',
         name: 'email'
       }, {
-        data: function data(_data3) {
-          return _data3.user.gender;
-        },
+        data: 'gender',
         name: 'gender'
       }, {
-        data: function data(_data4) {
-          return _data4.user.phone;
-        },
+        data: 'phone',
         name: 'phone'
       }, {
-        data: 'city',
+        data: function data(_data2) {
+          return _data2.customer.city;
+        },
         name: 'city'
       }, {
-        data: function data(_data5) {
-          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data5.user_id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data5.user_id + ">Delete</button>";
+        data: function data(_data3) {
+          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data3.id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + ">Delete</button>";
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/customer/list'
+      url: '/api/v1/customer/list'
     };
   },
   methods: {
@@ -97,7 +93,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 customerId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/customer/delete', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/customer/delete', {
                   id: customerId
                 }, {
                   headers: {
@@ -387,6 +383,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         profileImage: null
       },
       packages: null,
+      branches: null,
       profile_img_path: null,
       showPreview: false
     };
@@ -395,7 +392,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _mounted = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var res, id, _res;
+      var res, branchRes, id, _res;
 
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -403,7 +400,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/package/list', {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/package/list', {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -412,50 +409,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 3:
               res = _context.sent;
               this.packages = res.data.data;
-
-              if (!(this.$route.params.id != null)) {
-                _context.next = 14;
-                break;
-              }
-
-              id = this.$route.params.id;
-              _context.next = 9;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/customer/list/' + id, {
+              _context.next = 7;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/branch/list', {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
-            case 9:
-              _res = _context.sent;
-              this.customer = _res.data.data;
-              this.user = _res.data.data.user; // this.customer.branch_id = res.data.data.user.branch_id
-              // this.customer.first_name = res.data.data.user.first_name
-              // this.customer.last_name = res.data.data.user.last_name
-              // this.customer.gender = res.data.data.user.gender
-              // this.customer.email = res.data.data.user.email
-              // this.customer.password = res.data.data.user.password
-              // this.customer.phone = res.data.data.user.phone
-              // this.customer.address = res.data.data.user.address
+            case 7:
+              branchRes = _context.sent;
+              this.branches = branchRes.data.data;
 
+              if (!(this.$route.params.id != null)) {
+                _context.next = 18;
+                break;
+              }
+
+              id = this.$route.params.id;
+              _context.next = 13;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/customer/list/' + id, {
+                headers: {
+                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                }
+              });
+
+            case 13:
+              _res = _context.sent;
+              this.customer = _res.data.data.customer;
+              this.user = _res.data.data;
               this.profile_img_path = this.user.photo_url;
               this.showPreview = true;
 
-            case 14:
-              _context.next = 19;
+            case 18:
+              _context.next = 23;
               break;
 
-            case 16:
-              _context.prev = 16;
+            case 20:
+              _context.prev = 20;
               _context.t0 = _context["catch"](0);
               this.$snotify.error(null, _context.t0.message);
 
-            case 19:
+            case 23:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 16]]);
+      }, _callee, this, [[0, 20]]);
     }));
 
     function mounted() {
@@ -506,7 +505,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 customerData.append('profileImage', this.user.profileImage);
                 customerData.append('user_id', this.$route.params.id);
                 _context2.next = 28;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/customer/update', customerData, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/customer/update', customerData, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
@@ -644,7 +643,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c("div", { staticClass: "card-body col-sm-10 offset-sm-1" }, [
+        _c("div", { staticClass: "card-body col-sm-12" }, [
           _c(
             "h5",
             { staticClass: "card-title" },
@@ -773,7 +772,20 @@ var render = function() {
                           }
                         }
                       },
-                      [_c("option", { attrs: { value: "1" } }, [_vm._v("1")])]
+                      _vm._l(_vm.branches, function(branch) {
+                        return _c(
+                          "option",
+                          {
+                            key: branch.id,
+                            domProps: {
+                              value: branch.id,
+                              selected: _vm.user.branch_id === branch.id
+                            }
+                          },
+                          [_vm._v(_vm._s(branch.name))]
+                        )
+                      }),
+                      0
                     )
                   ]),
                   _vm._v(" "),

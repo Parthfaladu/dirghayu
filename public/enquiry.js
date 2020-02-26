@@ -74,7 +74,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/enquiry/list'
+      url: '/api/v1/enquiry/list'
     };
   },
   methods: {
@@ -99,7 +99,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 enquiryId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/enquiry/delete', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/enquiry/delete', {
                   id: enquiryId
                 }, {
                   headers: {
@@ -261,7 +261,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               id = this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/enquiry/list/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/enquiry/list/' + id, {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -319,7 +319,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/enquiry/update', this.enquiry, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/enquiry/update', this.enquiry, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -332,7 +332,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/enquiry/create', this.enquiry, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/enquiry/create', this.enquiry, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -863,7 +863,7 @@ var render = function() {
       _c("div", { staticClass: "main-card mb-3 card" }, [
         _c(
           "div",
-          { staticClass: "card-body col-sm-10 offset-sm-1" },
+          { staticClass: "card-body col-sm-12" },
           [
             _c(
               "h5",

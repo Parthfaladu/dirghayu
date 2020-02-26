@@ -13,7 +13,6 @@ import App from "./App.vue";
 import VueI18n from 'vue-i18n'
 import messageEn from '@i18n/en';
 import Snotify from 'vue-snotify';
-import moment from 'moment';
 
 const options = {
 	toast: {
@@ -23,7 +22,8 @@ const options = {
 	}
   }
   
-Vue.use(VueI18n, Snotify, options, moment)
+Vue.use(Snotify, options)
+Vue.use(VueI18n)
 
 const messages = {
 	en: messageEn

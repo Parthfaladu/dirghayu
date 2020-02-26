@@ -72,11 +72,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'remark'
       }, {
         data: function data(_data3) {
-          return " <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + ">Delete</button>";
+          return " <button class='btn btn-info' data-g-action='view' data-g-actiondata=" + _data3.id + ">Add Payment</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + ">Delete</button>";
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/payment/list'
+      url: '/api/v1/payment/list'
     };
   },
   methods: {
@@ -90,7 +90,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-payment/' + action.data);
+                  this.$router.push('/payment-invoice/' + action.data);
                 }
 
                 if (!(action.action === 'delete')) {
@@ -101,7 +101,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 paymentId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/payment/delete', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/delete', {
                   id: paymentId
                 }, {
                   headers: {
@@ -243,6 +243,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       packages: null
     };
   },
+  computed: {
+    remainingAmount: function remainingAmount() {
+      console.log('aaa');
+      var remainingAmount = this.payment.remaining_amount;
+      remainingAmount = remainingAmount - this.payment.paid_amount;
+      return remainingAmount;
+    }
+  },
   mounted: function () {
     var _mounted = _asyncToGenerator(
     /*#__PURE__*/
@@ -261,7 +269,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               id = this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/payment/list/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/list/' + id, {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -273,7 +281,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 7:
               _context.next = 9;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/payment/customer', {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/customer', {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -288,7 +296,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 13:
               _context.prev = 13;
               _context.t0 = _context["catch"](0);
-              console.log(_context.t0); // this.$snotify.error(null, err.message);
+              this.$snotify.error(null, _context.t0.message);
 
             case 16:
             case "end":
@@ -317,13 +325,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.prev = 0;
 
                 if (!this.payment) {
-                  _context2.next = 15;
+                  _context2.next = 14;
                   break;
                 }
 
-                if (this.payment.remaining_amount >= 0) {
-                  this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
-                }
+                this.payment.remaining_amount = this.remainingAmount; // if(this.payment.remaining_amount >= 0)
+                // {
+                // 	this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
+                // }
 
                 res = null;
 
@@ -333,7 +342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/payment/update', this.payment, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/update', this.payment, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -341,12 +350,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 7:
                 res = _context2.sent;
-                _context2.next = 14;
+                _context2.next = 13;
                 break;
 
               case 10:
                 _context2.next = 12;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/payment/create', this.payment, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/create', this.payment, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -354,30 +363,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 12:
                 res = _context2.sent;
-                console.log(res.data.message); //this.$snotify.success("aaa");
 
-              case 14:
+              case 13:
                 if (res.data.status == "success") {
-                  this.resetForm(); //this.$snotify.success(null, res.data.message);
-
+                  this.resetForm();
+                  this.$snotify.success(null, res.data.message);
                   this.$router.push('/payment-list');
                 }
 
-              case 15:
-                _context2.next = 20;
+              case 14:
+                _context2.next = 19;
                 break;
 
-              case 17:
-                _context2.prev = 17;
+              case 16:
+                _context2.prev = 16;
                 _context2.t0 = _context2["catch"](0);
-                console.log(_context2.t0); //this.$snotify.error(null, err.message);
+                this.$snotify.error(null, _context2.t0.message);
 
-              case 20:
+              case 19:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 17]]);
+        }, _callee2, this, [[0, 16]]);
       }));
 
       function submitForm() {
@@ -399,7 +407,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/payment/package/' + event.target.value, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/package/' + event.target.value, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                   }
@@ -434,7 +442,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/payment/amount', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/amount', {
                   user_id: this.payment.user_id,
                   package_id: event.target.value
                 }, {
@@ -469,10 +477,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return onPackageChange;
-    }(),
-    paidAmount: function paidAmount(event) {
-      console.log(event.target.value);
-    }
+    }()
   }
 });
 
@@ -747,7 +752,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "position-relative form-group" }, [
                 _c("label", { attrs: { for: "paid_amount" } }, [
-                  _vm._v("Paid Amount")
+                  _vm._v("Payable Amount")
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -768,7 +773,6 @@ var render = function() {
                   },
                   domProps: { value: _vm.payment.paid_amount },
                   on: {
-                    keyup: _vm.paidAmount,
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -789,8 +793,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.payment.remaining_amount,
-                      expression: "payment.remaining_amount"
+                      value: _vm.remainingAmount,
+                      expression: "remainingAmount"
                     }
                   ],
                   staticClass: "form-control",
@@ -801,17 +805,13 @@ var render = function() {
                     readonly: "",
                     required: ""
                   },
-                  domProps: { value: _vm.payment.remaining_amount },
+                  domProps: { value: _vm.remainingAmount },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(
-                        _vm.payment,
-                        "remaining_amount",
-                        $event.target.value
-                      )
+                      _vm.remainingAmount = $event.target.value
                     }
                   }
                 })
@@ -964,7 +964,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c("div", { staticClass: "card-body col-sm-10 offset-sm-1" }, [
+        _c("div", { staticClass: "card-body col-sm-12" }, [
           _c(
             "h5",
             { staticClass: "card-title" },

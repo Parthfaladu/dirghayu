@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 	Route::get('/payment/customer', 'PaymentController@activeSubscriptionList');
 	Route::get('/payment/package/{id}', 'PaymentController@getPackages');
 	Route::post('/payment/amount', 'PaymentController@getAmount');
+	Route::get('/payment/subscription/{id}', 'PaymentController@getSubscription');
 
 
 	Route::get('/customer/list/{id?}', 'CustomerController@customerList');
@@ -74,7 +75,20 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 	Route::post('/notice/update', 'NoticeController@update');
 	Route::post('/notice/delete', 'NoticeController@delete');
 
+	Route::get('/expense/list/{id?}', 'ExpenseController@expenseList');
+	Route::post('/expense/create', 'ExpenseController@create');
+	Route::post('/expense/update', 'ExpenseController@update');
+	Route::post('/expense/delete', 'ExpenseController@delete');
 
+	Route::get('/branch/list/{id?}', 'BranchController@branchList');
+	Route::post('/branch/create', 'BranchController@create');
+	Route::post('/branch/update', 'BranchController@update');
+	Route::post('/branch/delete', 'BranchController@delete');
+
+	Route::get('/invoice/list/{id?}', 'InvoiceController@invoiceList');
+	Route::post('/invoice/create', 'InvoiceController@create');
+	Route::post('/invoice/update', 'InvoiceController@update');
+	Route::post('/invoice/delete', 'InvoiceController@delete');
 
 	Route::group(['middleware' => ['auth']], function()
 	{

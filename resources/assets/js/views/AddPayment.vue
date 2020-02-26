@@ -29,12 +29,12 @@
                         </select>
                     </div>
 	            	<div class="position-relative form-group">
-                        <label for="paid_amount">Paid Amount</label>
-                        <input type="number" class="form-control" name="paid_amount" v-model="payment.paid_amount" v-on:keyup="paidAmount" id="paid_amount" required>
+                        <label for="paid_amount">Payable Amount</label>
+                        <input type="number" class="form-control" name="paid_amount" v-model="payment.paid_amount" id="paid_amount" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="remaining_amount">Remaining Amount</label>
-                        <input type="number" class="form-control" name="remaining_amount" v-model="payment.remaining_amount" id="remaining_amount" readonly required>
+                        <input type="number" class="form-control" name="remaining_amount" v-model="remainingAmount" id="remaining_amount" readonly required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="payment_source">Payment Source</label>
@@ -86,22 +86,30 @@ export default {
 			
 		}
 	},
+	computed:{
+		remainingAmount()
+		{
+			console.log('aaa')
+			let remainingAmount = this.payment.remaining_amount;
+			remainingAmount = remainingAmount - this.payment.paid_amount;
+			return remainingAmount;
+		}
+	},
 	async mounted() {
 		try {
 			if(this.$route.params.id != null)
 			{
 				let id       = this.$route.params.id
-				let res      = await axios.get('http://localhost:8000/api/v1/payment/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res      = await axios.get('/api/v1/payment/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.payment = res.data.data
 			}
 			
-			let customersRes = await axios.get('http://localhost:8000/api/v1/payment/customer', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			let customersRes = await axios.get('/api/v1/payment/customer', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 			this.customers = customersRes.data.data
 			
 			
 		} catch (err) {
-			console.log(err)
-			// this.$snotify.error(null, err.message);
+		 	this.$snotify.error(null, err.message);
 		}
 	},
 	methods: {
@@ -110,34 +118,32 @@ export default {
 			try{
 			 	if(this.payment) 
 			 	{
-			 		if(this.payment.remaining_amount >= 0)
-			 		{
-			 			this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
-			 		}
+					this.payment.remaining_amount = this.remainingAmount;
+			 		// if(this.payment.remaining_amount >= 0)
+			 		// {
+			 		// 	this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
+			 		// }
 					
 			 		let res = null
 			 		if(this.$route.params.id != null)
 			 		{
-			 			res = await axios.post('http://localhost:8000/api/v1/payment/update', this.payment ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			 			res = await axios.post('/api/v1/payment/update', this.payment ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}else
 			 		{
-						res = await axios.post('http://localhost:8000/api/v1/payment/create', this.payment ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
-						console.log(res.data.message);
-						//this.$snotify.success("aaa");
+						res = await axios.post('/api/v1/payment/create', this.payment ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}
 		    
 		        	if(res.data.status == "success")
 		        	{
 						this.resetForm();
-						//this.$snotify.success(null, res.data.message);
+						this.$snotify.success(null, res.data.message);
 						this.$router.push('/payment-list');
 						
 		        	}
 		      	}
 		  	}
 		  	catch(err){
-				console.log(err)
-		  		//this.$snotify.error(null, err.message);
+				this.$snotify.error(null, err.message);
 		  	}
 
 		},
@@ -146,14 +152,14 @@ export default {
 		},
 		async onChange(event)
 		{
-			let res = await axios.get('http://localhost:8000/api/v1/payment/package/'+event.target.value,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			let res = await axios.get('/api/v1/payment/package/'+event.target.value,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			this.packages = res.data.data;
 			console.log(this.packages)
 		},
 		async onPackageChange(event)
 		{
 			
-			let res = await axios.post('http://localhost:8000/api/v1/payment/amount',{user_id: this.payment.user_id,package_id:event.target.value} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			let res = await axios.post('/api/v1/payment/amount',{user_id: this.payment.user_id,package_id:event.target.value} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			if(res.data.message == 'lastpayment')
 			{
 				this.payment.subscription_id = res.data.data.subscription_id
@@ -166,10 +172,6 @@ export default {
 			}
 			
 		},
-		paidAmount: function(event)
-		{
-			console.log(event.target.value);
-		}
 	}
 }
 </script>

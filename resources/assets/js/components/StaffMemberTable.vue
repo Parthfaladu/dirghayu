@@ -45,7 +45,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 			        	return action;
 		          	}, name:'action'}
 			    ],
-			    url: 'http://localhost:8000/api/v1/staff/member/list',
+			    url: '/api/v1/staff/member/list',
 			    type: 'POST',
 			}
 		},
@@ -58,7 +58,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				if(action.action === 'delete'){
 					try{
 						let memberId = action.data
-						let res = await axios.delete('http://localhost:8000/api/v1/staff/member/'+memberId, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						let res = await axios.delete('/api/v1/staff/member/'+memberId, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 
 					}
@@ -69,7 +69,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				if(action.action === 'status'){
 					try{
 						let memberId = action.data
-						let res = await axios.post('http://localhost:8000/api/v1/staff/member/status',{ id: memberId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						let res = await axios.post('/api/v1/staff/member/status',{ id: memberId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 
 					}

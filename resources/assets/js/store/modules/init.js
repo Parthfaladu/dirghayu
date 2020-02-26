@@ -22,7 +22,7 @@ export const actions = {
 			
 			return axios.request({
 				method: 'get',
-				url: 'http://localhost:8000/api/v1/auth/user',
+				url: '/api/v1/auth/user',
 				headers: requestHeader,
 				responseType: 'json'
 			}).then((res) => {

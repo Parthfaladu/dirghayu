@@ -17,10 +17,16 @@
 	            <h5 class="card-title"></h5>
 	            <form  @submit.prevent="submitForm()">
             		<h5 class="card-title">Subscription Detail</h5>
+					<div class="position-relative form-group">
+                        <label for="user_id">Customer</label>
+                        <select class="form-control" name="user_id" v-model="subscription.user_id" id="user_id" required>
+                            <option v-for="user in users" :key="user.id" :value="user.id" :selected="subscription.user_id ===  user.id">{{user.first_name}} {{user.last_name}} </option>
+                        </select>
+                    </div>
                     <div class="position-relative form-group">
-                        <label for="packageId">Package</label>
-                        <select class="form-control" name="packageId" v-model="subscription.packageId" id="packageId" @change="onChange($event)"  required>
-                            <option v-for="packageData in packages" :key="packageData.id" :value="packageData.id" :selected="subscription.packageId ===  packageData.id">{{packageData.name}}</option>
+                        <label for="package_id">Package</label>
+                        <select class="form-control" name="package_id" v-model="subscription.package_id" id="package_id" @change="onChange($event)"  required>
+                            <option v-for="packageData in packages" :key="packageData.id" :value="packageData.id" :selected="subscription.package_id ===  packageData.id">{{packageData.name}}</option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
@@ -28,20 +34,20 @@
                         <input type="number" class="form-control" name="amount" v-model="subscription.amount" id="amount" required readonly>
                     </div>
                     <div class="position-relative form-group">
-                        <label for="startDate">Start Date</label>
-                        <input type="text" class="form-control" name="startDate" v-model="subscription.startDate" id="startDate" v-on:keypress="findEndDate($event)" @change="findEndDate($event)" placeholder="yyyy-mm-dd" required>
+                        <label for="start_date">Start Date</label>
+                        <input type="text" class="form-control" name="start_date" v-model="subscription.start_date" id="start_date"  placeholder="yyyy-mm-dd" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="duration">Duration(In Month)</label>
                         <input type="number" class="form-control" name="duration" v-model="subscription.duration" id="duration" required readonly>
                     </div>
                     <div class="position-relative form-group">
-                        <label for="endDate">End Date</label>
-                        <input type="text" class="form-control" name="endDate" v-model="subscription.endDate" id="endDate" placeholder="yyyy-mm-dd" required readonly>
+                        <label for="end_date">End Date</label>
+                        <input type="text" class="form-control" name="end_date" v-model="endDate" id="end_date" placeholder="yyyy-mm-dd" required readonly>
                     </div>
                     <div class="position-relative form-group">
-                        <label for="trialDays">Trial Days</label>
-                        <input type="number" class="form-control" name="trialDays" v-model="subscription.trialDays" id="trialDays">
+                        <label for="trial_days">Trial Days</label>
+                        <input type="number" class="form-control" name="trial_days" v-model="subscription.trial_days" id="trial_days">
                     </div>
                     <div class="position-relative form-group">
                         <label for="remark">Remark</label>
@@ -62,7 +68,7 @@
 
 import axios from 'axios';
 import DashboardPage from '@layouts/DashboardPage';
-
+var moment = require('moment');
 export default {
 	name: 'AddProductView',
 	components: {
@@ -71,16 +77,26 @@ export default {
 	data() {
 		return {
 			subscription:{
-				packageId: null,
+				package_id: null,
 				amount: null,
-                startDate: null,
+                start_date: moment().format("YYYY-MM-DD"),
                 duration: 0,
-                endDate: null,
-                trialDays: 0,
+                end_date: null,
+                trial_days: 0,
                 remark: null,
 			},
 			packages: null,
+			users: null,
 			
+		}
+	},
+	computed:{
+		endDate()
+		{
+			let endDate = null;
+            let currentDate = moment(this.subscription.start_date);
+			endDate = moment(currentDate).add(this.subscription.duration, 'M').endOf('month').format('YYYY-MM-DD');
+			return endDate;
 		}
 	},
 	async mounted() {
@@ -88,16 +104,18 @@ export default {
 			if(this.$route.params.id != null)
 			{
 				let id       = this.$route.params.id
-				let res      = await axios.get('http://localhost:8000/api/v1/subscription/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res      = await axios.get('/api/v1/subscription/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.subscription = res.data.data
 		    }
 
-		    let res      = await axios.get('http://localhost:8000/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-            this.packages = res.data.data
+		    let packageRes      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			this.packages = packageRes.data.data
+			
+			let userRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			this.users = userRes.data.data
 			
 		} catch (err) {
-			console.log(err)
-			//this.$snotify.error(null, err.message);
+			this.$snotify.error(null, err.message);
 		}
 	},
 	methods: {
@@ -106,27 +124,27 @@ export default {
 			try{
 			 	if(this.subscription) 
 			 	{
-			 		let res = null
+					 let res = null
+					 this.subscription.end_date = this.endDate;
 			 		if(this.$route.params.id != null)
 			 		{
-			 			res = await axios.post('http://localhost:8000/api/v1/subscription/update', this.subscription ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			 			res = await axios.post('/api/v1/subscription/update', this.subscription ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}else
 			 		{
-		        		res = await axios.post('http://localhost:8000/api/v1/subscription/create', this.subscription ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+		        		res = await axios.post('/api/v1/subscription/create', this.subscription ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}
 		    
 		        	if(res.data.status == "success")
 		        	{
 		        		this.resetForm();
 						this.$router.push('/subscription-list');
-						//this.$snotify.success(null, res.data.message);
+						this.$snotify.success(null, res.data.message);
 						
 		        	}
 		      	}
 		  	}
 		  	catch(err){
-		  		console.log(err)
-		  		//this.$snotify.error(null, err.message);
+		  		this.$snotify.error(null, err.message);
 		  	}
 
 		},
@@ -134,22 +152,15 @@ export default {
 			this.subscription = null;	
 		},
 		onChange(event) {
-            for(let i = 0;i <= this.packages.length; i++ )
-            {
-                if(this.packages[i].id == event.target.value )
+			this.packages.forEach((packageDetail) => {
+				if(packageDetail.id == event.target.value )
                 {
-                    this.subscription.amount = this.packages[i].price
-                    this.subscription.duration = this.packages[i].duration
+                    this.subscription.amount = packageDetail.price
+                    this.subscription.duration = packageDetail.duration
                 }
-            }
+			});
         },
-        findEndDate(event)
-        {
-            let moment = require('moment');
-            let currentDate = moment(this.subscription.startDate);
-            this.subscription.endDate = moment(currentDate).add(this.subscription.duration, 'M').endOf('month').format('YYYY-MM-DD');
-                       
-        }
+
 	}
 }
 </script>

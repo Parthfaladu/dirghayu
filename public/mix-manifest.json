@@ -1,17 +1,22 @@
 {
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
+    "/branch.js": "/branch.js",
+    "/branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user.js": "/branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user.js",
+    "/branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js": "/branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js",
     "/customer.js": "/customer.js",
-    "/customer~dashboard~enquiry~package~payment~product~staff~subscription~user.js": "/customer~dashboard~enquiry~package~payment~product~staff~subscription~user.js",
-    "/customer~enquiry~package~payment~product~staff~subscription.js": "/customer~enquiry~package~payment~product~staff~subscription.js",
     "/dashboard.js": "/dashboard.js",
     "/enquiry.js": "/enquiry.js",
+    "/expense.js": "/expense.js",
+    "/invoice.js": "/invoice.js",
+    "/notice.js": "/notice.js",
     "/package.js": "/package.js",
     "/payment.js": "/payment.js",
     "/product.js": "/product.js",
     "/staff.js": "/staff.js",
     "/subscription.js": "/subscription.js",
-    "/subscription~user.js": "/subscription~user.js",
     "/user.js": "/user.js",
-    "/vendors~customer~enquiry~package~payment~product~staff~subscription.js": "/vendors~customer~enquiry~package~payment~product~staff~subscription.js"
+    "/vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js": "/vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js",
+    "/vendors~subscription~user.js": "/vendors~subscription~user.js",
+    "/vendors~invoice~subscription~user.js": "/vendors~invoice~subscription~user.js"
 }

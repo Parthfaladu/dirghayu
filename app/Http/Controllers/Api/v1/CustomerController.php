@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Spatie\Permission\Models\Role;
+use Spatie\Fractalistic\ArraySerializer;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\CustomerStoreRequest;
@@ -18,12 +20,18 @@ class CustomerController extends Controller
     {
     	if($id != null)
     	{
-    		$customers = Customer::with('user')->where('user_id',$id)->first();
+            $user = User::with("customer")->where('id',$id)->first();
+    		//$customers = Customer::with('user')->where('user_id',$id)->first();
     	}else{
-    		$customers = Customer::with('user.subscription')->get();
-            return Datatables::of($customers)->make(true);
+            $user = User::with("roles","customer","subscription")
+				   ->whereHas("roles", function($q){
+						return $q->whereIn("name", ["customer"]);
+					})
+				   ->get();
+    		//$customers = Customer::with('user.subscription')->get();
+            return Datatables::of($user)->make(true);
     	}
-    	return response()->json(["code" => 200, "status" => "success", "data" => $customers])->setStatusCode(200);
+    	return response()->json(["code" => 200, "status" => "success", "data" => $user])->setStatusCode(200);
     	
     }
     
@@ -45,6 +53,9 @@ class CustomerController extends Controller
             $user = $this->uploadImage($user, $request->file('profileImage'));
 
             $user->save();
+
+            $role = Role::where("id", $request->get("roleId"))->first();
+		    $user->assignRole($role);
 
             $customer = new Customer;
             $customer->city            = $request->get("city");

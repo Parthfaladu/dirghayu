@@ -93,7 +93,7 @@ export default {
 			if(this.$route.params.id != null)
 			{
 				let id       = this.$route.params.id
-				let res      = await axios.get('http://localhost:8000/api/v1/enquiry/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res      = await axios.get('/api/v1/enquiry/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.enquiry = res.data.data
 			}
 			
@@ -112,10 +112,10 @@ export default {
 			 		let res = null
 			 		if(this.$route.params.id != null)
 			 		{
-			 			res = await axios.post('http://localhost:8000/api/v1/enquiry/update', this.enquiry ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			 			res = await axios.post('/api/v1/enquiry/update', this.enquiry ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}else
 			 		{
-		        		res = await axios.post('http://localhost:8000/api/v1/enquiry/create', this.enquiry ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+		        		res = await axios.post('/api/v1/enquiry/create', this.enquiry ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}
 		    
 		        	if(res.data.status == "success")

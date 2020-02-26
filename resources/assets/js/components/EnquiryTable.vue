@@ -39,7 +39,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 		            	return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata="+data.id+">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
 		          	}, name:'action'}
 			    ],
-			    url: 'http://localhost:8000/api/v1/enquiry/list',
+			    url: '/api/v1/enquiry/list',
 			}
 		},
 		methods: {
@@ -51,7 +51,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				if(action.action === 'delete'){
 					try{
 						let enquiryId = action.data
-						let res = await axios.post('http://localhost:8000/api/v1/enquiry/delete' , { id: enquiryId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						let res = await axios.post('/api/v1/enquiry/delete' , { id: enquiryId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 
 					}

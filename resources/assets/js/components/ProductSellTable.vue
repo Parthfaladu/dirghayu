@@ -27,15 +27,15 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 			        	return data.product.name;
 			        }, name:'product'},
 			        {data:function(data){
-			        	return data.customer.user.first_name;
-			        }, name:'customer'},
+			        	return data.user.first_name+' '+data.user.last_name;
+			        }, name:'user_id'},
 			        {data:'quantity', name:'quantity'},
 			        {data:'paid_amount', name:'paid_amount'},
 			        {data:function(data){
 		            	return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata="+data.id+">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
 		          	}, name:'action'}
 			    ],
-			    url: 'http://localhost:8000/api/v1/productsell/list',
+			    url: '/api/v1/productsell/list',
 			}
 		},
 		methods: {
@@ -47,7 +47,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				if(action.action === 'delete'){
 					try{
 						let productSellId = action.data
-						let res = await axios.post('http://localhost:8000/api/v1/productsell/delete' , { id: productSellId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						let res = await axios.post('/api/v1/productsell/delete' , { id: productSellId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 						
 					}

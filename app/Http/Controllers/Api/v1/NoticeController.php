@@ -28,11 +28,11 @@ class NoticeController extends Controller
         //return $request->all();
         try
         {
-            $user          = Customer::where('id', $request->get('to_id'))->first();
+            
             $notice          = new Notice;
             $notice->from_id = Auth::user()->id;
-            $notice->to_id   = $user->id;
-            $notice->title  = $request->get('title');
+            $notice->to_id   = $request->get('to_id');
+            $notice->title   = $request->get('title');
             $notice->detail  = $request->get('detail');
             $notice->save();
 
@@ -52,9 +52,9 @@ class NoticeController extends Controller
 
         try
         {
-            $user           = Customer::where('id', $request->get('to_id'))->first();
+           
             $notice         = Notice::where('id', $request->get('id'))->first();
-            $notice->to_id  = $user->id;
+            $notice->to_id  = $request->get('to_id');
             $notice->title  = $request->get('title');
             $notice->detail = $request->get('detail');
             $notice->update();

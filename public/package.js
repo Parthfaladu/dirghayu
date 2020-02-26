@@ -60,7 +60,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         },
         name: 'action'
       }],
-      url: 'http://localhost:8000/api/v1/package/list'
+      url: '/api/v1/package/list'
     };
   },
   methods: {
@@ -85,7 +85,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.prev = 2;
                 packageId = action.data;
                 _context.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/package/delete', {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/package/delete', {
                   id: packageId
                 }, {
                   headers: {
@@ -242,7 +242,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               id = this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('http://localhost:8000/api/v1/package/list/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/package/list/' + id, {
                 headers: {
                   "Authorization": this.$store.getters['auth/authHeaders'].Authorization
                 }
@@ -308,7 +308,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context2.next = 12;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/package/update', data, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/package/update', data, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
@@ -322,7 +322,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 15:
                 _context2.next = 17;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('http://localhost:8000/api/v1/package/create', data, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/package/create', data, {
                   headers: {
                     "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
@@ -783,7 +783,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c("div", { staticClass: "card-body col-sm-10 offset-sm-1" }, [
+        _c("div", { staticClass: "card-body col-sm-12" }, [
           _c(
             "h5",
             { staticClass: "card-title" },

@@ -19,7 +19,7 @@
 	            	<div class="position-relative form-group">
                         <label for="to_id">Customer</label>
                         <select class="form-control" name="to_id" v-model="notice.to_id" id="to_id" required>
-                            <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="notice.to_id ===  customer.id">{{customer.user.first_name}}</option>
+                            <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="notice.to_id ===  customer.id">{{customer.first_name}} {{customer.last_name}} </option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
@@ -47,7 +47,7 @@ import axios from 'axios';
 import DashboardPage from '@layouts/DashboardPage';
 
 export default {
-	name: 'AddProductView',
+	name: 'AddNotice',
 	components: {
 		DashboardPage
 	},
@@ -67,15 +67,15 @@ export default {
 			if(this.$route.params.id != null)
 			{
 				let id       = this.$route.params.id
-				let res      = await axios.get('http://localhost:8000/api/v1/notice/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				let res      = await axios.get('/api/v1/notice/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.notice = res.data.data
 		    }
 
-		    let customerRes = await axios.get('http://localhost:8000/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+		    let customerRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 			this.customers = customerRes.data.data
 			
 		} catch (err) {
-			//this.$snotify.error(null, err.message);
+			this.$snotify.error(null, err.message);
 		}
 	},
 	methods: {
@@ -87,23 +87,23 @@ export default {
 			 		let res = null
 			 		if(this.$route.params.id != null)
 			 		{
-			 			res = await axios.post('http://localhost:8000/api/v1/notice/update', this.notice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			 			res = await axios.post('/api/v1/notice/update', this.notice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}else
 			 		{
-		        		res = await axios.post('http://localhost:8000/api/v1/notice/create', this.notice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+		        		res = await axios.post('/api/v1/notice/create', this.notice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			 		}
 		    
 		        	if(res.data.status == "success")
 		        	{
 		        		this.resetForm();
 						this.$router.push('/notice-list');
-						//this.$snotify.success(null, res.data.message);
+						this.$snotify.success(null, res.data.message);
 						
 		        	}
 		      	}
 		  	}
 		  	catch(err){
-		  		//this.$snotify.error(null, err.message);
+		  		this.$snotify.error(null, err.message);
 		  	}
 
 		},

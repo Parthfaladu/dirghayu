@@ -51,7 +51,9 @@ export default {
 		async submitForm() {
 			try {
 				let res = await auth.login(this.form);
-				this.$router.push('/dashboard')
+				this.$router.push({name: 'dashboard'}).catch(err => {
+					console.log(err)
+				})
 				return;
 			} catch(err) {
 				console.log(err)

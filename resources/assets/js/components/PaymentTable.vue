@@ -38,22 +38,22 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
                     {data:'updated_at', name:'updated_at'},
                     {data:'remark', name:'remark'},
 			        {data:function(data){
-		            	return " <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
+		            	return " <button class='btn btn-info' data-g-action='view' data-g-actiondata="+data.id+">Add Payment</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
 		          	}, name:'action'}
 			    ],
-			    url: 'http://localhost:8000/api/v1/payment/list',
+			    url: '/api/v1/payment/list',
 			}
 		},
 		methods: {
 
 			async onAction(action) {
 				if(action.action === 'view') {
-					this.$router.push('/update-payment/'+action.data)
+					this.$router.push('/payment-invoice/'+action.data)
 				}
 				if(action.action === 'delete'){
 					try{
 						let paymentId = action.data
-						let res = await axios.post('http://localhost:8000/api/v1/payment/delete' , { id: paymentId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						let res = await axios.post('/api/v1/payment/delete' , { id: paymentId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 					}
 					catch(err){

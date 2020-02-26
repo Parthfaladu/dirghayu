@@ -8,9 +8,9 @@ class ProductSell extends Model
 {
     protected $table = "product_sell";
 
-    public function customer()
+    public function user()
     {
-        return $this->belongsTo('App\Models\Customer');
+        return $this->belongsTo('App\User');
     }
 
     public function product()
