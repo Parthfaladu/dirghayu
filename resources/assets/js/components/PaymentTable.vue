@@ -38,7 +38,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
                     {data:'updated_at', name:'updated_at'},
                     {data:'remark', name:'remark'},
 			        {data:function(data){
-		            	return " <button class='btn btn-info' data-g-action='view' data-g-actiondata="+data.id+">Add Payment</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
+		            	return " <button class='btn btn-outline-info' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 		          	}, name:'action'}
 			    ],
 			    url: '/api/v1/payment/list',
@@ -52,8 +52,8 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				}
 				if(action.action === 'delete'){
 					try{
-						let paymentId = action.data
-						let res = await axios.post('/api/v1/payment/delete' , { id: paymentId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						const paymentId = action.data
+						const res = await axios.post('/api/v1/payment/delete' , { id: paymentId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 					}
 					catch(err){

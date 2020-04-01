@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-note icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>NOTICE LIST</div>
@@ -15,7 +15,7 @@
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-12">
 	            <h5 class="card-title">
-	            	<router-link to="/add-notice" class="btn btn-info mb-5">Add Notice</router-link>
+	            	<router-link to="/add-notice" class="btn btn-outline-primary mb-5 pull-right">Add Notice</router-link>
 	            </h5>
 				<div class="table-responsive">
 	           		<NoticeTable></NoticeTable>

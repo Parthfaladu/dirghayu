@@ -60,14 +60,14 @@
 /******/ 		var ns = Object.create(null);
 /******/ 		__webpack_require__.r(ns);
 /******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		if(mode & 2 && typeof value !== 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
 /******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getDefault() { return module.default; } :
 /******/ 			function getModuleExports() { return module; };
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
@@ -87,7 +87,7 @@
 /******/ ({
 
 /***/ "./node_modules/@babel/runtime/regenerator/index.js":
-/*!**********************************************************!*\
+/*! **********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
@@ -99,7 +99,7 @@ module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/
 /***/ }),
 
 /***/ "./node_modules/axios/index.js":
-/*!*************************************!*\
+/*! *************************************!*\
   !*** ./node_modules/axios/index.js ***!
   \*************************************/
 /*! no static exports found */
@@ -110,7 +110,7 @@ module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/li
 /***/ }),
 
 /***/ "./node_modules/axios/lib/adapters/xhr.js":
-/*!************************************************!*\
+/*! ************************************************!*\
   !*** ./node_modules/axios/lib/adapters/xhr.js ***!
   \************************************************/
 /*! no static exports found */
@@ -296,7 +296,7 @@ module.exports = function xhrAdapter(config) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/axios.js":
-/*!*****************************************!*\
+/*! *****************************************!*\
   !*** ./node_modules/axios/lib/axios.js ***!
   \*****************************************/
 /*! no static exports found */
@@ -361,7 +361,7 @@ module.exports.default = axios;
 /***/ }),
 
 /***/ "./node_modules/axios/lib/cancel/Cancel.js":
-/*!*************************************************!*\
+/*! *************************************************!*\
   !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
   \*************************************************/
 /*! no static exports found */
@@ -392,7 +392,7 @@ module.exports = Cancel;
 /***/ }),
 
 /***/ "./node_modules/axios/lib/cancel/CancelToken.js":
-/*!******************************************************!*\
+/*! ******************************************************!*\
   !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
   \******************************************************/
 /*! no static exports found */
@@ -461,7 +461,7 @@ module.exports = CancelToken;
 /***/ }),
 
 /***/ "./node_modules/axios/lib/cancel/isCancel.js":
-/*!***************************************************!*\
+/*! ***************************************************!*\
   !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
   \***************************************************/
 /*! no static exports found */
@@ -478,7 +478,7 @@ module.exports = function isCancel(value) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/Axios.js":
-/*!**********************************************!*\
+/*! **********************************************!*\
   !*** ./node_modules/axios/lib/core/Axios.js ***!
   \**********************************************/
 /*! no static exports found */
@@ -512,7 +512,7 @@ function Axios(instanceConfig) {
  * @param {Object} config The config specific for this request (merged with this.defaults)
  */
 Axios.prototype.request = function request(config) {
-  /*eslint no-param-reassign:0*/
+  /* eslint no-param-reassign:0 */
   // Allow for axios('example/url'[, config]) a la fetch API
   if (typeof config === 'string') {
     config = arguments[1] || {};
@@ -550,7 +550,7 @@ Axios.prototype.getUri = function getUri(config) {
 
 // Provide aliases for supported request methods
 utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
-  /*eslint func-names:0*/
+  /* eslint func-names:0 */
   Axios.prototype[method] = function(url, config) {
     return this.request(utils.merge(config || {}, {
       method: method,
@@ -560,7 +560,7 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
 });
 
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
-  /*eslint func-names:0*/
+  /* eslint func-names:0 */
   Axios.prototype[method] = function(url, data, config) {
     return this.request(utils.merge(config || {}, {
       method: method,
@@ -576,7 +576,7 @@ module.exports = Axios;
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/InterceptorManager.js":
-/*!***********************************************************!*\
+/*! ***********************************************************!*\
   !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
   \***********************************************************/
 /*! no static exports found */
@@ -640,7 +640,7 @@ module.exports = InterceptorManager;
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/createError.js":
-/*!****************************************************!*\
+/*! ****************************************************!*\
   !*** ./node_modules/axios/lib/core/createError.js ***!
   \****************************************************/
 /*! no static exports found */
@@ -670,7 +670,7 @@ module.exports = function createError(message, config, code, request, response) 
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/dispatchRequest.js":
-/*!********************************************************!*\
+/*! ********************************************************!*\
   !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
   \********************************************************/
 /*! no static exports found */
@@ -768,7 +768,7 @@ module.exports = function dispatchRequest(config) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/enhanceError.js":
-/*!*****************************************************!*\
+/*! *****************************************************!*\
   !*** ./node_modules/axios/lib/core/enhanceError.js ***!
   \*****************************************************/
 /*! no static exports found */
@@ -822,7 +822,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/mergeConfig.js":
-/*!****************************************************!*\
+/*! ****************************************************!*\
   !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
   \****************************************************/
 /*! no static exports found */
@@ -885,7 +885,7 @@ module.exports = function mergeConfig(config1, config2) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/settle.js":
-/*!***********************************************!*\
+/*! ***********************************************!*\
   !*** ./node_modules/axios/lib/core/settle.js ***!
   \***********************************************/
 /*! no static exports found */
@@ -922,7 +922,7 @@ module.exports = function settle(resolve, reject, response) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/transformData.js":
-/*!******************************************************!*\
+/*! ******************************************************!*\
   !*** ./node_modules/axios/lib/core/transformData.js ***!
   \******************************************************/
 /*! no static exports found */
@@ -942,7 +942,7 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
  * @returns {*} The resulting transformed data
  */
 module.exports = function transformData(data, headers, fns) {
-  /*eslint no-param-reassign:0*/
+  /* eslint no-param-reassign:0 */
   utils.forEach(fns, function transform(fn) {
     data = fn(data, headers);
   });
@@ -954,7 +954,7 @@ module.exports = function transformData(data, headers, fns) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/defaults.js":
-/*!********************************************!*\
+/*! ********************************************!*\
   !*** ./node_modules/axios/lib/defaults.js ***!
   \********************************************/
 /*! no static exports found */
@@ -1019,7 +1019,7 @@ var defaults = {
   }],
 
   transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
+    /* eslint no-param-reassign:0 */
     if (typeof data === 'string') {
       try {
         data = JSON.parse(data);
@@ -1065,7 +1065,7 @@ module.exports = defaults;
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/bind.js":
-/*!************************************************!*\
+/*! ************************************************!*\
   !*** ./node_modules/axios/lib/helpers/bind.js ***!
   \************************************************/
 /*! no static exports found */
@@ -1088,7 +1088,7 @@ module.exports = function bind(fn, thisArg) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/buildURL.js":
-/*!****************************************************!*\
+/*! ****************************************************!*\
   !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
   \****************************************************/
 /*! no static exports found */
@@ -1118,7 +1118,7 @@ function encode(val) {
  * @returns {string} The formatted url
  */
 module.exports = function buildURL(url, params, paramsSerializer) {
-  /*eslint no-param-reassign:0*/
+  /* eslint no-param-reassign:0 */
   if (!params) {
     return url;
   }
@@ -1171,7 +1171,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/combineURLs.js":
-/*!*******************************************************!*\
+/*! *******************************************************!*\
   !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
   \*******************************************************/
 /*! no static exports found */
@@ -1197,7 +1197,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/cookies.js":
-/*!***************************************************!*\
+/*! ***************************************************!*\
   !*** ./node_modules/axios/lib/helpers/cookies.js ***!
   \***************************************************/
 /*! no static exports found */
@@ -1262,7 +1262,7 @@ module.exports = (
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
-/*!*********************************************************!*\
+/*! *********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
   \*********************************************************/
 /*! no static exports found */
@@ -1288,7 +1288,7 @@ module.exports = function isAbsoluteURL(url) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js":
-/*!***********************************************************!*\
+/*! ***********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
   \***********************************************************/
 /*! no static exports found */
@@ -1368,7 +1368,7 @@ module.exports = (
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js":
-/*!***************************************************************!*\
+/*! ***************************************************************!*\
   !*** ./node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
   \***************************************************************/
 /*! no static exports found */
@@ -1392,7 +1392,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/parseHeaders.js":
-/*!********************************************************!*\
+/*! ********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/parseHeaders.js ***!
   \********************************************************/
 /*! no static exports found */
@@ -1457,7 +1457,7 @@ module.exports = function parseHeaders(headers) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/spread.js":
-/*!**************************************************!*\
+/*! **************************************************!*\
   !*** ./node_modules/axios/lib/helpers/spread.js ***!
   \**************************************************/
 /*! no static exports found */
@@ -1496,7 +1496,7 @@ module.exports = function spread(callback) {
 /***/ }),
 
 /***/ "./node_modules/axios/lib/utils.js":
-/*!*****************************************!*\
+/*! *****************************************!*\
   !*** ./node_modules/axios/lib/utils.js ***!
   \*****************************************/
 /*! no static exports found */
@@ -1508,7 +1508,7 @@ module.exports = function spread(callback) {
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
 var isBuffer = __webpack_require__(/*! is-buffer */ "./node_modules/axios/node_modules/is-buffer/index.js");
 
-/*global toString:true*/
+/* global toString:true */
 
 // utils is a library of generic helper functions non-specific to axios
 
@@ -1717,7 +1717,7 @@ function forEach(obj, fn) {
 
   // Force an array if not already something iterable
   if (typeof obj !== 'object') {
-    /*eslint no-param-reassign:0*/
+    /* eslint no-param-reassign:0 */
     obj = [obj];
   }
 
@@ -1842,7 +1842,7 @@ module.exports = {
 /***/ }),
 
 /***/ "./node_modules/axios/node_modules/is-buffer/index.js":
-/*!************************************************************!*\
+/*! ************************************************************!*\
   !*** ./node_modules/axios/node_modules/is-buffer/index.js ***!
   \************************************************************/
 /*! no static exports found */
@@ -1864,7 +1864,7 @@ module.exports = function isBuffer (obj) {
 /***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
+/*! ***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/LoginForm.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************************************************************************************************/
 /*! exports provided: default */
@@ -1873,13 +1873,13 @@ module.exports = function isBuffer (obj) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _services_api_authApi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @services/api/authApi */ "./resources/assets/js/services/api/authApi.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+function _asyncToGenerator(fn) { return function () { var self = this; var args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 //
 //
@@ -1916,14 +1916,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__.default = ({
   name: 'LoginForm',
   data: function data() {
     return {};
   },
   mounted: function () {
     var _mounted = _asyncToGenerator(
-    /*#__PURE__*/
+    /* #__PURE__ */
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
@@ -1947,7 +1947,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /***/ }),
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/Login.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
+/*! ******************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/Login.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************************************************************************************/
 /*! exports provided: default */
@@ -1960,17 +1960,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__.default = ({
   name: 'Login',
   components: {
-    LoginForm: _components_LoginForm_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    LoginForm: _components_LoginForm_vue__WEBPACK_IMPORTED_MODULE_0__.default
   }
 });
 
 /***/ }),
 
 /***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
-/*!*****************************************************!*\
+/*! *****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
   \*****************************************************/
 /*! no static exports found */
@@ -1986,8 +1986,8 @@ __webpack_require__.r(__webpack_exports__);
   undefined;
 }(this, (function (exports, $, Popper) { 'use strict';
 
-  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
-  Popper = Popper && Popper.hasOwnProperty('default') ? Popper['default'] : Popper;
+  $ = $ && $.hasOwnProperty('default') ? $.default : $;
+  Popper = Popper && Popper.hasOwnProperty('default') ? Popper.default : Popper;
 
   function _defineProperties(target, props) {
     for (var i = 0; i < props.length; i++) {
@@ -2264,7 +2264,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Alert =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Alert(element) {
       this._element = element;
@@ -2434,7 +2434,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Button =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Button(element) {
       this._element = element;
@@ -2685,7 +2685,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Carousel =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Carousel(element, config) {
       this._items = null;
@@ -3243,7 +3243,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Collapse =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Collapse(element, config) {
       this._isTransitioning = false;
@@ -3639,7 +3639,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Dropdown =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Dropdown(element, config) {
       this._element = element;
@@ -4150,7 +4150,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Modal =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Modal(element, config) {
       this._config = this._getConfig(config);
@@ -4571,7 +4571,7 @@ __webpack_require__.r(__webpack_exports__);
       $(fixedContent).each(function (index, element) {
         var padding = $(element).data('padding-right');
         $(element).removeData('padding-right');
-        element.style.paddingRight = padding ? padding : '';
+        element.style.paddingRight = padding || '';
       }); // Restore sticky content
 
       var elements = [].slice.call(document.querySelectorAll("" + Selector$5.STICKY_CONTENT));
@@ -4585,7 +4585,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var padding = $(document.body).data('padding-right');
       $(document.body).removeData('padding-right');
-      document.body.style.paddingRight = padding ? padding : '';
+      document.body.style.paddingRight = padding || '';
     };
 
     _proto._getScrollbarWidth = function _getScrollbarWidth() {
@@ -4904,7 +4904,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Tooltip =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Tooltip(element, config) {
       if (typeof Popper === 'undefined') {
@@ -5585,7 +5585,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Popover =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function (_Tooltip) {
     _inheritsLoose(Popover, _Tooltip);
 
@@ -5773,7 +5773,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var ScrollSpy =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function ScrollSpy(element, config) {
       var _this = this;
@@ -6067,7 +6067,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Tab =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Tab(element) {
       this._element = element;
@@ -6303,7 +6303,7 @@ __webpack_require__.r(__webpack_exports__);
    */
 
   var Toast =
-  /*#__PURE__*/
+  /* #__PURE__ */
   function () {
     function Toast(element, config) {
       this._element = element;
@@ -6495,13 +6495,13 @@ __webpack_require__.r(__webpack_exports__);
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=bootstrap.js.map
+// # sourceMappingURL=bootstrap.js.map
 
 
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+/*! ****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
@@ -6519,7 +6519,7 @@ module.exports = exports;
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/bootstrap/dist/css/bootstrap.css":
-/*!****************************************************************************************************************************************************************!*\
+/*! ****************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/bootstrap/dist/css/bootstrap.css ***!
   \****************************************************************************************************************************************************************/
 /*! no static exports found */
@@ -6537,7 +6537,7 @@ module.exports = exports;
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/App.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+/*! *****************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/App.vue?vue&type=style&index=0&lang=css& ***!
   \*****************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
@@ -6557,7 +6557,7 @@ module.exports = exports;
 /***/ }),
 
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
-/*!*****************************************************!*\
+/*! *****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
   \*****************************************************/
 /*! no static exports found */
@@ -6644,7 +6644,7 @@ function toComment(sourceMap) {
 /***/ }),
 
 /***/ "./node_modules/jquery/dist/jquery.js":
-/*!********************************************!*\
+/*! ********************************************!*\
   !*** ./node_modules/jquery/dist/jquery.js ***!
   \********************************************/
 /*! no static exports found */
@@ -6750,8 +6750,8 @@ var isWindow = function isWindow( obj ) {
 	function DOMEval( code, node, doc ) {
 		doc = doc || document;
 
-		var i, val,
-			script = doc.createElement( "script" );
+		var i; var val;
+			var script = doc.createElement( "script" );
 
 		script.text = code;
 		if ( node ) {
@@ -6794,19 +6794,19 @@ function toType( obj ) {
 
 
 var
-	version = "3.4.1",
+	version = "3.4.1";
 
 	// Define a local copy of jQuery
-	jQuery = function( selector, context ) {
+	var jQuery = function( selector, context ) {
 
 		// The jQuery object is actually just the init constructor 'enhanced'
 		// Need init if jQuery is called (just allow error to be thrown if not included)
 		return new jQuery.fn.init( selector, context );
-	},
+	};
 
 	// Support: Android <=4.0 only
 	// Make sure we trim BOM and NBSP
-	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+	var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 
 jQuery.fn = jQuery.prototype = {
 
@@ -6873,8 +6873,8 @@ jQuery.fn = jQuery.prototype = {
 	},
 
 	eq: function( i ) {
-		var len = this.length,
-			j = +i + ( i < 0 ? len : 0 );
+		var len = this.length;
+			var j = +i + ( i < 0 ? len : 0 );
 		return this.pushStack( j >= 0 && j < len ? [ this[ j ] ] : [] );
 	},
 
@@ -6890,11 +6890,11 @@ jQuery.fn = jQuery.prototype = {
 };
 
 jQuery.extend = jQuery.fn.extend = function() {
-	var options, name, src, copy, copyIsArray, clone,
-		target = arguments[ 0 ] || {},
-		i = 1,
-		length = arguments.length,
-		deep = false;
+	var options; var name; var src; var copy; var copyIsArray; var clone;
+		var target = arguments[ 0 ] || {};
+		var i = 1;
+		var length = arguments.length;
+		var deep = false;
 
 	// Handle a deep copy situation
 	if ( typeof target === "boolean" ) {
@@ -7011,7 +7011,7 @@ jQuery.extend( {
 	},
 
 	each: function( obj, callback ) {
-		var length, i = 0;
+		var length; var i = 0;
 
 		if ( isArrayLike( obj ) ) {
 			length = obj.length;
@@ -7063,9 +7063,9 @@ jQuery.extend( {
 	// Support: Android <=4.0 only, PhantomJS 1 only
 	// push.apply(_, arraylike) throws on ancient WebKit
 	merge: function( first, second ) {
-		var len = +second.length,
-			j = 0,
-			i = first.length;
+		var len = +second.length;
+			var j = 0;
+			var i = first.length;
 
 		for ( ; j < len; j++ ) {
 			first[ i++ ] = second[ j ];
@@ -7077,11 +7077,11 @@ jQuery.extend( {
 	},
 
 	grep: function( elems, callback, invert ) {
-		var callbackInverse,
-			matches = [],
-			i = 0,
-			length = elems.length,
-			callbackExpect = !invert;
+		var callbackInverse;
+			var matches = [];
+			var i = 0;
+			var length = elems.length;
+			var callbackExpect = !invert;
 
 		// Go through the array, only saving the items
 		// that pass the validator function
@@ -7097,9 +7097,9 @@ jQuery.extend( {
 
 	// arg is for internal usage only
 	map: function( elems, callback, arg ) {
-		var length, value,
-			i = 0,
-			ret = [];
+		var length; var value;
+			var i = 0;
+			var ret = [];
 
 		// Go through the array, translating each of the items to their new values
 		if ( isArrayLike( elems ) ) {
@@ -7151,8 +7151,8 @@ function isArrayLike( obj ) {
 	// `in` check used to prevent JIT error (gh-2145)
 	// hasOwn isn't used here due to false negatives
 	// regarding Nodelist length in IE
-	var length = !!obj && "length" in obj && obj.length,
-		type = toType( obj );
+	var length = !!obj && "length" in obj && obj.length;
+		var type = toType( obj );
 
 	if ( isFunction( obj ) || isWindow( obj ) ) {
 		return false;
@@ -7174,83 +7174,83 @@ var Sizzle =
  */
 (function( window ) {
 
-var i,
-	support,
-	Expr,
-	getText,
-	isXML,
-	tokenize,
-	compile,
-	select,
-	outermostContext,
-	sortInput,
-	hasDuplicate,
+var i;
+	var support;
+	var Expr;
+	var getText;
+	var isXML;
+	var tokenize;
+	var compile;
+	var select;
+	var outermostContext;
+	var sortInput;
+	var hasDuplicate;
 
 	// Local document vars
-	setDocument,
-	document,
-	docElem,
-	documentIsHTML,
-	rbuggyQSA,
-	rbuggyMatches,
-	matches,
-	contains,
+	var setDocument;
+	var document;
+	var docElem;
+	var documentIsHTML;
+	var rbuggyQSA;
+	var rbuggyMatches;
+	var matches;
+	var contains;
 
 	// Instance-specific data
-	expando = "sizzle" + 1 * new Date(),
-	preferredDoc = window.document,
-	dirruns = 0,
-	done = 0,
-	classCache = createCache(),
-	tokenCache = createCache(),
-	compilerCache = createCache(),
-	nonnativeSelectorCache = createCache(),
-	sortOrder = function( a, b ) {
+	var expando = "sizzle" + 1 * new Date();
+	var preferredDoc = window.document;
+	var dirruns = 0;
+	var done = 0;
+	var classCache = createCache();
+	var tokenCache = createCache();
+	var compilerCache = createCache();
+	var nonnativeSelectorCache = createCache();
+	var sortOrder = function( a, b ) {
 		if ( a === b ) {
 			hasDuplicate = true;
 		}
 		return 0;
-	},
+	};
 
 	// Instance methods
-	hasOwn = ({}).hasOwnProperty,
-	arr = [],
-	pop = arr.pop,
-	push_native = arr.push,
-	push = arr.push,
-	slice = arr.slice,
+	var hasOwn = ({}).hasOwnProperty;
+	var arr = [];
+	var pop = arr.pop;
+	var push_native = arr.push;
+	var push = arr.push;
+	var slice = arr.slice;
 	// Use a stripped-down indexOf as it's faster than native
 	// https://jsperf.com/thor-indexof-vs-for/5
-	indexOf = function( list, elem ) {
-		var i = 0,
-			len = list.length;
+	var indexOf = function( list, elem ) {
+		var i = 0;
+			var len = list.length;
 		for ( ; i < len; i++ ) {
 			if ( list[i] === elem ) {
 				return i;
 			}
 		}
 		return -1;
-	},
+	};
 
-	booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped",
+	var booleans = "checked|selected|async|autofocus|autoplay|controls|defer|disabled|hidden|ismap|loop|multiple|open|readonly|required|scoped";
 
 	// Regular expressions
 
 	// http://www.w3.org/TR/css3-selectors/#whitespace
-	whitespace = "[\\x20\\t\\r\\n\\f]",
+	var whitespace = "[\\x20\\t\\r\\n\\f]";
 
 	// http://www.w3.org/TR/CSS21/syndata.html#value-def-identifier
-	identifier = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+",
+	var identifier = "(?:\\\\.|[\\w-]|[^\0-\\xa0])+";
 
 	// Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
-	attributes = "\\[" + whitespace + "*(" + identifier + ")(?:" + whitespace +
+	var attributes = "\\[" + whitespace + "*(" + identifier + ")(?:" + whitespace +
 		// Operator (capture 2)
 		"*([*^$|!~]?=)" + whitespace +
 		// "Attribute values must be CSS identifiers [capture 5] or strings [capture 3 or capture 4]"
 		"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + identifier + "))|)" + whitespace +
-		"*\\]",
+		"*\\]";
 
-	pseudos = ":(" + identifier + ")(?:\\((" +
+	var pseudos = ":(" + identifier + ")(?:\\((" +
 		// To reduce the number of selectors needing tokenize in the preFilter, prefer arguments:
 		// 1. quoted (capture 3; capture 4 or capture 5)
 		"('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|" +
@@ -7258,20 +7258,20 @@ var i,
 		"((?:\\\\.|[^\\\\()[\\]]|" + attributes + ")*)|" +
 		// 3. anything else (capture 2)
 		".*" +
-		")\\)|)",
+		")\\)|)";
 
 	// Leading and non-escaped trailing whitespace, capturing some non-whitespace characters preceding the latter
-	rwhitespace = new RegExp( whitespace + "+", "g" ),
-	rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" ),
+	var rwhitespace = new RegExp( whitespace + "+", "g" );
+	var rtrim = new RegExp( "^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g" );
 
-	rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" ),
-	rcombinators = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*" ),
-	rdescend = new RegExp( whitespace + "|>" ),
+	var rcomma = new RegExp( "^" + whitespace + "*," + whitespace + "*" );
+	var rcombinators = new RegExp( "^" + whitespace + "*([>+~]|" + whitespace + ")" + whitespace + "*" );
+	var rdescend = new RegExp( whitespace + "|>" );
 
-	rpseudo = new RegExp( pseudos ),
-	ridentifier = new RegExp( "^" + identifier + "$" ),
+	var rpseudo = new RegExp( pseudos );
+	var ridentifier = new RegExp( "^" + identifier + "$" );
 
-	matchExpr = {
+	var matchExpr = {
 		"ID": new RegExp( "^#(" + identifier + ")" ),
 		"CLASS": new RegExp( "^\\.(" + identifier + ")" ),
 		"TAG": new RegExp( "^(" + identifier + "|[*])" ),
@@ -7285,23 +7285,23 @@ var i,
 		// We use this for POS matching in `select`
 		"needsContext": new RegExp( "^" + whitespace + "*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" +
 			whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i" )
-	},
+	};
 
-	rhtml = /HTML$/i,
-	rinputs = /^(?:input|select|textarea|button)$/i,
-	rheader = /^h\d$/i,
+	var rhtml = /HTML$/i;
+	var rinputs = /^(?:input|select|textarea|button)$/i;
+	var rheader = /^h\d$/i;
 
-	rnative = /^[^{]+\{\s*\[native \w/,
+	var rnative = /^[^{]+\{\s*\[native \w/;
 
 	// Easily-parseable/retrievable ID or TAG or CLASS selectors
-	rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
+	var rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/;
 
-	rsibling = /[+~]/,
+	var rsibling = /[+~]/;
 
 	// CSS escapes
 	// http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
-	runescape = new RegExp( "\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)", "ig" ),
-	funescape = function( _, escaped, escapedWhitespace ) {
+	var runescape = new RegExp( "\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)", "ig" );
+	var funescape = function( _, escaped, escapedWhitespace ) {
 		var high = "0x" + escaped - 0x10000;
 		// NaN means non-codepoint
 		// Support: Firefox<24
@@ -7313,12 +7313,12 @@ var i,
 				String.fromCharCode( high + 0x10000 ) :
 				// Supplemental Plane codepoint (surrogate pair)
 				String.fromCharCode( high >> 10 | 0xD800, high & 0x3FF | 0xDC00 );
-	},
+	};
 
 	// CSS string/identifier serialization
 	// https://drafts.csswg.org/cssom/#common-serializing-idioms
-	rcssescape = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g,
-	fcssescape = function( ch, asCodePoint ) {
+	var rcssescape = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\0-\x1f\x7f-\uFFFF\w-]/g;
+	var fcssescape = function( ch, asCodePoint ) {
 		if ( asCodePoint ) {
 
 			// U+0000 NULL becomes U+FFFD REPLACEMENT CHARACTER
@@ -7332,17 +7332,17 @@ var i,
 
 		// Other potentially-special ASCII characters get backslash-escaped
 		return "\\" + ch;
-	},
+	};
 
 	// Used for iframes
 	// See setDocument()
 	// Removing the function wrapper causes a "Permission Denied"
 	// error in IE
-	unloadHandler = function() {
+	var unloadHandler = function() {
 		setDocument();
-	},
+	};
 
-	inDisabledFieldset = addCombinator(
+	var inDisabledFieldset = addCombinator(
 		function( elem ) {
 			return elem.disabled === true && elem.nodeName.toLowerCase() === "fieldset";
 		},
@@ -7369,8 +7369,8 @@ try {
 		// Support: IE<9
 		// Otherwise append directly
 		function( target, els ) {
-			var j = target.length,
-				i = 0;
+			var j = target.length;
+				var i = 0;
 			// Can't trust NodeList.length
 			while ( (target[j++] = els[i++]) ) {}
 			target.length = j - 1;
@@ -7379,11 +7379,11 @@ try {
 }
 
 function Sizzle( selector, context, results, seed ) {
-	var m, i, elem, nid, match, groups, newSelector,
-		newContext = context && context.ownerDocument,
+	var m; var i; var elem; var nid; var match; var groups; var newSelector;
+		var newContext = context && context.ownerDocument;
 
 		// nodeType defaults to 9, since context defaults to document
-		nodeType = context ? context.nodeType : 9;
+		var nodeType = context ? context.nodeType : 9;
 
 	results = results || [];
 
@@ -7570,8 +7570,8 @@ function assert( fn ) {
  * @param {Function} handler The method that will be applied
  */
 function addHandle( attrs, handler ) {
-	var arr = attrs.split("|"),
-		i = arr.length;
+	var arr = attrs.split("|");
+		var i = arr.length;
 
 	while ( i-- ) {
 		Expr.attrHandle[ arr[i] ] = handler;
@@ -7585,8 +7585,8 @@ function addHandle( attrs, handler ) {
  * @returns {Number} Returns less than 0 if a precedes b, greater than 0 if a follows b
  */
 function siblingCheck( a, b ) {
-	var cur = b && a,
-		diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
+	var cur = b && a;
+		var diff = cur && a.nodeType === 1 && b.nodeType === 1 &&
 			a.sourceIndex - b.sourceIndex;
 
 	// Use IE sourceIndex if available on both nodes
@@ -7692,9 +7692,9 @@ function createPositionalPseudo( fn ) {
 	return markFunction(function( argument ) {
 		argument = +argument;
 		return markFunction(function( seed, matches ) {
-			var j,
-				matchIndexes = fn( [], seed.length, argument ),
-				i = matchIndexes.length;
+			var j;
+				var matchIndexes = fn( [], seed.length, argument );
+				var i = matchIndexes.length;
 
 			// Match elements found at the specified indexes
 			while ( i-- ) {
@@ -7724,8 +7724,8 @@ support = Sizzle.support = {};
  * @returns {Boolean} True iff elem is a non-HTML XML node
  */
 isXML = Sizzle.isXML = function( elem ) {
-	var namespace = elem.namespaceURI,
-		docElem = (elem.ownerDocument || elem).documentElement;
+	var namespace = elem.namespaceURI;
+		var docElem = (elem.ownerDocument || elem).documentElement;
 
 	// Support: IE <=8
 	// Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
@@ -7739,8 +7739,8 @@ isXML = Sizzle.isXML = function( elem ) {
  * @returns {Object} Returns the current document
  */
 setDocument = Sizzle.setDocument = function( node ) {
-	var hasCompare, subWindow,
-		doc = node ? node.ownerDocument || node : preferredDoc;
+	var hasCompare; var subWindow;
+		var doc = node ? node.ownerDocument || node : preferredDoc;
 
 	// Return early if doc is invalid or already selected
 	if ( doc === document || doc.nodeType !== 9 || !doc.documentElement ) {
@@ -7801,20 +7801,20 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 	// ID filter and find
 	if ( support.getById ) {
-		Expr.filter["ID"] = function( id ) {
+		Expr.filter.ID = function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
 				return elem.getAttribute("id") === attrId;
 			};
 		};
-		Expr.find["ID"] = function( id, context ) {
+		Expr.find.ID = function( id, context ) {
 			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
 				var elem = context.getElementById( id );
 				return elem ? [ elem ] : [];
 			}
 		};
 	} else {
-		Expr.filter["ID"] =  function( id ) {
+		Expr.filter.ID =  function( id ) {
 			var attrId = id.replace( runescape, funescape );
 			return function( elem ) {
 				var node = typeof elem.getAttributeNode !== "undefined" &&
@@ -7825,10 +7825,10 @@ setDocument = Sizzle.setDocument = function( node ) {
 
 		// Support: IE 6 - 7 only
 		// getElementById is not reliable as a find shortcut
-		Expr.find["ID"] = function( id, context ) {
+		Expr.find.ID = function( id, context ) {
 			if ( typeof context.getElementById !== "undefined" && documentIsHTML ) {
-				var node, i, elems,
-					elem = context.getElementById( id );
+				var node; var i; var elems;
+					var elem = context.getElementById( id );
 
 				if ( elem ) {
 
@@ -7855,7 +7855,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	}
 
 	// Tag
-	Expr.find["TAG"] = support.getElementsByTagName ?
+	Expr.find.TAG = support.getElementsByTagName ?
 		function( tag, context ) {
 			if ( typeof context.getElementsByTagName !== "undefined" ) {
 				return context.getElementsByTagName( tag );
@@ -7867,11 +7867,11 @@ setDocument = Sizzle.setDocument = function( node ) {
 		} :
 
 		function( tag, context ) {
-			var elem,
-				tmp = [],
-				i = 0,
+			var elem;
+				var tmp = [];
+				var i = 0;
 				// By happy coincidence, a (broken) gEBTN appears on DocumentFragment nodes too
-				results = context.getElementsByTagName( tag );
+				var results = context.getElementsByTagName( tag );
 
 			// Filter out possible comments
 			if ( tag === "*" ) {
@@ -7887,7 +7887,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 		};
 
 	// Class
-	Expr.find["CLASS"] = support.getElementsByClassName && function( className, context ) {
+	Expr.find.CLASS = support.getElementsByClassName && function( className, context ) {
 		if ( typeof context.getElementsByClassName !== "undefined" && documentIsHTML ) {
 			return context.getElementsByClassName( className );
 		}
@@ -8020,8 +8020,8 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// As in, an element does not contain itself
 	contains = hasCompare || rnative.test( docElem.contains ) ?
 		function( a, b ) {
-			var adown = a.nodeType === 9 ? a.documentElement : a,
-				bup = b && b.parentNode;
+			var adown = a.nodeType === 9 ? a.documentElement : a;
+				var bup = b && b.parentNode;
 			return a === bup || !!( bup && bup.nodeType === 1 && (
 				adown.contains ?
 					adown.contains( bup ) :
@@ -8092,12 +8092,12 @@ setDocument = Sizzle.setDocument = function( node ) {
 			return 0;
 		}
 
-		var cur,
-			i = 0,
-			aup = a.parentNode,
-			bup = b.parentNode,
-			ap = [ a ],
-			bp = [ b ];
+		var cur;
+			var i = 0;
+			var aup = a.parentNode;
+			var bup = b.parentNode;
+			var ap = [ a ];
+			var bp = [ b ];
 
 		// Parentless nodes are either documents or disconnected
 		if ( !aup || !bup ) {
@@ -8189,9 +8189,9 @@ Sizzle.attr = function( elem, name ) {
 		setDocument( elem );
 	}
 
-	var fn = Expr.attrHandle[ name.toLowerCase() ],
+	var fn = Expr.attrHandle[ name.toLowerCase() ];
 		// Don't get fooled by Object.prototype properties (jQuery #13807)
-		val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
+		var val = fn && hasOwn.call( Expr.attrHandle, name.toLowerCase() ) ?
 			fn( elem, name, !documentIsHTML ) :
 			undefined;
 
@@ -8217,10 +8217,10 @@ Sizzle.error = function( msg ) {
  * @param {ArrayLike} results
  */
 Sizzle.uniqueSort = function( results ) {
-	var elem,
-		duplicates = [],
-		j = 0,
-		i = 0;
+	var elem;
+		var duplicates = [];
+		var j = 0;
+		var i = 0;
 
 	// Unless we *know* we can detect duplicates, assume their presence
 	hasDuplicate = !support.detectDuplicates;
@@ -8250,10 +8250,10 @@ Sizzle.uniqueSort = function( results ) {
  * @param {Array|Element} elem
  */
 getText = Sizzle.getText = function( elem ) {
-	var node,
-		ret = "",
-		i = 0,
-		nodeType = elem.nodeType;
+	var node;
+		var ret = "";
+		var i = 0;
+		var nodeType = elem.nodeType;
 
 	if ( !nodeType ) {
 		// If no nodeType, this is expected to be an array
@@ -8347,10 +8347,10 @@ Expr = Sizzle.selectors = {
 		},
 
 		"PSEUDO": function( match ) {
-			var excess,
-				unquoted = !match[6] && match[2];
+			var excess;
+				var unquoted = !match[6] && match[2];
 
-			if ( matchExpr["CHILD"].test( match[0] ) ) {
+			if ( matchExpr.CHILD.test( match[0] ) ) {
 				return null;
 			}
 
@@ -8421,9 +8421,9 @@ Expr = Sizzle.selectors = {
 		},
 
 		"CHILD": function( type, what, argument, first, last ) {
-			var simple = type.slice( 0, 3 ) !== "nth",
-				forward = type.slice( -4 ) !== "last",
-				ofType = what === "of-type";
+			var simple = type.slice( 0, 3 ) !== "nth";
+				var forward = type.slice( -4 ) !== "last";
+				var ofType = what === "of-type";
 
 			return first === 1 && last === 0 ?
 
@@ -8433,12 +8433,12 @@ Expr = Sizzle.selectors = {
 				} :
 
 				function( elem, context, xml ) {
-					var cache, uniqueCache, outerCache, node, nodeIndex, start,
-						dir = simple !== forward ? "nextSibling" : "previousSibling",
-						parent = elem.parentNode,
-						name = ofType && elem.nodeName.toLowerCase(),
-						useCache = !xml && !ofType,
-						diff = false;
+					var cache; var uniqueCache; var outerCache; var node; var nodeIndex; var start;
+						var dir = simple !== forward ? "nextSibling" : "previousSibling";
+						var parent = elem.parentNode;
+						var name = ofType && elem.nodeName.toLowerCase();
+						var useCache = !xml && !ofType;
+						var diff = false;
 
 					if ( parent ) {
 
@@ -8554,8 +8554,8 @@ Expr = Sizzle.selectors = {
 			// http://www.w3.org/TR/selectors/#pseudo-classes
 			// Prioritize by case sensitivity in case custom pseudos are added with uppercase letters
 			// Remember that setFilters inherits from pseudos
-			var args,
-				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
+			var args;
+				var fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
 			// The user may use createPseudo to indicate that
@@ -8570,9 +8570,9 @@ Expr = Sizzle.selectors = {
 				args = [ pseudo, pseudo, "", argument ];
 				return Expr.setFilters.hasOwnProperty( pseudo.toLowerCase() ) ?
 					markFunction(function( seed, matches ) {
-						var idx,
-							matched = fn( seed, argument ),
-							i = matched.length;
+						var idx;
+							var matched = fn( seed, argument );
+							var i = matched.length;
 						while ( i-- ) {
 							idx = indexOf( seed, matched[i] );
 							seed[ idx ] = !( matches[ idx ] = matched[i] );
@@ -8593,15 +8593,15 @@ Expr = Sizzle.selectors = {
 			// Trim the selector passed to compile
 			// to avoid treating leading and trailing
 			// spaces as combinators
-			var input = [],
-				results = [],
-				matcher = compile( selector.replace( rtrim, "$1" ) );
+			var input = [];
+				var results = [];
+				var matcher = compile( selector.replace( rtrim, "$1" ) );
 
 			return matcher[ expando ] ?
 				markFunction(function( seed, matches, context, xml ) {
-					var elem,
-						unmatched = matcher( seed, null, xml, [] ),
-						i = seed.length;
+					var elem;
+						var unmatched = matcher( seed, null, xml, [] );
+						var i = seed.length;
 
 					// Match elements unmatched by `matcher`
 					while ( i-- ) {
@@ -8710,7 +8710,7 @@ Expr = Sizzle.selectors = {
 		},
 
 		"parent": function( elem ) {
-			return !Expr.pseudos["empty"]( elem );
+			return !Expr.pseudos.empty( elem );
 		},
 
 		// Element/input types
@@ -8788,7 +8788,7 @@ Expr = Sizzle.selectors = {
 	}
 };
 
-Expr.pseudos["nth"] = Expr.pseudos["eq"];
+Expr.pseudos.nth = Expr.pseudos.eq;
 
 // Add button/input type pseudos
 for ( i in { radio: true, checkbox: true, file: true, password: true, image: true } ) {
@@ -8804,9 +8804,9 @@ setFilters.prototype = Expr.filters = Expr.pseudos;
 Expr.setFilters = new setFilters();
 
 tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
-	var matched, match, tokens, type,
-		soFar, groups, preFilters,
-		cached = tokenCache[ selector + " " ];
+	var matched; var match; var tokens; var type;
+		var soFar; var groups; var preFilters;
+		var cached = tokenCache[ selector + " " ];
 
 	if ( cached ) {
 		return parseOnly ? 0 : cached.slice( 0 );
@@ -8871,9 +8871,9 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 };
 
 function toSelector( tokens ) {
-	var i = 0,
-		len = tokens.length,
-		selector = "";
+	var i = 0;
+		var len = tokens.length;
+		var selector = "";
 	for ( ; i < len; i++ ) {
 		selector += tokens[i].value;
 	}
@@ -8881,11 +8881,11 @@ function toSelector( tokens ) {
 }
 
 function addCombinator( matcher, combinator, base ) {
-	var dir = combinator.dir,
-		skip = combinator.next,
-		key = skip || dir,
-		checkNonElements = base && key === "parentNode",
-		doneName = done++;
+	var dir = combinator.dir;
+		var skip = combinator.next;
+		var key = skip || dir;
+		var checkNonElements = base && key === "parentNode";
+		var doneName = done++;
 
 	return combinator.first ?
 		// Check against closest ancestor/preceding element
@@ -8900,8 +8900,8 @@ function addCombinator( matcher, combinator, base ) {
 
 		// Check against all ancestor/preceding elements
 		function( elem, context, xml ) {
-			var oldCache, uniqueCache, outerCache,
-				newCache = [ dirruns, doneName ];
+			var oldCache; var uniqueCache; var outerCache;
+				var newCache = [ dirruns, doneName ];
 
 			// We can't set arbitrary data on XML nodes, so they don't benefit from combinator caching
 			if ( xml ) {
@@ -8959,8 +8959,8 @@ function elementMatcher( matchers ) {
 }
 
 function multipleContexts( selector, contexts, results ) {
-	var i = 0,
-		len = contexts.length;
+	var i = 0;
+		var len = contexts.length;
 	for ( ; i < len; i++ ) {
 		Sizzle( selector, contexts[i], results );
 	}
@@ -8968,11 +8968,11 @@ function multipleContexts( selector, contexts, results ) {
 }
 
 function condense( unmatched, map, filter, context, xml ) {
-	var elem,
-		newUnmatched = [],
-		i = 0,
-		len = unmatched.length,
-		mapped = map != null;
+	var elem;
+		var newUnmatched = [];
+		var i = 0;
+		var len = unmatched.length;
+		var mapped = map != null;
 
 	for ( ; i < len; i++ ) {
 		if ( (elem = unmatched[i]) ) {
@@ -8996,20 +8996,20 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 		postFinder = setMatcher( postFinder, postSelector );
 	}
 	return markFunction(function( seed, results, context, xml ) {
-		var temp, i, elem,
-			preMap = [],
-			postMap = [],
-			preexisting = results.length,
+		var temp; var i; var elem;
+			var preMap = [];
+			var postMap = [];
+			var preexisting = results.length;
 
 			// Get initial elements from seed or context
-			elems = seed || multipleContexts( selector || "*", context.nodeType ? [ context ] : context, [] ),
+			var elems = seed || multipleContexts( selector || "*", context.nodeType ? [ context ] : context, [] );
 
 			// Prefilter to get matcher input, preserving a map for seed-results synchronization
-			matcherIn = preFilter && ( seed || !selector ) ?
+			var matcherIn = preFilter && ( seed || !selector ) ?
 				condense( elems, preMap, preFilter, context, xml ) :
-				elems,
+				elems;
 
-			matcherOut = matcher ?
+			var matcherOut = matcher ?
 				// If we have a postFinder, or filtered seed, or non-seed postFilter or preexisting results,
 				postFinder || ( seed ? preFilter : preexisting || postFilter ) ?
 
@@ -9082,20 +9082,20 @@ function setMatcher( preFilter, selector, matcher, postFilter, postFinder, postS
 }
 
 function matcherFromTokens( tokens ) {
-	var checkContext, matcher, j,
-		len = tokens.length,
-		leadingRelative = Expr.relative[ tokens[0].type ],
-		implicitRelative = leadingRelative || Expr.relative[" "],
-		i = leadingRelative ? 1 : 0,
+	var checkContext; var matcher; var j;
+		var len = tokens.length;
+		var leadingRelative = Expr.relative[ tokens[0].type ];
+		var implicitRelative = leadingRelative || Expr.relative[" "];
+		var i = leadingRelative ? 1 : 0;
 
 		// The foundational matcher ensures that elements are reachable from top-level context(s)
-		matchContext = addCombinator( function( elem ) {
+		var matchContext = addCombinator( function( elem ) {
 			return elem === checkContext;
-		}, implicitRelative, true ),
-		matchAnyContext = addCombinator( function( elem ) {
+		}, implicitRelative, true );
+		var matchAnyContext = addCombinator( function( elem ) {
 			return indexOf( checkContext, elem ) > -1;
-		}, implicitRelative, true ),
-		matchers = [ function( elem, context, xml ) {
+		}, implicitRelative, true );
+		var matchers = [ function( elem, context, xml ) {
 			var ret = ( !leadingRelative && ( xml || context !== outermostContext ) ) || (
 				(checkContext = context).nodeType ?
 					matchContext( elem, context, xml ) :
@@ -9140,20 +9140,20 @@ function matcherFromTokens( tokens ) {
 }
 
 function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
-	var bySet = setMatchers.length > 0,
-		byElement = elementMatchers.length > 0,
-		superMatcher = function( seed, context, xml, results, outermost ) {
-			var elem, j, matcher,
-				matchedCount = 0,
-				i = "0",
-				unmatched = seed && [],
-				setMatched = [],
-				contextBackup = outermostContext,
+	var bySet = setMatchers.length > 0;
+		var byElement = elementMatchers.length > 0;
+		var superMatcher = function( seed, context, xml, results, outermost ) {
+			var elem; var j; var matcher;
+				var matchedCount = 0;
+				var i = "0";
+				var unmatched = seed && [];
+				var setMatched = [];
+				var contextBackup = outermostContext;
 				// We must always have either seed elements or outermost context
-				elems = seed || byElement && Expr.find["TAG"]( "*", outermost ),
+				var elems = seed || byElement && Expr.find.TAG( "*", outermost );
 				// Use integer dirruns iff this is the outermost matcher
-				dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1),
-				len = elems.length;
+				var dirrunsUnique = (dirruns += contextBackup == null ? 1 : Math.random() || 0.1);
+				var len = elems.length;
 
 			if ( outermost ) {
 				outermostContext = context === document || context || outermost;
@@ -9251,10 +9251,10 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 }
 
 compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
-	var i,
-		setMatchers = [],
-		elementMatchers = [],
-		cached = compilerCache[ selector + " " ];
+	var i;
+		var setMatchers = [];
+		var elementMatchers = [];
+		var cached = compilerCache[ selector + " " ];
 
 	if ( !cached ) {
 		// Generate a function of recursive functions that can be used to check each element
@@ -9290,9 +9290,9 @@ compile = Sizzle.compile = function( selector, match /* Internal Use Only */ ) {
  * @param {Array} [seed] A set of elements to match against
  */
 select = Sizzle.select = function( selector, context, results, seed ) {
-	var i, tokens, token, type, find,
-		compiled = typeof selector === "function" && selector,
-		match = !seed && tokenize( (selector = compiled.selector || selector) );
+	var i; var tokens; var token; var type; var find;
+		var compiled = typeof selector === "function" && selector;
+		var match = !seed && tokenize( (selector = compiled.selector || selector) );
 
 	results = results || [];
 
@@ -9305,7 +9305,7 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 		if ( tokens.length > 2 && (token = tokens[0]).type === "ID" &&
 				context.nodeType === 9 && documentIsHTML && Expr.relative[ tokens[1].type ] ) {
 
-			context = ( Expr.find["ID"]( token.matches[0].replace(runescape, funescape), context ) || [] )[0];
+			context = ( Expr.find.ID( token.matches[0].replace(runescape, funescape), context ) || [] )[0];
 			if ( !context ) {
 				return results;
 
@@ -9318,7 +9318,7 @@ select = Sizzle.select = function( selector, context, results, seed ) {
 		}
 
 		// Fetch a seed set for right-to-left matching
-		i = matchExpr["needsContext"].test( selector ) ? 0 : tokens.length;
+		i = matchExpr.needsContext.test( selector ) ? 0 : tokens.length;
 		while ( i-- ) {
 			token = tokens[i];
 
@@ -9443,8 +9443,8 @@ jQuery.escapeSelector = Sizzle.escape;
 
 
 var dir = function( elem, dir, until ) {
-	var matched = [],
-		truncate = until !== undefined;
+	var matched = [];
+		var truncate = until !== undefined;
 
 	while ( ( elem = elem[ dir ] ) && elem.nodeType !== 9 ) {
 		if ( elem.nodeType === 1 ) {
@@ -9528,9 +9528,9 @@ jQuery.filter = function( expr, elems, not ) {
 
 jQuery.fn.extend( {
 	find: function( selector ) {
-		var i, ret,
-			len = this.length,
-			self = this;
+		var i; var ret;
+			var len = this.length;
+			var self = this;
 
 		if ( typeof selector !== "string" ) {
 			return this.pushStack( jQuery( selector ).filter( function() {
@@ -9575,15 +9575,15 @@ jQuery.fn.extend( {
 
 
 // A central reference to the root jQuery(document)
-var rootjQuery,
+var rootjQuery;
 
 	// A simple way to check for HTML strings
 	// Prioritize #id over <tag> to avoid XSS via location.hash (#9521)
 	// Strict HTML recognition (#11290: must start with <)
 	// Shortcut simple #id case for speed
-	rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/,
+	var rquickExpr = /^(?:\s*(<[\w\W]+>)[^>]*|#([\w-]+))$/;
 
-	init = jQuery.fn.init = function( selector, context, root ) {
+	var init = jQuery.fn.init = function( selector, context, root ) {
 		var match, elem;
 
 		// HANDLE: $(""), $(null), $(undefined), $(false)
@@ -9689,10 +9689,10 @@ init.prototype = jQuery.fn;
 rootjQuery = jQuery( document );
 
 
-var rparentsprev = /^(?:parents|prev(?:Until|All))/,
+var rparentsprev = /^(?:parents|prev(?:Until|All))/;
 
 	// Methods guaranteed to produce a unique set when starting from a unique set
-	guaranteedUnique = {
+	var guaranteedUnique = {
 		children: true,
 		contents: true,
 		next: true,
@@ -9701,8 +9701,8 @@ var rparentsprev = /^(?:parents|prev(?:Until|All))/,
 
 jQuery.fn.extend( {
 	has: function( target ) {
-		var targets = jQuery( target, this ),
-			l = targets.length;
+		var targets = jQuery( target, this );
+			var l = targets.length;
 
 		return this.filter( function() {
 			var i = 0;
@@ -9715,11 +9715,11 @@ jQuery.fn.extend( {
 	},
 
 	closest: function( selectors, context ) {
-		var cur,
-			i = 0,
-			l = this.length,
-			matched = [],
-			targets = typeof selectors !== "string" && jQuery( selectors );
+		var cur;
+			var i = 0;
+			var l = this.length;
+			var matched = [];
+			var targets = typeof selectors !== "string" && jQuery( selectors );
 
 		// Positional selectors never match, since there's no _selection_ context
 		if ( !rneedsContext.test( selectors ) ) {
@@ -9906,28 +9906,28 @@ jQuery.Callbacks = function( options ) {
 		jQuery.extend( {}, options );
 
 	var // Flag to know if list is currently firing
-		firing,
+		firing;
 
 		// Last fire value for non-forgettable lists
-		memory,
+		var memory;
 
 		// Flag to know if list was already fired
-		fired,
+		var fired;
 
 		// Flag to prevent firing
-		locked,
+		var locked;
 
 		// Actual callback list
-		list = [],
+		var list = [];
 
 		// Queue of execution data for repeatable lists
-		queue = [],
+		var queue = [];
 
 		// Index of currently firing callback (modified by add/remove as needed)
-		firingIndex = -1,
+		var firingIndex = -1;
 
 		// Fire callbacks
-		fire = function() {
+		var fire = function() {
 
 			// Enforce single-firing
 			locked = locked || options.once;
@@ -9969,10 +9969,10 @@ jQuery.Callbacks = function( options ) {
 					list = "";
 				}
 			}
-		},
+		};
 
 		// Actual Callbacks object
-		self = {
+		var self = {
 
 			// Add a callback or a collection of callbacks to the list
 			add: function() {
@@ -10145,9 +10145,9 @@ jQuery.extend( {
 					jQuery.Callbacks( "once memory" ), 0, "resolved" ],
 				[ "reject", "fail", jQuery.Callbacks( "once memory" ),
 					jQuery.Callbacks( "once memory" ), 1, "rejected" ]
-			],
-			state = "pending",
-			promise = {
+			];
+			var state = "pending";
+			var promise = {
 				state: function() {
 					return state;
 				},
@@ -10194,9 +10194,9 @@ jQuery.extend( {
 					var maxDepth = 0;
 					function resolve( depth, deferred, handler, special ) {
 						return function() {
-							var that = this,
-								args = arguments,
-								mightThrow = function() {
+							var that = this;
+								var args = arguments;
+								var mightThrow = function() {
 									var returned, then;
 
 									// Support: Promises/A+ section 2.3.3.3.3
@@ -10267,10 +10267,10 @@ jQuery.extend( {
 										// Default process is resolve
 										( special || deferred.resolveWith )( that, args );
 									}
-								},
+								};
 
 								// Only normal processors (resolve) catch and reject exceptions
-								process = special ?
+								var process = special ?
 									mightThrow :
 									function() {
 										try {
@@ -10360,13 +10360,13 @@ jQuery.extend( {
 				promise: function( obj ) {
 					return obj != null ? jQuery.extend( obj, promise ) : promise;
 				}
-			},
-			deferred = {};
+			};
+			var deferred = {};
 
 		// Add list-specific methods
 		jQuery.each( tuples, function( i, tuple ) {
-			var list = tuple[ 2 ],
-				stateString = tuple[ 5 ];
+			var list = tuple[ 2 ];
+				var stateString = tuple[ 5 ];
 
 			// promise.progress = list.add
 			// promise.done = list.add
@@ -10435,20 +10435,20 @@ jQuery.extend( {
 		var
 
 			// count of uncompleted subordinates
-			remaining = arguments.length,
+			remaining = arguments.length;
 
 			// count of unprocessed arguments
-			i = remaining,
+			var i = remaining;
 
 			// subordinate fulfillment data
-			resolveContexts = Array( i ),
-			resolveValues = slice.call( arguments ),
+			var resolveContexts = Array( i );
+			var resolveValues = slice.call( arguments );
 
 			// the master Deferred
-			master = jQuery.Deferred(),
+			var master = jQuery.Deferred();
 
 			// subordinate callback factory
-			updateFunc = function( i ) {
+			var updateFunc = function( i ) {
 				return function( value ) {
 					resolveContexts[ i ] = this;
 					resolveValues[ i ] = arguments.length > 1 ? slice.call( arguments ) : value;
@@ -10588,9 +10588,9 @@ if ( document.readyState === "complete" ||
 // Multifunctional method to get and set values of a collection
 // The value/s can optionally be executed if it's a function
 var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
-	var i = 0,
-		len = elems.length,
-		bulk = key == null;
+	var i = 0;
+		var len = elems.length;
+		var bulk = key == null;
 
 	// Sets many values
 	if ( toType( key ) === "object" ) {
@@ -10648,8 +10648,8 @@ var access = function( elems, fn, key, value, chainable, emptyGet, raw ) {
 
 
 // Matches dashed string for camelizing
-var rmsPrefix = /^-ms-/,
-	rdashAlpha = /-([a-z])/g;
+var rmsPrefix = /^-ms-/;
+	var rdashAlpha = /-([a-z])/g;
 
 // Used by camelCase as callback to replace()
 function fcamelCase( all, letter ) {
@@ -10718,8 +10718,8 @@ Data.prototype = {
 		return value;
 	},
 	set: function( owner, data, value ) {
-		var prop,
-			cache = this.cache( owner );
+		var prop;
+			var cache = this.cache( owner );
 
 		// Handle: [ owner, key, value ] args
 		// Always use camelCase key (gh-2257)
@@ -10775,8 +10775,8 @@ Data.prototype = {
 		return value !== undefined ? value : key;
 	},
 	remove: function( owner, key ) {
-		var i,
-			cache = owner[ this.expando ];
+		var i;
+			var cache = owner[ this.expando ];
 
 		if ( cache === undefined ) {
 			return;
@@ -10842,8 +10842,8 @@ var dataUser = new Data();
 //	5. Avoid exposing implementation details on user objects (eg. expando properties)
 //	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 
-var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/,
-	rmultiDash = /[A-Z]/g;
+var rbrace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/;
+	var rmultiDash = /[A-Z]/g;
 
 function getData( data ) {
 	if ( data === "true" ) {
@@ -10919,9 +10919,9 @@ jQuery.extend( {
 
 jQuery.fn.extend( {
 	data: function( key, value ) {
-		var i, name, data,
-			elem = this[ 0 ],
-			attrs = elem && elem.attributes;
+		var i; var name; var data;
+			var elem = this[ 0 ];
+			var attrs = elem && elem.attributes;
 
 		// Gets all values
 		if ( key === undefined ) {
@@ -11024,11 +11024,11 @@ jQuery.extend( {
 	dequeue: function( elem, type ) {
 		type = type || "fx";
 
-		var queue = jQuery.queue( elem, type ),
-			startLength = queue.length,
-			fn = queue.shift(),
-			hooks = jQuery._queueHooks( elem, type ),
-			next = function() {
+		var queue = jQuery.queue( elem, type );
+			var startLength = queue.length;
+			var fn = queue.shift();
+			var hooks = jQuery._queueHooks( elem, type );
+			var next = function() {
 				jQuery.dequeue( elem, type );
 			};
 
@@ -11106,12 +11106,12 @@ jQuery.fn.extend( {
 	// Get a promise resolved when queues of a certain type
 	// are emptied (fx is the type by default)
 	promise: function( type, obj ) {
-		var tmp,
-			count = 1,
-			defer = jQuery.Deferred(),
-			elements = this,
-			i = this.length,
-			resolve = function() {
+		var tmp;
+			var count = 1;
+			var defer = jQuery.Deferred();
+			var elements = this;
+			var i = this.length;
+			var resolve = function() {
 				if ( !( --count ) ) {
 					defer.resolveWith( elements, [ elements ] );
 				}
@@ -11147,8 +11147,8 @@ var documentElement = document.documentElement;
 
 	var isAttached = function( elem ) {
 			return jQuery.contains( elem.ownerDocument, elem );
-		},
-		composed = { composed: true };
+		};
+		var composed = { composed: true };
 
 	// Support: IE 9 - 11+, Edge 12 - 18+, iOS 10.0 - 10.2 only
 	// Check attachment across shadow DOM boundaries when possible (gh-3504)
@@ -11181,8 +11181,8 @@ var isHiddenWithinTree = function( elem, el ) {
 	};
 
 var swap = function( elem, options, callback, args ) {
-	var ret, name,
-		old = {};
+	var ret; var name;
+		var old = {};
 
 	// Remember the old values, and insert the new ones
 	for ( name in options ) {
@@ -11204,20 +11204,20 @@ var swap = function( elem, options, callback, args ) {
 
 
 function adjustCSS( elem, prop, valueParts, tween ) {
-	var adjusted, scale,
-		maxIterations = 20,
-		currentValue = tween ?
+	var adjusted; var scale;
+		var maxIterations = 20;
+		var currentValue = tween ?
 			function() {
 				return tween.cur();
 			} :
 			function() {
 				return jQuery.css( elem, prop, "" );
-			},
-		initial = currentValue(),
-		unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" ),
+			};
+		var initial = currentValue();
+		var unit = valueParts && valueParts[ 3 ] || ( jQuery.cssNumber[ prop ] ? "" : "px" );
 
 		// Starting value computation is required for potential unit mismatches
-		initialInUnit = elem.nodeType &&
+		var initialInUnit = elem.nodeType &&
 			( jQuery.cssNumber[ prop ] || unit !== "px" && +initial ) &&
 			rcssNum.exec( jQuery.css( elem, prop ) );
 
@@ -11272,10 +11272,10 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 var defaultDisplayMap = {};
 
 function getDefaultDisplay( elem ) {
-	var temp,
-		doc = elem.ownerDocument,
-		nodeName = elem.nodeName,
-		display = defaultDisplayMap[ nodeName ];
+	var temp;
+		var doc = elem.ownerDocument;
+		var nodeName = elem.nodeName;
+		var display = defaultDisplayMap[ nodeName ];
 
 	if ( display ) {
 		return display;
@@ -11295,10 +11295,10 @@ function getDefaultDisplay( elem ) {
 }
 
 function showHide( elements, show ) {
-	var display, elem,
-		values = [],
-		index = 0,
-		length = elements.length;
+	var display; var elem;
+		var values = [];
+		var index = 0;
+		var length = elements.length;
 
 	// Determine new display value for elements that need to change
 	for ( ; index < length; index++ ) {
@@ -11421,8 +11421,8 @@ function getAll( context, tag ) {
 
 // Mark scripts as having already been evaluated
 function setGlobalEval( elems, refElements ) {
-	var i = 0,
-		l = elems.length;
+	var i = 0;
+		var l = elems.length;
 
 	for ( ; i < l; i++ ) {
 		dataPriv.set(
@@ -11437,11 +11437,11 @@ function setGlobalEval( elems, refElements ) {
 var rhtml = /<|&#?\w+;/;
 
 function buildFragment( elems, context, scripts, selection, ignored ) {
-	var elem, tmp, tag, wrap, attached, j,
-		fragment = context.createDocumentFragment(),
-		nodes = [],
-		i = 0,
-		l = elems.length;
+	var elem; var tmp; var tag; var wrap; var attached; var j;
+		var fragment = context.createDocumentFragment();
+		var nodes = [];
+		var i = 0;
+		var l = elems.length;
 
 	for ( ; i < l; i++ ) {
 		elem = elems[ i ];
@@ -11527,9 +11527,9 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 
 
 ( function() {
-	var fragment = document.createDocumentFragment(),
-		div = fragment.appendChild( document.createElement( "div" ) ),
-		input = document.createElement( "input" );
+	var fragment = document.createDocumentFragment();
+		var div = fragment.appendChild( document.createElement( "div" ) );
+		var input = document.createElement( "input" );
 
 	// Support: Android 4.0 - 4.3 only
 	// Check state lost if the name is set (#11217)
@@ -11553,9 +11553,9 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 
 
 var
-	rkeyEvent = /^key/,
-	rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/,
-	rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
+	rkeyEvent = /^key/;
+	var rmouseEvent = /^(?:mouse|pointer|contextmenu|drag|drop)|click/;
+	var rtypenamespace = /^([^.]*)(?:\.(.+)|)/;
 
 function returnTrue() {
 	return true;
@@ -11655,10 +11655,10 @@ jQuery.event = {
 
 	add: function( elem, types, handler, data, selector ) {
 
-		var handleObjIn, eventHandle, tmp,
-			events, t, handleObj,
-			special, handlers, type, namespaces, origType,
-			elemData = dataPriv.get( elem );
+		var handleObjIn; var eventHandle; var tmp;
+			var events; var t; var handleObj;
+			var special; var handlers; var type; var namespaces; var origType;
+			var elemData = dataPriv.get( elem );
 
 		// Don't attach events to noData or text/comment nodes (but allow plain objects)
 		if ( !elemData ) {
@@ -11770,10 +11770,10 @@ jQuery.event = {
 	// Detach an event or set of events from an element
 	remove: function( elem, types, handler, selector, mappedTypes ) {
 
-		var j, origCount, tmp,
-			events, t, handleObj,
-			special, handlers, type, namespaces, origType,
-			elemData = dataPriv.hasData( elem ) && dataPriv.get( elem );
+		var j; var origCount; var tmp;
+			var events; var t; var handleObj;
+			var special; var handlers; var type; var namespaces; var origType;
+			var elemData = dataPriv.hasData( elem ) && dataPriv.get( elem );
 
 		if ( !elemData || !( events = elemData.events ) ) {
 			return;
@@ -11846,10 +11846,10 @@ jQuery.event = {
 		// Make a writable jQuery.Event from the native event object
 		var event = jQuery.event.fix( nativeEvent );
 
-		var i, j, ret, matched, handleObj, handlerQueue,
-			args = new Array( arguments.length ),
-			handlers = ( dataPriv.get( this, "events" ) || {} )[ event.type ] || [],
-			special = jQuery.event.special[ event.type ] || {};
+		var i; var j; var ret; var matched; var handleObj; var handlerQueue;
+			var args = new Array( arguments.length );
+			var handlers = ( dataPriv.get( this, "events" ) || {} )[ event.type ] || [];
+			var special = jQuery.event.special[ event.type ] || {};
 
 		// Use the fix-ed jQuery.Event rather than the (read-only) native event
 		args[ 0 ] = event;
@@ -11907,10 +11907,10 @@ jQuery.event = {
 	},
 
 	handlers: function( event, handlers ) {
-		var i, handleObj, sel, matchedHandlers, matchedSelectors,
-			handlerQueue = [],
-			delegateCount = handlers.delegateCount,
-			cur = event.target;
+		var i; var handleObj; var sel; var matchedHandlers; var matchedSelectors;
+			var handlerQueue = [];
+			var delegateCount = handlers.delegateCount;
+			var cur = event.target;
 
 		// Find delegate handlers
 		if ( delegateCount &&
@@ -12084,8 +12084,8 @@ function leverageNative( el, type, expectSync ) {
 	jQuery.event.add( el, type, {
 		namespace: false,
 		handler: function( event ) {
-			var notAsync, result,
-				saved = dataPriv.get( this, type );
+			var notAsync; var result;
+				var saved = dataPriv.get( this, type );
 
 			if ( ( event.isTrigger & 1 ) && this[ type ] ) {
 
@@ -12357,10 +12357,10 @@ jQuery.each( {
 		bindType: fix,
 
 		handle: function( event ) {
-			var ret,
-				target = this,
-				related = event.relatedTarget,
-				handleObj = event.handleObj;
+			var ret;
+				var target = this;
+				var related = event.relatedTarget;
+				var handleObj = event.handleObj;
 
 			// For mouseenter/leave call the handler if related is outside the target.
 			// NB: No relatedTarget if the mouse left/entered the browser window
@@ -12426,18 +12426,18 @@ var
 	/* eslint-disable max-len */
 
 	// See https://github.com/eslint/eslint/issues/3229
-	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi,
+	rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi;
 
 	/* eslint-enable */
 
 	// Support: IE <=10 - 11, Edge 12 - 13 only
 	// In IE/Edge using regex groups here causes severe slowdowns.
 	// See https://connect.microsoft.com/IE/feedback/details/1736512/
-	rnoInnerhtml = /<script|<style|<link/i,
+	var rnoInnerhtml = /<script|<style|<link/i;
 
 	// checked="checked" or checked
-	rchecked = /checked\s*(?:[^=]|=\s*.checked.)/i,
-	rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
+	var rchecked = /checked\s*(?:[^=]|=\s*.checked.)/i;
+	var rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
 // Prefer a tbody over its parent table for containing new rows
 function manipulationTarget( elem, content ) {
@@ -12518,12 +12518,12 @@ function domManip( collection, args, callback, ignored ) {
 	// Flatten any nested arrays
 	args = concat.apply( [], args );
 
-	var fragment, first, scripts, hasScripts, node, doc,
-		i = 0,
-		l = collection.length,
-		iNoClone = l - 1,
-		value = args[ 0 ],
-		valueIsFunction = isFunction( value );
+	var fragment; var first; var scripts; var hasScripts; var node; var doc;
+		var i = 0;
+		var l = collection.length;
+		var iNoClone = l - 1;
+		var value = args[ 0 ];
+		var valueIsFunction = isFunction( value );
 
 	// We can't cloneNode fragments that contain checked, in WebKit
 	if ( valueIsFunction ||
@@ -12606,9 +12606,9 @@ function domManip( collection, args, callback, ignored ) {
 }
 
 function remove( elem, selector, keepData ) {
-	var node,
-		nodes = selector ? jQuery.filter( selector, elem ) : elem,
-		i = 0;
+	var node;
+		var nodes = selector ? jQuery.filter( selector, elem ) : elem;
+		var i = 0;
 
 	for ( ; ( node = nodes[ i ] ) != null; i++ ) {
 		if ( !keepData && node.nodeType === 1 ) {
@@ -12632,9 +12632,9 @@ jQuery.extend( {
 	},
 
 	clone: function( elem, dataAndEvents, deepDataAndEvents ) {
-		var i, l, srcElements, destElements,
-			clone = elem.cloneNode( true ),
-			inPage = isAttached( elem );
+		var i; var l; var srcElements; var destElements;
+			var clone = elem.cloneNode( true );
+			var inPage = isAttached( elem );
 
 		// Fix IE cloning issues
 		if ( !support.noCloneChecked && ( elem.nodeType === 1 || elem.nodeType === 11 ) &&
@@ -12674,9 +12674,9 @@ jQuery.extend( {
 	},
 
 	cleanData: function( elems ) {
-		var data, elem, type,
-			special = jQuery.event.special,
-			i = 0;
+		var data; var elem; var type;
+			var special = jQuery.event.special;
+			var i = 0;
 
 		for ( ; ( elem = elems[ i ] ) !== undefined; i++ ) {
 			if ( acceptData( elem ) ) {
@@ -12764,8 +12764,8 @@ jQuery.fn.extend( {
 	},
 
 	empty: function() {
-		var elem,
-			i = 0;
+		var elem;
+			var i = 0;
 
 		for ( ; ( elem = this[ i ] ) != null; i++ ) {
 			if ( elem.nodeType === 1 ) {
@@ -12792,9 +12792,9 @@ jQuery.fn.extend( {
 
 	html: function( value ) {
 		return access( this, function( value ) {
-			var elem = this[ 0 ] || {},
-				i = 0,
-				l = this.length;
+			var elem = this[ 0 ] || {};
+				var i = 0;
+				var l = this.length;
 
 			if ( value === undefined && elem.nodeType === 1 ) {
 				return elem.innerHTML;
@@ -12856,11 +12856,11 @@ jQuery.each( {
 	replaceAll: "replaceWith"
 }, function( name, original ) {
 	jQuery.fn[ name ] = function( selector ) {
-		var elems,
-			ret = [],
-			insert = jQuery( selector ),
-			last = insert.length - 1,
-			i = 0;
+		var elems;
+			var ret = [];
+			var insert = jQuery( selector );
+			var last = insert.length - 1;
+			var i = 0;
 
 		for ( ; i <= last; i++ ) {
 			elems = i === last ? this : this.clone( true );
@@ -12946,10 +12946,10 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		return Math.round( parseFloat( measure ) );
 	}
 
-	var pixelPositionVal, boxSizingReliableVal, scrollboxSizeVal, pixelBoxStylesVal,
-		reliableMarginLeftVal,
-		container = document.createElement( "div" ),
-		div = document.createElement( "div" );
+	var pixelPositionVal; var boxSizingReliableVal; var scrollboxSizeVal; var pixelBoxStylesVal;
+		var reliableMarginLeftVal;
+		var container = document.createElement( "div" );
+		var div = document.createElement( "div" );
 
 	// Finish early in limited (non-browser) environments
 	if ( !div.style ) {
@@ -12988,13 +12988,13 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 
 
 function curCSS( elem, name, computed ) {
-	var width, minWidth, maxWidth, ret,
+	var width; var minWidth; var maxWidth; var ret;
 
 		// Support: Firefox 51+
 		// Retrieving style before computed somehow
 		// fixes an issue with getting wrong values
 		// on detached elements
-		style = elem.style;
+		var style = elem.style;
 
 	computed = computed || getStyles( elem );
 
@@ -13060,16 +13060,16 @@ function addGetHookIf( conditionFn, hookFn ) {
 }
 
 
-var cssPrefixes = [ "Webkit", "Moz", "ms" ],
-	emptyStyle = document.createElement( "div" ).style,
-	vendorProps = {};
+var cssPrefixes = [ "Webkit", "Moz", "ms" ];
+	var emptyStyle = document.createElement( "div" ).style;
+	var vendorProps = {};
 
 // Return a vendor-prefixed property or undefined
 function vendorPropName( name ) {
 
 	// Check for vendor prefixed names
-	var capName = name[ 0 ].toUpperCase() + name.slice( 1 ),
-		i = cssPrefixes.length;
+	var capName = name[ 0 ].toUpperCase() + name.slice( 1 );
+		var i = cssPrefixes.length;
 
 	while ( i-- ) {
 		name = cssPrefixes[ i ] + capName;
@@ -13098,10 +13098,10 @@ var
 	// Swappable if display is none or starts with table
 	// except "table", "table-cell", or "table-caption"
 	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
-	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
-	rcustomProp = /^--/,
-	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
-	cssNormalTransform = {
+	rdisplayswap = /^(none|table(?!-c[ea]).+)/;
+	var rcustomProp = /^--/;
+	var cssShow = { position: "absolute", visibility: "hidden", display: "block" };
+	var cssNormalTransform = {
 		letterSpacing: "0",
 		fontWeight: "400"
 	};
@@ -13119,9 +13119,9 @@ function setPositiveNumber( elem, value, subtract ) {
 }
 
 function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computedVal ) {
-	var i = dimension === "width" ? 1 : 0,
-		extra = 0,
-		delta = 0;
+	var i = dimension === "width" ? 1 : 0;
+		var extra = 0;
+		var delta = 0;
 
 	// Adjustment may not be necessary
 	if ( box === ( isBorderBox ? "border" : "content" ) ) {
@@ -13189,17 +13189,17 @@ function boxModelAdjustment( elem, dimension, box, isBorderBox, styles, computed
 function getWidthOrHeight( elem, dimension, extra ) {
 
 	// Start with computed style
-	var styles = getStyles( elem ),
+	var styles = getStyles( elem );
 
 		// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-4322).
 		// Fake content-box until we know it's needed to know the true value.
-		boxSizingNeeded = !support.boxSizingReliable() || extra,
-		isBorderBox = boxSizingNeeded &&
-			jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-		valueIsBorderBox = isBorderBox,
+		var boxSizingNeeded = !support.boxSizingReliable() || extra;
+		var isBorderBox = boxSizingNeeded &&
+			jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
+		var valueIsBorderBox = isBorderBox;
 
-		val = curCSS( elem, dimension, styles ),
-		offsetProp = "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 );
+		var val = curCSS( elem, dimension, styles );
+		var offsetProp = "offset" + dimension[ 0 ].toUpperCase() + dimension.slice( 1 );
 
 	// Support: Firefox <=54
 	// Return a confounding non-pixel value or feign ignorance, as appropriate.
@@ -13307,10 +13307,10 @@ jQuery.extend( {
 		}
 
 		// Make sure that we're working with the right name
-		var ret, type, hooks,
-			origName = camelCase( name ),
-			isCustomProp = rcustomProp.test( name ),
-			style = elem.style;
+		var ret; var type; var hooks;
+			var origName = camelCase( name );
+			var isCustomProp = rcustomProp.test( name );
+			var style = elem.style;
 
 		// Make sure that we're working with the right name. We don't
 		// want to query the value if it is a CSS custom property
@@ -13377,9 +13377,9 @@ jQuery.extend( {
 	},
 
 	css: function( elem, name, extra, styles ) {
-		var val, num, hooks,
-			origName = camelCase( name ),
-			isCustomProp = rcustomProp.test( name );
+		var val; var num; var hooks;
+			var origName = camelCase( name );
+			var isCustomProp = rcustomProp.test( name );
 
 		// Make sure that we're working with the right name. We don't
 		// want to modify the value if it is a CSS custom property
@@ -13440,19 +13440,19 @@ jQuery.each( [ "height", "width" ], function( i, dimension ) {
 		},
 
 		set: function( elem, value, extra ) {
-			var matches,
-				styles = getStyles( elem ),
+			var matches;
+				var styles = getStyles( elem );
 
 				// Only read styles.position if the test has a chance to fail
 				// to avoid forcing a reflow.
-				scrollboxSizeBuggy = !support.scrollboxSize() &&
-					styles.position === "absolute",
+				var scrollboxSizeBuggy = !support.scrollboxSize() &&
+					styles.position === "absolute";
 
 				// To avoid forcing a reflow, only fetch boxSizing if we need it (gh-3991)
-				boxSizingNeeded = scrollboxSizeBuggy || extra,
-				isBorderBox = boxSizingNeeded &&
-					jQuery.css( elem, "boxSizing", false, styles ) === "border-box",
-				subtract = extra ?
+				var boxSizingNeeded = scrollboxSizeBuggy || extra;
+				var isBorderBox = boxSizingNeeded &&
+					jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
+				var subtract = extra ?
 					boxModelAdjustment(
 						elem,
 						dimension,
@@ -13507,11 +13507,11 @@ jQuery.each( {
 }, function( prefix, suffix ) {
 	jQuery.cssHooks[ prefix + suffix ] = {
 		expand: function( value ) {
-			var i = 0,
-				expanded = {},
+			var i = 0;
+				var expanded = {};
 
 				// Assumes a single number if not a string
-				parts = typeof value === "string" ? value.split( " " ) : [ value ];
+				var parts = typeof value === "string" ? value.split( " " ) : [ value ];
 
 			for ( ; i < 4; i++ ) {
 				expanded[ prefix + cssExpand[ i ] + suffix ] =
@@ -13530,9 +13530,9 @@ jQuery.each( {
 jQuery.fn.extend( {
 	css: function( name, value ) {
 		return access( this, function( elem, name, value ) {
-			var styles, len,
-				map = {},
-				i = 0;
+			var styles; var len;
+				var map = {};
+				var i = 0;
 
 			if ( Array.isArray( name ) ) {
 				styles = getStyles( elem );
@@ -13577,8 +13577,8 @@ Tween.prototype = {
 			Tween.propHooks._default.get( this );
 	},
 	run: function( percent ) {
-		var eased,
-			hooks = Tween.propHooks[ this.prop ];
+		var eased;
+			var hooks = Tween.propHooks[ this.prop ];
 
 		if ( this.options.duration ) {
 			this.pos = eased = jQuery.easing[ this.easing ](
@@ -13672,9 +13672,9 @@ jQuery.fx.step = {};
 
 
 var
-	fxNow, inProgress,
-	rfxtypes = /^(?:toggle|show|hide)$/,
-	rrun = /queueHooks$/;
+	fxNow; var inProgress;
+	var rfxtypes = /^(?:toggle|show|hide)$/;
+	var rrun = /queueHooks$/;
 
 function schedule() {
 	if ( inProgress ) {
@@ -13698,9 +13698,9 @@ function createFxNow() {
 
 // Generate parameters to create a standard animation
 function genFx( type, includeWidth ) {
-	var which,
-		i = 0,
-		attrs = { height: type };
+	var which;
+		var i = 0;
+		var attrs = { height: type };
 
 	// If we include width, step value is 1 to do all cssExpand values,
 	// otherwise step value is 2 to skip over Left and Right
@@ -13718,10 +13718,10 @@ function genFx( type, includeWidth ) {
 }
 
 function createTween( value, prop, animation ) {
-	var tween,
-		collection = ( Animation.tweeners[ prop ] || [] ).concat( Animation.tweeners[ "*" ] ),
-		index = 0,
-		length = collection.length;
+	var tween;
+		var collection = ( Animation.tweeners[ prop ] || [] ).concat( Animation.tweeners[ "*" ] );
+		var index = 0;
+		var length = collection.length;
 	for ( ; index < length; index++ ) {
 		if ( ( tween = collection[ index ].call( animation, prop, value ) ) ) {
 
@@ -13732,13 +13732,13 @@ function createTween( value, prop, animation ) {
 }
 
 function defaultPrefilter( elem, props, opts ) {
-	var prop, value, toggle, hooks, oldfire, propTween, restoreDisplay, display,
-		isBox = "width" in props || "height" in props,
-		anim = this,
-		orig = {},
-		style = elem.style,
-		hidden = elem.nodeType && isHiddenWithinTree( elem ),
-		dataShow = dataPriv.get( elem, "fxshow" );
+	var prop; var value; var toggle; var hooks; var oldfire; var propTween; var restoreDisplay; var display;
+		var isBox = "width" in props || "height" in props;
+		var anim = this;
+		var orig = {};
+		var style = elem.style;
+		var hidden = elem.nodeType && isHiddenWithinTree( elem );
+		var dataShow = dataPriv.get( elem, "fxshow" );
 
 	// Queue-skipping animations hijack the fx hooks
 	if ( !opts.queue ) {
@@ -13941,28 +13941,28 @@ function propFilter( props, specialEasing ) {
 }
 
 function Animation( elem, properties, options ) {
-	var result,
-		stopped,
-		index = 0,
-		length = Animation.prefilters.length,
-		deferred = jQuery.Deferred().always( function() {
+	var result;
+		var stopped;
+		var index = 0;
+		var length = Animation.prefilters.length;
+		var deferred = jQuery.Deferred().always( function() {
 
 			// Don't match elem in the :animated selector
 			delete tick.elem;
-		} ),
-		tick = function() {
+		} );
+		var tick = function() {
 			if ( stopped ) {
 				return false;
 			}
-			var currentTime = fxNow || createFxNow(),
-				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
+			var currentTime = fxNow || createFxNow();
+				var remaining = Math.max( 0, animation.startTime + animation.duration - currentTime );
 
 				// Support: Android 2.3 only
 				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
-				temp = remaining / animation.duration || 0,
-				percent = 1 - temp,
-				index = 0,
-				length = animation.tweens.length;
+				var temp = remaining / animation.duration || 0;
+				var percent = 1 - temp;
+				var index = 0;
+				var length = animation.tweens.length;
 
 			for ( ; index < length; index++ ) {
 				animation.tweens[ index ].run( percent );
@@ -13983,8 +13983,8 @@ function Animation( elem, properties, options ) {
 			// Resolve the animation and report its conclusion
 			deferred.resolveWith( elem, [ animation ] );
 			return false;
-		},
-		animation = deferred.promise( {
+		};
+		var animation = deferred.promise( {
 			elem: elem,
 			props: jQuery.extend( {}, properties ),
 			opts: jQuery.extend( true, {
@@ -14003,11 +14003,11 @@ function Animation( elem, properties, options ) {
 				return tween;
 			},
 			stop: function( gotoEnd ) {
-				var index = 0,
+				var index = 0;
 
 					// If we are going to the end, we want to run all the tweens
 					// otherwise we skip this part
-					length = gotoEnd ? animation.tweens.length : 0;
+					var length = gotoEnd ? animation.tweens.length : 0;
 				if ( stopped ) {
 					return this;
 				}
@@ -14025,8 +14025,8 @@ function Animation( elem, properties, options ) {
 				}
 				return this;
 			}
-		} ),
-		props = animation.props;
+		} );
+		var props = animation.props;
 
 	propFilter( props, animation.opts.specialEasing );
 
@@ -14083,9 +14083,9 @@ jQuery.Animation = jQuery.extend( Animation, {
 			props = props.match( rnothtmlwhite );
 		}
 
-		var prop,
-			index = 0,
-			length = props.length;
+		var prop;
+			var index = 0;
+			var length = props.length;
 
 		for ( ; index < length; index++ ) {
 			prop = props[ index ];
@@ -14159,9 +14159,9 @@ jQuery.fn.extend( {
 			.end().animate( { opacity: to }, speed, easing, callback );
 	},
 	animate: function( prop, speed, easing, callback ) {
-		var empty = jQuery.isEmptyObject( prop ),
-			optall = jQuery.speed( speed, easing, callback ),
-			doAnimation = function() {
+		var empty = jQuery.isEmptyObject( prop );
+			var optall = jQuery.speed( speed, easing, callback );
+			var doAnimation = function() {
 
 				// Operate on a copy of prop so per-property easing won't be lost
 				var anim = Animation( this, jQuery.extend( {}, prop ), optall );
@@ -14194,10 +14194,10 @@ jQuery.fn.extend( {
 		}
 
 		return this.each( function() {
-			var dequeue = true,
-				index = type != null && type + "queueHooks",
-				timers = jQuery.timers,
-				data = dataPriv.get( this );
+			var dequeue = true;
+				var index = type != null && type + "queueHooks";
+				var timers = jQuery.timers;
+				var data = dataPriv.get( this );
 
 			if ( index ) {
 				if ( data[ index ] && data[ index ].stop ) {
@@ -14234,12 +14234,12 @@ jQuery.fn.extend( {
 			type = type || "fx";
 		}
 		return this.each( function() {
-			var index,
-				data = dataPriv.get( this ),
-				queue = data[ type + "queue" ],
-				hooks = data[ type + "queueHooks" ],
-				timers = jQuery.timers,
-				length = queue ? queue.length : 0;
+			var index;
+				var data = dataPriv.get( this );
+				var queue = data[ type + "queue" ];
+				var hooks = data[ type + "queueHooks" ];
+				var timers = jQuery.timers;
+				var length = queue ? queue.length : 0;
 
 			// Enable finishing flag on private data
 			data.finish = true;
@@ -14297,9 +14297,9 @@ jQuery.each( {
 
 jQuery.timers = [];
 jQuery.fx.tick = function() {
-	var timer,
-		i = 0,
-		timers = jQuery.timers;
+	var timer;
+		var i = 0;
+		var timers = jQuery.timers;
 
 	fxNow = Date.now();
 
@@ -14362,9 +14362,9 @@ jQuery.fn.delay = function( time, type ) {
 
 
 ( function() {
-	var input = document.createElement( "input" ),
-		select = document.createElement( "select" ),
-		opt = select.appendChild( document.createElement( "option" ) );
+	var input = document.createElement( "input" );
+		var select = document.createElement( "select" );
+		var opt = select.appendChild( document.createElement( "option" ) );
 
 	input.type = "checkbox";
 
@@ -14385,8 +14385,8 @@ jQuery.fn.delay = function( time, type ) {
 } )();
 
 
-var boolHook,
-	attrHandle = jQuery.expr.attrHandle;
+var boolHook;
+	var attrHandle = jQuery.expr.attrHandle;
 
 jQuery.fn.extend( {
 	attr: function( name, value ) {
@@ -14402,8 +14402,8 @@ jQuery.fn.extend( {
 
 jQuery.extend( {
 	attr: function( elem, name, value ) {
-		var ret, hooks,
-			nType = elem.nodeType;
+		var ret; var hooks;
+			var nType = elem.nodeType;
 
 		// Don't get/set attributes on text, comment and attribute nodes
 		if ( nType === 3 || nType === 8 || nType === 2 ) {
@@ -14464,12 +14464,12 @@ jQuery.extend( {
 	},
 
 	removeAttr: function( elem, value ) {
-		var name,
-			i = 0,
+		var name;
+			var i = 0;
 
 			// Attribute names can contain non-HTML whitespace characters
 			// https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
-			attrNames = value && value.match( rnothtmlwhite );
+			var attrNames = value && value.match( rnothtmlwhite );
 
 		if ( attrNames && elem.nodeType === 1 ) {
 			while ( ( name = attrNames[ i++ ] ) ) {
@@ -14497,8 +14497,8 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 	var getter = attrHandle[ name ] || jQuery.find.attr;
 
 	attrHandle[ name ] = function( elem, name, isXML ) {
-		var ret, handle,
-			lowercaseName = name.toLowerCase();
+		var ret; var handle;
+			var lowercaseName = name.toLowerCase();
 
 		if ( !isXML ) {
 
@@ -14517,8 +14517,8 @@ jQuery.each( jQuery.expr.match.bool.source.match( /\w+/g ), function( i, name ) 
 
 
 
-var rfocusable = /^(?:input|select|textarea|button)$/i,
-	rclickable = /^(?:a|area)$/i;
+var rfocusable = /^(?:input|select|textarea|button)$/i;
+	var rclickable = /^(?:a|area)$/i;
 
 jQuery.fn.extend( {
 	prop: function( name, value ) {
@@ -14534,8 +14534,8 @@ jQuery.fn.extend( {
 
 jQuery.extend( {
 	prop: function( elem, name, value ) {
-		var ret, hooks,
-			nType = elem.nodeType;
+		var ret; var hooks;
+			var nType = elem.nodeType;
 
 		// Don't get/set properties on text, comment and attribute nodes
 		if ( nType === 3 || nType === 8 || nType === 2 ) {
@@ -14677,8 +14677,8 @@ function classesToArray( value ) {
 
 jQuery.fn.extend( {
 	addClass: function( value ) {
-		var classes, elem, cur, curValue, clazz, j, finalValue,
-			i = 0;
+		var classes; var elem; var cur; var curValue; var clazz; var j; var finalValue;
+			var i = 0;
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
@@ -14714,8 +14714,8 @@ jQuery.fn.extend( {
 	},
 
 	removeClass: function( value ) {
-		var classes, elem, cur, curValue, clazz, j, finalValue,
-			i = 0;
+		var classes; var elem; var cur; var curValue; var clazz; var j; var finalValue;
+			var i = 0;
 
 		if ( isFunction( value ) ) {
 			return this.each( function( j ) {
@@ -14759,8 +14759,8 @@ jQuery.fn.extend( {
 	},
 
 	toggleClass: function( value, stateVal ) {
-		var type = typeof value,
-			isValidValue = type === "string" || Array.isArray( value );
+		var type = typeof value;
+			var isValidValue = type === "string" || Array.isArray( value );
 
 		if ( typeof stateVal === "boolean" && isValidValue ) {
 			return stateVal ? this.addClass( value ) : this.removeClass( value );
@@ -14820,8 +14820,8 @@ jQuery.fn.extend( {
 	},
 
 	hasClass: function( selector ) {
-		var className, elem,
-			i = 0;
+		var className; var elem;
+			var i = 0;
 
 		className = " " + selector + " ";
 		while ( ( elem = this[ i++ ] ) ) {
@@ -14842,8 +14842,8 @@ var rreturn = /\r/g;
 
 jQuery.fn.extend( {
 	val: function( value ) {
-		var hooks, ret, valueIsFunction,
-			elem = this[ 0 ];
+		var hooks; var ret; var valueIsFunction;
+			var elem = this[ 0 ];
 
 		if ( !arguments.length ) {
 			if ( elem ) {
@@ -14927,12 +14927,12 @@ jQuery.extend( {
 		},
 		select: {
 			get: function( elem ) {
-				var value, option, i,
-					options = elem.options,
-					index = elem.selectedIndex,
-					one = elem.type === "select-one",
-					values = one ? null : [],
-					max = one ? index + 1 : options.length;
+				var value; var option; var i;
+					var options = elem.options;
+					var index = elem.selectedIndex;
+					var one = elem.type === "select-one";
+					var values = one ? null : [];
+					var max = one ? index + 1 : options.length;
 
 				if ( index < 0 ) {
 					i = max;
@@ -14971,10 +14971,10 @@ jQuery.extend( {
 			},
 
 			set: function( elem, value ) {
-				var optionSet, option,
-					options = elem.options,
-					values = jQuery.makeArray( value ),
-					i = options.length;
+				var optionSet; var option;
+					var options = elem.options;
+					var values = jQuery.makeArray( value );
+					var i = options.length;
 
 				while ( i-- ) {
 					option = options[ i ];
@@ -15025,8 +15025,8 @@ jQuery.each( [ "radio", "checkbox" ], function() {
 support.focusin = "onfocusin" in window;
 
 
-var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/,
-	stopPropagationCallback = function( e ) {
+var rfocusMorph = /^(?:focusinfocus|focusoutblur)$/;
+	var stopPropagationCallback = function( e ) {
 		e.stopPropagation();
 	};
 
@@ -15034,10 +15034,10 @@ jQuery.extend( jQuery.event, {
 
 	trigger: function( event, data, elem, onlyHandlers ) {
 
-		var i, cur, tmp, bubbleType, ontype, handle, special, lastElement,
-			eventPath = [ elem || document ],
-			type = hasOwn.call( event, "type" ) ? event.type : event,
-			namespaces = hasOwn.call( event, "namespace" ) ? event.namespace.split( "." ) : [];
+		var i; var cur; var tmp; var bubbleType; var ontype; var handle; var special; var lastElement;
+			var eventPath = [ elem || document ];
+			var type = hasOwn.call( event, "type" ) ? event.type : event;
+			var namespaces = hasOwn.call( event, "namespace" ) ? event.namespace.split( "." ) : [];
 
 		cur = lastElement = tmp = elem = elem || document;
 
@@ -15228,8 +15228,8 @@ if ( !support.focusin ) {
 
 		jQuery.event.special[ fix ] = {
 			setup: function() {
-				var doc = this.ownerDocument || this,
-					attaches = dataPriv.access( doc, fix );
+				var doc = this.ownerDocument || this;
+					var attaches = dataPriv.access( doc, fix );
 
 				if ( !attaches ) {
 					doc.addEventListener( orig, handler, true );
@@ -15237,8 +15237,8 @@ if ( !support.focusin ) {
 				dataPriv.access( doc, fix, ( attaches || 0 ) + 1 );
 			},
 			teardown: function() {
-				var doc = this.ownerDocument || this,
-					attaches = dataPriv.access( doc, fix ) - 1;
+				var doc = this.ownerDocument || this;
+					var attaches = dataPriv.access( doc, fix ) - 1;
 
 				if ( !attaches ) {
 					doc.removeEventListener( orig, handler, true );
@@ -15282,10 +15282,10 @@ jQuery.parseXML = function( data ) {
 
 
 var
-	rbracket = /\[\]$/,
-	rCRLF = /\r?\n/g,
-	rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i,
-	rsubmittable = /^(?:input|select|textarea|keygen)/i;
+	rbracket = /\[\]$/;
+	var rCRLF = /\r?\n/g;
+	var rsubmitterTypes = /^(?:submit|button|image|reset|file)$/i;
+	var rsubmittable = /^(?:input|select|textarea|keygen)/i;
 
 function buildParams( prefix, obj, traditional, add ) {
 	var name;
@@ -15328,9 +15328,9 @@ function buildParams( prefix, obj, traditional, add ) {
 // Serialize an array of form elements or a set of
 // key/values into a query string
 jQuery.param = function( a, traditional ) {
-	var prefix,
-		s = [],
-		add = function( key, valueOrFunction ) {
+	var prefix;
+		var s = [];
+		var add = function( key, valueOrFunction ) {
 
 			// If value is a function, invoke it and use its return value
 			var value = isFunction( valueOrFunction ) ?
@@ -15405,15 +15405,15 @@ jQuery.fn.extend( {
 
 
 var
-	r20 = /%20/g,
-	rhash = /#.*$/,
-	rantiCache = /([?&])_=[^&]*/,
-	rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg,
+	r20 = /%20/g;
+	var rhash = /#.*$/;
+	var rantiCache = /([?&])_=[^&]*/;
+	var rheaders = /^(.*?):[ \t]*([^\r\n]*)$/mg;
 
 	// #7653, #8125, #8152: local protocol detection
-	rlocalProtocol = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/,
-	rnoContent = /^(?:GET|HEAD)$/,
-	rprotocol = /^\/\//,
+	var rlocalProtocol = /^(?:about|app|app-storage|.+-extension|file|res|widget):$/;
+	var rnoContent = /^(?:GET|HEAD)$/;
+	var rprotocol = /^\/\//;
 
 	/* Prefilters
 	 * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
@@ -15424,20 +15424,20 @@ var
 	 * 4) the catchall symbol "*" can be used
 	 * 5) execution will start with transport dataType and THEN continue down to "*" if needed
 	 */
-	prefilters = {},
+	var prefilters = {};
 
 	/* Transports bindings
 	 * 1) key is the dataType
 	 * 2) the catchall symbol "*" can be used
 	 * 3) selection will start with transport dataType and THEN go to "*" if needed
 	 */
-	transports = {},
+	var transports = {};
 
 	// Avoid comment-prolog char sequence (#10098); must appease lint and evade compression
-	allTypes = "*/".concat( "*" ),
+	var allTypes = "*/".concat( "*" );
 
 	// Anchor tag for parsing the document origin
-	originAnchor = document.createElement( "a" );
+	var originAnchor = document.createElement( "a" );
 	originAnchor.href = location.href;
 
 // Base "constructor" for jQuery.ajaxPrefilter and jQuery.ajaxTransport
@@ -15451,9 +15451,9 @@ function addToPrefiltersOrTransports( structure ) {
 			dataTypeExpression = "*";
 		}
 
-		var dataType,
-			i = 0,
-			dataTypes = dataTypeExpression.toLowerCase().match( rnothtmlwhite ) || [];
+		var dataType;
+			var i = 0;
+			var dataTypes = dataTypeExpression.toLowerCase().match( rnothtmlwhite ) || [];
 
 		if ( isFunction( func ) ) {
 
@@ -15477,8 +15477,8 @@ function addToPrefiltersOrTransports( structure ) {
 // Base inspection function for prefilters and transports
 function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {
 
-	var inspected = {},
-		seekingTransport = ( structure === transports );
+	var inspected = {};
+		var seekingTransport = ( structure === transports );
 
 	function inspect( dataType ) {
 		var selected;
@@ -15505,8 +15505,8 @@ function inspectPrefiltersOrTransports( structure, options, originalOptions, jqX
 // that takes "flat" options (not to be deep extended)
 // Fixes #9887
 function ajaxExtend( target, src ) {
-	var key, deep,
-		flatOptions = jQuery.ajaxSettings.flatOptions || {};
+	var key; var deep;
+		var flatOptions = jQuery.ajaxSettings.flatOptions || {};
 
 	for ( key in src ) {
 		if ( src[ key ] !== undefined ) {
@@ -15526,9 +15526,9 @@ function ajaxExtend( target, src ) {
  */
 function ajaxHandleResponses( s, jqXHR, responses ) {
 
-	var ct, type, finalDataType, firstDataType,
-		contents = s.contents,
-		dataTypes = s.dataTypes;
+	var ct; var type; var finalDataType; var firstDataType;
+		var contents = s.contents;
+		var dataTypes = s.dataTypes;
 
 	// Remove auto dataType and get content-type in the process
 	while ( dataTypes[ 0 ] === "*" ) {
@@ -15583,11 +15583,11 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
  * Also sets the responseXXX fields on the jqXHR instance
  */
 function ajaxConvert( s, response, jqXHR, isSuccess ) {
-	var conv2, current, conv, tmp, prev,
-		converters = {},
+	var conv2; var current; var conv; var tmp; var prev;
+		var converters = {};
 
 		// Work with a copy of dataTypes in case we need to modify it for conversion
-		dataTypes = s.dataTypes.slice();
+		var dataTypes = s.dataTypes.slice();
 
 	// Create converters map with lowercased keys
 	if ( dataTypes[ 1 ] ) {
@@ -15783,61 +15783,61 @@ jQuery.extend( {
 		// Force options to be an object
 		options = options || {};
 
-		var transport,
+		var transport;
 
 			// URL without anti-cache param
-			cacheURL,
+			var cacheURL;
 
 			// Response headers
-			responseHeadersString,
-			responseHeaders,
+			var responseHeadersString;
+			var responseHeaders;
 
 			// timeout handle
-			timeoutTimer,
+			var timeoutTimer;
 
 			// Url cleanup var
-			urlAnchor,
+			var urlAnchor;
 
 			// Request state (becomes false upon send and true upon completion)
-			completed,
+			var completed;
 
 			// To know if global events are to be dispatched
-			fireGlobals,
+			var fireGlobals;
 
 			// Loop variable
-			i,
+			var i;
 
 			// uncached part of the url
-			uncached,
+			var uncached;
 
 			// Create the final options object
-			s = jQuery.ajaxSetup( {}, options ),
+			var s = jQuery.ajaxSetup( {}, options );
 
 			// Callbacks context
-			callbackContext = s.context || s,
+			var callbackContext = s.context || s;
 
 			// Context for global events is callbackContext if it is a DOM node or jQuery collection
-			globalEventContext = s.context &&
+			var globalEventContext = s.context &&
 				( callbackContext.nodeType || callbackContext.jquery ) ?
 					jQuery( callbackContext ) :
-					jQuery.event,
+					jQuery.event;
 
 			// Deferreds
-			deferred = jQuery.Deferred(),
-			completeDeferred = jQuery.Callbacks( "once memory" ),
+			var deferred = jQuery.Deferred();
+			var completeDeferred = jQuery.Callbacks( "once memory" );
 
 			// Status-dependent callbacks
-			statusCode = s.statusCode || {},
+			var statusCode = s.statusCode || {};
 
 			// Headers (they are sent all at once)
-			requestHeaders = {},
-			requestHeadersNames = {},
+			var requestHeaders = {};
+			var requestHeadersNames = {};
 
 			// Default abort message
-			strAbort = "canceled",
+			var strAbort = "canceled";
 
 			// Fake xhr
-			jqXHR = {
+			var jqXHR = {
 				readyState: 0,
 
 				// Builds headers hashtable if needed
@@ -16098,8 +16098,8 @@ jQuery.extend( {
 
 		// Callback for when everything is done
 		function done( status, nativeStatusText, responses, headers ) {
-			var isSuccess, success, error, response, modified,
-				statusText = nativeStatusText;
+			var isSuccess; var success; var error; var response; var modified;
+				var statusText = nativeStatusText;
 
 			// Ignore repeat invocations
 			if ( completed ) {
@@ -16305,8 +16305,8 @@ jQuery.fn.extend( {
 		}
 
 		return this.each( function() {
-			var self = jQuery( this ),
-				contents = self.contents();
+			var self = jQuery( this );
+				var contents = self.contents();
 
 			if ( contents.length ) {
 				contents.wrapAll( html );
@@ -16358,8 +16358,8 @@ var xhrSuccessStatus = {
 		// Support: IE <=9 only
 		// #1450: sometimes IE returns 1223 when it should be 204
 		1223: 204
-	},
-	xhrSupported = jQuery.ajaxSettings.xhr();
+	};
+	var xhrSupported = jQuery.ajaxSettings.xhr();
 
 support.cors = !!xhrSupported && ( "withCredentials" in xhrSupported );
 support.ajax = xhrSupported = !!xhrSupported;
@@ -16371,8 +16371,8 @@ jQuery.ajaxTransport( function( options ) {
 	if ( support.cors || xhrSupported && !options.crossDomain ) {
 		return {
 			send: function( headers, complete ) {
-				var i,
-					xhr = options.xhr();
+				var i;
+					var xhr = options.xhr();
 
 				xhr.open(
 					options.type,
@@ -16576,8 +16576,8 @@ jQuery.ajaxTransport( "script", function( s ) {
 
 
 
-var oldCallbacks = [],
-	rjsonp = /(=)\?(?=&|$)|\?\?/;
+var oldCallbacks = [];
+	var rjsonp = /(=)\?(?=&|$)|\?\?/;
 
 // Default jsonp settings
 jQuery.ajaxSetup( {
@@ -16592,8 +16592,8 @@ jQuery.ajaxSetup( {
 // Detect, normalize options and install callbacks for jsonp requests
 jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 
-	var callbackName, overwritten, responseContainer,
-		jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
+	var callbackName; var overwritten; var responseContainer;
+		var jsonProp = s.jsonp !== false && ( rjsonp.test( s.url ) ?
 			"url" :
 			typeof s.data === "string" &&
 				( s.contentType || "" )
@@ -16738,9 +16738,9 @@ jQuery.parseHTML = function( data, context, keepScripts ) {
  * Load a url into a page
  */
 jQuery.fn.load = function( url, params, callback ) {
-	var selector, type, response,
-		self = this,
-		off = url.indexOf( " " );
+	var selector; var type; var response;
+		var self = this;
+		var off = url.indexOf( " " );
 
 	if ( off > -1 ) {
 		selector = stripAndCollapse( url.slice( off ) );
@@ -16828,10 +16828,10 @@ jQuery.expr.pseudos.animated = function( elem ) {
 
 jQuery.offset = {
 	setOffset: function( elem, options, i ) {
-		var curPosition, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculatePosition,
-			position = jQuery.css( elem, "position" ),
-			curElem = jQuery( elem ),
-			props = {};
+		var curPosition; var curLeft; var curCSSTop; var curTop; var curOffset; var curCSSLeft; var calculatePosition;
+			var position = jQuery.css( elem, "position" );
+			var curElem = jQuery( elem );
+			var props = {};
 
 		// Set position first, in-case top/left are set even on static elem
 		if ( position === "static" ) {
@@ -16892,8 +16892,8 @@ jQuery.fn.extend( {
 				} );
 		}
 
-		var rect, win,
-			elem = this[ 0 ];
+		var rect; var win;
+			var elem = this[ 0 ];
 
 		if ( !elem ) {
 			return;
@@ -16923,9 +16923,9 @@ jQuery.fn.extend( {
 			return;
 		}
 
-		var offsetParent, offset, doc,
-			elem = this[ 0 ],
-			parentOffset = { top: 0, left: 0 };
+		var offsetParent; var offset; var doc;
+			var elem = this[ 0 ];
+			var parentOffset = { top: 0, left: 0 };
 
 		// position:fixed elements are offset from the viewport, which itself always has zero offset
 		if ( jQuery.css( elem, "position" ) === "fixed" ) {
@@ -16987,7 +16987,7 @@ jQuery.fn.extend( {
 
 // Create scrollLeft and scrollTop methods
 jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( method, prop ) {
-	var top = "pageYOffset" === prop;
+	var top = prop === "pageYOffset";
 
 	jQuery.fn[ method ] = function( val ) {
 		return access( this, function( elem, method, val ) {
@@ -17046,8 +17046,8 @@ jQuery.each( { Height: "height", Width: "width" }, function( name, type ) {
 
 		// Margin is only for outerHeight, outerWidth
 		jQuery.fn[ funcName ] = function( margin, value ) {
-			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" ),
-				extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
+			var chainable = arguments.length && ( defaultExtra || typeof margin !== "boolean" );
+				var extra = defaultExtra || ( margin === true || value === true ? "margin" : "border" );
 
 			return access( this, function( elem, type, value ) {
 				var doc;
@@ -17220,10 +17220,10 @@ if ( true ) {
 var
 
 	// Map over jQuery in case of overwrite
-	_jQuery = window.jQuery,
+	_jQuery = window.jQuery;
 
 	// Map over the $ in case of overwrite
-	_$ = window.$;
+	var _$ = window.$;
 
 jQuery.noConflict = function( deep ) {
 	if ( window.$ === jQuery ) {
@@ -17254,7 +17254,7 @@ return jQuery;
 /***/ }),
 
 /***/ "./node_modules/popper.js/dist/esm/popper.js":
-/*!***************************************************!*\
+/*! ***************************************************!*\
   !*** ./node_modules/popper.js/dist/esm/popper.js ***!
   \***************************************************/
 /*! exports provided: default */
@@ -17262,7 +17262,7 @@ return jQuery;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(global) {/**!
+/* WEBPACK VAR INJECTION */(function(global) {/** !
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.0
  * @license
@@ -17404,10 +17404,10 @@ function getScrollParent(element) {
 
   // Firefox want us to check `-x` and `-y` variations as well
 
-  var _getStyleComputedProp = getStyleComputedProperty(element),
-      overflow = _getStyleComputedProp.overflow,
-      overflowX = _getStyleComputedProp.overflowX,
-      overflowY = _getStyleComputedProp.overflowY;
+  var _getStyleComputedProp = getStyleComputedProperty(element);
+      var overflow = _getStyleComputedProp.overflow;
+      var overflowX = _getStyleComputedProp.overflowX;
+      var overflowY = _getStyleComputedProp.overflowY;
 
   if (/(auto|scroll|overlay)/.test(overflow + overflowY + overflowX)) {
     return element;
@@ -17911,9 +17911,9 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
 
     // In case of HTML, we need a different computation
     if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-      var _getWindowSizes = getWindowSizes(popper.ownerDocument),
-          height = _getWindowSizes.height,
-          width = _getWindowSizes.width;
+      var _getWindowSizes = getWindowSizes(popper.ownerDocument);
+          var height = _getWindowSizes.height;
+          var width = _getWindowSizes.width;
 
       boundaries.top += offsets.top - offsets.marginTop;
       boundaries.bottom = height + offsets.top;
@@ -17937,8 +17937,8 @@ function getBoundaries(popper, reference, padding, boundariesElement) {
 }
 
 function getArea(_ref) {
-  var width = _ref.width,
-      height = _ref.height;
+  var width = _ref.width;
+      var height = _ref.height;
 
   return width * height;
 }
@@ -17991,8 +17991,8 @@ function computeAutoPlacement(placement, refRect, popper, reference, boundariesE
   });
 
   var filteredAreas = sortedAreas.filter(function (_ref2) {
-    var width = _ref2.width,
-        height = _ref2.height;
+    var width = _ref2.width;
+        var height = _ref2.height;
     return width >= popper.clientWidth && height >= popper.clientHeight;
   });
 
@@ -18149,7 +18149,7 @@ function runModifiers(modifiers, data, ends) {
   var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
 
   modifiersToRun.forEach(function (modifier) {
-    if (modifier['function']) {
+    if (modifier.function) {
       // eslint-disable-line dot-notation
       console.warn('`modifier.function` is deprecated, use `modifier.fn`!');
     }
@@ -18229,8 +18229,8 @@ function update() {
  */
 function isModifierEnabled(modifiers, modifierName) {
   return modifiers.some(function (_ref) {
-    var name = _ref.name,
-        enabled = _ref.enabled;
+    var name = _ref.name;
+        var enabled = _ref.enabled;
     return enabled && name === modifierName;
   });
 }
@@ -18501,11 +18501,11 @@ function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
  * Only horizontal placement and left/right values need to be considered.
  */
 function getRoundedOffsets(data, shouldRound) {
-  var _data$offsets = data.offsets,
-      popper = _data$offsets.popper,
-      reference = _data$offsets.reference;
-  var round = Math.round,
-      floor = Math.floor;
+  var _data$offsets = data.offsets;
+      var popper = _data$offsets.popper;
+      var reference = _data$offsets.reference;
+  var round = Math.round;
+      var floor = Math.floor;
 
   var noRound = function noRound(v) {
     return v;
@@ -18540,8 +18540,8 @@ var isFirefox = isBrowser && /Firefox/i.test(navigator.userAgent);
  * @returns {Object} The data object, properly modified
  */
 function computeStyle(data, options) {
-  var x = options.x,
-      y = options.y;
+  var x = options.x;
+      var y = options.y;
   var popper = data.offsets.popper;
 
   // Remove this legacy support in Popper.js v2
@@ -18581,8 +18581,8 @@ function computeStyle(data, options) {
   // If we position a popper on top of a reference element, we can set
   // `x` to `top` to make the popper grow towards its top instead of
   // its bottom.
-  var left = void 0,
-      top = void 0;
+  var left = void 0;
+      var top = void 0;
   if (sideA === 'bottom') {
     // when offsetParent is <html> the positioning is relative to the bottom of the screen (excluding the scrollbar)
     // and not the bottom of the html element
@@ -18693,9 +18693,9 @@ function arrow(data, options) {
   }
 
   var placement = data.placement.split('-')[0];
-  var _data$offsets = data.offsets,
-      popper = _data$offsets.popper,
-      reference = _data$offsets.reference;
+  var _data$offsets = data.offsets;
+      var popper = _data$offsets.popper;
+      var reference = _data$offsets.reference;
 
   var isVertical = ['left', 'right'].indexOf(placement) !== -1;
 
@@ -18921,9 +18921,9 @@ function flip(data, options) {
  * @returns {Object} The data object, properly modified
  */
 function keepTogether(data) {
-  var _data$offsets = data.offsets,
-      popper = _data$offsets.popper,
-      reference = _data$offsets.reference;
+  var _data$offsets = data.offsets;
+      var popper = _data$offsets.popper;
+      var reference = _data$offsets.reference;
 
   var placement = data.placement.split('-')[0];
   var floor = Math.floor;
@@ -19084,10 +19084,10 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
  */
 function offset(data, _ref) {
   var offset = _ref.offset;
-  var placement = data.placement,
-      _data$offsets = data.offsets,
-      popper = _data$offsets.popper,
-      reference = _data$offsets.reference;
+  var placement = data.placement;
+      var _data$offsets = data.offsets;
+      var popper = _data$offsets.popper;
+      var reference = _data$offsets.reference;
 
   var basePlacement = placement.split('-')[0];
 
@@ -19138,9 +19138,9 @@ function preventOverflow(data, options) {
   // the size of the popper element itself
   var transformProp = getSupportedPropertyName('transform');
   var popperStyles = data.instance.popper.style; // assignment to help minification
-  var top = popperStyles.top,
-      left = popperStyles.left,
-      transform = popperStyles[transformProp];
+  var top = popperStyles.top;
+      var left = popperStyles.left;
+      var transform = popperStyles[transformProp];
 
   popperStyles.top = '';
   popperStyles.left = '';
@@ -19201,9 +19201,9 @@ function shift(data) {
 
   // if shift shiftvariation is specified, run the modifier
   if (shiftvariation) {
-    var _data$offsets = data.offsets,
-        reference = _data$offsets.reference,
-        popper = _data$offsets.popper;
+    var _data$offsets = data.offsets;
+        var reference = _data$offsets.reference;
+        var popper = _data$offsets.popper;
 
     var isVertical = ['bottom', 'top'].indexOf(basePlacement) !== -1;
     var side = isVertical ? 'left' : 'top';
@@ -19268,9 +19268,9 @@ function hide(data) {
 function inner(data) {
   var placement = data.placement;
   var basePlacement = placement.split('-')[0];
-  var _data$offsets = data.offsets,
-      popper = _data$offsets.popper,
-      reference = _data$offsets.reference;
+  var _data$offsets = data.offsets;
+      var popper = _data$offsets.popper;
+      var reference = _data$offsets.reference;
 
   var isHoriz = ['left', 'right'].indexOf(basePlacement) !== -1;
 
@@ -19876,15 +19876,15 @@ Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
 Popper.placements = placements;
 Popper.Defaults = Defaults;
 
-/* harmony default export */ __webpack_exports__["default"] = (Popper);
-//# sourceMappingURL=popper.js.map
+/* harmony default export */ __webpack_exports__.default = (Popper);
+// # sourceMappingURL=popper.js.map
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
 /***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
+/*! *****************************************!*\
   !*** ./node_modules/process/browser.js ***!
   \*****************************************/
 /*! no static exports found */
@@ -19929,7 +19929,7 @@ function defaultClearTimeout () {
 } ())
 function runTimeout(fun) {
     if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
+        // normal enviroments in sane situations
         return setTimeout(fun, 0);
     }
     // if setTimeout wasn't available but was latter defined
@@ -19954,7 +19954,7 @@ function runTimeout(fun) {
 }
 function runClearTimeout(marker) {
     if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
+        // normal enviroments in sane situations
         return clearTimeout(marker);
     }
     // if clearTimeout wasn't available but was latter defined
@@ -20079,7 +20079,7 @@ process.umask = function() { return 0; };
 /***/ }),
 
 /***/ "./node_modules/regenerator-runtime/runtime.js":
-/*!*****************************************************!*\
+/*! *****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
 /*! no static exports found */
@@ -20396,7 +20396,7 @@ var runtime = (function (exports) {
 
       if (context.method === "throw") {
         // Note: ["return"] must be used for ES3 parsing compatibility.
-        if (delegate.iterator["return"]) {
+        if (delegate.iterator.return) {
           // If the delegate iterator has a return method, give it a
           // chance to clean up.
           context.method = "return";
@@ -20555,7 +20555,7 @@ var runtime = (function (exports) {
       }
 
       if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
+        var i = -1; var next = function next() {
           while (++i < iterable.length) {
             if (hasOwn.call(iterable, i)) {
               next.value = iterable[i];
@@ -20816,7 +20816,7 @@ try {
 /***/ }),
 
 /***/ "./node_modules/setimmediate/setImmediate.js":
-/*!***************************************************!*\
+/*! ***************************************************!*\
   !*** ./node_modules/setimmediate/setImmediate.js ***!
   \***************************************************/
 /*! no static exports found */
@@ -21014,7 +21014,7 @@ try {
 /***/ }),
 
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+/*! ********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss& ***!
   \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
@@ -21044,7 +21044,7 @@ if(false) {}
 /***/ }),
 
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/App.vue?vue&type=style&index=0&lang=css&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+/*! *********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/App.vue?vue&type=style&index=0&lang=css& ***!
   \*********************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
@@ -21074,7 +21074,7 @@ if(false) {}
 /***/ }),
 
 /***/ "./node_modules/style-loader/lib/addStyles.js":
-/*!****************************************************!*\
+/*! ****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
   \****************************************************/
 /*! no static exports found */
@@ -21483,7 +21483,7 @@ function updateLink (link, options, obj) {
 /***/ }),
 
 /***/ "./node_modules/style-loader/lib/urls.js":
-/*!***********************************************!*\
+/*! ***********************************************!*\
   !*** ./node_modules/style-loader/lib/urls.js ***!
   \***********************************************/
 /*! no static exports found */
@@ -21561,7 +21561,7 @@ module.exports = function (css) {
 		var newUrl;
 
 		if (unquotedOrigUrl.indexOf("//") === 0) {
-		  	//TODO: should we add protocol?
+		  	// TODO: should we add protocol?
 			newUrl = unquotedOrigUrl;
 		} else if (unquotedOrigUrl.indexOf("/") === 0) {
 			// path should be relative to the base url
@@ -21583,7 +21583,7 @@ module.exports = function (css) {
 /***/ }),
 
 /***/ "./node_modules/timers-browserify/main.js":
-/*!************************************************!*\
+/*! ************************************************!*\
   !*** ./node_modules/timers-browserify/main.js ***!
   \************************************************/
 /*! no static exports found */
@@ -21658,7 +21658,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/App.vue?vue&type=template&id=66ab2f82&":
-/*!**************************************************************************************************************************************************************************************************!*\
+/*! **************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/App.vue?vue&type=template&id=66ab2f82& ***!
   \**************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
@@ -21682,7 +21682,7 @@ render._withStripped = true
 /***/ }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=template&id=2e00a526&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
+/*! *******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/LoginForm.vue?vue&type=template&id=2e00a526& ***!
   \*******************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
@@ -21817,7 +21817,7 @@ render._withStripped = true
 /***/ }),
 
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/Login.vue?vue&type=template&id=33212926&":
-/*!**********************************************************************************************************************************************************************************************************!*\
+/*! **********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/Login.vue?vue&type=template&id=33212926& ***!
   \**********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
@@ -21841,7 +21841,7 @@ render._withStripped = true
 /***/ }),
 
 /***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
-/*!********************************************************************!*\
+/*! ********************************************************************!*\
   !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
   \********************************************************************/
 /*! exports provided: default */
@@ -21948,7 +21948,7 @@ function normalizeComponent (
 /***/ }),
 
 /***/ "./node_modules/vue-router/dist/vue-router.esm.js":
-/*!********************************************************!*\
+/*! ********************************************************!*\
   !*** ./node_modules/vue-router/dist/vue-router.esm.js ***!
   \********************************************************/
 /*! exports provided: default */
@@ -23912,7 +23912,7 @@ function isESModule (obj) {
 function once (fn) {
   var called = false;
   return function () {
-    var args = [], len = arguments.length;
+    var args = []; var len = arguments.length;
     while ( len-- ) args[ len ] = arguments[ len ];
 
     if (called) { return }
@@ -23921,7 +23921,7 @@ function once (fn) {
   }
 }
 
-var NavigationDuplicated = /*@__PURE__*/(function (Error) {
+var NavigationDuplicated = /* @__PURE__ */(function (Error) {
   function NavigationDuplicated (normalizedLocation) {
     Error.call(this);
     this.name = this._name = 'NavigationDuplicated';
@@ -24275,7 +24275,7 @@ function poll (
 
 /*  */
 
-var HTML5History = /*@__PURE__*/(function (History) {
+var HTML5History = /* @__PURE__ */(function (History) {
   function HTML5History (router, base) {
     var this$1 = this;
 
@@ -24363,7 +24363,7 @@ function getLocation (base) {
 
 /*  */
 
-var HashHistory = /*@__PURE__*/(function (History) {
+var HashHistory = /* @__PURE__ */(function (History) {
   function HashHistory (router, base, fallback) {
     History.call(this, router, base);
     // check history fallback deeplinking
@@ -24528,7 +24528,7 @@ function replaceHash (path) {
 
 /*  */
 
-var AbstractHistory = /*@__PURE__*/(function (History) {
+var AbstractHistory = /* @__PURE__ */(function (History) {
   function AbstractHistory (router, base) {
     History.call(this, router, base);
     this.stack = [];
@@ -24837,13 +24837,13 @@ if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (VueRouter);
+/* harmony default export */ __webpack_exports__.default = (VueRouter);
 
 
 /***/ }),
 
 /***/ "./node_modules/vue/dist/vue.common.dev.js":
-/*!*************************************************!*\
+/*! *************************************************!*\
   !*** ./node_modules/vue/dist/vue.common.dev.js ***!
   \*************************************************/
 /*! no static exports found */
@@ -25414,7 +25414,7 @@ var isServerRendering = function () {
     if (!inBrowser && !inWeex && typeof global !== 'undefined') {
       // detect presence of vue-server-renderer and avoid
       // Webpack shimming the process
-      _isServer = global['process'] && global['process'].env.VUE_ENV === 'server';
+      _isServer = global.process && global.process.env.VUE_ENV === 'server';
     } else {
       _isServer = false;
     }
@@ -25441,7 +25441,7 @@ if (typeof Set !== 'undefined' && isNative(Set)) {
   _Set = Set;
 } else {
   // a non-standard Set polyfill that only works with primitive keys.
-  _Set = /*@__PURE__*/(function () {
+  _Set = /* @__PURE__ */(function () {
     function Set () {
       this.set = Object.create(null);
     }
@@ -25725,7 +25725,7 @@ methodsToPatch.forEach(function (method) {
   // cache original method
   var original = arrayProto[method];
   def(arrayMethods, method, function mutator () {
-    var args = [], len = arguments.length;
+    var args = []; var len = arguments.length;
     while ( len-- ) args[ len ] = arguments[ len ];
 
     var result = original.apply(this, args);
@@ -26664,7 +26664,7 @@ function isExplicable (value) {
 }
 
 function isBoolean () {
-  var args = [], len = arguments.length;
+  var args = []; var len = arguments.length;
   while ( len-- ) args[ len ] = arguments[ len ];
 
   return args.some(function (elem) { return elem.toLowerCase() === 'boolean'; })
@@ -30001,7 +30001,7 @@ function initExtend (Vue) {
       Super.options,
       extendOptions
     );
-    Sub['super'] = Super;
+    Sub.super = Super;
 
     // For props and computed properties, we define the proxy getters on
     // the Vue instances at extension time, on the extended prototype. This
@@ -30580,7 +30580,7 @@ function setStyleScope (node, scopeId) {
   node.setAttribute(scopeId, '');
 }
 
-var nodeOps = /*#__PURE__*/Object.freeze({
+var nodeOps = /* #__PURE__ */Object.freeze({
   createElement: createElement$1,
   createElementNS: createElementNS,
   createTextNode: createTextNode,
@@ -31281,9 +31281,9 @@ function createPatchFunction (backend) {
             break
           }
         }
-        if (!fullInvoke && data['class']) {
+        if (!fullInvoke && data.class) {
           // ensure collecting deps for deep class bindings for future updates
-          traverse(data['class']);
+          traverse(data.class);
         }
       }
     } else if (elm.data !== vnode.text) {
@@ -33979,7 +33979,7 @@ function transformNode (el, options) {
         'Interpolation inside attributes has been removed. ' +
         'Use v-bind or the colon shorthand instead. For example, ' +
         'instead of <div class="{{ val }}">, use <div :class="val">.',
-        el.rawAttrsMap['class']
+        el.rawAttrsMap.class
       );
     }
   }
@@ -34024,7 +34024,7 @@ function transformNode$1 (el, options) {
           'Interpolation inside attributes has been removed. ' +
           'Use v-bind or the colon shorthand instead. For example, ' +
           'instead of <div style="{{ val }}">, use <div :style="val">.',
-          el.rawAttrsMap['style']
+          el.rawAttrsMap.style
         );
       }
     }
@@ -34194,7 +34194,7 @@ function parseHTML (html, options) {
         }
       }
 
-      var text = (void 0), rest = (void 0), next = (void 0);
+      var text = (void 0); var rest = (void 0); var next = (void 0);
       if (textEnd >= 0) {
         rest = html.slice(textEnd);
         while (
@@ -34964,7 +34964,7 @@ function processSlotContent (el) {
         "replaced by \"slot-scope\" since 2.5. The new \"slot-scope\" attribute " +
         "can also be used on plain elements in addition to <template> to " +
         "denote scoped slots.",
-        el.rawAttrsMap['scope'],
+        el.rawAttrsMap.scope,
         true
       );
     }
@@ -36815,7 +36815,7 @@ module.exports = Vue;
 /***/ }),
 
 /***/ "./node_modules/vue/dist/vue.common.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/vue/dist/vue.common.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -36829,7 +36829,7 @@ if (false) {} else {
 /***/ }),
 
 /***/ "./node_modules/vuex/dist/vuex.esm.js":
-/*!********************************************!*\
+/*! ********************************************!*\
   !*** ./node_modules/vuex/dist/vuex.esm.js ***!
   \********************************************/
 /*! exports provided: default, Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers */
@@ -37722,7 +37722,7 @@ var mapMutations = normalizeNamespace(function (namespace, mutations) {
     var val = ref.val;
 
     res[key] = function mappedMutation () {
-      var args = [], len = arguments.length;
+      var args = []; var len = arguments.length;
       while ( len-- ) args[ len ] = arguments[ len ];
 
       // Get the commit method from store
@@ -37791,7 +37791,7 @@ var mapActions = normalizeNamespace(function (namespace, actions) {
     var val = ref.val;
 
     res[key] = function mappedAction () {
-      var args = [], len = arguments.length;
+      var args = []; var len = arguments.length;
       while ( len-- ) args[ len ] = arguments[ len ];
 
       // get dispatch function from store
@@ -37891,7 +37891,7 @@ var index_esm = {
   createNamespacedHelpers: createNamespacedHelpers
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+/* harmony default export */ __webpack_exports__.default = (index_esm);
 
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
@@ -37899,7 +37899,7 @@ var index_esm = {
 /***/ }),
 
 /***/ "./node_modules/webpack/buildin/global.js":
-/*!***********************************!*\
+/*! ***********************************!*\
   !*** (webpack)/buildin/global.js ***!
   \***********************************/
 /*! no static exports found */
@@ -37930,7 +37930,7 @@ module.exports = g;
 /***/ }),
 
 /***/ "./resources/assets/js/App.vue":
-/*!*************************************!*\
+/*! *************************************!*\
   !*** ./resources/assets/js/App.vue ***!
   \*************************************/
 /*! exports provided: default */
@@ -37948,10 +37948,10 @@ var script = {}
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
   script,
-  _App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__.render,
+  _App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -37962,12 +37962,12 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/assets/js/App.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+/* harmony default export */ __webpack_exports__.default = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/assets/js/App.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************!*\
+/*! **********************************************************************!*\
   !*** ./resources/assets/js/App.vue?vue&type=style&index=0&lang=css& ***!
   \**********************************************************************/
 /*! no static exports found */
@@ -37976,14 +37976,14 @@ component.options.__file = "resources/assets/js/App.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader/dist/cjs.js??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/App.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* harmony default export */ __webpack_exports__.default = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
 /***/ "./resources/assets/js/App.vue?vue&type=template&id=66ab2f82&":
-/*!********************************************************************!*\
+/*! ********************************************************************!*\
   !*** ./resources/assets/js/App.vue?vue&type=template&id=66ab2f82& ***!
   \********************************************************************/
 /*! exports provided: render, staticRenderFns */
@@ -37992,16 +37992,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./App.vue?vue&type=template&id=66ab2f82& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/App.vue?vue&type=template&id=66ab2f82&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__.render; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_App_vue_vue_type_template_id_66ab2f82___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; });
 
 
 
 /***/ }),
 
 /***/ "./resources/assets/js/app.js":
-/*!************************************!*\
+/*! ************************************!*\
   !*** ./resources/assets/js/app.js ***!
   \************************************/
 /*! no exports provided */
@@ -38010,11 +38010,11 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /* #__PURE__ */__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /* #__PURE__ */__webpack_require__.n(bootstrap__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @store/store */ "./resources/assets/js/store/store.js");
 /* harmony import */ var _router_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @router/routes */ "./resources/assets/js/router/routes.js");
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./App.vue */ "./resources/assets/js/App.vue");
@@ -38032,17 +38032,17 @@ __webpack_require__.r(__webpack_exports__);
  // bootstrap the app
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  router: _router_routes__WEBPACK_IMPORTED_MODULE_4__["default"],
-  store: _store_store__WEBPACK_IMPORTED_MODULE_3__["default"],
+  router: _router_routes__WEBPACK_IMPORTED_MODULE_4__.default,
+  store: _store_store__WEBPACK_IMPORTED_MODULE_3__.default,
   components: {
-    App: _App_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    App: _App_vue__WEBPACK_IMPORTED_MODULE_5__.default
   }
 }).$mount('#app');
 
 /***/ }),
 
 /***/ "./resources/assets/js/assets/images/logo.png":
-/*!****************************************************!*\
+/*! ****************************************************!*\
   !*** ./resources/assets/js/assets/images/logo.png ***!
   \****************************************************/
 /*! no static exports found */
@@ -38053,7 +38053,7 @@ module.exports = "/images/logo.png?456a6c7fddbe9a2c181e49d6e690adef";
 /***/ }),
 
 /***/ "./resources/assets/js/components/LoginForm.vue":
-/*!******************************************************!*\
+/*! ******************************************************!*\
   !*** ./resources/assets/js/components/LoginForm.vue ***!
   \******************************************************/
 /*! exports provided: default */
@@ -38073,10 +38073,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _LoginForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__.default)(
+  _LoginForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__.render,
+  _LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -38087,12 +38087,12 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/assets/js/components/LoginForm.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+/* harmony default export */ __webpack_exports__.default = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/assets/js/components/LoginForm.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
+/*! *******************************************************************************!*\
   !*** ./resources/assets/js/components/LoginForm.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
 /*! exports provided: default */
@@ -38101,12 +38101,12 @@ component.options.__file = "resources/assets/js/components/LoginForm.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./LoginForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__.default = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
 /***/ "./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss&":
-/*!****************************************************************************************!*\
+/*! ****************************************************************************************!*\
   !*** ./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss& ***!
   \****************************************************************************************/
 /*! no static exports found */
@@ -38115,14 +38115,14 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/lib/loader.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./LoginForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/dist/cjs.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=style&index=0&lang=scss&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* harmony default export */ __webpack_exports__.default = (_node_modules_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_lib_loader_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
 /***/ "./resources/assets/js/components/LoginForm.vue?vue&type=template&id=2e00a526&":
-/*!*************************************************************************************!*\
+/*! *************************************************************************************!*\
   !*** ./resources/assets/js/components/LoginForm.vue?vue&type=template&id=2e00a526& ***!
   \*************************************************************************************/
 /*! exports provided: render, staticRenderFns */
@@ -38131,16 +38131,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./LoginForm.vue?vue&type=template&id=2e00a526& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/LoginForm.vue?vue&type=template&id=2e00a526&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__.render; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_LoginForm_vue_vue_type_template_id_2e00a526___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; });
 
 
 
 /***/ }),
 
 /***/ "./resources/assets/js/router/routes.js":
-/*!**********************************************!*\
+/*! **********************************************!*\
   !*** ./resources/assets/js/router/routes.js ***!
   \**********************************************/
 /*! exports provided: default */
@@ -38149,19 +38149,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_Login_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @views/Login.vue */ "./resources/assets/js/views/Login.vue");
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-/* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
+/* harmony default export */ __webpack_exports__.default = (new vue_router__WEBPACK_IMPORTED_MODULE_1__.default({
   mode: 'history',
   routes: [{
     path: '/',
     name: 'login',
-    component: _views_Login_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    component: _views_Login_vue__WEBPACK_IMPORTED_MODULE_2__.default
   }, {
     path: '*',
     redirect: '/'
@@ -38171,7 +38171,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 /***/ }),
 
 /***/ "./resources/assets/js/services/api/api.js":
-/*!*************************************************!*\
+/*! *************************************************!*\
   !*** ./resources/assets/js/services/api/api.js ***!
   \*************************************************/
 /*! exports provided: default */
@@ -38180,7 +38180,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -38196,7 +38196,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 
 var Api =
-/*#__PURE__*/
+/* #__PURE__ */
 function () {
   function Api(baseurl, resource) {
     _classCallCheck(this, Api);
@@ -38308,12 +38308,12 @@ function () {
   return Api;
 }();
 
-/* harmony default export */ __webpack_exports__["default"] = (Api);
+/* harmony default export */ __webpack_exports__.default = (Api);
 
 /***/ }),
 
 /***/ "./resources/assets/js/services/api/authApi.js":
-/*!*****************************************************!*\
+/*! *****************************************************!*\
   !*** ./resources/assets/js/services/api/authApi.js ***!
   \*****************************************************/
 /*! exports provided: default */
@@ -38323,8 +38323,8 @@ function () {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ "./resources/assets/js/services/api/api.js");
 
-var api = new _api__WEBPACK_IMPORTED_MODULE_0__["default"](process.env.VUE_APP_BASE_URL, '/auth');
-/* harmony default export */ __webpack_exports__["default"] = ({
+var api = new _api__WEBPACK_IMPORTED_MODULE_0__.default(process.env.VUE_APP_BASE_URL, '/auth');
+/* harmony default export */ __webpack_exports__.default = ({
   getDetail: function getDetail() {
     return api.call('get', "/detail");
   }
@@ -38334,7 +38334,7 @@ var api = new _api__WEBPACK_IMPORTED_MODULE_0__["default"](process.env.VUE_APP_B
 /***/ }),
 
 /***/ "./resources/assets/js/store/store.js":
-/*!********************************************!*\
+/*! ********************************************!*\
   !*** ./resources/assets/js/store/store.js ***!
   \********************************************/
 /*! exports provided: default */
@@ -38343,12 +38343,12 @@ var api = new _api__WEBPACK_IMPORTED_MODULE_0__["default"](process.env.VUE_APP_B
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /* #__PURE__ */__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__.default);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_1__.default.Store({
   state: {
     count: 0
   },
@@ -38358,12 +38358,12 @@ var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
     }
   }
 });
-/* harmony default export */ __webpack_exports__["default"] = (store);
+/* harmony default export */ __webpack_exports__.default = (store);
 
 /***/ }),
 
 /***/ "./resources/assets/js/views/Login.vue":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./resources/assets/js/views/Login.vue ***!
   \*********************************************/
 /*! exports provided: default */
@@ -38381,10 +38381,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__.render,
+  _Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -38395,12 +38395,12 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/assets/js/views/Login.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+/* harmony default export */ __webpack_exports__.default = (component.exports);
 
 /***/ }),
 
 /***/ "./resources/assets/js/views/Login.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
+/*! **********************************************************************!*\
   !*** ./resources/assets/js/views/Login.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
 /*! exports provided: default */
@@ -38409,12 +38409,12 @@ component.options.__file = "resources/assets/js/views/Login.vue"
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/Login.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__.default = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
 /***/ "./resources/assets/js/views/Login.vue?vue&type=template&id=33212926&":
-/*!****************************************************************************!*\
+/*! ****************************************************************************!*\
   !*** ./resources/assets/js/views/Login.vue?vue&type=template&id=33212926& ***!
   \****************************************************************************/
 /*! exports provided: render, staticRenderFns */
@@ -38423,16 +38423,16 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=template&id=33212926& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/Login.vue?vue&type=template&id=33212926&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__.render; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_template_id_33212926___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns; });
 
 
 
 /***/ }),
 
 /***/ "./resources/assets/sass/app.scss":
-/*!****************************************!*\
+/*! ****************************************!*\
   !*** ./resources/assets/sass/app.scss ***!
   \****************************************/
 /*! no static exports found */
@@ -38443,7 +38443,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!***************************************************************************!*\
+/*! ***************************************************************************!*\
   !*** multi ./resources/assets/js/app.js ./resources/assets/sass/app.scss ***!
   \***************************************************************************/
 /*! no static exports found */

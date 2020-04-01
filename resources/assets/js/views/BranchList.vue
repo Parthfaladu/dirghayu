@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-usb icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>BRANCH LIST</div>
@@ -15,7 +15,7 @@
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-12">
 	            <h5 class="card-title">
-	            	<router-link to="/add-branch" class="btn btn-info mb-5">Add Branch</router-link>
+	            	<router-link to="/add-branch" class="btn btn-outline-primary mb-5 pull-right">Add Branch</router-link>
 	            </h5>
 				<div class="table-responsive">
 	           		<BranchTable></BranchTable>

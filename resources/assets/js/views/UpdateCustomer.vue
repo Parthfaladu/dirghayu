@@ -5,65 +5,65 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-user icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>CUSTOMER DETAIL</div>
 	            </div>    
 	        </div>
 	    </div> 
-        <form  @submit.prevent="submitForm()" enctype="multipart/form-data">     
+        <form  enctype="multipart/form-data" @submit.prevent="submitForm()">     
             <div class="row">    
                 <div class="col-lg-6">
                     <div class="main-card mb-3 card">
                         <div class="card-body"><h5 class="card-title">Personal Detail</h5>
-                            <div class="position-relative form-group">
+                            <!-- <div class="position-relative form-group">
                                 <label for="branch_id">Branch</label>
-                                <select class="form-control" name="branch_id" v-model="user.branch_id" id="branch_id" required>
+                                <select id="branch_id" v-model="user.branch_id" class="form-control" name="branch_id" required>
                                     <option v-for="branch in branches" :key="branch.id" :value="branch.id" :selected="user.branch_id ===  branch.id">{{branch.name}}</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="position-relative form-group">
                                 <label for="first_name">First Name</label>
-                                <input type="text" class="form-control" name="first_name" v-model="user.first_name" id="first_name" required>
+                                <input id="first_name" v-model="user.first_name" type="text" class="form-control" name="first_name" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="last_name">Last Name</label>
-                                <input type="text" class="form-control" name="last_name" v-model="user.last_name" id="last_name" required>
+                                <input id="last_name" v-model="user.last_name" type="text" class="form-control" name="last_name" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="email" >Email</label>
-                                <input type="email" class="form-control" name="email" v-model="user.email" id="name" required>
+                                <input id="name" v-model="user.email" type="email" class="form-control" name="email" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" name="password" v-model="user.password" id="password" required>
+                                <input id="password" v-model="user.password" type="password" class="form-control" name="password" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="gender">Gender</label>
                                 <div class="ml-1 row">
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="defaultGroupExample1" name="gender" value="male" :checked="user.gender === 'male'" v-model="user.gender">
+                                        <input id="defaultGroupExample1" v-model="user.gender" type="radio" class="custom-control-input" name="gender" value="male" :checked="user.gender === 'male'">
                                         <label class="custom-control-label" for="defaultGroupExample1">Male &nbsp;</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="gender" value="female" checked :checked="user.gender === 'female'" v-model="user.gender">
+                                        <input id="defaultGroupExample2" v-model="user.gender" type="radio" class="custom-control-input" name="gender" value="female" checked :checked="user.gender === 'female'">
                                         <label class="custom-control-label" for="defaultGroupExample2">&nbsp;Female</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="dob">Date Of Birth</label>
-                                <input type="text" class="form-control" name="dob" v-model="user.dob" id="dob" required>
+                                <input id="dob" v-model="user.dob" type="text" class="form-control" name="dob" required>
                             </div>
                             <div class="position-relative form-group">
-                                <label for="profile_img_path">Profile Photo</label>
-                                <img v-bind:src="profile_img_path" v-show="showPreview" width="20%" style="border: 1px solid #cac2c2;" />
-                                <input type="file" class="form-control" accept="image/*" name="profilePath" id="profilePath" ref="profilePath" @change="onImageUpload()" style="display:none;">             
+                                <label for="profile_img_path">Profile Photo</label><br>
+                                <img v-show="showPreview" :src="profile_img_path" width="20%" style="border: 1px solid #cac2c2;" />
+                                <input id="profilePath" ref="profilePath" type="file" class="form-control" accept="image/*" name="profilePath" style="display:none;" @change="onImageUpload()">             
                             </div>
                             <div class="position-relative form-group">
                                 <label></label>
-                                <button @click.prevent="$refs.profilePath.click()" class="btn btn-info">Upload Image</button>
+                                <button class="btn btn-info" @click.prevent="$refs.profilePath.click()">Upload Image</button>
                             </div>
                         </div>
                     </div>
@@ -74,35 +74,35 @@
                         <div class="card-body"><h5 class="card-title">physical detail</h5>
                            <div class="position-relative form-group">
                                 <label for="height">Height</label>
-                                <input type="text" class="form-control" name="height" v-model="customer.height" id="height" required>
+                                <input id="height" v-model="customer.height" type="text" class="form-control" name="height" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="weight">Weight</label>
-                                <input type="text" class="form-control" name="weight" v-model="customer.weight" id="weight" required>
+                                <input id="weight" v-model="customer.weight" type="text" class="form-control" name="weight" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="chest">Chest</label>
-                                <input type="text" class="form-control" name="chest" v-model="customer.chest" id="chest" required>
+                                <input id="chest" v-model="customer.chest" type="text" class="form-control" name="chest" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="waist">Waist</label>
-                                <input type="text" class="form-control" name="waist" v-model="customer.waist" id="waist" required>
+                                <input id="waist" v-model="customer.waist" type="text" class="form-control" name="waist" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="thigh">Thigh</label>
-                                <input type="text" class="form-control" name="thigh" v-model="customer.thigh" id="thigh" required>
+                                <input id="thigh" v-model="customer.thigh" type="text" class="form-control" name="thigh" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="arms">Arms</label>
-                                <input type="text" class="form-control" name="arms" v-model="customer.arms" id="arms" required>
+                                <input id="arms" v-model="customer.arms" type="text" class="form-control" name="arms" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="fat">Fat</label>
-                                <input type="text" class="form-control" name="fat" v-model="customer.fat" id="fat" required>
+                                <input id="fat" v-model="customer.fat" type="text" class="form-control" name="fat" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="interested_area">Interested Area</label>
-                                <textarea rows="2" class="form-control" name="interested_area" v-model="customer.interested_area" id="interested_area" required></textarea>
+                                <textarea id="interested_area" v-model="customer.interested_area" rows="2" class="form-control" name="interested_area" required></textarea>
                             </div>
                         </div>
                     </div>
@@ -113,30 +113,30 @@
                         <div class="card-body"><h5 class="card-title">Contact Detail</h5>
                            <div class="position-relative form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" name="phone" v-model="user.phone" id="phone" required>
+                                <input id="phone" v-model="user.phone" type="text" class="form-control" name="phone" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="address">Address</label>
-                                <textarea rows="2" class="form-control" name="address" v-model="user.address" id="address" required></textarea>
+                                <textarea id="address" v-model="user.address" rows="2" class="form-control" name="address" required></textarea>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" name="city" v-model="customer.city" id="city" required>
+                                <input id="city" v-model="customer.city" type="text" class="form-control" name="city" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="state">State</label>
-                                <input type="text" class="form-control" name="state" v-model="customer.state" id="state" required>
+                                <input id="state" v-model="customer.state" type="text" class="form-control" name="state" required>
                             </div>
                             <div class="position-relative form-group">
                                 <label for="zipcode">Zipcode</label>
-                                <input type="text" class="form-control" name="zipcode" v-model="customer.zipcode" id="zipcode" required>
+                                <input id="zipcode" v-model="customer.zipcode" type="text" class="form-control" name="zipcode" required>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-center mb-4 mt-3 col-sm-12">
-                    <button class="btn btn-primary" style="width:23%" type="submit">SUBMIT</button>
+                    <button class="btn btn-outline-info" style="width:23%" type="submit">SUBMIT</button>
                 </div>
             </div>
         </form>
@@ -171,7 +171,7 @@ export default {
                
             },
             user:{
-                branch_id: 1,
+                //branch_id: 1,
                 gender:"female",
                 first_name: null,
                 last_name: null,
@@ -190,16 +190,16 @@ export default {
 	},
 	async mounted() {
 		try {
-            let res      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+            const res      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
             this.packages = res.data.data
 
-            let branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-            this.branches = branchRes.data.data
+            // const branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+            // this.branches = branchRes.data.data
 
             if(this.$route.params.id != null)
 			{
-				let id        = this.$route.params.id
-				let res       = await axios.get('/api/v1/customer/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id        = this.$route.params.id
+				const res       = await axios.get('/api/v1/customer/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
                 this.customer = res.data.data.customer
                 this.user     = res.data.data
 				this.profile_img_path = this.user.photo_url;
@@ -218,8 +218,8 @@ export default {
 			 	if(this.customer) 
 			 	{
                     let res = null
-                    let customerData = new FormData()
-                    customerData.append('branch_id', this.user.branch_id)
+                    const customerData = new FormData()
+                    //customerData.append('branch_id', this.user.branch_id)
 					customerData.append('gender', this.user.gender)
                     customerData.append('first_name', this.user.first_name)
 					customerData.append('last_name', this.user.last_name)
@@ -263,7 +263,7 @@ export default {
         onImageUpload() {
             this.user.profileImage = this.$refs.profilePath.files[0];
 
-            let reader  = new FileReader();
+            const reader  = new FileReader();
             reader.addEventListener("load", function () {
                 this.showPreview = true;
                 this.profile_img_path = reader.result;

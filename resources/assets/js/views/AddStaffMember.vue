@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-user icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>STAFF MEMBER DETAIL</div>
@@ -15,75 +15,75 @@
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-6 offset-sm-3">
 	            <h5 class="card-title"></h5>
-	            <form  @submit.prevent="submitForm()" enctype="multipart/form-data">
+	            <form  enctype="multipart/form-data" @submit.prevent="submitForm()">
 	                
-	                <div class="position-relative form-group">
+	                <!-- <div class="position-relative form-group">
                         <label for="branchId">Branch</label>
-                        <select class="form-control" name="branchId" v-model="staff.branchId" id="branchId" required>
+                        <select id="branchId" v-model="staff.branchId" class="form-control" name="branchId" required>
                         	<option v-for="branch in branches" :key="branch.id" :value="branch.id" :selected="staff.branchId ===  branch.id">{{branch.name}}</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="position-relative form-group">
                         <label for="roleId">Staff Role</label>
-                        <select class="form-control" name="roleId" v-model="staff.roleId" id="roleId" required>
+                        <select id="roleId" v-model="staff.roleId" class="form-control" name="roleId" required>
                         	<option value="2">Manager</option>
                         	<option value="3">Staff Member</option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" name="firstName" v-model="staff.firstName" id="firstName" required>
+                        <input id="firstName" v-model="staff.firstName" type="text" class="form-control" name="firstName" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" v-model="staff.lastName" id="lastName" required>
+                        <input id="lastName" v-model="staff.lastName" type="text" class="form-control" name="lastName" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" v-model="staff.email" id="name" required>
+                        <input id="name" v-model="staff.email" type="email" class="form-control" name="email" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" v-model="staff.password" id="password" required>
+                        <input id="password" v-model="staff.password" type="password" class="form-control" name="password" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="phone">Phone</label>
-                        <input type="text" class="form-control" name="phone" v-model="staff.phone" id="phone" required>
+                        <input id="phone" v-model="staff.phone" type="text" class="form-control" name="phone" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="dob">Date Of Birth</label>
-                        <input type="text" class="form-control" name="dob" v-model="staff.dob" id="dob" required>
+                        <input id="dob" v-model="staff.dob" type="text" class="form-control" name="dob" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="gender">Gender</label>
 						<div class="ml-1 row">
 							<div class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" id="defaultGroupExample1" name="gender" value="male" :checked="staff.gender === 'male'" v-model="staff.gender">
+								<input id="defaultGroupExample1" v-model="staff.gender" type="radio" class="custom-control-input" name="gender" value="male" :checked="staff.gender === 'male'">
 								<label class="custom-control-label" for="defaultGroupExample1">Male &nbsp;</label>
 							</div>
 							<div class="custom-control custom-radio">
-								<input type="radio" class="custom-control-input" id="defaultGroupExample2" name="gender" value="female" checked :checked="staff.gender === 'female'" v-model="staff.gender">
+								<input id="defaultGroupExample2" v-model="staff.gender" type="radio" class="custom-control-input" name="gender" value="female" checked :checked="staff.gender === 'female'">
 								<label class="custom-control-label" for="defaultGroupExample2">&nbsp;Female</label>
 							</div>
 						</div>
                     </div>
                     <div class="position-relative form-group">
                         <label for="address">Address</label>
-                        <textarea rows="2" class="form-control" name="address" v-model="staff.address" id="address" required></textarea>
+                        <textarea id="address" v-model="staff.address" rows="2" class="form-control" name="address" required></textarea>
                     </div>
 					<div class="position-relative form-group">
-                        <label for="profile_img_path">Profile Photo</label>
-						<img v-bind:src="profile_img_path" v-show="showPreview" width="20%" style="border: 1px solid #cac2c2;" />
-						<input type="file" class="form-control" accept="image/*" name="profilePath" id="profilePath" ref="profilePath" @change="onImageUpload()" style="display:none;">
+                        <label for="profile_img_path">Profile Photo</label><br>
+						<img v-show="showPreview" :src="profile_img_path" width="25%" style="border: 1px solid #cac2c2;" />
+						<input id="profilePath" ref="profilePath" type="file" class="form-control" accept="image/*" name="profilePath" style="display:none;" @change="onImageUpload()">
                                         
                     </div>
 					<div class="position-relative form-group">
                     	<label></label>
-						<button @click.prevent="$refs.profilePath.click()" class="btn btn-info">Upload Image</button>
+						<button class="btn btn-info" @click.prevent="$refs.profilePath.click()">Upload Image</button>
 					</div>
                 
 	                <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -112,28 +112,29 @@ export default {
 				dob:null,
 				gender:'female',
 				address:null,
-				branchId:1,
+				//branchId:1,
 				email:null,
 				roleId:null,
 				profileImage: null,
+				
 			},
 			profile_img_path: null,
 			showPreview: false,
-			branches: null,
+			// branches: null,
 		}
 	},
 	async mounted() {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id           = this.$route.params.id
-				let res          = await axios.get('/api/v1/staff/member/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id           = this.$route.params.id
+				const res          = await axios.get('/api/v1/staff/member/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.staff = res.data.data
 				this.profile_img_path = this.staff.photoUrl;
                 this.showPreview = true;
 		    }
-			let branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-			this.branches = branchRes.data.data
+			// const branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			// this.branches = branchRes.data.data
 
 		} catch (err) {
 			this.$snotify.error(null, err.message);
@@ -146,7 +147,7 @@ export default {
 			 	if(this.staff) 
 			 	{
 			 		let res = null
-					let data = new FormData()
+					const data = new FormData()
                     data.append('firstName', this.staff.firstName)
                     data.append('lastName', this.staff.lastName)
                     data.append('password', this.staff.password)
@@ -154,14 +155,14 @@ export default {
 					data.append('dob', this.staff.dob)
                     data.append('gender', this.staff.gender)
                     data.append('address', this.staff.address)
-                    data.append('branchId', this.staff.branchId)
+                    //data.append('branchId', this.staff.branchId)
 					data.append('email', this.staff.email)
 					data.append('roleId', this.staff.roleId)
                     data.append('profileImage', this.staff.profileImage)
 					
 			 		if(this.$route.params.id != null)
 			 		{
-                        data.append('id', this.staff.id)
+                        data.append('memberId', this.$route.params.id)
 			 			res = await axios.post('/api/v1/staff/member/update', data, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization, 'Content-Type': 'multipart/form-data'} } )
 			 		}else
 			 		{
@@ -169,7 +170,7 @@ export default {
 			 		}
 		        
 
-		        	if(res.data.status == "success")
+		        	if(res.data.status === "success")
 		        	{
 		        		this.resetForm();
 						this.$router.push('/staff-member-list');
@@ -188,7 +189,7 @@ export default {
 		onImageUpload() {
             this.staff.profileImage = this.$refs.profilePath.files[0];
 
-            let reader  = new FileReader();
+            const reader  = new FileReader();
             reader.addEventListener("load", function () {
                 this.showPreview = true;
                 this.profile_img_path = reader.result;

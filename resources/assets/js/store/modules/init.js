@@ -16,13 +16,13 @@ export const getters = {
 export const actions = {
 	[INITIALIZED]: ({commit, dispatch}) => {
 		return new Promise((resolve, reject) => {
-			let requestHeader = {
+			const requestHeader = {
 				...store.getters['auth/authHeaders'],
 			}
 			
 			return axios.request({
 				method: 'get',
-				url: '/api/v1/auth/user',
+				url:  '/api/v1/auth/user',
 				headers: requestHeader,
 				responseType: 'json'
 			}).then((res) => {

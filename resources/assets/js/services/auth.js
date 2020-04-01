@@ -11,7 +11,7 @@ export const Storage = {
 
 export default class Auth {
 	async login(user) {
-		let res = await api.action(null, 'login', user);
+		const res = await api.action(null, 'login', user);
 		this.storeToken(res.data)
 		return res;
 	}

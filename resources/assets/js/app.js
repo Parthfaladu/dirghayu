@@ -14,6 +14,8 @@ import VueI18n from 'vue-i18n'
 import messageEn from '@i18n/en';
 import Snotify from 'vue-snotify';
 
+import "./assets/js/jquery.dataTables.js";
+
 const options = {
 	toast: {
 		titleMaxLength: 150,
@@ -33,8 +35,6 @@ const i18n = new VueI18n({
   locale: 'en',
   messages,
 })
-
-import "./assets/js/jquery.dataTables.js";
 // bootstrap the app
 new Vue({
 	i18n,

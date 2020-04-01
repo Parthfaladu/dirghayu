@@ -60,7 +60,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'user_id'
       }, {
         data: function data(_data3) {
-          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data3.id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + ">Delete</button>";
+          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
         },
         name: 'action'
       }],
@@ -68,17 +68,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var invoiceId, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-invoice/' + action.data); //console.log(action.data);
+                  _this.$router.push('/view-invoice/' + action.data); // console.log(action.data);
+
                 }
 
                 if (!(action.action === 'delete')) {
@@ -93,35 +96,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: invoiceId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10]]);
+      }))();
+    }
   }
 });
 
@@ -301,8 +301,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return totalVal;
     }
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var id, res, customerRes, staffRes;
@@ -312,69 +314,66 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 7;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/invoice/list/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.invoice = res.data.data;
+              _this.invoice = res.data.data;
 
             case 7:
               _context.next = 9;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/customer/list', {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 9:
               customerRes = _context.sent;
-              this.customers = customerRes.data.data;
+              _this.customers = customerRes.data.data;
               _context.next = 13;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/list', null, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 13:
               staffRes = _context.sent;
-              this.staffs = staffRes.data.data;
+              _this.staffs = staffRes.data.data;
               _context.next = 20;
               break;
 
             case 17:
               _context.prev = 17;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
+
+              _this.$snotify.error(null, _context.t0.message);
 
             case 20:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 17]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 17]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res;
@@ -384,27 +383,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.invoice) {
+                if (!_this2.invoice) {
                   _context2.next = 16;
                   break;
                 }
 
                 res = null;
-                this.invoice.invoiceitems.forEach(function (invoiceItem) {
+
+                _this2.invoice.invoiceitems.forEach(function (invoiceItem) {
                   invoiceItem.amount += invoiceItem.quantity * invoiceItem.rate;
                 });
-                this.invoice.subtotal = this.subTotal;
-                this.invoice.total = this.totalVal;
 
-                if (!(this.$route.params.id != null)) {
+                _this2.invoice.subtotal = _this2.subTotal;
+                _this2.invoice.total = _this2.totalVal;
+
+                if (!(_this2.$route.params.id != null)) {
                   _context2.next = 12;
                   break;
                 }
 
                 _context2.next = 9;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/update', this.invoice, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/update', _this2.invoice, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -415,9 +416,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 12:
                 _context2.next = 14;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/create', this.invoice, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/create', _this2.invoice, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -426,9 +427,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 15:
                 if (res.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/invoice-list');
-                  this.$snotify.success(null, res.data.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push('/invoice-list');
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
               case 16:
@@ -438,22 +441,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 18:
                 _context2.prev = 18;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
+
+                _this2.$snotify.error(null, _context2.t0.message);
 
               case 21:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 18]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 18]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.invoice = null;
       this.invoice.invoiceitems = null;
@@ -520,10 +518,264 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     InvoiceTable: _components_InvoiceTable__WEBPACK_IMPORTED_MODULE_0__["default"],
     DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/InvoiceView.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/InvoiceView.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'AddInvoice',
+  components: {
+    DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_2__["default"]
+  },
+  data: function data() {
+    return {
+      invoice: {
+        bill_to: null,
+        customer_email: null,
+        customer_address: null,
+        customer_phone: null,
+        invoice_date: null,
+        subtotal: 0,
+        discount: 0,
+        tax: 0,
+        total: 0,
+        user_id: null,
+        invoiceitems: [{
+          name: null,
+          quantity: 0,
+          rate: 0,
+          amount: 0
+        }]
+      },
+      staffs: null,
+      customers: null
+    };
   },
   mounted: function mounted() {
-    console.log('mounted');
-    this.$snotify.success(null, 'Example body content');
+    var _this = this;
+
+    return _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var id, res, customerRes, staffRes;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+
+              if (!(_this.$route.params.id != null)) {
+                _context.next = 7;
+                break;
+              }
+
+              id = _this.$route.params.id;
+              _context.next = 5;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/invoice/list/' + id, {
+                headers: {
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
+                }
+              });
+
+            case 5:
+              res = _context.sent;
+              _this.invoice = res.data.data;
+
+            case 7:
+              _context.next = 9;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/customer/list', {
+                headers: {
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
+                }
+              });
+
+            case 9:
+              customerRes = _context.sent;
+              _this.customers = customerRes.data.data;
+              _context.next = 13;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/list', null, {
+                headers: {
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
+                }
+              });
+
+            case 13:
+              staffRes = _context.sent;
+              _this.staffs = staffRes.data.data;
+              _context.next = 20;
+              break;
+
+            case 17:
+              _context.prev = 17;
+              _context.t0 = _context["catch"](0);
+
+              _this.$snotify.error(null, _context.t0.message);
+
+            case 20:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 17]]);
+    }))();
+  },
+  methods: {
+    downloadPdf: function downloadPdf(id) {
+      var _this2 = this;
+
+      return _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                // let resPdf = await axios.get('/api/v1/invoice/download/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+                // console.log(resPdf.data.message)
+                axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  url: '/api/v1/invoice/download/' + id,
+                  method: 'GET',
+                  responseType: 'blob',
+                  // important
+                  headers: {
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
+                  }
+                }).then(function (response) {
+                  var url = window.URL.createObjectURL(new Blob([response.data]));
+                  var link = document.createElement('a');
+                  link.href = url;
+                  link.setAttribute('download', 'invoice.pdf');
+                  document.body.appendChild(link);
+                  link.click();
+                });
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
   }
 });
 
@@ -705,8 +957,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return totalVal;
     }
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var moment, id, res, staffRes;
@@ -716,69 +970,66 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 17;
                 break;
               }
 
               moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 6;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/subscription/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 6:
               res = _context.sent;
-              this.invoice.bill_to = res.data.data.user_id;
-              this.invoice.customer_name = res.data.data.user.first_name + ' ' + res.data.data.user.last_name;
-              this.invoice.customer_email = res.data.data.user.email;
-              this.invoice.customer_address = res.data.data.user.address;
-              this.invoice.customer_phone = res.data.data.user.phone;
-              this.invoice.invoice_date = moment().format("YYYY-MM-DD");
-              this.invoice.invoiceitems[0].name = res.data.data["package"].name;
-              this.invoice.invoiceitems[0].quantity = 1;
-              this.invoice.invoiceitems[0].rate = res.data.data["package"].price;
-              console.log(this.invoice);
+              _this.invoice.bill_to = res.data.data.user_id;
+              _this.invoice.customer_name = res.data.data.user.first_name + ' ' + res.data.data.user.last_name;
+              _this.invoice.customer_email = res.data.data.user.email;
+              _this.invoice.customer_address = res.data.data.user.address;
+              _this.invoice.customer_phone = res.data.data.user.phone;
+              _this.invoice.invoice_date = moment().format("YYYY-MM-DD");
+              _this.invoice.invoiceitems[0].name = res.data.data["package"].name;
+              _this.invoice.invoiceitems[0].quantity = 1;
+              _this.invoice.invoiceitems[0].rate = res.data.data["package"].price;
+              console.log(_this.invoice);
 
             case 17:
               _context.next = 19;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/list', null, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 19:
               staffRes = _context.sent;
-              this.staffs = staffRes.data.data;
+              _this.staffs = staffRes.data.data;
               _context.next = 26;
               break;
 
             case 23:
               _context.prev = 23;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
+
+              _this.$snotify.error(null, _context.t0.message);
 
             case 26:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 23]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 23]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res;
@@ -788,27 +1039,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.invoice) {
+                if (!_this2.invoice) {
                   _context2.next = 16;
                   break;
                 }
 
                 res = null;
-                this.invoice.invoiceitems.forEach(function (invoiceItem) {
+
+                _this2.invoice.invoiceitems.forEach(function (invoiceItem) {
                   invoiceItem.amount += invoiceItem.quantity * invoiceItem.rate;
                 });
-                this.invoice.subtotal = this.subTotal;
-                this.invoice.total = this.totalVal;
 
-                if (!(this.$route.params.id != null)) {
+                _this2.invoice.subtotal = _this2.subTotal;
+                _this2.invoice.total = _this2.totalVal;
+
+                if (!(_this2.$route.params.id != null)) {
                   _context2.next = 12;
                   break;
                 }
 
                 _context2.next = 9;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/update', this.invoice, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/update', _this2.invoice, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -819,9 +1072,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 12:
                 _context2.next = 14;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/create', this.invoice, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/invoice/create', _this2.invoice, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -830,9 +1083,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 15:
                 if (res.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/invoice-list');
-                  this.$snotify.success(null, res.data.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push('/invoice-list');
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
               case 16:
@@ -842,22 +1097,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 18:
                 _context2.prev = 18;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
+
+                _this2.$snotify.error(null, _context2.t0.message);
 
               case 21:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 18]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 18]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.invoice = null;
       this.invoice.invoiceitems = null;
@@ -1230,7 +1480,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -1273,7 +1523,7 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { name: "bill_to", id: "bill_to", required: "" },
+                        attrs: { id: "bill_to", name: "bill_to", required: "" },
                         on: {
                           change: function($event) {
                             var $$selectedVal = Array.prototype.filter
@@ -1334,9 +1584,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_address",
                         rows: "2",
                         name: "customer_address",
-                        id: "customer_address",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_address },
@@ -1371,9 +1621,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "invoice_date",
                         type: "text",
                         name: "invoice_date",
-                        id: "invoice_date",
                         placeholder: "yyyy-mm-dd",
                         required: ""
                       },
@@ -1411,9 +1661,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_email",
                         type: "email",
                         name: "customer_email",
-                        id: "customer_email",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_email },
@@ -1448,9 +1698,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_phone",
                         type: "text",
                         name: "customer_phone",
-                        id: "customer_phone",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_phone },
@@ -1512,9 +1762,9 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
+                                id: "name",
                                 type: "text",
                                 name: "name",
-                                id: "name",
                                 placeholder: "Item Name",
                                 required: ""
                               },
@@ -1546,9 +1796,9 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
+                                id: "quantity",
                                 type: "number",
                                 name: "quantity",
-                                id: "quantity",
                                 placeholder: "Item Quantity",
                                 required: ""
                               },
@@ -1580,9 +1830,9 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
+                                id: "rate",
                                 type: "number",
                                 name: "rate",
-                                id: "rate",
                                 placeholder: "Item Rate",
                                 required: ""
                               },
@@ -1607,9 +1857,9 @@ var render = function() {
                               staticClass: "form-control",
                               staticStyle: { border: "none" },
                               attrs: {
+                                id: "amount",
                                 type: "number",
                                 name: "amount",
-                                id: "amount",
                                 placeholder: "Item Amount",
                                 readonly: "",
                                 required: ""
@@ -1674,9 +1924,9 @@ var render = function() {
                             staticClass: "form-control",
                             staticStyle: { border: "none" },
                             attrs: {
+                              id: "subtotal",
                               type: "number",
                               name: "subtotal",
-                              id: "subtotal",
                               readonly: "",
                               required: ""
                             },
@@ -1710,9 +1960,9 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             attrs: {
+                              id: "discount",
                               type: "number",
                               name: "discount",
-                              id: "discount",
                               required: ""
                             },
                             domProps: { value: _vm.invoice.discount },
@@ -1749,9 +1999,9 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             attrs: {
+                              id: "tax",
                               type: "number",
                               name: "tax",
-                              id: "tax",
                               required: ""
                             },
                             domProps: { value: _vm.invoice.tax },
@@ -1789,9 +2039,9 @@ var render = function() {
                             staticClass: "form-control",
                             staticStyle: { border: "none" },
                             attrs: {
+                              id: "total",
                               type: "number",
                               name: "total",
-                              id: "total",
                               readonly: "",
                               required: ""
                             },
@@ -1827,8 +2077,8 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
-                                name: "user_id",
                                 id: "user_id",
+                                name: "user_id",
                                 required: ""
                               },
                               on: {
@@ -1885,7 +2135,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -1926,7 +2179,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -1944,7 +2197,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-info mb-5",
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
                   attrs: { to: "/add-invoice" }
                 },
                 [_vm._v("Add Invoice")]
@@ -1959,6 +2212,232 @@ var render = function() {
             [_c("InvoiceTable")],
             1
           )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/InvoiceView.vue?vue&type=template&id=4cf590ef&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/InvoiceView.vue?vue&type=template&id=4cf590ef& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("DashboardPage", [
+    _c("div", { staticClass: "app-main__inner" }, [
+      _c("div", { staticClass: "app-page-title" }, [
+        _c("div", { staticClass: "page-title-wrapper" }, [
+          _c("div", { staticClass: "page-title-heading" }, [
+            _c("div", { staticClass: "page-title-icon" }, [
+              _c("i", {
+                staticClass:
+                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [_vm._v("GENERATE INVOICE")])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "main-card mb-3 card" }, [
+        _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("h5", { staticClass: "card-title" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mb-4" }, [
+            _c("div", { staticClass: "col-sm-2 offset-sm-10" }, [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c(
+                  "h5",
+                  {
+                    staticStyle: {
+                      "text-align": "right",
+                      "margin-right": "35px"
+                    }
+                  },
+                  [_c("b", [_vm._v("Invoice #" + _vm._s(_vm.invoice.id))])]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mb-4" }, [
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("h5", [_vm._v("Bill To")]),
+                _vm._v(" "),
+                _c("div", [
+                  _vm._v(
+                    _vm._s(_vm.invoice.billto.first_name) +
+                      " " +
+                      _vm._s(_vm.invoice.billto.last_name)
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("h5", [_vm._v("Customer Email")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.invoice.customer_email))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("h5", [_vm._v("Customer Phone")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.invoice.customer_phone))])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mb-4" }, [
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("h5", [_vm._v("Customer Address")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.invoice.customer_address))])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-sm-4" }, [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("h5", [_vm._v("Invoice Date")]),
+                _vm._v(" "),
+                _c("div", [_vm._v(_vm._s(_vm.invoice.invoice_date))])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "table",
+            { staticClass: "table", attrs: { align: "center", width: "100%" } },
+            [
+              _c("thead", [
+                _c("tr", [
+                  _c("th", [_vm._v("Name")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Quantity")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Rate")]),
+                  _vm._v(" "),
+                  _c("th", [_vm._v("Amount")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.invoice.invoiceitems, function(invoiceItem, index) {
+                  return _c("tr", { key: index }, [
+                    _c("td", [_vm._v(_vm._s(invoiceItem.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(invoiceItem.quantity))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(invoiceItem.rate))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(invoiceItem.amount))])
+                  ])
+                }),
+                0
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row justify-content-end" }, [
+            _c(
+              "div",
+              {
+                staticClass: "col-md-2",
+                staticStyle: { "text-align": "right", "margin-right": "35px" }
+              },
+              [
+                _c("div", [
+                  _c("h6", [
+                    _c("b", [_vm._v("Subtotal ")]),
+                    _vm._v(": " + _vm._s(_vm.invoice.subtotal))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("h6", [
+                    _c("b", [_vm._v("Discount ")]),
+                    _vm._v(": " + _vm._s(_vm.invoice.discount))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("h6", [
+                    _c("b", [_vm._v("Tax ")]),
+                    _vm._v(": " + _vm._s(_vm.invoice.tax))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c("h6", [
+                    _c("b", [_vm._v("Total ")]),
+                    _vm._v(": " + _vm._s(_vm.invoice.total))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-5" }, [
+                  _c("h6", [
+                    _c("b", [_vm._v("Generated By ")]),
+                    _vm._v(
+                      ": " +
+                        _vm._s(_vm.invoice.user.first_name) +
+                        " " +
+                        _vm._s(_vm.invoice.user.last_name)
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-lg btn-info",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.downloadPdf(_vm.invoice.id)
+                      }
+                    }
+                  },
+                  [_vm._v("Download")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-lg btn-alternate",
+                    attrs: { type: "button" }
+                  },
+                  [_vm._v("Email")]
+                )
+              ]
+            )
+          ])
         ])
       ])
     ])
@@ -1994,7 +2473,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -2036,9 +2515,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_name",
                         type: "text",
                         name: "customer_name",
-                        id: "customer_name",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_name },
@@ -2073,9 +2552,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_address",
                         rows: "2",
                         name: "customer_address",
-                        id: "customer_address",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_address },
@@ -2110,9 +2589,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "invoice_date",
                         type: "text",
                         name: "invoice_date",
-                        id: "invoice_date",
                         placeholder: "yyyy-mm-dd",
                         required: ""
                       },
@@ -2150,9 +2629,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_email",
                         type: "email",
                         name: "customer_email",
-                        id: "customer_email",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_email },
@@ -2187,9 +2666,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "customer_phone",
                         type: "text",
                         name: "customer_phone",
-                        id: "customer_phone",
                         required: ""
                       },
                       domProps: { value: _vm.invoice.customer_phone },
@@ -2251,9 +2730,9 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
+                                id: "name",
                                 type: "text",
                                 name: "name",
-                                id: "name",
                                 readonly: "",
                                 placeholder: "Item Name",
                                 required: ""
@@ -2286,9 +2765,9 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
+                                id: "quantity",
                                 type: "number",
                                 name: "quantity",
-                                id: "quantity",
                                 placeholder: "Item Quantity",
                                 required: ""
                               },
@@ -2320,9 +2799,9 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
+                                id: "rate",
                                 type: "number",
                                 name: "rate",
-                                id: "rate",
                                 placeholder: "Item Rate",
                                 required: ""
                               },
@@ -2347,9 +2826,9 @@ var render = function() {
                               staticClass: "form-control",
                               staticStyle: { border: "none" },
                               attrs: {
+                                id: "amount",
                                 type: "number",
                                 name: "amount",
-                                id: "amount",
                                 placeholder: "Item Amount",
                                 readonly: "",
                                 required: ""
@@ -2414,9 +2893,9 @@ var render = function() {
                             staticClass: "form-control",
                             staticStyle: { border: "none" },
                             attrs: {
+                              id: "subtotal",
                               type: "number",
                               name: "subtotal",
-                              id: "subtotal",
                               readonly: "",
                               required: ""
                             },
@@ -2450,9 +2929,9 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             attrs: {
+                              id: "discount",
                               type: "number",
                               name: "discount",
-                              id: "discount",
                               required: ""
                             },
                             domProps: { value: _vm.invoice.discount },
@@ -2489,9 +2968,9 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             attrs: {
+                              id: "tax",
                               type: "number",
                               name: "tax",
-                              id: "tax",
                               required: ""
                             },
                             domProps: { value: _vm.invoice.tax },
@@ -2529,9 +3008,9 @@ var render = function() {
                             staticClass: "form-control",
                             staticStyle: { border: "none" },
                             attrs: {
+                              id: "total",
                               type: "number",
                               name: "total",
-                              id: "total",
                               readonly: "",
                               required: ""
                             },
@@ -2567,8 +3046,8 @@ var render = function() {
                               ],
                               staticClass: "form-control",
                               attrs: {
-                                name: "user_id",
                                 id: "user_id",
+                                name: "user_id",
                                 required: ""
                               },
                               on: {
@@ -2625,7 +3104,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -2845,6 +3327,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceList_vue_vue_type_template_id_55e36268___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceList_vue_vue_type_template_id_55e36268___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/views/InvoiceView.vue":
+/*!***************************************************!*\
+  !*** ./resources/assets/js/views/InvoiceView.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InvoiceView_vue_vue_type_template_id_4cf590ef___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InvoiceView.vue?vue&type=template&id=4cf590ef& */ "./resources/assets/js/views/InvoiceView.vue?vue&type=template&id=4cf590ef&");
+/* harmony import */ var _InvoiceView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvoiceView.vue?vue&type=script&lang=js& */ "./resources/assets/js/views/InvoiceView.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InvoiceView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InvoiceView_vue_vue_type_template_id_4cf590ef___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InvoiceView_vue_vue_type_template_id_4cf590ef___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/views/InvoiceView.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/views/InvoiceView.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/assets/js/views/InvoiceView.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./InvoiceView.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/InvoiceView.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/views/InvoiceView.vue?vue&type=template&id=4cf590ef&":
+/*!**********************************************************************************!*\
+  !*** ./resources/assets/js/views/InvoiceView.vue?vue&type=template&id=4cf590ef& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceView_vue_vue_type_template_id_4cf590ef___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./InvoiceView.vue?vue&type=template&id=4cf590ef& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/InvoiceView.vue?vue&type=template&id=4cf590ef&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceView_vue_vue_type_template_id_4cf590ef___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InvoiceView_vue_vue_type_template_id_4cf590ef___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

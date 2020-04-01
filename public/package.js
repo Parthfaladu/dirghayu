@@ -56,7 +56,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'detail'
       }, {
         data: function data(_data) {
-          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data.id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data.id + ">Delete</button>";
+          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
         },
         name: 'action'
       }],
@@ -64,17 +64,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var packageId, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-package/' + action.data); //console.log(action.data);
+                  _this.$router.push('/update-package/' + action.data); // console.log(action.data);
+
                 }
 
                 if (!(action.action === 'delete')) {
@@ -89,35 +92,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: packageId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10]]);
+      }))();
+    }
   }
 });
 
@@ -224,8 +224,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       showPreview: false
     };
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var id, res;
@@ -235,24 +237,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 9;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/package/list/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.packageData = res.data.data;
-              this.package_img_path = this.packageData.image;
-              this.showPreview = true;
+              _this.packageData = res.data.data;
+              _this.package_img_path = _this.packageData.image;
+              _this.showPreview = true;
 
             case 9:
               _context.next = 14;
@@ -261,25 +263,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 11:
               _context.prev = 11;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
+
+              _this.$snotify.error(null, _context.t0.message);
 
             case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 11]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 11]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res, data;
@@ -289,20 +288,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.packageData) {
+                if (!_this2.packageData) {
                   _context2.next = 19;
                   break;
                 }
 
                 res = null;
                 data = new FormData();
-                data.append('name', this.packageData.name);
-                data.append('price', this.packageData.price);
-                data.append('duration', this.packageData.duration);
-                data.append('detail', this.packageData.detail);
-                data.append('packageImage', this.packageData.packageImage);
+                data.append('name', _this2.packageData.name);
+                data.append('price', _this2.packageData.price);
+                data.append('duration', _this2.packageData.duration);
+                data.append('detail', _this2.packageData.detail);
+                data.append('packageImage', _this2.packageData.packageImage);
 
-                if (!(this.$route.params.id != null)) {
+                if (!(_this2.$route.params.id != null)) {
                   _context2.next = 15;
                   break;
                 }
@@ -310,7 +309,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 12;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/package/update', data, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
@@ -324,7 +323,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 17;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/package/create', data, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
@@ -334,9 +333,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 18:
                 if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/package-list');
-                  this.$snotify.success(null, res.data.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push('/package-list');
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
               case 19:
@@ -346,22 +347,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 21:
                 _context2.prev = 21;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
+
+                _this2.$snotify.error(null, _context2.t0.message);
 
               case 24:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 21]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 21]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.packageData = null;
     },
@@ -421,10 +417,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'PackageListView',
+  name: "PackageListView",
   components: {
     PackageTable: _components_PackageTable_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     DashboardPage: _layouts_DashboardPage_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
@@ -499,7 +501,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-gift icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -539,9 +541,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "name",
                     type: "text",
                     name: "name",
-                    id: "name",
                     required: ""
                   },
                   domProps: { value: _vm.packageData.name },
@@ -570,9 +572,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "detail",
                     rows: "2",
                     name: "detail",
-                    id: "detail",
                     required: ""
                   },
                   domProps: { value: _vm.packageData.detail },
@@ -601,9 +603,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    type: "text",
-                    name: "price",
                     id: "price",
+                    type: "number",
+                    name: "price",
                     required: ""
                   },
                   domProps: { value: _vm.packageData.price },
@@ -630,17 +632,6 @@ var render = function() {
                     staticStyle: { padding: "0px" }
                   },
                   [
-                    _c("div", { staticClass: "input-group-prepend" }, [
-                      _c(
-                        "span",
-                        {
-                          staticClass: "input-group-text",
-                          attrs: { id: "inputGroupPrepend" }
-                        },
-                        [_vm._v("Month")]
-                      )
-                    ]),
-                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -652,9 +643,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "duration",
                         id: "duration",
+                        type: "number",
+                        name: "duration",
                         required: ""
                       },
                       domProps: { value: _vm.packageData.duration },
@@ -670,7 +661,18 @@ var render = function() {
                           )
                         }
                       }
-                    })
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group-append" }, [
+                      _c(
+                        "span",
+                        {
+                          staticClass: "input-group-text",
+                          attrs: { id: "basic-addon2" }
+                        },
+                        [_vm._v("Month")]
+                      )
+                    ])
                   ]
                 )
               ]),
@@ -679,6 +681,7 @@ var render = function() {
                 _c("label", { attrs: { for: "package_img_path" } }, [
                   _vm._v("Profile Photo")
                 ]),
+                _c("br"),
                 _vm._v(" "),
                 _c("img", {
                   directives: [
@@ -690,7 +693,7 @@ var render = function() {
                     }
                   ],
                   staticStyle: { border: "1px solid #cac2c2" },
-                  attrs: { src: _vm.package_img_path, width: "20%" }
+                  attrs: { src: _vm.package_img_path, width: "25%" }
                 }),
                 _vm._v(" "),
                 _c("input", {
@@ -698,10 +701,10 @@ var render = function() {
                   staticClass: "form-control",
                   staticStyle: { display: "none" },
                   attrs: {
+                    id: "packagePath",
                     type: "file",
                     accept: "image/*",
-                    name: "packagePath",
-                    id: "packagePath"
+                    name: "packagePath"
                   },
                   on: {
                     change: function($event) {
@@ -732,7 +735,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -773,7 +779,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-gift icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -791,7 +797,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-info mb-5",
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
                   attrs: { to: "/add-package" }
                 },
                 [_vm._v("Add Package")]

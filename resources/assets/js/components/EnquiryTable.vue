@@ -36,7 +36,7 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
                     {data:'last_follow_up_date', name:'last_follow_up_date'},
                     {data:'next_follow_up_date', name:'next_follow_up_date'},
 			        {data:function(data){
-		            	return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata="+data.id+">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
+		            	return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 		          	}, name:'action'}
 			    ],
 			    url: '/api/v1/enquiry/list',
@@ -50,8 +50,8 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				}
 				if(action.action === 'delete'){
 					try{
-						let enquiryId = action.data
-						let res = await axios.post('/api/v1/enquiry/delete' , { id: enquiryId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						const enquiryId = action.data
+						const res = await axios.post('/api/v1/enquiry/delete' , { id: enquiryId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 
 					}

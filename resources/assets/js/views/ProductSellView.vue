@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-shopbag icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>PRODUCT SELL</div>
@@ -15,16 +15,16 @@
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-6 offset-sm-3">
 	            <h5 class="card-title"></h5>
-	            <form  @submit.prevent="submitForm()" class="mt-4">
+	            <form  class="mt-4" @submit.prevent="submitForm()">
 	            	<div class="position-relative form-group">
                         <label for="detail">Customer Name</label>
-                        <select class="form-control" name="user_id" v-model="productSell.user_id">
+                        <select v-model="productSell.user_id" class="form-control" name="user_id">
                         	<option v-for="user in users" :key="user.id" :value="user.id" :selected="productSell.user_id ===  user.id">{{user.first_name}} {{user.last_name}}</option>
                         </select>
                     </div>
 	            	<div class="position-relative form-group">
                         <label for="name">Product Name</label>
-                        <select class="form-control" name="product_id" v-model="productSell.product_id">
+                        <select v-model="productSell.product_id" class="form-control" name="product_id">
                         	
                         	<option v-for="product in products" :key="product.id" :value="product.id" :selected="productSell.product_id ===  product.id">{{product.name}}</option>
                         </select>
@@ -33,17 +33,17 @@
                         <label for="quantity">Quantity</label>
                         <div class="input-group" style="padding: 0px;">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend">Each</span>
+                                <span id="inputGroupPrepend" class="input-group-text">Each</span>
                             </div>
-                        	<input type="text" class="form-control" name="quantity" v-model="productSell.quantity" id="quantity" required>
+                        	<input id="quantity" v-model="productSell.quantity" type="text" class="form-control" name="quantity" required>
                         </div>
                     </div>
                     <div class="position-relative form-group">
                         <label for="price">Amount</label>
-                        <input type="text" class="form-control" name="price" v-model="productSell.paid_amount" id="price" required>
+                        <input id="price" v-model="productSell.paid_amount" type="text" class="form-control" name="price" required>
                     </div>
                     <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -78,17 +78,17 @@ export default {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id       = this.$route.params.id
-				let res      = await axios.get('/api/v1/productsell/list/'+id ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id       = this.$route.params.id
+				const res      = await axios.get('/api/v1/productsell/list/'+id ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				console.log(res.data.data)
 				this.productSell = res.data.data
 		    }
 		    
 
-		    	let productRes = await axios.get('/api/v1/product/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+		    	const productRes = await axios.get('/api/v1/product/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 		    	this.products = productRes.data.data
 
-		    	let userRes = await axios.get('/api/v1/customer/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+		    	const userRes = await axios.get('/api/v1/customer/list', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.users = userRes.data.data
 			
 		} catch (err) {

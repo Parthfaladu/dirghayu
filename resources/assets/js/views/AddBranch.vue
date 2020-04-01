@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-usb icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>BRANCH DETAIL</div>
@@ -18,38 +18,38 @@
 	            <form  @submit.prevent="submitForm()">
                     <div class="position-relative form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" v-model="branchData.name" id="name" required>
+                        <input id="name" v-model="branchData.name" type="text" class="form-control" name="name" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="incharge_name">Incharge Name</label>
-                        <input type="text" class="form-control" name="incharge_name" v-model="branchData.incharge_name" id="incharge_name" required>
+                        <input id="incharge_name" v-model="branchData.incharge_name" type="text" class="form-control" name="incharge_name" required>
                     </div>
 					<div class="position-relative form-group">
 						<label for="email">Email</label>
-						<input type="email" class="form-control" name="email" v-model="branchData.email" id="email" required>
+						<input id="email" v-model="branchData.email" type="email" class="form-control" name="email" required>
 					</div>
 	                <div class="position-relative form-group">
 						<label for="mobile">Mobile</label>
-						<input type="text" class="form-control" name="mobile" v-model="branchData.mobile" id="mobile" required>
+						<input id="mobile" v-model="branchData.mobile" type="text" class="form-control" name="mobile" required>
 					</div>
 					<div class="position-relative form-group">
 						<label for="address">Address</label>
-						<textarea rows="2" class="form-control" name="address" v-model="branchData.address" id="address" required></textarea>
+						<textarea id="address" v-model="branchData.address" rows="2" class="form-control" name="address" required></textarea>
 					</div>
 					<div class="position-relative form-group">
 						<label for="city">City</label>
-						<input type="text" class="form-control" name="city" v-model="branchData.city" id="city">
+						<input id="city" v-model="branchData.city" type="text" class="form-control" name="city">
 					</div>
 					<div class="position-relative form-group">
 						<label for="state">State</label>
-						<input type="text" class="form-control" name="state" v-model="branchData.state" id="state">
+						<input id="state" v-model="branchData.state" type="text" class="form-control" name="state">
 					</div>
 					<div class="position-relative form-group">
 						<label for="zipcode">Zipcode</label>
-						<input type="text" class="form-control" name="zipcode" v-model="branchData.zipcode" id="zipcode" required>
+						<input id="zipcode" v-model="branchData.zipcode" type="text" class="form-control" name="zipcode" required>
 					</div>
 	                <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -87,8 +87,8 @@ export default {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id           = this.$route.params.id
-				let res          = await axios.get('/api/v1/branch/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id           = this.$route.params.id
+				const res          = await axios.get('/api/v1/branch/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.branchData = res.data.data
 				
 		    }

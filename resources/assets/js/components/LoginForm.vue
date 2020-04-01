@@ -5,7 +5,7 @@
         		<div class="card card-signin my-5">
           			<div class="card-body">
             			<h5 class="card-title text-center">Sign In</h5>
-			            <form @submit.prevent="submitForm()" class="form-signin">
+			            <form class="form-signin" @submit.prevent="submitForm()">
 			            	<img src="@assets/images/logo.png" width="50px">
 			            	
 			              	<div class="form-label-group">
@@ -50,7 +50,7 @@ export default {
 	methods: {
 		async submitForm() {
 			try {
-				let res = await auth.login(this.form);
+				const res = await auth.login(this.form);
 				this.$router.push({name: 'dashboard'}).catch(err => {
 					console.log(err)
 				})

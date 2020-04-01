@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-diskette icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>PRODUCT DETAIL</div>
@@ -18,27 +18,27 @@
 	            <form  @submit.prevent="submitForm()">
 	            	<div class="position-relative form-group">
                         <label for="name">Name</label>
-                        <input type="text" class="form-control" name="name" v-model="product.name" id="name" required>
+                        <input id="name" v-model="product.name" type="text" class="form-control" name="name" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="detail">Detail</label>
-                        <textarea rows="2" class="form-control" name="detail" v-model="product.detail" id="detail" required></textarea>
+                        <textarea id="detail" v-model="product.detail" rows="2" class="form-control" name="detail" required></textarea>
                     </div>
                 	<div class="position-relative form-group">
                         <label for="price">Price</label>
-                        <input type="text" class="form-control" name="price" v-model="product.price" id="price" required>
+                        <input id="price" v-model="product.price" type="number" class="form-control" name="price" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="quantity">Quantity</label>
                         <div class="input-group" style="padding: 0px;">
                             <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroupPrepend">Each</span>
+                                <span id="inputGroupPrepend" class="input-group-text">Each</span>
                             </div>
-                        	<input type="text" class="form-control" name="quantity" v-model="product.quantity" id="quantity" required>
+                        	<input id="quantity" v-model="product.quantity" type="number" class="form-control" name="quantity" required>
                         </div>
                     </div>
                     <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -72,8 +72,8 @@ export default {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id       = this.$route.params.id
-				let res      = await axios.get('/api/v1/product/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id       = this.$route.params.id
+				const res      = await axios.get('/api/v1/product/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.product = res.data.data
 		    }
 			

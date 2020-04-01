@@ -33,7 +33,7 @@ class ExpenseController extends Controller
             $expense->bill_no       = $request->get('bill_no');
             $expense->price         = $request->get('price');
             $expense->user_id       = Auth::user()->id;
-            $expense->branch_id     = $request->get('branch_id');
+            //$expense->branch_id     = $request->get('branch_id');
             $expense = $this->uploadImage($expense, $request->file('expenseImage'));
             $expense->save();
 
@@ -76,7 +76,7 @@ class ExpenseController extends Controller
 	    	$expense->bill_no       = $request->get('bill_no');
             $expense->price         = $request->get('price');
             $expense->user_id       = Auth::user()->id;
-            $expense->branch_id     = $request->get('branch_id');
+            //$expense->branch_id     = $request->get('branch_id');
             $expense = $this->uploadImage($expense, $request->file('expenseImage'));
 	    	$expense->update();
 

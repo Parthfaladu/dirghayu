@@ -60,7 +60,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'detail'
       }, {
         data: function data(_data3) {
-          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data3.id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + ">Delete</button>";
+          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
         },
         name: 'action'
       }],
@@ -68,17 +68,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var noticeId, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-notice/' + action.data); //console.log(action.data);
+                  _this.$router.push('/update-notice/' + action.data); // console.log(action.data);
+
                 }
 
                 if (!(action.action === 'delete')) {
@@ -93,35 +96,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: noticeId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10]]);
+      }))();
+    }
   }
 });
 
@@ -207,8 +207,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       customers: null
     };
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var id, res, customerRes;
@@ -218,59 +220,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 7;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/notice/list/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.notice = res.data.data;
+              _this.notice = res.data.data;
 
             case 7:
               _context.next = 9;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/customer/list', {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 9:
               customerRes = _context.sent;
-              this.customers = customerRes.data.data;
+              _this.customers = customerRes.data.data;
               _context.next = 16;
               break;
 
             case 13:
               _context.prev = 13;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
+
+              _this.$snotify.error(null, _context.t0.message);
 
             case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 13]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 13]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res;
@@ -280,22 +279,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.notice) {
+                if (!_this2.notice) {
                   _context2.next = 13;
                   break;
                 }
 
                 res = null;
 
-                if (!(this.$route.params.id != null)) {
+                if (!(_this2.$route.params.id != null)) {
                   _context2.next = 9;
                   break;
                 }
 
                 _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/notice/update', this.notice, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/notice/update', _this2.notice, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -306,9 +305,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/notice/create', this.notice, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/notice/create', _this2.notice, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -317,9 +316,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 12:
                 if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/notice-list');
-                  this.$snotify.success(null, res.data.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push('/notice-list');
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
               case 13:
@@ -329,22 +330,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 15:
                 _context2.prev = 15;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
+
+                _this2.$snotify.error(null, _context2.t0.message);
 
               case 18:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 15]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 15]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.notice = null;
     }
@@ -470,7 +466,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-note icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -509,7 +505,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { name: "to_id", id: "to_id", required: "" },
+                    attrs: { id: "to_id", name: "to_id", required: "" },
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -568,9 +564,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "title",
                     type: "text",
                     name: "title",
-                    id: "title",
                     required: ""
                   },
                   domProps: { value: _vm.notice.title },
@@ -599,9 +595,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "detail",
                     rows: "2",
                     name: "detail",
-                    id: "detail",
                     required: ""
                   },
                   domProps: { value: _vm.notice.detail },
@@ -619,7 +615,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -660,7 +659,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-note icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -678,7 +677,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-info mb-5",
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
                   attrs: { to: "/add-notice" }
                 },
                 [_vm._v("Add Notice")]

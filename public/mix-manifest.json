@@ -17,6 +17,6 @@
     "/subscription.js": "/subscription.js",
     "/user.js": "/user.js",
     "/vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js": "/vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js",
-    "/vendors~subscription~user.js": "/vendors~subscription~user.js",
-    "/vendors~invoice~subscription~user.js": "/vendors~invoice~subscription~user.js"
+    "/vendors~invoice~subscription~user.js": "/vendors~invoice~subscription~user.js",
+    "/vendors~customer.js": "/vendors~customer.js"
 }

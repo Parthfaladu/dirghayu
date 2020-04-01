@@ -70,7 +70,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'next_follow_up_date'
       }, {
         data: function data(_data2) {
-          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data2.id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data2.id + ">Delete</button>";
+          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data2.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data2.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
         },
         name: 'action'
       }],
@@ -78,17 +78,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var enquiryId, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-enquiry/' + action.data);
+                  _this.$router.push('/update-enquiry/' + action.data);
                 }
 
                 if (!(action.action === 'delete')) {
@@ -103,35 +105,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: enquiryId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10]]);
+      }))();
+    }
   }
 });
 
@@ -223,10 +222,87 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'AddEnqiry',
+  name: "AddEnqiry",
   components: {
     DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
@@ -236,15 +312,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: null,
         email: null,
         phone: null,
-        gender: 'female',
+        gender: "female",
         last_follow_up_date: null,
         next_follow_up_date: null,
         remark: null
       }
     };
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var id, res;
@@ -254,22 +332,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 7;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/enquiry/list/' + id, {
+              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/v1/enquiry/list/" + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  Authorization: _this.$store.getters["auth/authHeaders"].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.enquiry = res.data.data;
+              _this.enquiry = res.data.data;
 
             case 7:
               _context.next = 12;
@@ -278,25 +356,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 9:
               _context.prev = 9;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
+
+              _this.$snotify.error(null, _context.t0.message);
 
             case 12:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 9]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 9]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res;
@@ -306,22 +381,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.enquiry) {
+                if (!_this2.enquiry) {
                   _context2.next = 13;
                   break;
                 }
 
                 res = null;
 
-                if (!(this.$route.params.id != null)) {
+                if (!(_this2.$route.params.id != null)) {
                   _context2.next = 9;
                   break;
                 }
 
                 _context2.next = 6;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/enquiry/update', this.enquiry, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/v1/enquiry/update", _this2.enquiry, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    Authorization: _this2.$store.getters["auth/authHeaders"].Authorization
                   }
                 });
 
@@ -332,9 +407,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 9:
                 _context2.next = 11;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/enquiry/create', this.enquiry, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("/api/v1/enquiry/create", _this2.enquiry, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    Authorization: _this2.$store.getters["auth/authHeaders"].Authorization
                   }
                 });
 
@@ -343,9 +418,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 12:
                 if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/enquiry-list');
-                  this.$snotify.success(null, res.data.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push("/enquiry-list");
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
               case 13:
@@ -355,22 +432,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 15:
                 _context2.prev = 15;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
+
+                _this2.$snotify.error(null, _context2.t0.message);
 
               case 18:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 15]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 15]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.enquiry = null;
     }
@@ -390,6 +462,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_EnquiryTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/EnquiryTable */ "./resources/assets/js/components/EnquiryTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
 //
 //
 //
@@ -500,7 +574,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-call icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -538,9 +612,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "name",
                     type: "text",
                     name: "name",
-                    id: "name",
                     required: ""
                   },
                   domProps: { value: _vm.enquiry.name },
@@ -569,9 +643,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "email",
                     type: "email",
                     name: "email",
-                    id: "email",
                     required: ""
                   },
                   domProps: { value: _vm.enquiry.email },
@@ -600,9 +674,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "phone",
                     type: "text",
                     name: "phone",
-                    id: "phone",
                     required: ""
                   },
                   domProps: { value: _vm.enquiry.phone },
@@ -633,8 +707,8 @@ var render = function() {
                       ],
                       staticClass: "custom-control-input",
                       attrs: {
-                        type: "radio",
                         id: "defaultGroupExample1",
+                        type: "radio",
                         name: "gender",
                         value: "male"
                       },
@@ -671,8 +745,8 @@ var render = function() {
                       ],
                       staticClass: "custom-control-input",
                       attrs: {
-                        type: "radio",
                         id: "defaultGroupExample2",
+                        type: "radio",
                         name: "gender",
                         value: "female",
                         checked: ""
@@ -716,9 +790,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "last_follow_up_date",
                     type: "text",
                     name: "last_follow_up_date",
-                    id: "last_follow_up_date",
                     placeholder: "yyyy-mm-dd",
                     required: ""
                   },
@@ -754,9 +828,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "next_follow_up_date",
                     type: "text",
                     name: "next_follow_up_date",
-                    id: "next_follow_up_date",
                     placeholder: "yyyy-mm-dd",
                     required: ""
                   },
@@ -790,9 +864,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "remark",
                     rows: "2",
                     name: "remark",
-                    id: "remark",
                     required: ""
                   },
                   domProps: { value: _vm.enquiry.remark },
@@ -810,8 +884,15 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-                  [_vm._v("SUBMIT")]
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
+                  [
+                    _vm._v(
+                      "\n                            SUBMIT\n                        "
+                    )
+                  ]
                 )
               ])
             ]
@@ -851,7 +932,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-call icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -861,30 +942,30 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c(
-          "div",
-          { staticClass: "card-body col-sm-12" },
-          [
-            _c(
-              "h5",
-              { staticClass: "card-title" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-info mb-5",
-                    attrs: { to: "/add-enquiry" }
-                  },
-                  [_vm._v("Add Enquiry")]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("EnquiryTable")
-          ],
-          1
-        )
+        _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c(
+            "h5",
+            { staticClass: "card-title" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
+                  attrs: { to: "/add-enquiry" }
+                },
+                [_vm._v("Add Enquiry")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "table-responsive" },
+            [_c("EnquiryTable")],
+            1
+          )
+        ])
       ])
     ])
   ])

@@ -72,7 +72,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'remark'
       }, {
         data: function data(_data3) {
-          return " <button class='btn btn-info' data-g-action='view' data-g-actiondata=" + _data3.id + ">Add Payment</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + ">Delete</button>";
+          return " <button class='btn btn-outline-info' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-file-invoice'></i> Invoice</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
         },
         name: 'action'
       }],
@@ -80,17 +80,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var paymentId, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/payment-invoice/' + action.data);
+                  _this.$router.push('/payment-invoice/' + action.data);
                 }
 
                 if (!(action.action === 'delete')) {
@@ -105,35 +107,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: paymentId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10]]);
+      }))();
+    }
   }
 });
 
@@ -251,8 +250,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return remainingAmount;
     }
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
       var id, res, customersRes;
@@ -262,59 +263,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 7;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/list/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.payment = res.data.data;
+              _this.payment = res.data.data;
 
             case 7:
               _context.next = 9;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/customer', {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 9:
               customersRes = _context.sent;
-              this.customers = customersRes.data.data;
+              _this.customers = customersRes.data.data;
               _context.next = 16;
               break;
 
             case 13:
               _context.prev = 13;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
+
+              _this.$snotify.error(null, _context.t0.message);
 
             case 16:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 13]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 13]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res;
@@ -324,27 +322,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.payment) {
+                if (!_this2.payment) {
                   _context2.next = 14;
                   break;
                 }
 
-                this.payment.remaining_amount = this.remainingAmount; // if(this.payment.remaining_amount >= 0)
+                _this2.payment.remaining_amount = _this2.remainingAmount; // if(this.payment.remaining_amount >= 0)
                 // {
                 // 	this.payment.remaining_amount = this.payment.remaining_amount - this.payment.paid_amount;
                 // }
 
                 res = null;
 
-                if (!(this.$route.params.id != null)) {
+                if (!(_this2.$route.params.id != null)) {
                   _context2.next = 10;
                   break;
                 }
 
                 _context2.next = 7;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/update', this.payment, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/update', _this2.payment, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -355,9 +353,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 10:
                 _context2.next = 12;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/create', this.payment, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/create', _this2.payment, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -366,9 +364,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 13:
                 if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$snotify.success(null, res.data.message);
-                  this.$router.push('/payment-list');
+                  _this2.resetForm();
+
+                  _this2.$snotify.success(null, res.data.message);
+
+                  _this2.$router.push('/payment-list');
                 }
 
               case 14:
@@ -378,29 +378,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 _context2.prev = 16;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
+
+                _this2.$snotify.error(null, _context2.t0.message);
 
               case 19:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 16]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 16]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.payment = null;
     },
-    onChange: function () {
-      var _onChange = _asyncToGenerator(
+    onChange: function onChange(event) {
+      var _this3 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(event) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
         var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
@@ -409,33 +406,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/payment/package/' + event.target.value, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this3.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 2:
                 res = _context3.sent;
-                this.packages = res.data.data;
-                console.log(this.packages);
+                _this3.packages = res.data.data;
+                console.log(_this3.packages);
 
               case 5:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, this);
-      }));
+        }, _callee3);
+      }))();
+    },
+    onPackageChange: function onPackageChange(event) {
+      var _this4 = this;
 
-      function onChange(_x) {
-        return _onChange.apply(this, arguments);
-      }
-
-      return onChange;
-    }(),
-    onPackageChange: function () {
-      var _onPackageChange = _asyncToGenerator(
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4(event) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
@@ -443,11 +436,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.next = 2;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/payment/amount', {
-                  user_id: this.payment.user_id,
+                  user_id: _this4.payment.user_id,
                   package_id: event.target.value
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this4.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
@@ -455,13 +448,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context4.sent;
 
                 if (res.data.message == 'lastpayment') {
-                  this.payment.subscription_id = res.data.data.subscription_id;
-                  this.payment.remaining_amount = res.data.data.remaining_amount;
+                  _this4.payment.subscription_id = res.data.data.subscription_id;
+                  _this4.payment.remaining_amount = res.data.data.remaining_amount;
                 }
 
                 if (res.data.message == 'subscription') {
-                  this.payment.subscription_id = res.data.data.id;
-                  this.payment.remaining_amount = res.data.data.amount;
+                  _this4.payment.subscription_id = res.data.data.id;
+                  _this4.payment.remaining_amount = res.data.data.amount;
                 }
 
               case 5:
@@ -469,15 +462,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context4.stop();
             }
           }
-        }, _callee4, this);
-      }));
-
-      function onPackageChange(_x2) {
-        return _onPackageChange.apply(this, arguments);
-      }
-
-      return onPackageChange;
-    }()
+        }, _callee4);
+      }))();
+    }
   }
 });
 
@@ -606,7 +593,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-cash icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -647,7 +634,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { name: "user_id", id: "user_id", required: "" },
+                    attrs: { id: "user_id", name: "user_id", required: "" },
                     on: {
                       change: [
                         function($event) {
@@ -766,9 +753,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "paid_amount",
                     type: "number",
                     name: "paid_amount",
-                    id: "paid_amount",
                     required: ""
                   },
                   domProps: { value: _vm.payment.paid_amount },
@@ -799,9 +786,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "remaining_amount",
                     type: "number",
                     name: "remaining_amount",
-                    id: "remaining_amount",
                     readonly: "",
                     required: ""
                   },
@@ -835,8 +822,8 @@ var render = function() {
                     ],
                     staticClass: "form-control",
                     attrs: {
-                      name: "payment_source",
                       id: "payment_source",
+                      name: "payment_source",
                       required: ""
                     },
                     on: {
@@ -893,9 +880,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "remark",
                     rows: "2",
                     name: "remark",
-                    id: "remark",
                     required: ""
                   },
                   domProps: { value: _vm.payment.remark },
@@ -913,7 +900,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -954,7 +944,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-cash icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -972,7 +962,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-info mb-5",
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
                   attrs: { to: "/add-payment" }
                 },
                 [_vm._v("Add Payment")]

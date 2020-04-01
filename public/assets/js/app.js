@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user":"branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user","dashboard":"dashboard","vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription":"vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription","branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription":"branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription","branch":"branch","customer":"customer","enquiry":"enquiry","expense":"expense","notice":"notice","package":"package","payment":"payment","product":"product","staff":"staff","vendors~invoice~subscription~user":"vendors~invoice~subscription~user","invoice":"invoice","subscription":"subscription","user":"user"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user":"branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user","dashboard":"dashboard","vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription":"vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription","branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription":"branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription","branch":"branch","enquiry":"enquiry","expense":"expense","notice":"notice","package":"package","payment":"payment","product":"product","staff":"staff","vendors~customer":"vendors~customer","customer":"customer","vendors~invoice~subscription~user":"vendors~invoice~subscription~user","invoice":"invoice","subscription":"subscription","user":"user"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -2756,8 +2756,10 @@ var auth = new _services_auth__WEBPACK_IMPORTED_MODULE_1__["default"]();
     };
   },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var res;
@@ -2767,15 +2769,17 @@ var auth = new _services_auth__WEBPACK_IMPORTED_MODULE_1__["default"]();
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return auth.login(this.form);
+                return auth.login(_this.form);
 
               case 3:
                 res = _context.sent;
-                this.$router.push({
+
+                _this.$router.push({
                   name: 'dashboard'
                 })["catch"](function (err) {
                   console.log(err);
                 });
+
                 return _context.abrupt("return");
 
               case 8:
@@ -2788,15 +2792,9 @@ var auth = new _services_auth__WEBPACK_IMPORTED_MODULE_1__["default"]();
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 8]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }()
+        }, _callee, null, [[0, 8]]);
+      }))();
+    }
   }
 });
 
@@ -7373,7 +7371,7 @@ exports.i(___CSS_LOADER_AT_RULE_IMPORT_0___);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_1___);
 exports.i(___CSS_LOADER_AT_RULE_IMPORT_2___);
 // Module
-exports.push([module.i, "\n@media only screen and (min-width: 667px) {\n.snotifyToast__title {\n\t\t\tfont-size: 19px !important;\n}\n.snotify {\n\t\t\twidth: 440px !important;\n}\n}\n@media only screen and (max-width: 667px) {\n.snotify-icon--success {\n\t\t\tbackground: no-repeat !important;\n}\n.snotify-icon--error {\n\t\t\tbackground: no-repeat !important;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n@media only screen and (min-width: 667px) {\n.snotifyToast__title {\n\t\t\tfont-size: 19px !important;\n}\n.snotify {\n\t\t\twidth: 440px !important;\n}\n}\n@media only screen and (max-width: 667px) {\n.snotify-icon--success {\n\t\t\tbackground: no-repeat !important;\n}\n.snotify-icon--error {\n\t\t\tbackground: no-repeat !important;\n}\n}\n.card-body{\n\t\tpadding: 3.25rem;\n}\n.button-text {\n\t\tdisplay: inline;\n}\n@media only screen and (max-width: 667px) {\n.button-text {\n\t\t\tdisplay: none;\n}\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -28512,7 +28510,7 @@ var staticRenderFns = [
                           "button",
                           {
                             staticClass: "btn btn-primary btn-sm",
-                            attrs: { type: "button", id: "PopoverCustomT-1" }
+                            attrs: { id: "PopoverCustomT-1", type: "button" }
                           },
                           [_vm._v("Details")]
                         )
@@ -28584,7 +28582,7 @@ var staticRenderFns = [
                           "button",
                           {
                             staticClass: "btn btn-primary btn-sm",
-                            attrs: { type: "button", id: "PopoverCustomT-2" }
+                            attrs: { id: "PopoverCustomT-2", type: "button" }
                           },
                           [_vm._v("Details")]
                         )
@@ -28656,7 +28654,7 @@ var staticRenderFns = [
                           "button",
                           {
                             staticClass: "btn btn-primary btn-sm",
-                            attrs: { type: "button", id: "PopoverCustomT-3" }
+                            attrs: { id: "PopoverCustomT-3", type: "button" }
                           },
                           [_vm._v("Details")]
                         )
@@ -28728,7 +28726,7 @@ var staticRenderFns = [
                           "button",
                           {
                             staticClass: "btn btn-primary btn-sm",
-                            attrs: { type: "button", id: "PopoverCustomT-4" }
+                            attrs: { id: "PopoverCustomT-4", type: "button" }
                           },
                           [_vm._v("Details")]
                         )
@@ -46877,6 +46875,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var options = {
   toast: {
     titleMaxLength: 150,
@@ -46892,8 +46891,7 @@ var messages = {
 var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_6__["default"]({
   locale: 'en',
   messages: messages
-});
- // bootstrap the app
+}); // bootstrap the app
 
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   i18n: i18n,
@@ -47038,7 +47036,7 @@ module.exports = "/images/logo.png?2e6bcc2d156673fb46aef5f1ec7396b9";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(module) {/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*! DataTables 1.10.16
  * ©2008-2017 SpryMedia Ltd - datatables.net/license
@@ -47063,9 +47061,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
  * For details please refer to: http://www.datatables.net
  */
 
-/*jslint evil: true, undef: true, browser: true */
+/* jslint evil: true, undef: true, browser: true */
 
-/*globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_re_escape_regex,_empty,_intVal,_numToDecimal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidate,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource,_fnRowAttributes*/
+/* globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_re_escape_regex,_empty,_intVal,_numToDecimal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidate,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource,_fnRowAttributes */
 
 
 (function (factory) {
@@ -47864,14 +47862,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       var o = {};
       var oInit = len > 1 ? // optimisation for single table case
       _fnExtend(o, options, true) : options;
-      /*global oInit,_that,emptyInit*/
+      /* global oInit,_that,emptyInit */
 
-      var i = 0,
-          iLen,
-          j,
-          jLen,
-          k,
-          kLen;
+      var i = 0;
+      var iLen;
+      var j;
+      var jLen;
+      var k;
+      var kLen;
       var sId = this.getAttribute('id');
       var bInitHandedOff = false;
       var defaults = DataTable.defaults;
@@ -48325,7 +48323,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   var _re_formatted_numeric = /[',$£€¥%\u2009\u202F\u20BD\u20a9\u20BArfk]/gi;
 
   var _empty = function _empty(d) {
-    return !d || d === true || d === '-' ? true : false;
+    return !!(!d || d === true || d === '-');
   };
 
   var _intVal = function _intVal(s) {
@@ -48381,8 +48379,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var _pluck = function _pluck(a, prop, prop2) {
     var out = [];
-    var i = 0,
-        ien = a.length; // Could have the test in the loop for slightly smaller code, but speed
+    var i = 0;
+    var ien = a.length; // Could have the test in the loop for slightly smaller code, but speed
     // is essential here
 
     if (prop2 !== undefined) {
@@ -48406,8 +48404,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
   var _pluck_order = function _pluck_order(a, order, prop, prop2) {
     var out = [];
-    var i = 0,
-        ien = order.length; // Could have the test in the loop for slightly smaller code, but speed
+    var i = 0;
+    var ien = order.length; // Could have the test in the loop for slightly smaller code, but speed
     // is essential here
 
     if (prop2 !== undefined) {
@@ -48507,12 +48505,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     // information.
 
 
-    var out = [],
-        val,
-        i,
-        ien = src.length,
-        j,
-        k = 0;
+    var out = [];
+    var val;
+    var i;
+    var ien = src.length;
+    var j;
+    var k = 0;
 
     again: for (i = 0; i < ien; i++) {
       val = src[i];
@@ -48551,13 +48549,13 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
      * @return {function} Wrapped function
      */
     throttle: function throttle(fn, freq) {
-      var frequency = freq !== undefined ? freq : 200,
-          last,
-          timer;
+      var frequency = freq !== undefined ? freq : 200;
+      var last;
+      var timer;
       return function () {
-        var that = this,
-            now = +new Date(),
-            args = arguments;
+        var that = this;
+        var now = +new Date();
+        var args = arguments;
 
         if (last && now < last + frequency) {
           clearTimeout(timer);
@@ -48591,10 +48589,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
    */
 
   function _fnHungarianMap(o) {
-    var hungarian = 'a aa ai ao as b fn i m o s ',
-        match,
-        newKey,
-        map = {};
+    var hungarian = 'a aa ai ao as b fn i m o s ';
+    var match;
+    var newKey;
+    var map = {};
     $.each(o, function (key, val) {
       match = key.match(/^([^A-Z]+?)([A-Z])/);
 
@@ -48826,7 +48824,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
       browser.bScrollbarLeft = Math.round(inner.offset().left) !== 1; // IE8- don't provide height and width for getBoundingClientRect
 
-      browser.bBounding = n[0].getBoundingClientRect().width ? true : false;
+      browser.bBounding = !!n[0].getBoundingClientRect().width;
       n.remove();
     }
 
@@ -48842,9 +48840,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnReduce(that, fn, init, start, end, inc) {
-    var i = start,
-        value,
-        isSet = false;
+    var i = start;
+    var value;
+    var isSet = false;
 
     if (init !== undefined) {
       value = init;
@@ -48876,7 +48874,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     var oDefaults = DataTable.defaults.column;
     var iCol = oSettings.aoColumns.length;
     var oCol = $.extend({}, DataTable.models.oColumn, oDefaults, {
-      "nTh": nTh ? nTh : document.createElement('th'),
+      "nTh": nTh || document.createElement('th'),
       "sTitle": oDefaults.sTitle ? oDefaults.sTitle : nTh ? nTh.innerHTML : '',
       "aDataSort": oDefaults.aDataSort ? oDefaults.aDataSort : [iCol],
       "mData": oDefaults.mData ? oDefaults.mData : iCol,
@@ -49358,7 +49356,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
     if (cellData === undefined) {
       if (settings.iDrawError != draw && defaultContent === null) {
-        _fnLog(settings, 0, "Requested unknown parameter " + (typeof col.mData == 'function' ? '{function}' : "'" + col.mData + "'") + " for row " + rowIdx + ", column " + colIdx, 4);
+        _fnLog(settings, 0, "Requested unknown parameter " + (typeof col.mData === 'function' ? '{function}' : "'" + col.mData + "'") + " for row " + rowIdx + ", column " + colIdx, 4);
 
         settings.iDrawError = draw;
       }
@@ -49549,9 +49547,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     } else if (typeof mSource === 'string' && (mSource.indexOf('.') !== -1 || mSource.indexOf('[') !== -1 || mSource.indexOf('(') !== -1)) {
       /* Like the get, we need to get data from a nested object */
       var setData = function setData(data, val, src) {
-        var a = _fnSplitObjNotation(src),
-            b;
+        var a = _fnSplitObjNotation(src);
 
+        var b;
         var aLast = a[a.length - 1];
         var arrayNotation, funcNotation, o, innerSrc;
 
@@ -49761,15 +49759,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnGetRowElements(settings, row, colIdx, d) {
-    var tds = [],
-        td = row.firstChild,
-        name,
-        col,
-        o,
-        i = 0,
-        contents,
-        columns = settings.aoColumns,
-        objectRead = settings._rowReadObject; // Allow the data object to be passed in, or construct
+    var tds = [];
+    var td = row.firstChild;
+    var name;
+    var col;
+    var o;
+    var i = 0;
+    var contents;
+    var columns = settings.aoColumns;
+    var objectRead = settings._rowReadObject; // Allow the data object to be passed in, or construct
 
     d = d !== undefined ? d : objectRead ? {} : [];
 
@@ -49869,14 +49867,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnCreateTr(oSettings, iRow, nTrIn, anTds) {
-    var row = oSettings.aoData[iRow],
-        rowData = row._aData,
-        cells = [],
-        nTr,
-        nTd,
-        oCol,
-        i,
-        iLen;
+    var row = oSettings.aoData[iRow];
+    var rowData = row._aData;
+    var cells = [];
+    var nTr;
+    var nTd;
+    var oCol;
+    var i;
+    var iLen;
 
     if (row.nTr === null) {
       nTr = nTrIn || document.createElement('tr');
@@ -50263,9 +50261,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnReDraw(settings, holdPosition) {
-    var features = settings.oFeatures,
-        sort = features.bSort,
-        filter = features.bFilter;
+    var features = settings.oFeatures;
+    var sort = features.bSort;
+    var filter = features.bFilter;
 
     if (sort) {
       _fnSort(settings);
@@ -50474,7 +50472,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
           iColShifted = fnShiftCol(aLayout, i, iColumn);
           /* Cache calculation for unique columns */
 
-          bUnique = iColspan === 1 ? true : false;
+          bUnique = iColspan === 1;
           /* If there is col / rowspan, copy the information into the layout grid */
 
           for (l = 0; l < iColspan; l++) {
@@ -50681,19 +50679,21 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnAjaxParameters(settings) {
-    var columns = settings.aoColumns,
-        columnCount = columns.length,
-        features = settings.oFeatures,
-        preSearch = settings.oPreviousSearch,
-        preColSearch = settings.aoPreSearchCols,
-        i,
-        data = [],
-        dataProp,
-        column,
-        columnSearch,
-        sort = _fnSortFlatten(settings),
-        displayStart = settings._iDisplayStart,
-        displayLength = features.bPaginate !== false ? settings._iDisplayLength : -1;
+    var columns = settings.aoColumns;
+    var columnCount = columns.length;
+    var features = settings.oFeatures;
+    var preSearch = settings.oPreviousSearch;
+    var preColSearch = settings.aoPreSearchCols;
+    var i;
+    var data = [];
+    var dataProp;
+    var column;
+    var columnSearch;
+
+    var sort = _fnSortFlatten(settings);
+
+    var displayStart = settings._iDisplayStart;
+    var displayLength = features.bPaginate !== false ? settings._iDisplayLength : -1;
 
     var param = function param(name, value) {
       data.push({
@@ -50724,7 +50724,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     for (i = 0; i < columnCount; i++) {
       column = columns[i];
       columnSearch = preColSearch[i];
-      dataProp = typeof column.mData == "function" ? 'function' : column.mData;
+      dataProp = typeof column.mData === "function" ? 'function' : column.mData;
       d.columns.push({
         data: dataProp,
         name: column.sName,
@@ -51240,9 +51240,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnFeatureHtmlInfo(settings) {
-    var tid = settings.sTableId,
-        nodes = settings.aanFeatures.i,
-        n = $('<div/>', {
+    var tid = settings.sTableId;
+    var nodes = settings.aanFeatures.i;
+    var n = $('<div/>', {
       'class': settings.oClasses.sInfo,
       'id': !nodes ? tid + '_info' : null
     });
@@ -51275,12 +51275,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return;
     }
 
-    var lang = settings.oLanguage,
-        start = settings._iDisplayStart + 1,
-        end = settings.fnDisplayEnd(),
-        max = settings.fnRecordsTotal(),
-        total = settings.fnRecordsDisplay(),
-        out = total ? lang.sInfo : lang.sInfoEmpty;
+    var lang = settings.oLanguage;
+    var start = settings._iDisplayStart + 1;
+    var end = settings.fnDisplayEnd();
+    var max = settings.fnRecordsTotal();
+    var total = settings.fnRecordsDisplay();
+    var out = total ? lang.sInfo : lang.sInfoEmpty;
 
     if (total !== max) {
       /* Record set after filtering */
@@ -51302,11 +51302,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   function _fnInfoMacros(settings, str) {
     // When infinite scrolling, we are always starting at 1. _iDisplayStart is used only
     // internally
-    var formatter = settings.fnFormatNumber,
-        start = settings._iDisplayStart + 1,
-        len = settings._iDisplayLength,
-        vis = settings.fnRecordsDisplay(),
-        all = len === -1;
+    var formatter = settings.fnFormatNumber;
+    var start = settings._iDisplayStart + 1;
+    var len = settings._iDisplayLength;
+    var vis = settings.fnRecordsDisplay();
+    var all = len === -1;
     return str.replace(/_START_/g, formatter.call(settings, start)).replace(/_END_/g, formatter.call(settings, settings.fnDisplayEnd())).replace(/_MAX_/g, formatter.call(settings, settings.fnRecordsTotal())).replace(/_TOTAL_/g, formatter.call(settings, vis)).replace(/_PAGE_/g, formatter.call(settings, all ? 1 : Math.ceil(start / len))).replace(/_PAGES_/g, formatter.call(settings, all ? 1 : Math.ceil(vis / len)));
   }
   /**
@@ -51317,11 +51317,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnInitialise(settings) {
-    var i,
-        iLen,
-        iAjaxStart = settings.iInitDisplayStart;
-    var columns = settings.aoColumns,
-        column;
+    var i;
+    var iLen;
+    var iAjaxStart = settings.iInitDisplayStart;
+    var columns = settings.aoColumns;
+    var column;
     var features = settings.oFeatures;
     var deferLoading = settings.bDeferLoading; // value modified by the draw
 
@@ -51444,12 +51444,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnFeatureHtmlLength(settings) {
-    var classes = settings.oClasses,
-        tableId = settings.sTableId,
-        menu = settings.aLengthMenu,
-        d2 = $.isArray(menu[0]),
-        lengths = d2 ? menu[0] : menu,
-        language = d2 ? menu[1] : menu;
+    var classes = settings.oClasses;
+    var tableId = settings.sTableId;
+    var menu = settings.aLengthMenu;
+    var d2 = $.isArray(menu[0]);
+    var lengths = d2 ? menu[0] : menu;
+    var language = d2 ? menu[1] : menu;
     var select = $('<select/>', {
       'name': tableId + '_length',
       'aria-controls': tableId,
@@ -51496,14 +51496,16 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnFeatureHtmlPaginate(settings) {
-    var type = settings.sPaginationType,
-        plugin = DataTable.ext.pager[type],
-        modern = typeof plugin === 'function',
-        redraw = function redraw(settings) {
+    var type = settings.sPaginationType;
+    var plugin = DataTable.ext.pager[type];
+    var modern = typeof plugin === 'function';
+
+    var redraw = function redraw(settings) {
       _fnDraw(settings);
-    },
-        node = $('<div/>').addClass(settings.oClasses.sPaging + type)[0],
-        features = settings.aanFeatures;
+    };
+
+    var node = $('<div/>').addClass(settings.oClasses.sPaging + type)[0];
+    var features = settings.aanFeatures;
 
     if (!modern) {
       plugin.fnInit(settings, node, redraw);
@@ -51516,15 +51518,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       settings.aoDrawCallback.push({
         "fn": function fn(settings) {
           if (modern) {
-            var start = settings._iDisplayStart,
-                len = settings._iDisplayLength,
-                visRecords = settings.fnRecordsDisplay(),
-                all = len === -1,
-                page = all ? 0 : Math.ceil(start / len),
-                pages = all ? 1 : Math.ceil(visRecords / len),
-                buttons = plugin(page, pages),
-                i,
-                ien;
+            var start = settings._iDisplayStart;
+            var len = settings._iDisplayLength;
+            var visRecords = settings.fnRecordsDisplay();
+            var all = len === -1;
+            var page = all ? 0 : Math.ceil(start / len);
+            var pages = all ? 1 : Math.ceil(visRecords / len);
+            var buttons = plugin(page, pages);
+            var i;
+            var ien;
 
             for (i = 0, ien = features.p.length; i < ien; i++) {
               _fnRenderer(settings, 'pageButton')(settings, features.p[i], i, buttons, page, pages);
@@ -51551,9 +51553,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnPageChange(settings, action, redraw) {
-    var start = settings._iDisplayStart,
-        len = settings._iDisplayLength,
-        records = settings.fnRecordsDisplay();
+    var start = settings._iDisplayStart;
+    var len = settings._iDisplayLength;
+    var records = settings.fnRecordsDisplay();
 
     if (records === 0 || len === -1) {
       start = 0;
@@ -51757,44 +51759,47 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   function _fnScrollDraw(settings) {
     // Given that this is such a monster function, a lot of variables are use
     // to try and keep the minimised size as small as possible
-    var scroll = settings.oScroll,
-        scrollX = scroll.sX,
-        scrollXInner = scroll.sXInner,
-        scrollY = scroll.sY,
-        barWidth = scroll.iBarWidth,
-        divHeader = $(settings.nScrollHead),
-        divHeaderStyle = divHeader[0].style,
-        divHeaderInner = divHeader.children('div'),
-        divHeaderInnerStyle = divHeaderInner[0].style,
-        divHeaderTable = divHeaderInner.children('table'),
-        divBodyEl = settings.nScrollBody,
-        divBody = $(divBodyEl),
-        divBodyStyle = divBodyEl.style,
-        divFooter = $(settings.nScrollFoot),
-        divFooterInner = divFooter.children('div'),
-        divFooterTable = divFooterInner.children('table'),
-        header = $(settings.nTHead),
-        table = $(settings.nTable),
-        tableEl = table[0],
-        tableStyle = tableEl.style,
-        footer = settings.nTFoot ? $(settings.nTFoot) : null,
-        browser = settings.oBrowser,
-        ie67 = browser.bScrollOversize,
-        dtHeaderCells = _pluck(settings.aoColumns, 'nTh'),
-        headerTrgEls,
-        footerTrgEls,
-        headerSrcEls,
-        footerSrcEls,
-        headerCopy,
-        footerCopy,
-        headerWidths = [],
-        footerWidths = [],
-        headerContent = [],
-        footerContent = [],
-        idx,
-        correction,
-        sanityWidth,
-        zeroOut = function zeroOut(nSizer) {
+    var scroll = settings.oScroll;
+    var scrollX = scroll.sX;
+    var scrollXInner = scroll.sXInner;
+    var scrollY = scroll.sY;
+    var barWidth = scroll.iBarWidth;
+    var divHeader = $(settings.nScrollHead);
+    var divHeaderStyle = divHeader[0].style;
+    var divHeaderInner = divHeader.children('div');
+    var divHeaderInnerStyle = divHeaderInner[0].style;
+    var divHeaderTable = divHeaderInner.children('table');
+    var divBodyEl = settings.nScrollBody;
+    var divBody = $(divBodyEl);
+    var divBodyStyle = divBodyEl.style;
+    var divFooter = $(settings.nScrollFoot);
+    var divFooterInner = divFooter.children('div');
+    var divFooterTable = divFooterInner.children('table');
+    var header = $(settings.nTHead);
+    var table = $(settings.nTable);
+    var tableEl = table[0];
+    var tableStyle = tableEl.style;
+    var footer = settings.nTFoot ? $(settings.nTFoot) : null;
+    var browser = settings.oBrowser;
+    var ie67 = browser.bScrollOversize;
+
+    var dtHeaderCells = _pluck(settings.aoColumns, 'nTh');
+
+    var headerTrgEls;
+    var footerTrgEls;
+    var headerSrcEls;
+    var footerSrcEls;
+    var headerCopy;
+    var footerCopy;
+    var headerWidths = [];
+    var footerWidths = [];
+    var headerContent = [];
+    var footerContent = [];
+    var idx;
+    var correction;
+    var sanityWidth;
+
+    var zeroOut = function zeroOut(nSizer) {
       var style = nSizer.style;
       style.paddingTop = "0";
       style.paddingBottom = "0";
@@ -52020,9 +52025,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnApplyToChildren(fn, an1, an2) {
-    var index = 0,
-        i = 0,
-        iLen = an1.length;
+    var index = 0;
+    var i = 0;
+    var iLen = an1.length;
     var nNode1, nNode2;
 
     while (i < iLen) {
@@ -52056,27 +52061,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
    */
 
   function _fnCalculateColumnWidths(oSettings) {
-    var table = oSettings.nTable,
-        columns = oSettings.aoColumns,
-        scroll = oSettings.oScroll,
-        scrollY = scroll.sY,
-        scrollX = scroll.sX,
-        scrollXInner = scroll.sXInner,
-        columnCount = columns.length,
-        visibleColumns = _fnGetColumns(oSettings, 'bVisible'),
-        headerCells = $('th', oSettings.nTHead),
-        tableWidthAttr = table.getAttribute('width'),
-        // from DOM element
-    tableContainer = table.parentNode,
-        userInputs = false,
-        i,
-        column,
-        columnIdx,
-        width,
-        outerWidth,
-        browser = oSettings.oBrowser,
-        ie67 = browser.bScrollOversize;
+    var table = oSettings.nTable;
+    var columns = oSettings.aoColumns;
+    var scroll = oSettings.oScroll;
+    var scrollY = scroll.sY;
+    var scrollX = scroll.sX;
+    var scrollXInner = scroll.sXInner;
+    var columnCount = columns.length;
 
+    var visibleColumns = _fnGetColumns(oSettings, 'bVisible');
+
+    var headerCells = $('th', oSettings.nTHead);
+    var tableWidthAttr = table.getAttribute('width'); // from DOM element
+
+    var tableContainer = table.parentNode;
+    var userInputs = false;
+    var i;
+    var column;
+    var columnIdx;
+    var width;
+    var outerWidth;
+    var browser = oSettings.oBrowser;
+    var ie67 = browser.bScrollOversize;
     var styleWidth = table.style.width;
 
     if (styleWidth && styleWidth.indexOf('%') !== -1) {
@@ -52300,9 +52306,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnGetMaxLenString(settings, colIdx) {
-    var s,
-        max = -1,
-        maxIdx = -1;
+    var s;
+    var max = -1;
+    var maxIdx = -1;
 
     for (var i = 0, ien = settings.aoData.length; i < ien; i++) {
       s = _fnGetCellData(settings, i, colIdx, 'display') + '';
@@ -52330,7 +52336,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return '0px';
     }
 
-    if (typeof s == 'number') {
+    if (typeof s === 'number') {
       return s < 0 ? '0px' : s + 'px';
     } // Check it has a unit character already
 
@@ -52339,21 +52345,22 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   function _fnSortFlatten(settings) {
-    var i,
-        iLen,
-        k,
-        kLen,
-        aSort = [],
-        aiOrig = [],
-        aoColumns = settings.aoColumns,
-        aDataSort,
-        iCol,
-        sType,
-        srcCol,
-        fixed = settings.aaSortingFixed,
-        fixedObj = $.isPlainObject(fixed),
-        nestedSort = [],
-        add = function add(a) {
+    var i;
+    var iLen;
+    var k;
+    var kLen;
+    var aSort = [];
+    var aiOrig = [];
+    var aoColumns = settings.aoColumns;
+    var aDataSort;
+    var iCol;
+    var sType;
+    var srcCol;
+    var fixed = settings.aaSortingFixed;
+    var fixedObj = $.isPlainObject(fixed);
+    var nestedSort = [];
+
+    var add = function add(a) {
       if (a.length && !$.isArray(a[0])) {
         // 1D array
         nestedSort.push(a);
@@ -52413,28 +52420,28 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
   function _fnSort(oSettings) {
-    var i,
-        ien,
-        iLen,
-        j,
-        jLen,
-        k,
-        kLen,
-        sDataType,
-        nTh,
-        aiOrig = [],
-        oExtSort = DataTable.ext.type.order,
-        aoData = oSettings.aoData,
-        aoColumns = oSettings.aoColumns,
-        aDataSort,
-        data,
-        iCol,
-        sType,
-        oSort,
-        formatters = 0,
-        sortCol,
-        displayMaster = oSettings.aiDisplayMaster,
-        aSort; // Resolve any column types that are unknown due to addition or invalidation
+    var i;
+    var ien;
+    var iLen;
+    var j;
+    var jLen;
+    var k;
+    var kLen;
+    var sDataType;
+    var nTh;
+    var aiOrig = [];
+    var oExtSort = DataTable.ext.type.order;
+    var aoData = oSettings.aoData;
+    var aoColumns = oSettings.aoColumns;
+    var aDataSort;
+    var data;
+    var iCol;
+    var sType;
+    var oSort;
+    var formatters = 0;
+    var sortCol;
+    var displayMaster = oSettings.aiDisplayMaster;
+    var aSort; // Resolve any column types that are unknown due to addition or invalidation
     // @todo Can this be moved into a 'data-ready' handler which is called when
     //   data is going to be used in the table?
 
@@ -52487,14 +52494,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       if (formatters === aSort.length) {
         // All sort types have formatting functions
         displayMaster.sort(function (a, b) {
-          var x,
-              y,
-              k,
-              test,
-              sort,
-              len = aSort.length,
-              dataA = aoData[a]._aSortData,
-              dataB = aoData[b]._aSortData;
+          var x;
+          var y;
+          var k;
+          var test;
+          var sort;
+          var len = aSort.length;
+          var dataA = aoData[a]._aSortData;
+          var dataB = aoData[b]._aSortData;
 
           for (k = 0; k < len; k++) {
             sort = aSort[k];
@@ -52516,16 +52523,16 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         // Not all sort types have formatting methods, so we have to call their sorting
         // methods.
         displayMaster.sort(function (a, b) {
-          var x,
-              y,
-              k,
-              l,
-              test,
-              sort,
-              fn,
-              len = aSort.length,
-              dataA = aoData[a]._aSortData,
-              dataB = aoData[b]._aSortData;
+          var x;
+          var y;
+          var k;
+          var l;
+          var test;
+          var sort;
+          var fn;
+          var len = aSort.length;
+          var dataA = aoData[a]._aSortData;
+          var dataB = aoData[b]._aSortData;
 
           for (k = 0; k < len; k++) {
             sort = aSort[k];
@@ -52661,7 +52668,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
     _fnReDraw(settings); // callback used for async user interaction
 
 
-    if (typeof callback == 'function') {
+    if (typeof callback === 'function') {
       callback(settings);
     }
   }
@@ -52946,7 +52953,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         alert(msg);
       } else if (type == 'throw') {
         throw new Error(msg);
-      } else if (typeof type == 'function') {
+      } else if (typeof type === 'function') {
         type(settings, tn, msg);
       }
     } else if (window.console && console.log) {
@@ -53105,9 +53112,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   }
 
   function _fnLengthOverflow(settings) {
-    var start = settings._iDisplayStart,
-        end = settings.fnDisplayEnd(),
-        len = settings._iDisplayLength;
+    var start = settings._iDisplayStart;
+    var end = settings.fnDisplayEnd();
+    var len = settings._iDisplayLength;
     /* If we have space to show extra rows (backing up from the end point - then do so */
 
     if (start >= end) {
@@ -53412,17 +53419,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return -1;
     },
     iterator: function iterator(flatten, type, fn, alwaysNew) {
-      var a = [],
-          ret,
-          i,
-          ien,
-          j,
-          jen,
-          context = this.context,
-          rows,
-          items,
-          item,
-          selector = this.selector; // Argument shifting
+      var a = [];
+      var ret;
+      var i;
+      var ien;
+      var j;
+      var jen;
+      var context = this.context;
+      var rows;
+      var items;
+      var item;
+      var selector = this.selector; // Argument shifting
 
       if (typeof flatten === 'string') {
         alwaysNew = fn;
@@ -53547,13 +53554,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return;
     }
 
-    var i,
-        ien,
-        j,
-        jen,
-        struct,
-        inner,
-        methodScoping = function methodScoping(scope, fn, struc) {
+    var i;
+    var ien;
+    var j;
+    var jen;
+    var struct;
+    var inner;
+
+    var methodScoping = function methodScoping(scope, fn, struc) {
       return function () {
         var ret = fn.apply(scope, arguments); // Method extension
 
@@ -53611,12 +53619,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return;
     }
 
-    var i,
-        ien,
-        heir = name.split('.'),
-        struct = __apiStruct,
-        key,
-        method;
+    var i;
+    var ien;
+    var heir = name.split('.');
+    var struct = __apiStruct;
+    var key;
+    var method;
 
     var find = function find(src, name) {
       for (var i = 0, ien = src.length; i < ien; i++) {
@@ -53763,7 +53771,7 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         _fnDraw(settings);
       } else {
         if (typeof paging === 'string') {
-          paging = paging === 'full-hold' ? false : true;
+          paging = paging !== 'full-hold';
         }
 
         _fnReDraw(settings, paging === false);
@@ -53828,11 +53836,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
       return undefined;
     }
 
-    var settings = this.context[0],
-        start = settings._iDisplayStart,
-        len = settings.oFeatures.bPaginate ? settings._iDisplayLength : -1,
-        visRecords = settings.fnRecordsDisplay(),
-        all = len === -1;
+    var settings = this.context[0];
+    var start = settings._iDisplayStart;
+    var len = settings.oFeatures.bPaginate ? settings._iDisplayLength : -1;
+    var visRecords = settings.fnRecordsDisplay();
+    var all = len === -1;
     return {
       "page": all ? 0 : Math.floor(start / len),
       "pages": all ? 1 : Math.ceil(visRecords / len),
@@ -54017,14 +54025,15 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   });
 
   var _selector_run = function _selector_run(type, selector, selectFn, settings, opts) {
-    var out = [],
-        res,
-        a,
-        i,
-        ien,
-        j,
-        jen,
-        selectorType = _typeof(selector); // Can't just check for isArray here, as an API or jQuery instance might be
+    var out = [];
+    var res;
+    var a;
+    var i;
+    var ien;
+    var j;
+    var jen;
+
+    var selectorType = _typeof(selector); // Can't just check for isArray here, as an API or jQuery instance might be
     // given with their array like look
 
 
@@ -54095,17 +54104,17 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   };
 
   var _selector_row_indexes = function _selector_row_indexes(settings, opts) {
-    var i,
-        ien,
-        tmp,
-        a = [],
-        displayFiltered = settings.aiDisplay,
-        displayMaster = settings.aiDisplayMaster;
-    var search = opts.search,
-        // none, applied, removed
-    order = opts.order,
-        // applied, current, index (original - compatibility with 1.9)
-    page = opts.page; // all, current
+    var i;
+    var ien;
+    var tmp;
+    var a = [];
+    var displayFiltered = settings.aiDisplay;
+    var displayMaster = settings.aiDisplayMaster;
+    var search = opts.search; // none, applied, removed
+
+    var order = opts.order; // applied, current, index (original - compatibility with 1.9)
+
+    var page = opts.page; // all, current
 
     if (_fnDataSource(settings) == 'ssp') {
       // In server-side processing mode, most options are irrelevant since
@@ -54536,8 +54545,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         // a colspan)
 
 
-        var row,
-            visible = _fnVisbleColumns(ctx);
+        var row;
+
+        var visible = _fnVisbleColumns(ctx);
 
         for (var i = 0, ien = data.length; i < ien; i++) {
           row = data[i];
@@ -54655,9 +54665,11 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   };
 
   var __column_selector = function __column_selector(settings, selector, opts) {
-    var columns = settings.aoColumns,
-        names = _pluck(columns, 'sName'),
-        nodes = _pluck(columns, 'nTh');
+    var columns = settings.aoColumns;
+
+    var names = _pluck(columns, 'sName');
+
+    var nodes = _pluck(columns, 'nTh');
 
     var run = function run(s) {
       var selInt = _intVal(s); // Selector - all
@@ -54738,14 +54750,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   };
 
   var __setColumnVis = function __setColumnVis(settings, column, vis) {
-    var cols = settings.aoColumns,
-        col = cols[column],
-        data = settings.aoData,
-        row,
-        cells,
-        i,
-        ien,
-        tr; // Get
+    var cols = settings.aoColumns;
+    var col = cols[column];
+    var data = settings.aoData;
+    var row;
+    var cells;
+    var i;
+    var ien;
+    var tr; // Get
 
     if (vis === undefined) {
       return col.bVisible;
@@ -55381,9 +55393,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
    */
 
   _api_register('$()', function (selector, opts) {
-    var rows = this.rows(opts).nodes(),
-        // Get all rows
-    jqRows = $(rows);
+    var rows = this.rows(opts).nodes(); // Get all rows
+
+    var jqRows = $(rows);
     return $([].concat(jqRows.filter(selector).toArray(), jqRows.find(selector).toArray()));
   }); // jQuery functions to operate on the tables
 
@@ -59724,12 +59736,12 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
      *  @type function
      */
     "fnDisplayEnd": function fnDisplayEnd() {
-      var len = this._iDisplayLength,
-          start = this._iDisplayStart,
-          calc = start + len,
-          records = this.aiDisplay.length,
-          features = this.oFeatures,
-          paginate = features.bPaginate;
+      var len = this._iDisplayLength;
+      var start = this._iDisplayStart;
+      var calc = start + len;
+      var records = this.aiDisplay.length;
+      var features = this.oFeatures;
+      var paginate = features.bPaginate;
 
       if (features.bServerSide) {
         return paginate === false || len === -1 ? start + records : Math.min(start + len, this._iRecordsDisplay);
@@ -60395,10 +60407,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   var extPagination = DataTable.ext.pager;
 
   function _numbers(page, pages) {
-    var numbers = [],
-        buttons = extPagination.numbers_length,
-        half = Math.floor(buttons / 2),
-        i = 1;
+    var numbers = [];
+    var buttons = extPagination.numbers_length;
+    var half = Math.floor(buttons / 2);
+    var i = 1;
 
     if (pages <= buttons) {
       numbers = _range(0, pages);
@@ -60453,9 +60465,9 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
         var classes = settings.oClasses;
         var lang = settings.oLanguage.oPaginate;
         var aria = settings.oLanguage.oAria.paginate || {};
-        var btnDisplay,
-            btnClass,
-            counter = 0;
+        var btnDisplay;
+        var btnClass;
+        var counter = 0;
 
         var attach = function attach(container, buttons) {
           var i, ien, node, button;
@@ -61444,7 +61456,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/customer-list',
     name: 'customerlist',
     component: function component() {
-      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user"), __webpack_require__.e("branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/CustomerList.vue */ "./resources/assets/js/views/CustomerList.vue"));
+      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("vendors~customer"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user"), __webpack_require__.e("branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/CustomerList.vue */ "./resources/assets/js/views/CustomerList.vue"));
     },
     meta: {
       authenticated: true
@@ -61462,7 +61474,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/update-customer/:id',
     name: 'updatecustomer',
     component: function component() {
-      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user"), __webpack_require__.e("branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/UpdateCustomer.vue */ "./resources/assets/js/views/UpdateCustomer.vue"));
+      return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("vendors~customer"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user"), __webpack_require__.e("branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/UpdateCustomer.vue */ "./resources/assets/js/views/UpdateCustomer.vue"));
     },
     meta: {
       authenticated: true
@@ -61594,10 +61606,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       authenticated: true
     }
   }, {
-    path: '/update-invoice/:id',
-    name: 'updateinvoice',
+    path: '/view-invoice/:id',
+    name: 'viewinvoice',
     component: function component() {
-      return Promise.all(/*! import() | invoice */[__webpack_require__.e("vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("vendors~invoice~subscription~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user"), __webpack_require__.e("branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("invoice")]).then(__webpack_require__.bind(null, /*! @views/AddInvoice.vue */ "./resources/assets/js/views/AddInvoice.vue"));
+      return Promise.all(/*! import() | invoice */[__webpack_require__.e("vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("vendors~invoice~subscription~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user"), __webpack_require__.e("branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription"), __webpack_require__.e("invoice")]).then(__webpack_require__.bind(null, /*! @views/InvoiceView.vue */ "./resources/assets/js/views/InvoiceView.vue"));
     },
     meta: {
       authenticated: true
@@ -61949,27 +61961,58 @@ webpackContext.id = "./resources/assets/js/store/modules sync recursive ^((?!ind
 /*!***************************************************!*\
   !*** ./resources/assets/js/store/modules/auth.js ***!
   \***************************************************/
-/*! exports provided: state, getters */
+/*! exports provided: state, getters, mutations */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "state", function() { return state; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getters", function() { return getters; });
-/* harmony import */ var _services_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @services/auth */ "./resources/assets/js/services/auth.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutations", function() { return mutations; });
+/* harmony import */ var store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! store */ "./node_modules/store/dist/store.legacy.js");
+/* harmony import */ var store__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(store__WEBPACK_IMPORTED_MODULE_0__);
+var _mutations;
 
-var AuthService = new _services_auth__WEBPACK_IMPORTED_MODULE_0__["default"]();
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var STORE_TOKEN = 'storeToken';
+var TOKEN_KEY = 'gym-auth.token';
+var LOGOUT = 'logout';
 var state = {
-  token: AuthService.token || ''
+  token: store__WEBPACK_IMPORTED_MODULE_0___default.a.get(TOKEN_KEY) || ''
 };
 var getters = {
   isAuthenticated: function isAuthenticated(state) {
     return !!state.token;
   },
   authHeaders: function authHeaders(state) {
-    return AuthService.authHeaders;
+    var headers = {};
+
+    if (state.token) {
+      headers = {
+        Authorization: state.token.token_type + ' ' + state.token.access_token
+      };
+    }
+
+    return headers;
   }
 };
+var mutations = (_mutations = {}, _defineProperty(_mutations, STORE_TOKEN, function (state, token) {
+  state.token = token;
+  store__WEBPACK_IMPORTED_MODULE_0___default.a.set(TOKEN_KEY, token);
+}), _defineProperty(_mutations, LOGOUT, function (state, token) {
+  store__WEBPACK_IMPORTED_MODULE_0___default.a.remove(TOKEN_KEY);
+  state.token = '';
+}), _mutations); // import Auth from '@services/auth'
+// const AuthService = new Auth()
+// export const state = {
+// 	token: AuthService.token || '',
+// }
+// export const getters = {
+// 	isAuthenticated: (state) => !!state.token,
+// 	authHeaders: (state) => AuthService.authHeaders,
+// }
 
 /***/ }),
 

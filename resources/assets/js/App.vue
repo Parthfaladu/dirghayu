@@ -37,6 +37,16 @@ export default {
 			background: no-repeat !important;
 		}
 	}
-
+	.card-body{
+		padding: 3.25rem;
+	}
+	.button-text {
+		display: inline;
+	}
+	@media only screen and (max-width: 667px) {
+		.button-text {
+			display: none;
+		}
+	}
 </style>
 	

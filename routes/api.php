@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 	Route::post('/invoice/create', 'InvoiceController@create');
 	Route::post('/invoice/update', 'InvoiceController@update');
 	Route::post('/invoice/delete', 'InvoiceController@delete');
+	Route::get('/invoice/download/{id}', 'InvoiceController@downloadPdf');
 
 	Route::group(['middleware' => ['auth']], function()
 	{

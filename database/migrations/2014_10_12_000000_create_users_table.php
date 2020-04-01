@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('branch_id');
             $table->string('name');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
@@ -28,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->text('photo_url')->nullable();
+            $table->tinyInteger('is_active')->default('1');
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~package~payment~product~staff"],{
+(window.webpackJsonp = window.webpackJsonp || []).push([["vendors~package~payment~product~staff"],{
 
 /***/ "./node_modules/datatables.net/js/jquery.dataTables.js":
-/*!*************************************************************!*\
+/*! *************************************************************!*\
   !*** ./node_modules/datatables.net/js/jquery.dataTables.js ***!
   \*************************************************************/
 /*! no static exports found */
@@ -30,8 +30,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
  * For details please refer to: http://www.datatables.net
  */
 
-/*jslint evil: true, undef: true, browser: true */
-/*globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_re_escape_regex,_empty,_intVal,_numToDecimal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidate,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource,_fnRowAttributes*/
+/* jslint evil: true, undef: true, browser: true */
+/* globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_re_escape_regex,_empty,_intVal,_numToDecimal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidate,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource,_fnRowAttributes */
 
 (function( factory ) {
 	"use strict";
@@ -863,8 +863,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				_fnExtend( o, options, true ) :
 				options;
 
-			/*global oInit,_that,emptyInit*/
-			var i=0, iLen, j, jLen, k, kLen;
+			/* global oInit,_that,emptyInit */
+			var i=0; var iLen; var j; var jLen; var k; var kLen;
 			var sId = this.getAttribute( 'id' );
 			var bInitHandedOff = false;
 			var defaults = DataTable.defaults;
@@ -1349,7 +1349,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 	
 	var _empty = function ( d ) {
-		return !d || d === true || d === '-' ? true : false;
+		return !!(!d || d === true || d === '-');
 	};
 	
 	
@@ -1415,7 +1415,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 	var _pluck = function ( a, prop, prop2 ) {
 		var out = [];
-		var i=0, ien=a.length;
+		var i=0; var ien=a.length;
 	
 		// Could have the test in the loop for slightly smaller code, but speed
 		// is essential here
@@ -1443,7 +1443,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	var _pluck_order = function ( a, order, prop, prop2 )
 	{
 		var out = [];
-		var i=0, ien=order.length;
+		var i=0; var ien=order.length;
 	
 		// Could have the test in the loop for slightly smaller code, but speed
 		// is essential here
@@ -1552,10 +1552,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		// consider. See jsperf.com/compare-array-unique-versions/4 for more
 		// information.
 		var
-			out = [],
-			val,
-			i, ien=src.length,
-			j, k=0;
+			out = [];
+			var val;
+			var i; var ien=src.length;
+			var j; var k=0;
 	
 		again: for ( i=0 ; i<ien ; i++ ) {
 			val = src[i];
@@ -1595,15 +1595,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		 */
 		throttle: function ( fn, freq ) {
 			var
-				frequency = freq !== undefined ? freq : 200,
-				last,
-				timer;
+				frequency = freq !== undefined ? freq : 200;
+				var last;
+				var timer;
 	
 			return function () {
 				var
-					that = this,
-					now  = +new Date(),
-					args = arguments;
+					that = this;
+					var now  = +new Date();
+					var args = arguments;
 	
 				if ( last && now < last + frequency ) {
 					clearTimeout( timer );
@@ -1644,10 +1644,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnHungarianMap ( o )
 	{
 		var
-			hungarian = 'a aa ai ao as b fn i m o s ',
-			match,
-			newKey,
-			map = {};
+			hungarian = 'a aa ai ao as b fn i m o s ';
+			var match;
+			var newKey;
+			var map = {};
 	
 		$.each( o, function (key, val) {
 			match = key.match(/^([^A-Z]+?)([A-Z])/);
@@ -1905,7 +1905,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			browser.bScrollbarLeft = Math.round( inner.offset().left ) !== 1;
 	
 			// IE8- don't provide height and width for getBoundingClientRect
-			browser.bBounding = n[0].getBoundingClientRect().width ? true : false;
+			browser.bBounding = !!n[0].getBoundingClientRect().width;
 	
 			n.remove();
 		}
@@ -1924,9 +1924,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnReduce ( that, fn, init, start, end, inc )
 	{
 		var
-			i = start,
-			value,
-			isSet = false;
+			i = start;
+			var value;
+			var isSet = false;
 	
 		if ( init !== undefined ) {
 			value = init;
@@ -1961,7 +1961,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		var oDefaults = DataTable.defaults.column;
 		var iCol = oSettings.aoColumns.length;
 		var oCol = $.extend( {}, DataTable.models.oColumn, oDefaults, {
-			"nTh": nTh ? nTh : document.createElement('th'),
+			"nTh": nTh || document.createElement('th'),
 			"sTitle":    oDefaults.sTitle    ? oDefaults.sTitle    : nTh ? nTh.innerHTML : '',
 			"aDataSort": oDefaults.aDataSort ? oDefaults.aDataSort : [iCol],
 			"mData": oDefaults.mData ? oDefaults.mData : iCol,
@@ -2493,7 +2493,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		if ( cellData === undefined ) {
 			if ( settings.iDrawError != draw && defaultContent === null ) {
 				_fnLog( settings, 0, "Requested unknown parameter "+
-					(typeof col.mData=='function' ? '{function}' : "'"+col.mData+"'")+
+					(typeof col.mData==='function' ? '{function}' : "'"+col.mData+"'")+
 					" for row "+rowIdx+", column "+colIdx, 4 );
 				settings.iDrawError = draw;
 			}
@@ -2715,7 +2715,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		{
 			/* Like the get, we need to get data from a nested object */
 			var setData = function (data, val, src) {
-				var a = _fnSplitObjNotation( src ), b;
+				var a = _fnSplitObjNotation( src ); var b;
 				var aLast = a[a.length-1];
 				var arrayNotation, funcNotation, o, innerSrc;
 	
@@ -2954,11 +2954,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnGetRowElements( settings, row, colIdx, d )
 	{
 		var
-			tds = [],
-			td = row.firstChild,
-			name, col, o, i=0, contents,
-			columns = settings.aoColumns,
-			objectRead = settings._rowReadObject;
+			tds = [];
+			var td = row.firstChild;
+			var name; var col; var o; var i=0; var contents;
+			var columns = settings.aoColumns;
+			var objectRead = settings._rowReadObject;
 	
 		// Allow the data object to be passed in, or construct
 		d = d !== undefined ?
@@ -3063,11 +3063,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnCreateTr ( oSettings, iRow, nTrIn, anTds )
 	{
 		var
-			row = oSettings.aoData[iRow],
-			rowData = row._aData,
-			cells = [],
-			nTr, nTd, oCol,
-			i, iLen, create;
+			row = oSettings.aoData[iRow];
+			var rowData = row._aData;
+			var cells = [];
+			var nTr; var nTd; var oCol;
+			var i; var iLen; var create;
 	
 		if ( row.nTr === null )
 		{
@@ -3088,7 +3088,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			for ( i=0, iLen=oSettings.aoColumns.length ; i<iLen ; i++ )
 			{
 				oCol = oSettings.aoColumns[i];
-				create = nTrIn ? false : true;
+				create = !nTrIn;
 	
 				nTd = create ? document.createElement( oCol.sCellType ) : anTds[i];
 				nTd._DT_CellIndex = {
@@ -3513,9 +3513,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnReDraw( settings, holdPosition )
 	{
 		var
-			features = settings.oFeatures,
-			sort     = features.bSort,
-			filter   = features.bFilter;
+			features = settings.oFeatures;
+			var sort     = features.bSort;
+			var filter   = features.bFilter;
 	
 		if ( sort ) {
 			_fnSort( settings );
@@ -3750,7 +3750,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 					iColShifted = fnShiftCol( aLayout, i, iColumn );
 	
 					/* Cache calculation for unique columns */
-					bUnique = iColspan === 1 ? true : false;
+					bUnique = iColspan === 1;
 	
 					/* If there is col / rowspan, copy the information into the layout grid */
 					for ( l=0 ; l<iColspan ; l++ )
@@ -3983,15 +3983,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnAjaxParameters( settings )
 	{
 		var
-			columns = settings.aoColumns,
-			columnCount = columns.length,
-			features = settings.oFeatures,
-			preSearch = settings.oPreviousSearch,
-			preColSearch = settings.aoPreSearchCols,
-			i, data = [], dataProp, column, columnSearch,
-			sort = _fnSortFlatten( settings ),
-			displayStart = settings._iDisplayStart,
-			displayLength = features.bPaginate !== false ?
+			columns = settings.aoColumns;
+			var columnCount = columns.length;
+			var features = settings.oFeatures;
+			var preSearch = settings.oPreviousSearch;
+			var preColSearch = settings.aoPreSearchCols;
+			var i; var data = []; var dataProp; var column; var columnSearch;
+			var sort = _fnSortFlatten( settings );
+			var displayStart = settings._iDisplayStart;
+			var displayLength = features.bPaginate !== false ?
 				settings._iDisplayLength :
 				-1;
 	
@@ -4022,7 +4022,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		for ( i=0 ; i<columnCount ; i++ ) {
 			column = columns[i];
 			columnSearch = preColSearch[i];
-			dataProp = typeof column.mData=="function" ? 'function' : column.mData ;
+			dataProp = typeof column.mData==="function" ? 'function' : column.mData ;
 	
 			d.columns.push( {
 				data:       dataProp,
@@ -4581,9 +4581,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnFeatureHtmlInfo ( settings )
 	{
 		var
-			tid = settings.sTableId,
-			nodes = settings.aanFeatures.i,
-			n = $('<div/>', {
+			tid = settings.sTableId;
+			var nodes = settings.aanFeatures.i;
+			var n = $('<div/>', {
 				'class': settings.oClasses.sInfo,
 				'id': ! nodes ? tid+'_info' : null
 			} );
@@ -4621,12 +4621,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		}
 	
 		var
-			lang  = settings.oLanguage,
-			start = settings._iDisplayStart+1,
-			end   = settings.fnDisplayEnd(),
-			max   = settings.fnRecordsTotal(),
-			total = settings.fnRecordsDisplay(),
-			out   = total ?
+			lang  = settings.oLanguage;
+			var start = settings._iDisplayStart+1;
+			var end   = settings.fnDisplayEnd();
+			var max   = settings.fnRecordsTotal();
+			var total = settings.fnRecordsDisplay();
+			var out   = total ?
 				lang.sInfo :
 				lang.sInfoEmpty;
 	
@@ -4655,11 +4655,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		// When infinite scrolling, we are always starting at 1. _iDisplayStart is used only
 		// internally
 		var
-			formatter  = settings.fnFormatNumber,
-			start      = settings._iDisplayStart+1,
-			len        = settings._iDisplayLength,
-			vis        = settings.fnRecordsDisplay(),
-			all        = len === -1;
+			formatter  = settings.fnFormatNumber;
+			var start      = settings._iDisplayStart+1;
+			var len        = settings._iDisplayLength;
+			var vis        = settings.fnRecordsDisplay();
+			var all        = len === -1;
 	
 		return str.
 			replace(/_START_/g, formatter.call( settings, start ) ).
@@ -4679,8 +4679,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 */
 	function _fnInitialise ( settings )
 	{
-		var i, iLen, iAjaxStart=settings.iInitDisplayStart;
-		var columns = settings.aoColumns, column;
+		var i; var iLen; var iAjaxStart=settings.iInitDisplayStart;
+		var columns = settings.aoColumns; var column;
 		var features = settings.oFeatures;
 		var deferLoading = settings.bDeferLoading; // value modified by the draw
 	
@@ -4797,12 +4797,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnFeatureHtmlLength ( settings )
 	{
 		var
-			classes  = settings.oClasses,
-			tableId  = settings.sTableId,
-			menu     = settings.aLengthMenu,
-			d2       = $.isArray( menu[0] ),
-			lengths  = d2 ? menu[0] : menu,
-			language = d2 ? menu[1] : menu;
+			classes  = settings.oClasses;
+			var tableId  = settings.sTableId;
+			var menu     = settings.aLengthMenu;
+			var d2       = $.isArray( menu[0] );
+			var lengths  = d2 ? menu[0] : menu;
+			var language = d2 ? menu[1] : menu;
 	
 		var select = $('<select/>', {
 			'name':          tableId+'_length',
@@ -4863,14 +4863,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnFeatureHtmlPaginate ( settings )
 	{
 		var
-			type   = settings.sPaginationType,
-			plugin = DataTable.ext.pager[ type ],
-			modern = typeof plugin === 'function',
-			redraw = function( settings ) {
+			type   = settings.sPaginationType;
+			var plugin = DataTable.ext.pager[ type ];
+			var modern = typeof plugin === 'function';
+			var redraw = function( settings ) {
 				_fnDraw( settings );
-			},
-			node = $('<div/>').addClass( settings.oClasses.sPaging + type )[0],
-			features = settings.aanFeatures;
+			};
+			var node = $('<div/>').addClass( settings.oClasses.sPaging + type )[0];
+			var features = settings.aanFeatures;
 	
 		if ( ! modern ) {
 			plugin.fnInit( settings, node, redraw );
@@ -4885,14 +4885,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				"fn": function( settings ) {
 					if ( modern ) {
 						var
-							start      = settings._iDisplayStart,
-							len        = settings._iDisplayLength,
-							visRecords = settings.fnRecordsDisplay(),
-							all        = len === -1,
-							page = all ? 0 : Math.ceil( start / len ),
-							pages = all ? 1 : Math.ceil( visRecords / len ),
-							buttons = plugin(page, pages),
-							i, ien;
+							start      = settings._iDisplayStart;
+							var len        = settings._iDisplayLength;
+							var visRecords = settings.fnRecordsDisplay();
+							var all        = len === -1;
+							var page = all ? 0 : Math.ceil( start / len );
+							var pages = all ? 1 : Math.ceil( visRecords / len );
+							var buttons = plugin(page, pages);
+							var i; var ien;
 	
 						for ( i=0, ien=features.p.length ; i<ien ; i++ ) {
 							_fnRenderer( settings, 'pageButton' )(
@@ -4924,9 +4924,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnPageChange ( settings, action, redraw )
 	{
 		var
-			start     = settings._iDisplayStart,
-			len       = settings._iDisplayLength,
-			records   = settings.fnRecordsDisplay();
+			start     = settings._iDisplayStart;
+			var len       = settings._iDisplayLength;
+			var records   = settings.fnRecordsDisplay();
 	
 		if ( records === 0 || len === -1 )
 		{
@@ -5189,37 +5189,37 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		// Given that this is such a monster function, a lot of variables are use
 		// to try and keep the minimised size as small as possible
 		var
-			scroll         = settings.oScroll,
-			scrollX        = scroll.sX,
-			scrollXInner   = scroll.sXInner,
-			scrollY        = scroll.sY,
-			barWidth       = scroll.iBarWidth,
-			divHeader      = $(settings.nScrollHead),
-			divHeaderStyle = divHeader[0].style,
-			divHeaderInner = divHeader.children('div'),
-			divHeaderInnerStyle = divHeaderInner[0].style,
-			divHeaderTable = divHeaderInner.children('table'),
-			divBodyEl      = settings.nScrollBody,
-			divBody        = $(divBodyEl),
-			divBodyStyle   = divBodyEl.style,
-			divFooter      = $(settings.nScrollFoot),
-			divFooterInner = divFooter.children('div'),
-			divFooterTable = divFooterInner.children('table'),
-			header         = $(settings.nTHead),
-			table          = $(settings.nTable),
-			tableEl        = table[0],
-			tableStyle     = tableEl.style,
-			footer         = settings.nTFoot ? $(settings.nTFoot) : null,
-			browser        = settings.oBrowser,
-			ie67           = browser.bScrollOversize,
-			dtHeaderCells  = _pluck( settings.aoColumns, 'nTh' ),
-			headerTrgEls, footerTrgEls,
-			headerSrcEls, footerSrcEls,
-			headerCopy, footerCopy,
-			headerWidths=[], footerWidths=[],
-			headerContent=[], footerContent=[],
-			idx, correction, sanityWidth,
-			zeroOut = function(nSizer) {
+			scroll         = settings.oScroll;
+			var scrollX        = scroll.sX;
+			var scrollXInner   = scroll.sXInner;
+			var scrollY        = scroll.sY;
+			var barWidth       = scroll.iBarWidth;
+			var divHeader      = $(settings.nScrollHead);
+			var divHeaderStyle = divHeader[0].style;
+			var divHeaderInner = divHeader.children('div');
+			var divHeaderInnerStyle = divHeaderInner[0].style;
+			var divHeaderTable = divHeaderInner.children('table');
+			var divBodyEl      = settings.nScrollBody;
+			var divBody        = $(divBodyEl);
+			var divBodyStyle   = divBodyEl.style;
+			var divFooter      = $(settings.nScrollFoot);
+			var divFooterInner = divFooter.children('div');
+			var divFooterTable = divFooterInner.children('table');
+			var header         = $(settings.nTHead);
+			var table          = $(settings.nTable);
+			var tableEl        = table[0];
+			var tableStyle     = tableEl.style;
+			var footer         = settings.nTFoot ? $(settings.nTFoot) : null;
+			var browser        = settings.oBrowser;
+			var ie67           = browser.bScrollOversize;
+			var dtHeaderCells  = _pluck( settings.aoColumns, 'nTh' );
+			var headerTrgEls; var footerTrgEls;
+			var headerSrcEls; var footerSrcEls;
+			var headerCopy; var footerCopy;
+			var headerWidths=[]; var footerWidths=[];
+			var headerContent=[]; var footerContent=[];
+			var idx; var correction; var sanityWidth;
+			var zeroOut = function(nSizer) {
 				var style = nSizer.style;
 				style.paddingTop = "0";
 				style.paddingBottom = "0";
@@ -5469,7 +5469,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 */
 	function _fnApplyToChildren( fn, an1, an2 )
 	{
-		var index=0, i=0, iLen=an1.length;
+		var index=0; var i=0; var iLen=an1.length;
 		var nNode1, nNode2;
 	
 		while ( i < iLen ) {
@@ -5509,21 +5509,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnCalculateColumnWidths ( oSettings )
 	{
 		var
-			table = oSettings.nTable,
-			columns = oSettings.aoColumns,
-			scroll = oSettings.oScroll,
-			scrollY = scroll.sY,
-			scrollX = scroll.sX,
-			scrollXInner = scroll.sXInner,
-			columnCount = columns.length,
-			visibleColumns = _fnGetColumns( oSettings, 'bVisible' ),
-			headerCells = $('th', oSettings.nTHead),
-			tableWidthAttr = table.getAttribute('width'), // from DOM element
-			tableContainer = table.parentNode,
-			userInputs = false,
-			i, column, columnIdx, width, outerWidth,
-			browser = oSettings.oBrowser,
-			ie67 = browser.bScrollOversize;
+			table = oSettings.nTable;
+			var columns = oSettings.aoColumns;
+			var scroll = oSettings.oScroll;
+			var scrollY = scroll.sY;
+			var scrollX = scroll.sX;
+			var scrollXInner = scroll.sXInner;
+			var columnCount = columns.length;
+			var visibleColumns = _fnGetColumns( oSettings, 'bVisible' );
+			var headerCells = $('th', oSettings.nTHead);
+			var tableWidthAttr = table.getAttribute('width'); // from DOM element
+			var tableContainer = table.parentNode;
+			var userInputs = false;
+			var i; var column; var columnIdx; var width; var outerWidth;
+			var browser = oSettings.oBrowser;
+			var ie67 = browser.bScrollOversize;
 	
 		var styleWidth = table.style.width;
 		if ( styleWidth && styleWidth.indexOf('%') !== -1 ) {
@@ -5791,7 +5791,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 */
 	function _fnGetMaxLenString( settings, colIdx )
 	{
-		var s, max=-1, maxIdx = -1;
+		var s; var max=-1; var maxIdx = -1;
 	
 		for ( var i=0, ien=settings.aoData.length ; i<ien ; i++ ) {
 			s = _fnGetCellData( settings, i, colIdx, 'display' )+'';
@@ -5820,7 +5820,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			return '0px';
 		}
 	
-		if ( typeof s == 'number' ) {
+		if ( typeof s === 'number' ) {
 			return s < 0 ?
 				'0px' :
 				s+'px';
@@ -5837,15 +5837,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnSortFlatten ( settings )
 	{
 		var
-			i, iLen, k, kLen,
-			aSort = [],
-			aiOrig = [],
-			aoColumns = settings.aoColumns,
-			aDataSort, iCol, sType, srcCol,
-			fixed = settings.aaSortingFixed,
-			fixedObj = $.isPlainObject( fixed ),
-			nestedSort = [],
-			add = function ( a ) {
+			i; var iLen; var k; var kLen;
+			var aSort = [];
+			var aiOrig = [];
+			var aoColumns = settings.aoColumns;
+			var aDataSort; var iCol; var sType; var srcCol;
+			var fixed = settings.aaSortingFixed;
+			var fixedObj = $.isPlainObject( fixed );
+			var nestedSort = [];
+			var add = function ( a ) {
 				if ( a.length && ! $.isArray( a[0] ) ) {
 					// 1D array
 					nestedSort.push( a );
@@ -5909,17 +5909,17 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnSort ( oSettings )
 	{
 		var
-			i, ien, iLen, j, jLen, k, kLen,
-			sDataType, nTh,
-			aiOrig = [],
-			oExtSort = DataTable.ext.type.order,
-			aoData = oSettings.aoData,
-			aoColumns = oSettings.aoColumns,
-			aDataSort, data, iCol, sType, oSort,
-			formatters = 0,
-			sortCol,
-			displayMaster = oSettings.aiDisplayMaster,
-			aSort;
+			i; var ien; var iLen; var j; var jLen; var k; var kLen;
+			var sDataType; var nTh;
+			var aiOrig = [];
+			var oExtSort = DataTable.ext.type.order;
+			var aoData = oSettings.aoData;
+			var aoColumns = oSettings.aoColumns;
+			var aDataSort; var data; var iCol; var sType; var oSort;
+			var formatters = 0;
+			var sortCol;
+			var displayMaster = oSettings.aiDisplayMaster;
+			var aSort;
 	
 		// Resolve any column types that are unknown due to addition or invalidation
 		// @todo Can this be moved into a 'data-ready' handler which is called when
@@ -5974,10 +5974,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				// All sort types have formatting functions
 				displayMaster.sort( function ( a, b ) {
 					var
-						x, y, k, test, sort,
-						len=aSort.length,
-						dataA = aoData[a]._aSortData,
-						dataB = aoData[b]._aSortData;
+						x; var y; var k; var test; var sort;
+						var len=aSort.length;
+						var dataA = aoData[a]._aSortData;
+						var dataB = aoData[b]._aSortData;
 	
 					for ( k=0 ; k<len ; k++ ) {
 						sort = aSort[k];
@@ -6002,10 +6002,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				// methods.
 				displayMaster.sort( function ( a, b ) {
 					var
-						x, y, k, l, test, sort, fn,
-						len=aSort.length,
-						dataA = aoData[a]._aSortData,
-						dataB = aoData[b]._aSortData;
+						x; var y; var k; var l; var test; var sort; var fn;
+						var len=aSort.length;
+						var dataA = aoData[a]._aSortData;
+						var dataB = aoData[b]._aSortData;
 	
 					for ( k=0 ; k<len ; k++ ) {
 						sort = aSort[k];
@@ -6157,7 +6157,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		_fnReDraw( settings );
 	
 		// callback used for async user interaction
-		if ( typeof callback == 'function' ) {
+		if ( typeof callback === 'function' ) {
 			callback( settings );
 		}
 	}
@@ -6467,7 +6467,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			else if ( type == 'throw' ) {
 				throw new Error(msg);
 			}
-			else if ( typeof type == 'function' ) {
+			else if ( typeof type === 'function' ) {
 				type( settings, tn, msg );
 			}
 		}
@@ -6643,9 +6643,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	function _fnLengthOverflow ( settings )
 	{
 		var
-			start = settings._iDisplayStart,
-			end = settings.fnDisplayEnd(),
-			len = settings._iDisplayLength;
+			start = settings._iDisplayStart;
+			var end = settings.fnDisplayEnd();
+			var len = settings._iDisplayLength;
 	
 		/* If we have space to show extra rows (backing up from the end point - then do so */
 		if ( start >= end )
@@ -6997,11 +6997,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 		iterator: function ( flatten, type, fn, alwaysNew ) {
 			var
-				a = [], ret,
-				i, ien, j, jen,
-				context = this.context,
-				rows, items, item,
-				selector = this.selector;
+				a = []; var ret;
+				var i; var ien; var j; var jen;
+				var context = this.context;
+				var rows; var items; var item;
+				var selector = this.selector;
 	
 			// Argument shifting
 			if ( typeof flatten === 'string' ) {
@@ -7178,9 +7178,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		}
 	
 		var
-			i, ien,
-			struct,
-			methodScoping = function ( scope, fn, struc ) {
+			i; var ien;
+			var struct;
+			var methodScoping = function ( scope, fn, struc ) {
 				return function () {
 					var ret = fn.apply( scope, arguments );
 	
@@ -7251,10 +7251,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		}
 	
 		var
-			i, ien,
-			heir = name.split('.'),
-			struct = __apiStruct,
-			key, method;
+			i; var ien;
+			var heir = name.split('.');
+			var struct = __apiStruct;
+			var key; var method;
 	
 		var find = function ( src, name ) {
 			for ( var i=0, ien=src.length ; i<ien ; i++ ) {
@@ -7434,9 +7434,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 			}
 			else {
 				if ( typeof paging === 'string' ) {
-					paging = paging === 'full-hold' ?
-						false :
-						true;
+					paging = paging !== 'full-hold';
 				}
 	
 				_fnReDraw( settings, paging===false );
@@ -7501,11 +7499,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		}
 	
 		var
-			settings   = this.context[0],
-			start      = settings._iDisplayStart,
-			len        = settings.oFeatures.bPaginate ? settings._iDisplayLength : -1,
-			visRecords = settings.fnRecordsDisplay(),
-			all        = len === -1;
+			settings   = this.context[0];
+			var start      = settings._iDisplayStart;
+			var len        = settings.oFeatures.bPaginate ? settings._iDisplayLength : -1;
+			var visRecords = settings.fnRecordsDisplay();
+			var all        = len === -1;
 	
 		return {
 			"page":           all ? 0 : Math.floor( start / len ),
@@ -7702,9 +7700,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	var _selector_run = function ( type, selector, selectFn, settings, opts )
 	{
 		var
-			out = [], res,
-			a, i, ien, j, jen,
-			selectorType = typeof selector;
+			out = []; var res;
+			var a; var i; var ien; var j; var jen;
+			var selectorType = typeof selector;
 	
 		// Can't just check for isArray here, as an API or jQuery instance might be
 		// given with their array like look
@@ -7784,14 +7782,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	var _selector_row_indexes = function ( settings, opts )
 	{
 		var
-			i, ien, tmp, a=[],
-			displayFiltered = settings.aiDisplay,
-			displayMaster = settings.aiDisplayMaster;
+			i; var ien; var tmp; var a=[];
+			var displayFiltered = settings.aiDisplay;
+			var displayMaster = settings.aiDisplayMaster;
 	
 		var
-			search = opts.search,  // none, applied, removed
-			order  = opts.order,   // applied, current, index (original - compatibility with 1.9)
-			page   = opts.page;    // all, current
+			search = opts.search;  // none, applied, removed
+			var order  = opts.order;   // applied, current, index (original - compatibility with 1.9)
+			var page   = opts.page;    // all, current
 	
 		if ( _fnDataSource( settings ) == 'ssp' ) {
 			// In server-side processing mode, most options are irrelevant since
@@ -8305,7 +8303,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 				// Update the colspan for the details rows (note, only if it already has
 				// a colspan)
-				var row, visible = _fnVisbleColumns( ctx );
+				var row; var visible = _fnVisbleColumns( ctx );
 	
 				for ( var i=0, ien=data.length ; i<ien ; i++ ) {
 					row = data[i];
@@ -8436,9 +8434,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	var __column_selector = function ( settings, selector, opts )
 	{
 		var
-			columns = settings.aoColumns,
-			names = _pluck( columns, 'sName' ),
-			nodes = _pluck( columns, 'nTh' );
+			columns = settings.aoColumns;
+			var names = _pluck( columns, 'sName' );
+			var nodes = _pluck( columns, 'nTh' );
 	
 		var run = function ( s ) {
 			var selInt = _intVal( s );
@@ -8532,10 +8530,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 	var __setColumnVis = function ( settings, column, vis ) {
 		var
-			cols = settings.aoColumns,
-			col  = cols[ column ],
-			data = settings.aoData,
-			row, cells, i, ien, tr;
+			cols = settings.aoColumns;
+			var col  = cols[ column ];
+			var data = settings.aoData;
+			var row; var cells; var i; var ien; var tr;
 	
 		// Get
 		if ( vis === undefined ) {
@@ -9270,8 +9268,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	 */
 	_api_register( '$()', function ( selector, opts ) {
 		var
-			rows   = this.rows( opts ).nodes(), // Get all rows
-			jqRows = $(rows);
+			rows   = this.rows( opts ).nodes(); // Get all rows
+			var jqRows = $(rows);
 	
 		return $( [].concat(
 			jqRows.filter( selector ).toArray(),
@@ -13767,12 +13765,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 		"fnDisplayEnd": function ()
 		{
 			var
-				len      = this._iDisplayLength,
-				start    = this._iDisplayStart,
-				calc     = start + len,
-				records  = this.aiDisplay.length,
-				features = this.oFeatures,
-				paginate = features.bPaginate;
+				len      = this._iDisplayLength;
+				var start    = this._iDisplayStart;
+				var calc     = start + len;
+				var records  = this.aiDisplay.length;
+				var features = this.oFeatures;
+				var paginate = features.bPaginate;
 	
 			if ( features.bServerSide ) {
 				return paginate === false || len === -1 ?
@@ -14466,10 +14464,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 	
 	function _numbers ( page, pages ) {
 		var
-			numbers = [],
-			buttons = extPagination.numbers_length,
-			half = Math.floor( buttons / 2 ),
-			i = 1;
+			numbers = [];
+			var buttons = extPagination.numbers_length;
+			var half = Math.floor( buttons / 2 );
+			var i = 1;
 	
 		if ( pages <= buttons ) {
 			numbers = _range( 0, pages );
@@ -14536,7 +14534,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! DataTables 1
 				var classes = settings.oClasses;
 				var lang = settings.oLanguage.oPaginate;
 				var aria = settings.oLanguage.oAria.paginate || {};
-				var btnDisplay, btnClass, counter=0;
+				var btnDisplay; var btnClass; var counter=0;
 	
 				var attach = function( container, buttons ) {
 					var i, ien, node, button, tabIndex;

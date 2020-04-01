@@ -49,12 +49,12 @@ class CustomerController extends Controller
             $user->address    = $request->get("address");
             $user->email      = $request->get("email");
             $user->password   = bcrypt($request->get("password"));
-            $user->branch_id  = $request->get('branchId');
+            //$user->branch_id  = $request->get('branchId');
             $user = $this->uploadImage($user, $request->file('profileImage'));
 
             $user->save();
 
-            $role = Role::where("id", $request->get("roleId"))->first();
+            $role = Role::where("id", 4)->first();
 		    $user->assignRole($role);
 
             $customer = new Customer;
@@ -133,7 +133,7 @@ class CustomerController extends Controller
             $user->address    = $request->get("address");
             $user->email      = $request->get("email");
             $user->password   = bcrypt($request->get("password"));
-            $user->branch_id  = $request->get('branch_id');
+            //$user->branch_id  = $request->get('branch_id');
             $user = $this->uploadImage($user, $request->file('profileImage'));
             $user->update();
 
@@ -163,7 +163,7 @@ class CustomerController extends Controller
     {
     	try
     	{
-    		User::where('id', $request->get('id'))->delete();
+            User::where('id', $request->get('id'))->delete();
             Customer::where('user_id',$request->get('id'))->delete();
             $subscriptions = Subscription::where('user_id',$request->get('id'))->get();
             foreach($subscriptions as $subscription)

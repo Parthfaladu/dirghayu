@@ -1,5 +1,5 @@
 <template>
-    <VueDatatable :columns="columns" :url="url" @gaction="onAction" :type="type">
+    <VueDatatable :columns="columns" :url="url" :type="type" @gaction="onAction">
 		<th>Id</th>
 		<th>Name</th>
 		<th>Phone</th>
@@ -33,15 +33,15 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 			        {data:'address', name:'address'},
 			        {data:function(data){
 			        	
-			        	var action = "<button class='btn btn-primary' data-g-action='view' data-g-actiondata="+data.id+">Update</button> <button class='btn btn-warning' data-g-action='status' data-g-actiondata="+data.id+">";
-			        	if(data.is_active == 1)
+			        	var action = "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning' data-g-action='status' data-g-actiondata="+data.id+"><i class='fas fa-toggle-on'></i> ";
+			        	if(data.is_active === 1)
 			        	{
-			        		action += "Active";
+			        		action += "<span class='button-text'>Active</span>";
 			        	}
 			        	else{
-			        		action += "InActive";
+			        		action += "<span class='button-text'>InActive</span>";
 			        	}
-			        	action += "</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata="+data.id+">Delete</button>";
+			        	action += " </button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 			        	return action;
 		          	}, name:'action'}
 			    ],
@@ -57,8 +57,8 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				}
 				if(action.action === 'delete'){
 					try{
-						let memberId = action.data
-						let res = await axios.delete('/api/v1/staff/member/'+memberId, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						const memberId = action.data
+						const res = await axios.delete('/api/v1/staff/member/'+memberId, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 
 					}
@@ -68,8 +68,8 @@ import VueDatatable from '@components/custom/VueDatatable.vue';
 				}
 				if(action.action === 'status'){
 					try{
-						let memberId = action.data
-						let res = await axios.post('/api/v1/staff/member/status',{ id: memberId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+						const memberId = action.data
+						const res = await axios.post('/api/v1/staff/member/status',{ id: memberId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
 						this.$snotify.success(null, res.data.message);
 
 					}

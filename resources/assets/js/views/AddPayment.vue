@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-cash icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>PAYMENT DETAIL</div>
@@ -18,27 +18,27 @@
 	            <form  @submit.prevent="submitForm()">
                     <div class="position-relative form-group">
                         <label for="subscription_id">Customer</label>
-                        <select class="form-control" name="user_id" v-model="payment.user_id" id="user_id" @change="onChange($event)" required>
+                        <select id="user_id" v-model="payment.user_id" class="form-control" name="user_id" required @change="onChange($event)">
 							<option v-for="(user, index) in customers" :key="index" :value="index" :selected="payment.user_id ===  index">{{user}}</option>
                         </select>
                     </div>
 					<div class="position-relative form-group">
                         <label for="package_id">Package</label>
-						<select class="form-control" name="package_id" v-model="payment.package_id" @change="onPackageChange($event)" required>
+						<select v-model="payment.package_id" class="form-control" name="package_id" required @change="onPackageChange($event)">
                         	<option v-for="packageData in packages" :key="packageData.id" :value="packageData.id" :selected="payment.package_id ===  packageData.id">{{packageData.name}}</option>
                         </select>
                     </div>
 	            	<div class="position-relative form-group">
                         <label for="paid_amount">Payable Amount</label>
-                        <input type="number" class="form-control" name="paid_amount" v-model="payment.paid_amount" id="paid_amount" required>
+                        <input id="paid_amount" v-model="payment.paid_amount" type="number" class="form-control" name="paid_amount" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="remaining_amount">Remaining Amount</label>
-                        <input type="number" class="form-control" name="remaining_amount" v-model="remainingAmount" id="remaining_amount" readonly required>
+                        <input id="remaining_amount" v-model="remainingAmount" type="number" class="form-control" name="remaining_amount" readonly required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="payment_source">Payment Source</label>
-                        <select class="form-control" name="payment_source" v-model="payment.payment_source" id="payment_source" required>
+                        <select id="payment_source" v-model="payment.payment_source" class="form-control" name="payment_source" required>
                         	<option value="cash">Cash</option>
                             <option value="credit_card">Credit Card</option>
                             <option value="debit_card">Debit Card</option>
@@ -47,11 +47,11 @@
                     </div>
                     <div class="position-relative form-group">
                         <label for="remark">Remark</label>
-                        <textarea rows="2" class="form-control" name="remark" v-model="payment.remark" id="remark" required></textarea>
+                        <textarea id="remark" v-model="payment.remark" rows="2" class="form-control" name="remark" required></textarea>
                     </div>
                 	
                     <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -99,12 +99,12 @@ export default {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id       = this.$route.params.id
-				let res      = await axios.get('/api/v1/payment/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id       = this.$route.params.id
+				const res      = await axios.get('/api/v1/payment/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.payment = res.data.data
 			}
 			
-			let customersRes = await axios.get('/api/v1/payment/customer', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			const customersRes = await axios.get('/api/v1/payment/customer', { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 			this.customers = customersRes.data.data
 			
 			
@@ -152,14 +152,14 @@ export default {
 		},
 		async onChange(event)
 		{
-			let res = await axios.get('/api/v1/payment/package/'+event.target.value,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			const res = await axios.get('/api/v1/payment/package/'+event.target.value,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			this.packages = res.data.data;
 			console.log(this.packages)
 		},
 		async onPackageChange(event)
 		{
 			
-			let res = await axios.post('/api/v1/payment/amount',{user_id: this.payment.user_id,package_id:event.target.value} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
+			const res = await axios.post('/api/v1/payment/amount',{user_id: this.payment.user_id,package_id:event.target.value} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			if(res.data.message == 'lastpayment')
 			{
 				this.payment.subscription_id = res.data.data.subscription_id

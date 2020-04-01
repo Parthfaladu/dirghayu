@@ -99,48 +99,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Header'
+  name: 'Header',
+  methods: {
+    logout: function logout() {
+      this.$store.commit('auth/logout');
+      this.$snotify.success("Logout successfully!");
+    }
+  }
 });
 
 /***/ }),
@@ -154,179 +120,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -799,7 +592,7 @@ var render = function() {
             ],
             1
           ),
-          _vm._v("\n\t\t    All rights reserved.\n                ")
+          _vm._v("\n\t\t      All rights reserved.\n                ")
         ]),
         _vm._v(" "),
         _vm._m(0)
@@ -838,42 +631,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "app-header header-shadow" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2),
+    _vm._v(" "),
+    _c("div", { staticClass: "app-header__content" }, [
+      _c("div", { staticClass: "app-header-left" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "app-header-right" }, [
+        _c("div", { staticClass: "header-btn-lg pr-0" }, [
+          _c("div", { staticClass: "widget-content p-0" }, [
+            _c("div", { staticClass: "widget-content-wrapper" }, [
+              _c(
+                "div",
+                { staticClass: "widget-content-right header-user-info ml-3" },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-primary",
+                      on: {
+                        click: function($event) {
+                          return _vm.logout()
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-sign-out-alt" }),
+                      _vm._v(" Log Out")
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "app-header header-shadow" }, [
-      _c("div", { staticClass: "app-header__logo" }, [
-        _c("div", { staticClass: "logo-src" }),
-        _vm._v(" "),
-        _c("div", { staticClass: "header__pane ml-auto" }, [
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "hamburger close-sidebar-btn hamburger--elastic",
-                attrs: { type: "button", "data-class": "closed-sidebar" }
-              },
-              [
-                _c("span", { staticClass: "hamburger-box" }, [
-                  _c("span", { staticClass: "hamburger-inner" })
-                ])
-              ]
-            )
-          ])
-        ])
-      ]),
+    return _c("div", { staticClass: "app-header__logo" }, [
+      _c("div", { staticClass: "logo-src" }),
       _vm._v(" "),
-      _c("div", { staticClass: "app-header__mobile-menu" }, [
+      _c("div", { staticClass: "header__pane ml-auto" }, [
         _c("div", [
           _c(
             "button",
             {
-              staticClass: "hamburger hamburger--elastic mobile-toggle-nav",
-              attrs: { type: "button" }
+              staticClass: "hamburger close-sidebar-btn hamburger--elastic",
+              attrs: { type: "button", "data-class": "closed-sidebar" }
             },
             [
               _c("span", { staticClass: "hamburger-box" }, [
@@ -882,230 +696,49 @@ var staticRenderFns = [
             ]
           )
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "app-header__menu" }, [
-        _c("span", [
-          _c(
-            "button",
-            {
-              staticClass:
-                "btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav",
-              attrs: { type: "button" }
-            },
-            [
-              _c("span", { staticClass: "btn-icon-wrapper" }, [
-                _c("i", { staticClass: "fa fa-ellipsis-v fa-w-6" })
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "app-header__content" }, [
-        _c("div", { staticClass: "app-header-left" }, [
-          _c("div", { staticClass: "search-wrapper" }, [
-            _c("div", { staticClass: "input-holder" }, [
-              _c("input", {
-                staticClass: "search-input",
-                attrs: { type: "text", placeholder: "Type to search" }
-              }),
-              _vm._v(" "),
-              _c("button", { staticClass: "search-icon" }, [_c("span")])
-            ]),
-            _vm._v(" "),
-            _c("button", { staticClass: "close" })
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "header-menu nav" }, [
-            _c("li", { staticClass: "nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: { href: "javascript:void(0);" }
-                },
-                [
-                  _c("i", { staticClass: "nav-link-icon fa fa-database" }),
-                  _vm._v(
-                    "\n                                Statistics\n                            "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "btn-group nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: { href: "javascript:void(0);" }
-                },
-                [
-                  _c("i", { staticClass: "nav-link-icon fa fa-edit" }),
-                  _vm._v(
-                    "\n                                Projects\n                            "
-                  )
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", { staticClass: "dropdown nav-item" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link",
-                  attrs: { href: "javascript:void(0);" }
-                },
-                [
-                  _c("i", { staticClass: "nav-link-icon fa fa-cog" }),
-                  _vm._v(
-                    "\n                                Settings\n                            "
-                  )
-                ]
-              )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "app-header__mobile-menu" }, [
+      _c("div", [
+        _c(
+          "button",
+          {
+            staticClass: "hamburger hamburger--elastic mobile-toggle-nav",
+            attrs: { type: "button" }
+          },
+          [
+            _c("span", { staticClass: "hamburger-box" }, [
+              _c("span", { staticClass: "hamburger-inner" })
             ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "app-header-right" }, [
-          _c("div", { staticClass: "header-btn-lg pr-0" }, [
-            _c("div", { staticClass: "widget-content p-0" }, [
-              _c("div", { staticClass: "widget-content-wrapper" }, [
-                _c("div", { staticClass: "widget-content-left" }, [
-                  _c("div", { staticClass: "btn-group" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "p-0 btn",
-                        attrs: {
-                          "data-toggle": "dropdown",
-                          "aria-haspopup": "true",
-                          "aria-expanded": "false"
-                        }
-                      },
-                      [
-                        _c("img", {
-                          staticClass: "rounded-circle",
-                          attrs: {
-                            width: "42",
-                            src: "assets/images/avatars/1.jpg",
-                            alt: ""
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("i", {
-                          staticClass: "fa fa-angle-down ml-2 opacity-8"
-                        })
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "dropdown-menu dropdown-menu-right",
-                        attrs: {
-                          tabindex: "-1",
-                          role: "menu",
-                          "aria-hidden": "true"
-                        }
-                      },
-                      [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { type: "button", tabindex: "0" }
-                          },
-                          [_vm._v("User Account")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { type: "button", tabindex: "0" }
-                          },
-                          [_vm._v("Settings")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "h6",
-                          {
-                            staticClass: "dropdown-header",
-                            attrs: { tabindex: "-1" }
-                          },
-                          [_vm._v("Header")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { type: "button", tabindex: "0" }
-                          },
-                          [_vm._v("Actions")]
-                        ),
-                        _vm._v(" "),
-                        _c("div", {
-                          staticClass: "dropdown-divider",
-                          attrs: { tabindex: "-1" }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "dropdown-item",
-                            attrs: { type: "button", tabindex: "0" }
-                          },
-                          [_vm._v("Dividers")]
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "widget-content-left  ml-3 header-user-info" },
-                  [
-                    _c("div", { staticClass: "widget-heading" }, [
-                      _vm._v(
-                        "\n                                        Alina Mclourd\n                                    "
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "widget-subheading" }, [
-                      _vm._v(
-                        "\n                                        VP People Manager\n                                    "
-                      )
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "widget-content-right header-user-info ml-3" },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass:
-                          "btn-shadow p-1 btn btn-primary btn-sm show-toastr-example",
-                        attrs: { type: "button" }
-                      },
-                      [
-                        _c("i", {
-                          staticClass: "fa text-white fa-calendar pr-1 pl-1"
-                        })
-                      ]
-                    )
-                  ]
-                )
-              ])
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "app-header__menu" }, [
+      _c("span", [
+        _c(
+          "button",
+          {
+            staticClass:
+              "btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav",
+            attrs: { type: "button" }
+          },
+          [
+            _c("span", { staticClass: "btn-icon-wrapper" }, [
+              _c("i", { staticClass: "fa fa-ellipsis-v fa-w-6" })
             ])
-          ])
-        ])
+          ]
+        )
       ])
     ])
   }
@@ -1140,39 +773,14 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "scrollbar-sidebar" }, [
       _c("div", { staticClass: "app-sidebar__inner" }, [
-        _c("ul", { staticClass: "vertical-nav-menu" }, [
-          _c("li", { staticClass: "app-sidebar__heading" }, [
-            _vm._v("Dashboards")
-          ]),
-          _vm._v(" "),
+        _c("ul", { staticClass: "vertical-nav-menu mt-4" }, [
           _c(
             "li",
             [
-              _c(
-                "router-link",
-                { staticClass: "mm-active", attrs: { to: "/dashboard" } },
-                [
-                  _c("i", { staticClass: "metismenu-icon pe-7s-rocket" }),
-                  _vm._v(
-                    "\n                            Dashboard\n                        "
-                  )
-                ]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("li", { staticClass: "app-sidebar__heading" }, [
-            _vm._v("UI Components")
-          ]),
-          _vm._v(" "),
-          _c(
-            "li",
-            [
-              _c("router-link", { attrs: { to: "/branch-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+              _c("router-link", { attrs: { to: "/dashboard" } }, [
+                _c("i", { staticClass: "metismenu-icon pe-7s-home" }),
                 _vm._v(
-                  "\n                            Branch\n                            "
+                  "\n                            Dashboard\n                        "
                 )
               ])
             ],
@@ -1183,9 +791,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/package-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-gift" }),
                 _vm._v(
-                  "\n                            Package\n                            "
+                  "\n                            Package\n                        "
                 )
               ])
             ],
@@ -1196,9 +804,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/product-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-diskette" }),
                 _vm._v(
-                  "\n                            Product\n                            "
+                  "\n                            Product\n                        "
                 )
               ])
             ],
@@ -1209,9 +817,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/productsell-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-shopbag" }),
                 _vm._v(
-                  "\n                            Product Sell\n                            "
+                  "\n                            Product Sell\n                        "
                 )
               ])
             ],
@@ -1222,9 +830,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/staff-member-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-user" }),
                 _vm._v(
-                  "\n                            Staff Member\n                            "
+                  "\n                            Staff Member\n                        "
                 )
               ])
             ],
@@ -1235,9 +843,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/payment-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-cash" }),
                 _vm._v(
-                  "\n                            Payment\n                            "
+                  "\n                            Payment\n                        "
                 )
               ])
             ],
@@ -1248,9 +856,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/enquiry-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-call" }),
                 _vm._v(
-                  "\n                            Enquiry\n                            "
+                  "\n                            Enquiry\n                        "
                 )
               ])
             ],
@@ -1261,9 +869,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/customer-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-add-user" }),
                 _vm._v(
-                  "\n                            Customer\n                            "
+                  "\n                            Customer\n                        "
                 )
               ])
             ],
@@ -1274,9 +882,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/subscription-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-bell" }),
                 _vm._v(
-                  "\n                            Subscription\n                            "
+                  "\n                            Subscription\n                        "
                 )
               ])
             ],
@@ -1287,9 +895,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/notice-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-note" }),
                 _vm._v(
-                  "\n                            Notice\n                            "
+                  "\n                            Notice\n                        "
                 )
               ])
             ],
@@ -1302,7 +910,7 @@ var render = function() {
               _c("router-link", { attrs: { to: "/expense-list" } }, [
                 _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
                 _vm._v(
-                  "\n                            Expense\n                            "
+                  "\n                            Expense\n                        "
                 )
               ])
             ],
@@ -1313,9 +921,9 @@ var render = function() {
             "li",
             [
               _c("router-link", { attrs: { to: "/invoice-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                _c("i", { staticClass: "metismenu-icon pe-7s-news-paper" }),
                 _vm._v(
-                  "\n                            Invoice\n                            "
+                  "\n                            Invoice\n                        "
                 )
               ])
             ],
@@ -1455,15 +1063,6 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "ui-theme-settings" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn-open-options btn btn-warning",
-          attrs: { type: "button", id: "TooltipDemo" }
-        },
-        [_c("i", { staticClass: "fa fa-cog fa-w-16 fa-spin fa-2x" })]
-      ),
-      _vm._v(" "),
       _c("div", { staticClass: "theme-settings__inner" }, [
         _c("div", { staticClass: "scrollbar-container" }, [
           _c("div", { staticClass: "theme-settings__options-wrapper" }, [

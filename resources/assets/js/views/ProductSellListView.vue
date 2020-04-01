@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-shopbag icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>PRODUCT SELL LIST</div>
@@ -14,8 +14,9 @@
 	    </div>            
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-12">
-	            <h5 class="card-title"></h5>
-	            <router-link to="/add-product-sell" class="btn btn-info float-right mb-5">Add New</router-link>
+	            <h5 class="card-title">
+	        		<router-link to="/add-product-sell" class="btn btn-outline-primary mb-5 pull-right">Add Product Sell</router-link>
+	            </h5>
 				<div class="table-responsive">
 					<ProductSellTable></ProductSellTable>
 				</div>

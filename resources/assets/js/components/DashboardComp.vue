@@ -133,7 +133,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content">
-                            <div class="tab-pane fade show active" id="tabs-eg-77">
+                            <div id="tabs-eg-77" class="tab-pane fade show active">
                                 <div class="card mb-3 widget-chart widget-chart2 text-left w-100">
                                     <div class="widget-chat-wrapper-outer">
                                         <div class="widget-chart-wrapper widget-chart-wrapper-lg opacity-10 m-0">
@@ -278,7 +278,7 @@
                         </div>
                     </div>
                     <div class="tab-content">
-                        <div class="tab-pane fade active show" id="tab-eg-55">
+                        <div id="tab-eg-55" class="tab-pane fade active show">
                             <div class="widget-chart p-3">
                                 <div style="height: 350px">
                                     <canvas id="line-chart"></canvas>
@@ -492,7 +492,7 @@
                                     <div class="badge badge-warning">Pending</div>
                                 </td>
                                 <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-1" class="btn btn-primary btn-sm">Details</button>
+                                    <button id="PopoverCustomT-1" type="button" class="btn btn-primary btn-sm">Details</button>
                                 </td>
                             </tr>
                             <tr>
@@ -517,7 +517,7 @@
                                     <div class="badge badge-success">Completed</div>
                                 </td>
                                 <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-2" class="btn btn-primary btn-sm">Details</button>
+                                    <button id="PopoverCustomT-2" type="button" class="btn btn-primary btn-sm">Details</button>
                                 </td>
                             </tr>
                             <tr>
@@ -542,7 +542,7 @@
                                     <div class="badge badge-danger">In Progress</div>
                                 </td>
                                 <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-3" class="btn btn-primary btn-sm">Details</button>
+                                    <button id="PopoverCustomT-3" type="button" class="btn btn-primary btn-sm">Details</button>
                                 </td>
                             </tr>
                             <tr>
@@ -566,7 +566,7 @@
                                     <div class="badge badge-info">On Hold</div>
                                 </td>
                                 <td class="text-center">
-                                    <button type="button" id="PopoverCustomT-4" class="btn btn-primary btn-sm">Details</button>
+                                    <button id="PopoverCustomT-4" type="button" class="btn btn-primary btn-sm">Details</button>
                                 </td>
                             </tr>
                             </tbody>

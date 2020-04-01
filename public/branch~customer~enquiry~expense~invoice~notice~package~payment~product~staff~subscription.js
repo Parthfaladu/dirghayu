@@ -175,7 +175,7 @@ render._withStripped = true
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /*!
  DataTables Bootstrap 4 integration
@@ -205,12 +205,12 @@ $jscomp.ASSUME_ES5 = !1;
 $jscomp.ASSUME_NO_NATIVE_MAP = !1;
 $jscomp.ASSUME_NO_NATIVE_SET = !1;
 $jscomp.SIMPLE_FROUND_POLYFILL = !1;
-$jscomp.defineProperty = $jscomp.ASSUME_ES5 || "function" == typeof Object.defineProperties ? Object.defineProperty : function (a, b, c) {
+$jscomp.defineProperty = $jscomp.ASSUME_ES5 || typeof Object.defineProperties === "function" ? Object.defineProperty : function (a, b, c) {
   a != Array.prototype && a != Object.prototype && (a[b] = c.value);
 };
 
 $jscomp.getGlobal = function (a) {
-  return "undefined" != typeof window && window === a ? a : "undefined" != typeof global && null != global ? global : a;
+  return typeof window !== "undefined" && window === a ? a : typeof global !== "undefined" && global != null ? global : a;
 };
 
 $jscomp.global = $jscomp.getGlobal(this);
@@ -229,7 +229,7 @@ $jscomp.polyfill = function (a, b, c, e) {
     a = a[a.length - 1];
     e = c[a];
     b = b(e);
-    b != e && null != b && $jscomp.defineProperty(c, a, {
+    b != e && b != null && $jscomp.defineProperty(c, a, {
       configurable: !0,
       writable: !0,
       value: b
@@ -238,7 +238,7 @@ $jscomp.polyfill = function (a, b, c, e) {
 };
 
 $jscomp.polyfill("Array.prototype.find", function (a) {
-  return a ? a : function (a, c) {
+  return a || function (a, c) {
     return $jscomp.findInternal(this, a, c).v;
   };
 }, "es6", "es3");
@@ -263,16 +263,18 @@ $jscomp.polyfill("Array.prototype.find", function (a) {
   });
 
   d.ext.renderer.pageButton.bootstrap = function (b, l, v, w, m, r) {
-    var k = new d.Api(b),
-        x = b.oClasses,
-        n = b.oLanguage.oPaginate,
-        y = b.oLanguage.oAria.paginate || {},
-        g,
-        h,
-        t = 0,
-        u = function u(c, d) {
-      var e,
-          l = function l(b) {
+    var k = new d.Api(b);
+    var x = b.oClasses;
+    var n = b.oLanguage.oPaginate;
+    var y = b.oLanguage.oAria.paginate || {};
+    var g;
+    var h;
+    var t = 0;
+
+    var u = function u(c, d) {
+      var e;
+
+      var l = function l(b) {
         b.preventDefault();
         a(b.currentTarget).hasClass("disabled") || k.page() == b.data.action || k.page(b.data.action).draw("page");
       };
@@ -292,12 +294,12 @@ $jscomp.polyfill("Array.prototype.find", function (a) {
 
             case "first":
               g = n.sFirst;
-              h = f + (0 < m ? "" : " disabled");
+              h = f + (m > 0 ? "" : " disabled");
               break;
 
             case "previous":
               g = n.sPrevious;
-              h = f + (0 < m ? "" : " disabled");
+              h = f + (m > 0 ? "" : " disabled");
               break;
 
             case "next":
@@ -317,7 +319,7 @@ $jscomp.polyfill("Array.prototype.find", function (a) {
           if (g) {
             var p = a("<li>", {
               "class": x.sPageButton + " " + h,
-              id: 0 === v && "string" === typeof f ? b.sTableId + "_" + f : null
+              id: v === 0 && typeof f === "string" ? b.sTableId + "_" + f : null
             }).append(a("<a>", {
               href: "#",
               "aria-controls": b.sTableId,

@@ -60,7 +60,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'branch_id'
       }, {
         data: function data(_data) {
-          return "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data.id + ">Update</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data.id + ">Delete</button>";
+          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
         },
         name: 'action'
       }],
@@ -68,17 +68,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var expenseId, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-expense/' + action.data); //console.log(action.data);
+                  _this.$router.push('/update-expense/' + action.data); // console.log(action.data);
+
                 }
 
                 if (!(action.action === 'delete')) {
@@ -93,35 +96,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: expenseId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10]]);
+      }))();
+    }
   }
 });
 
@@ -218,7 +218,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       expenseData: {
-        branch_id: null,
+        //branch_id: null,
         item_name: null,
         purchase_date: null,
         bill_no: null,
@@ -226,76 +226,65 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         expenseImage: null
       },
       expense_img_path: null,
-      showPreview: false,
-      branches: null
+      showPreview: false // branches: null,
+
     };
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var id, res, branchRes;
+      var id, res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 9;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/expense/list/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.expenseData = res.data.data;
-              this.expense_img_path = this.expenseData.bill_photo;
-              this.showPreview = true;
+              _this.expenseData = res.data.data;
+              _this.expense_img_path = _this.expenseData.bill_photo;
+              _this.showPreview = true;
 
             case 9:
-              _context.next = 11;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/branch/list', {
-                headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
-                }
-              });
-
-            case 11:
-              branchRes = _context.sent;
-              this.branches = branchRes.data.data;
-              _context.next = 18;
+              _context.next = 14;
               break;
 
-            case 15:
-              _context.prev = 15;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
 
-            case 18:
+              _this.$snotify.error(null, _context.t0.message);
+
+            case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 15]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 11]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res, data;
@@ -305,81 +294,78 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.expenseData) {
-                  _context2.next = 21;
+                if (!_this2.expenseData) {
+                  _context2.next = 20;
                   break;
                 }
 
                 res = null;
-                data = new FormData();
-                data.append('branch_id', this.expenseData.branch_id);
-                data.append('item_name', this.expenseData.item_name);
-                data.append('purchase_date', this.expenseData.purchase_date);
-                data.append('bill_no', this.expenseData.bill_no);
-                data.append('price', this.expenseData.price);
-                data.append('id', this.$route.params.id);
-                data.append('expenseImage', this.expenseData.expenseImage);
+                data = new FormData(); //data.append('branch_id', this.expenseData.branch_id)
 
-                if (!(this.$route.params.id != null)) {
-                  _context2.next = 17;
+                data.append('item_name', _this2.expenseData.item_name);
+                data.append('purchase_date', _this2.expenseData.purchase_date);
+                data.append('bill_no', _this2.expenseData.bill_no);
+                data.append('price', _this2.expenseData.price);
+                data.append('id', _this2.$route.params.id);
+                data.append('expenseImage', _this2.expenseData.expenseImage);
+
+                if (!(_this2.$route.params.id != null)) {
+                  _context2.next = 16;
                   break;
                 }
 
-                _context2.next = 14;
+                _context2.next = 13;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/expense/update', data, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 14:
+              case 13:
                 res = _context2.sent;
-                _context2.next = 20;
+                _context2.next = 19;
                 break;
 
-              case 17:
-                _context2.next = 19;
+              case 16:
+                _context2.next = 18;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/expense/create', data, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 19:
+              case 18:
                 res = _context2.sent;
 
-              case 20:
+              case 19:
                 if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/expense-list');
-                  this.$snotify.success(null, res.data.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push('/expense-list');
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
-              case 21:
-                _context2.next = 26;
+              case 20:
+                _context2.next = 25;
                 break;
 
-              case 23:
-                _context2.prev = 23;
+              case 22:
+                _context2.prev = 22;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
 
-              case 26:
+                _this2.$snotify.error(null, _context2.t0.message);
+
+              case 25:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 23]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 22]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.expenseData = null;
     },
@@ -412,6 +398,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_ExpenseTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/ExpenseTable */ "./resources/assets/js/components/ExpenseTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
 //
 //
 //
@@ -518,7 +506,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-diamond icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -543,61 +531,6 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "branch_id" } }, [
-                  _vm._v("Branch")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.expenseData.branch_id,
-                        expression: "expenseData.branch_id"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "branch_id", id: "branch_id", required: "" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.expenseData,
-                          "branch_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  _vm._l(_vm.branches, function(branch) {
-                    return _c(
-                      "option",
-                      {
-                        key: branch.id,
-                        domProps: {
-                          value: branch.id,
-                          selected: _vm.expenseData.branch_id === branch.id
-                        }
-                      },
-                      [_vm._v(_vm._s(branch.name))]
-                    )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
                 _c("label", { attrs: { for: "item_name" } }, [
                   _vm._v("Item Name")
                 ]),
@@ -613,9 +546,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "item_name",
                     type: "text",
                     name: "item_name",
-                    id: "item_name",
                     required: ""
                   },
                   domProps: { value: _vm.expenseData.item_name },
@@ -650,9 +583,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "purchase_date",
                     type: "text",
                     name: "purchase_date",
-                    id: "purchase_date",
                     placeholder: "yyyy-mm-dd",
                     required: ""
                   },
@@ -688,9 +621,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "bill_no",
                     type: "text",
                     name: "bill_no",
-                    id: "bill_no",
                     required: ""
                   },
                   domProps: { value: _vm.expenseData.bill_no },
@@ -719,9 +652,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
-                    type: "text",
-                    name: "price",
                     id: "price",
+                    type: "number",
+                    name: "price",
                     required: ""
                   },
                   domProps: { value: _vm.expenseData.price },
@@ -740,6 +673,7 @@ var render = function() {
                 _c("label", { attrs: { for: "expense_img_path" } }, [
                   _vm._v("Bill Photo")
                 ]),
+                _c("br"),
                 _vm._v(" "),
                 _c("img", {
                   directives: [
@@ -751,7 +685,7 @@ var render = function() {
                     }
                   ],
                   staticStyle: { border: "1px solid #cac2c2" },
-                  attrs: { src: _vm.expense_img_path, width: "20%" }
+                  attrs: { src: _vm.expense_img_path, width: "25%" }
                 }),
                 _vm._v(" "),
                 _c("input", {
@@ -759,10 +693,10 @@ var render = function() {
                   staticClass: "form-control",
                   staticStyle: { display: "none" },
                   attrs: {
+                    id: "expensePath",
                     type: "file",
                     accept: "image/*",
-                    name: "expensePath",
-                    id: "expensePath"
+                    name: "expensePath"
                   },
                   on: {
                     change: function($event) {
@@ -793,7 +727,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -834,7 +771,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-diamond icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -844,30 +781,30 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c(
-          "div",
-          { staticClass: "card-body col-sm-12" },
-          [
-            _c(
-              "h5",
-              { staticClass: "card-title" },
-              [
-                _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-info mb-5",
-                    attrs: { to: "/add-expense" }
-                  },
-                  [_vm._v("Add Expense")]
-                )
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("ExpenseTable")
-          ],
-          1
-        )
+        _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c(
+            "h5",
+            { staticClass: "card-title" },
+            [
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
+                  attrs: { to: "/add-expense" }
+                },
+                [_vm._v("Add Expense")]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "table-responsive" },
+            [_c("ExpenseTable")],
+            1
+          )
+        ])
       ])
     ])
   ])

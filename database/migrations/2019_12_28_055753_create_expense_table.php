@@ -21,7 +21,6 @@ class CreateExpenseTable extends Migration
             $table->text('bill_photo')->nullable();
             $table->integer('price');
             $table->integer('user_id');
-            $table->integer('branch_id');
             $table->timestamps();
         });
     }

@@ -31,258 +31,85 @@
             </span>
         </div>    <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
-                <ul class="vertical-nav-menu">
-                    <li class="app-sidebar__heading">Dashboards</li>
+                <ul class="vertical-nav-menu mt-4">
                     <li>
-                        <router-link to="/dashboard" class="mm-active">
-                            <i class="metismenu-icon pe-7s-rocket"></i>
+                        <router-link to="/dashboard">
+                            <i class="metismenu-icon pe-7s-home"></i>
                             Dashboard
                         </router-link>
                     </li>
-                    <li class="app-sidebar__heading">UI Components</li>
-                    <li>
+                    <!-- <li>
                         <router-link to="/branch-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-usb"></i>
                             Branch
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/branch-list">
-                                    <i class="metismenu-icon"></i>
-                                    Branch List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-branch">
-                                    <i class="metismenu-icon"></i>
-                                    Add-Branch
-                                </router-link>
-                            </li>
-                        </ul> -->
-                    </li>
+                        
+                    </li> -->
                      <li>
                         <router-link to="/package-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-gift"></i>
                             Package
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/package-list">
-                                    <i class="metismenu-icon"></i>
-                                    Package List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-package">
-                                    <i class="metismenu-icon"></i>
-                                    Add-Package
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li>
                         <router-link to="/product-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-diskette"></i>
                             Product
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!--<ul>
-                             <li>
-                                <router-link to="/product-list">
-                                    <i class="metismenu-icon"></i>
-                                    Product List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-product">
-                                    <i class="metismenu-icon"></i>
-                                    Add-Product
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/productsell-list">
-                                    <i class="metismenu-icon"></i>
-                                    Product Sell
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li>
                         <router-link to="/productsell-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-shopbag"></i>
                             Product Sell
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
                     </li>
                     <li>
                         <router-link to="/staff-member-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-user"></i>
                             Staff Member
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/staff-member-list">
-                                    <i class="metismenu-icon"></i>
-                                    Staff Member List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-staff-member">
-                                    <i class="metismenu-icon"></i>
-                                    Add Staff Member
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li> 
                     <li>
                         <router-link to="/payment-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-cash"></i>
                             Payment
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/payment-list">
-                                    <i class="metismenu-icon"></i>
-                                    Payment List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-payment">
-                                    <i class="metismenu-icon"></i>
-                                    Add Payment
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li>
                         <router-link to="/enquiry-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-call"></i>
                             Enquiry
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/enquiry-list">
-                                    <i class="metismenu-icon"></i>
-                                    Enquiry List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-enquiry">
-                                    <i class="metismenu-icon"></i>
-                                    Add Enquiry
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li> 
                         <router-link to="/customer-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-add-user"></i>
                             Customer
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/customer-list">
-                                    <i class="metismenu-icon"></i>
-                                    Customer List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-customer">
-                                    <i class="metismenu-icon"></i>
-                                    Add Customer
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li> 
                     <li>
                         <router-link to="/subscription-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-bell"></i>
                             Subscription
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/subscription-list">
-                                    <i class="metismenu-icon"></i>
-                                    Subscription List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-subscription">
-                                    <i class="metismenu-icon"></i>
-                                    Add Subscription
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li>
                         <router-link to="/notice-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-note"></i>
                             Notice
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/notice-list">
-                                    <i class="metismenu-icon"></i>
-                                    Notice List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-notice">
-                                    <i class="metismenu-icon"></i>
-                                    Add Notice
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li>
                         <router-link to="/expense-list">
                             <i class="metismenu-icon pe-7s-diamond"></i>
                             Expense
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/expense-list">
-                                    <i class="metismenu-icon"></i>
-                                    Expense List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-expense">
-                                    <i class="metismenu-icon"></i>
-                                    Add Expense
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                     <li>
                         <router-link to="/invoice-list">
-                            <i class="metismenu-icon pe-7s-diamond"></i>
+                            <i class="metismenu-icon pe-7s-news-paper"></i>
                             Invoice
-                            <!-- <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i> -->
                         </router-link>
-                        <!-- <ul>
-                            <li>
-                                <router-link to="/invoice-list">
-                                    <i class="metismenu-icon"></i>
-                                    Invoice List
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link to="/add-invoice">
-                                    <i class="metismenu-icon"></i>
-                                    Add Invoice
-                                </router-link>
-                            </li>
-                        </ul> -->
                     </li>
                 </ul>
             </div>

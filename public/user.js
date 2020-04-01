@@ -207,6 +207,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 
 
+
+var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AddCustomer',
   components: {
@@ -215,7 +218,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       customer: {
-        branchId: 1,
+        //branchId: 1,
         gender: "female",
         packageId: null,
         firstName: null,
@@ -237,7 +240,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         state: null,
         zipcode: null,
         amount: null,
-        startDate: null,
+        startDate: moment().format("YYYY-MM-DD"),
         duration: 0,
         endDate: null,
         trialDays: 0,
@@ -245,26 +248,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         profileImage: null
       },
       packages: null,
-      branches: null,
+      // branches: null,
       profile_img_path: null,
       showPreview: false
     };
   },
   computed: {
     endDate: function endDate() {
-      var moment = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-
+      // const moment = require('moment');
       var endDate = null;
       var currentDate = moment(this.customer.startDate);
       endDate = moment(currentDate).add(this.customer.duration, 'M').endOf('month').format('YYYY-MM-DD');
       return endDate;
     }
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var res, branchRes;
+      var res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -273,48 +277,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/package/list', {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 3:
               res = _context.sent;
-              this.packages = res.data.data;
-              _context.next = 7;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/branch/list', {
-                headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
-                }
-              });
+              _this.packages = res.data.data; // const branchRes      = await axios.get('/api/v1/branch/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+              // this.branches = branchRes.data.data
 
-            case 7:
-              branchRes = _context.sent;
-              this.branches = branchRes.data.data;
-              _context.next = 14;
+              _context.next = 10;
               break;
 
-            case 11:
-              _context.prev = 11;
+            case 7:
+              _context.prev = 7;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
 
-            case 14:
+              _this.$snotify.error(null, _context.t0.message);
+
+            case 10:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 11]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 7]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res, customerData;
@@ -324,81 +317,78 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.customer) {
-                  _context2.next = 36;
+                if (!_this2.customer) {
+                  _context2.next = 35;
                   break;
                 }
 
                 res = null;
-                customerData = new FormData();
-                customerData.append('branchId', this.customer.branchId);
-                customerData.append('gender', this.customer.gender);
-                customerData.append('packageId', this.customer.packageId);
-                customerData.append('firstName', this.customer.firstName);
-                customerData.append('lastName', this.customer.lastName);
-                customerData.append('email', this.customer.email);
-                customerData.append('password', this.customer.password);
-                customerData.append('dob', this.customer.dob);
-                customerData.append('height', this.customer.height);
-                customerData.append('weight', this.customer.weight);
-                customerData.append('chest', this.customer.chest);
-                customerData.append('waist', this.customer.waist);
-                customerData.append('thigh', this.customer.thigh);
-                customerData.append('arms', this.customer.arms);
-                customerData.append('fat', this.customer.fat);
-                customerData.append('interestedArea', this.customer.interestedArea);
-                customerData.append('phone', this.customer.phone);
-                customerData.append('address', this.customer.address);
-                customerData.append('city', this.customer.city);
-                customerData.append('state', this.customer.state);
-                customerData.append('zipcode', this.customer.zipcode);
-                customerData.append('amount', this.customer.amount);
-                customerData.append('startDate', this.customer.startDate);
-                customerData.append('duration', this.customer.duration);
-                customerData.append('endDate', this.endDate);
-                customerData.append('trialDays', this.customer.trialDays);
-                customerData.append('remark', this.customer.remark);
-                customerData.append('profileImage', this.customer.profileImage);
-                _context2.next = 34;
+                customerData = new FormData(); //customerData.append('branchId', this.customer.branchId)
+
+                customerData.append('gender', _this2.customer.gender);
+                customerData.append('packageId', _this2.customer.packageId);
+                customerData.append('firstName', _this2.customer.firstName);
+                customerData.append('lastName', _this2.customer.lastName);
+                customerData.append('email', _this2.customer.email);
+                customerData.append('password', _this2.customer.password);
+                customerData.append('dob', _this2.customer.dob);
+                customerData.append('height', _this2.customer.height);
+                customerData.append('weight', _this2.customer.weight);
+                customerData.append('chest', _this2.customer.chest);
+                customerData.append('waist', _this2.customer.waist);
+                customerData.append('thigh', _this2.customer.thigh);
+                customerData.append('arms', _this2.customer.arms);
+                customerData.append('fat', _this2.customer.fat);
+                customerData.append('interestedArea', _this2.customer.interestedArea);
+                customerData.append('phone', _this2.customer.phone);
+                customerData.append('address', _this2.customer.address);
+                customerData.append('city', _this2.customer.city);
+                customerData.append('state', _this2.customer.state);
+                customerData.append('zipcode', _this2.customer.zipcode);
+                customerData.append('amount', _this2.customer.amount);
+                customerData.append('startDate', _this2.customer.startDate);
+                customerData.append('duration', _this2.customer.duration);
+                customerData.append('endDate', _this2.endDate);
+                customerData.append('trialDays', _this2.customer.trialDays);
+                customerData.append('remark', _this2.customer.remark);
+                customerData.append('profileImage', _this2.customer.profileImage);
+                _context2.next = 33;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/customer/create', customerData, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 34:
+              case 33:
                 res = _context2.sent;
 
                 if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/customer-list');
-                  this.$snotify.success(null, res.message);
+                  _this2.resetForm();
+
+                  _this2.$router.push('/customer-list');
+
+                  _this2.$snotify.success(null, res.message);
                 }
 
-              case 36:
-                _context2.next = 41;
+              case 35:
+                _context2.next = 40;
                 break;
 
-              case 38:
-                _context2.prev = 38;
+              case 37:
+                _context2.prev = 37;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
 
-              case 41:
+                _this2.$snotify.error(null, _context2.t0.message);
+
+              case 40:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 38]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 37]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.customer = null;
     },
@@ -416,12 +406,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     onChange: function onChange(event) {
-      var _this = this;
+      var _this3 = this;
 
       this.packages.forEach(function (packageDetail) {
         if (packageDetail.id == event.target.value) {
-          _this.customer.amount = packageDetail.price;
-          _this.customer.duration = packageDetail.duration;
+          _this3.customer.amount = packageDetail.price;
+          _this3.customer.duration = packageDetail.duration;
         }
       });
     }
@@ -739,7 +729,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-add-user icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -769,65 +759,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "position-relative form-group" }, [
-                    _c("label", { attrs: { for: "branchId" } }, [
-                      _vm._v("Branch")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.customer.branchId,
-                            expression: "customer.branchId"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          name: "branchId",
-                          id: "branchId",
-                          required: ""
-                        },
-                        on: {
-                          change: function($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function(o) {
-                                return o.selected
-                              })
-                              .map(function(o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              _vm.customer,
-                              "branchId",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          }
-                        }
-                      },
-                      _vm._l(_vm.branches, function(branch) {
-                        return _c(
-                          "option",
-                          {
-                            key: branch.id,
-                            domProps: {
-                              value: branch.id,
-                              selected: _vm.customer.branchId === branch.id
-                            }
-                          },
-                          [_vm._v(_vm._s(branch.name))]
-                        )
-                      }),
-                      0
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "position-relative form-group" }, [
                     _c("label", { attrs: { for: "firstName" } }, [
                       _vm._v("First Name")
                     ]),
@@ -843,9 +774,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "firstName",
                         type: "text",
                         name: "firstName",
-                        id: "firstName",
                         required: ""
                       },
                       domProps: { value: _vm.customer.firstName },
@@ -880,9 +811,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "lastName",
                         type: "text",
                         name: "lastName",
-                        id: "lastName",
                         required: ""
                       },
                       domProps: { value: _vm.customer.lastName },
@@ -915,9 +846,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "name",
                         type: "email",
                         name: "email",
-                        id: "name",
                         required: ""
                       },
                       domProps: { value: _vm.customer.email },
@@ -948,9 +879,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "password",
                         type: "password",
                         name: "password",
-                        id: "password",
                         required: ""
                       },
                       domProps: { value: _vm.customer.password },
@@ -990,8 +921,8 @@ var render = function() {
                             ],
                             staticClass: "custom-control-input",
                             attrs: {
-                              type: "radio",
                               id: "defaultGroupExample1",
+                              type: "radio",
                               name: "gender",
                               value: "male"
                             },
@@ -1032,8 +963,8 @@ var render = function() {
                             ],
                             staticClass: "custom-control-input",
                             attrs: {
-                              type: "radio",
                               id: "defaultGroupExample2",
+                              type: "radio",
                               name: "gender",
                               value: "female",
                               checked: ""
@@ -1082,9 +1013,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "dob",
                         type: "text",
                         name: "dob",
-                        id: "dob",
                         required: ""
                       },
                       domProps: { value: _vm.customer.dob },
@@ -1103,6 +1034,7 @@ var render = function() {
                     _c("label", { attrs: { for: "profile_img_path" } }, [
                       _vm._v("Profile Photo")
                     ]),
+                    _c("br"),
                     _vm._v(" "),
                     _c("img", {
                       directives: [
@@ -1114,7 +1046,7 @@ var render = function() {
                         }
                       ],
                       staticStyle: { border: "1px solid #cac2c2" },
-                      attrs: { src: _vm.profile_img_path, width: "20%" }
+                      attrs: { src: _vm.profile_img_path, width: "25%" }
                     }),
                     _vm._v(" "),
                     _c("input", {
@@ -1122,10 +1054,10 @@ var render = function() {
                       staticClass: "form-control",
                       staticStyle: { display: "none" },
                       attrs: {
+                        id: "profilePath",
                         type: "file",
                         accept: "image/*",
-                        name: "profilePath",
-                        id: "profilePath"
+                        name: "profilePath"
                       },
                       on: {
                         change: function($event) {
@@ -1179,10 +1111,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "height",
                         id: "height",
-                        placeholder: "150",
+                        type: "number",
+                        name: "height",
                         required: ""
                       },
                       domProps: { value: _vm.customer.height },
@@ -1213,10 +1144,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "weight",
                         id: "weight",
-                        placeholder: "50",
+                        type: "number",
+                        name: "weight",
                         required: ""
                       },
                       domProps: { value: _vm.customer.weight },
@@ -1247,10 +1177,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "chest",
                         id: "chest",
-                        placeholder: "135",
+                        type: "number",
+                        name: "chest",
                         required: ""
                       },
                       domProps: { value: _vm.customer.chest },
@@ -1281,10 +1210,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "waist",
                         id: "waist",
-                        placeholder: "140",
+                        type: "number",
+                        name: "waist",
                         required: ""
                       },
                       domProps: { value: _vm.customer.waist },
@@ -1315,10 +1243,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "thigh",
                         id: "thigh",
-                        placeholder: "58",
+                        type: "number",
+                        name: "thigh",
                         required: ""
                       },
                       domProps: { value: _vm.customer.thigh },
@@ -1349,10 +1276,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "arms",
                         id: "arms",
-                        placeholder: "180",
+                        type: "number",
+                        name: "arms",
                         required: ""
                       },
                       domProps: { value: _vm.customer.arms },
@@ -1383,10 +1309,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
-                        type: "text",
-                        name: "fat",
                         id: "fat",
-                        placeholder: "40",
+                        type: "number",
+                        name: "fat",
                         required: ""
                       },
                       domProps: { value: _vm.customer.fat },
@@ -1417,9 +1342,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "interestedArea",
                         rows: "2",
                         name: "interestedArea",
-                        id: "interestedArea",
                         required: ""
                       },
                       domProps: { value: _vm.customer.interestedArea },
@@ -1462,9 +1387,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "phone",
                         type: "text",
                         name: "phone",
-                        id: "phone",
                         required: ""
                       },
                       domProps: { value: _vm.customer.phone },
@@ -1495,9 +1420,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "address",
                         rows: "2",
                         name: "address",
-                        id: "address",
                         required: ""
                       },
                       domProps: { value: _vm.customer.address },
@@ -1525,7 +1450,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "city", id: "city" },
+                      attrs: { id: "city", type: "text", name: "city" },
                       domProps: { value: _vm.customer.city },
                       on: {
                         input: function($event) {
@@ -1551,7 +1476,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { type: "text", name: "state", id: "state" },
+                      attrs: { id: "state", type: "text", name: "state" },
                       domProps: { value: _vm.customer.state },
                       on: {
                         input: function($event) {
@@ -1580,9 +1505,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "zipcode",
                         type: "text",
                         name: "zipcode",
-                        id: "zipcode",
                         required: ""
                       },
                       domProps: { value: _vm.customer.zipcode },
@@ -1625,8 +1550,8 @@ var render = function() {
                         ],
                         staticClass: "form-control",
                         attrs: {
-                          name: "packageId",
                           id: "packageId",
+                          name: "packageId",
                           required: ""
                         },
                         on: {
@@ -1688,9 +1613,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "amount",
                         type: "number",
                         name: "amount",
-                        id: "amount",
                         required: "",
                         readonly: ""
                       },
@@ -1722,9 +1647,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "startDate",
                         type: "text",
                         name: "startDate",
-                        id: "startDate",
                         placeholder: "yyyy-mm-dd",
                         required: ""
                       },
@@ -1760,9 +1685,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "duration",
                         type: "number",
                         name: "duration",
-                        id: "duration",
                         required: "",
                         readonly: ""
                       },
@@ -1798,9 +1723,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "endDate",
                         type: "text",
                         name: "endDate",
-                        id: "endDate",
                         placeholder: "yyyy-mm-dd",
                         required: "",
                         readonly: ""
@@ -1833,9 +1758,9 @@ var render = function() {
                       ],
                       staticClass: "form-control",
                       attrs: {
+                        id: "trialDays",
                         type: "number",
-                        name: "trialDays",
-                        id: "trialDays"
+                        name: "trialDays"
                       },
                       domProps: { value: _vm.customer.trialDays },
                       on: {
@@ -1868,7 +1793,7 @@ var render = function() {
                         }
                       ],
                       staticClass: "form-control",
-                      attrs: { rows: "2", name: "remark", id: "remark" },
+                      attrs: { id: "remark", rows: "2", name: "remark" },
                       domProps: { value: _vm.customer.remark },
                       on: {
                         input: function($event) {
@@ -1888,7 +1813,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-primary",
+                  staticClass: "btn btn-outline-info",
                   staticStyle: { width: "23%" },
                   attrs: { type: "submit" }
                 },

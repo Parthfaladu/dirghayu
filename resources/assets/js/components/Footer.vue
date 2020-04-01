@@ -4,7 +4,7 @@
             <div class="app-footer__inner">
                 <div class="app-footer-left">
                     <strong>Copyright &copy; 2020 <router-link to="#"> Gym System</router-link>. </strong>
-		    All rights reserved.
+		    &nbsp;&nbsp;All rights reserved.
                 </div>
                 <div class="app-footer-right">
                     <p>Gym System</p>

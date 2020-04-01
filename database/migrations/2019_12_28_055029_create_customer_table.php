@@ -25,7 +25,6 @@ class CreateCustomerTable extends Migration
             $table->string('thigh')->nullable();
             $table->string('arms')->nullable();
             $table->string('fat')->nullable();
-            $table->string('staff_member_id');
             $table->string('insterested_area')->nullable();
             $table->integer('user_id');
             $table->timestamps();

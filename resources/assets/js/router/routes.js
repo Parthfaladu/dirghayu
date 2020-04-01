@@ -308,9 +308,9 @@ const router = new Router({
             }
         },
         {
-            path: '/update-invoice/:id',
-            name: 'updateinvoice',
-            component: () => import(/* webpackChunkName: "invoice" */ '@views/AddInvoice.vue'),
+            path: '/view-invoice/:id',
+            name: 'viewinvoice',
+            component: () => import(/* webpackChunkName: "invoice" */ '@views/InvoiceView.vue'),
             meta: {
                 authenticated: true,
             }

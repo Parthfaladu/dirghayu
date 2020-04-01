@@ -62,15 +62,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'address'
       }, {
         data: function data(_data2) {
-          var action = "<button class='btn btn-primary' data-g-action='view' data-g-actiondata=" + _data2.id + ">Update</button> <button class='btn btn-warning' data-g-action='status' data-g-actiondata=" + _data2.id + ">";
+          var action = "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data2.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-warning' data-g-action='status' data-g-actiondata=" + _data2.id + "><i class='fas fa-toggle-on'></i> ";
 
-          if (_data2.is_active == 1) {
+          if (_data2.is_active === 1) {
             action += "Active";
           } else {
             action += "InActive";
           }
 
-          action += "</button> <button class='btn btn-danger' data-g-action='delete' data-g-actiondata=" + _data2.id + ">Delete</button>";
+          action += " </button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data2.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
           return action;
         },
         name: 'action'
@@ -80,10 +80,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    onAction: function () {
-      var _onAction = _asyncToGenerator(
+    onAction: function onAction(action) {
+      var _this = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(action) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var memberId, res, _memberId, _res;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -91,7 +93,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  this.$router.push('/update-staff-member/' + action.data);
+                  _this.$router.push('/update-staff-member/' + action.data);
                 }
 
                 if (!(action.action === 'delete')) {
@@ -104,20 +106,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context.next = 6;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]('/api/v1/staff/member/' + memberId, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 6:
                 res = _context.sent;
-                this.$snotify.success(null, res.data.message);
+
+                _this.$snotify.success(null, res.data.message);
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](2);
-                this.$snotify.error(null, _context.t0.message);
+
+                _this.$snotify.error(null, _context.t0.message);
 
               case 13:
                 if (!(action.action === 'status')) {
@@ -132,35 +137,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   id: _memberId
                 }, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                   }
                 });
 
               case 18:
                 _res = _context.sent;
-                this.$snotify.success(null, _res.data.message);
+
+                _this.$snotify.success(null, _res.data.message);
+
                 _context.next = 25;
                 break;
 
               case 22:
                 _context.prev = 22;
                 _context.t1 = _context["catch"](14);
-                this.$snotify.error(null, _context.t1.message);
+
+                _this.$snotify.error(null, _context.t1.message);
 
               case 25:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[2, 10], [14, 22]]);
-      }));
-
-      function onAction(_x) {
-        return _onAction.apply(this, arguments);
-      }
-
-      return onAction;
-    }()
+        }, _callee, null, [[2, 10], [14, 22]]);
+      }))();
+    }
   }
 });
 
@@ -297,82 +299,71 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         dob: null,
         gender: 'female',
         address: null,
-        branchId: 1,
+        //branchId:1,
         email: null,
         roleId: null,
         profileImage: null
       },
       profile_img_path: null,
-      showPreview: false,
-      branches: null
+      showPreview: false // branches: null,
+
     };
   },
-  mounted: function () {
-    var _mounted = _asyncToGenerator(
+  mounted: function mounted() {
+    var _this = this;
+
+    return _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var id, res, branchRes;
+      var id, res;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
 
-              if (!(this.$route.params.id != null)) {
+              if (!(_this.$route.params.id != null)) {
                 _context.next = 9;
                 break;
               }
 
-              id = this.$route.params.id;
+              id = _this.$route.params.id;
               _context.next = 5;
               return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/staff/member/' + id, {
                 headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
+                  "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
                 }
               });
 
             case 5:
               res = _context.sent;
-              this.staff = res.data.data;
-              this.profile_img_path = this.staff.photoUrl;
-              this.showPreview = true;
+              _this.staff = res.data.data;
+              _this.profile_img_path = _this.staff.photoUrl;
+              _this.showPreview = true;
 
             case 9:
-              _context.next = 11;
-              return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/branch/list', {
-                headers: {
-                  "Authorization": this.$store.getters['auth/authHeaders'].Authorization
-                }
-              });
-
-            case 11:
-              branchRes = _context.sent;
-              this.branches = branchRes.data.data;
-              _context.next = 18;
+              _context.next = 14;
               break;
 
-            case 15:
-              _context.prev = 15;
+            case 11:
+              _context.prev = 11;
               _context.t0 = _context["catch"](0);
-              this.$snotify.error(null, _context.t0.message);
 
-            case 18:
+              _this.$snotify.error(null, _context.t0.message);
+
+            case 14:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, this, [[0, 15]]);
-    }));
-
-    function mounted() {
-      return _mounted.apply(this, arguments);
-    }
-
-    return mounted;
-  }(),
+      }, _callee, null, [[0, 11]]);
+    }))();
+  },
   methods: {
-    submitForm: function () {
-      var _submitForm = _asyncToGenerator(
+    submitForm: function submitForm() {
+      var _this2 = this;
+
+      return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var res, data;
@@ -382,86 +373,83 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
 
-                if (!this.staff) {
-                  _context2.next = 26;
+                if (!_this2.staff) {
+                  _context2.next = 25;
                   break;
                 }
 
                 res = null;
                 data = new FormData();
-                data.append('firstName', this.staff.firstName);
-                data.append('lastName', this.staff.lastName);
-                data.append('password', this.staff.password);
-                data.append('phone', this.staff.phone);
-                data.append('dob', this.staff.dob);
-                data.append('gender', this.staff.gender);
-                data.append('address', this.staff.address);
-                data.append('branchId', this.staff.branchId);
-                data.append('email', this.staff.email);
-                data.append('roleId', this.staff.roleId);
-                data.append('profileImage', this.staff.profileImage);
+                data.append('firstName', _this2.staff.firstName);
+                data.append('lastName', _this2.staff.lastName);
+                data.append('password', _this2.staff.password);
+                data.append('phone', _this2.staff.phone);
+                data.append('dob', _this2.staff.dob);
+                data.append('gender', _this2.staff.gender);
+                data.append('address', _this2.staff.address); //data.append('branchId', this.staff.branchId)
 
-                if (!(this.$route.params.id != null)) {
-                  _context2.next = 22;
+                data.append('email', _this2.staff.email);
+                data.append('roleId', _this2.staff.roleId);
+                data.append('profileImage', _this2.staff.profileImage);
+
+                if (!(_this2.$route.params.id != null)) {
+                  _context2.next = 21;
                   break;
                 }
 
-                data.append('id', this.staff.id);
-                _context2.next = 19;
+                data.append('memberId', _this2.$route.params.id);
+                _context2.next = 18;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/update', data, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 19:
+              case 18:
                 res = _context2.sent;
-                _context2.next = 25;
+                _context2.next = 24;
                 break;
 
-              case 22:
-                _context2.next = 24;
+              case 21:
+                _context2.next = 23;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member', data, {
                   headers: {
-                    "Authorization": this.$store.getters['auth/authHeaders'].Authorization,
+                    "Authorization": _this2.$store.getters['auth/authHeaders'].Authorization,
                     'Content-Type': 'multipart/form-data'
                   }
                 });
 
-              case 24:
+              case 23:
                 res = _context2.sent;
 
-              case 25:
-                if (res.data.status == "success") {
-                  this.resetForm();
-                  this.$router.push('/staff-member-list');
-                  this.$snotify.success(null, res.data.message);
+              case 24:
+                if (res.data.status === "success") {
+                  _this2.resetForm();
+
+                  _this2.$router.push('/staff-member-list');
+
+                  _this2.$snotify.success(null, res.data.message);
                 }
 
-              case 26:
-                _context2.next = 31;
+              case 25:
+                _context2.next = 30;
                 break;
 
-              case 28:
-                _context2.prev = 28;
+              case 27:
+                _context2.prev = 27;
                 _context2.t0 = _context2["catch"](0);
-                this.$snotify.error(null, _context2.t0.message);
 
-              case 31:
+                _this2.$snotify.error(null, _context2.t0.message);
+
+              case 30:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[0, 28]]);
-      }));
-
-      function submitForm() {
-        return _submitForm.apply(this, arguments);
-      }
-
-      return submitForm;
-    }(),
+        }, _callee2, null, [[0, 27]]);
+      }))();
+    },
     resetForm: function resetForm() {
       this.staff = null;
     },
@@ -601,7 +589,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-user icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -627,59 +615,6 @@ var render = function() {
             },
             [
               _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "branchId" } }, [_vm._v("Branch")]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.staff.branchId,
-                        expression: "staff.branchId"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { name: "branchId", id: "branchId", required: "" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.staff,
-                          "branchId",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  _vm._l(_vm.branches, function(branch) {
-                    return _c(
-                      "option",
-                      {
-                        key: branch.id,
-                        domProps: {
-                          value: branch.id,
-                          selected: _vm.staff.branchId === branch.id
-                        }
-                      },
-                      [_vm._v(_vm._s(branch.name))]
-                    )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
                 _c("label", { attrs: { for: "roleId" } }, [
                   _vm._v("Staff Role")
                 ]),
@@ -696,7 +631,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { name: "roleId", id: "roleId", required: "" },
+                    attrs: { id: "roleId", name: "roleId", required: "" },
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -745,9 +680,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "firstName",
                     type: "text",
                     name: "firstName",
-                    id: "firstName",
                     required: ""
                   },
                   domProps: { value: _vm.staff.firstName },
@@ -778,9 +713,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "lastName",
                     type: "text",
                     name: "lastName",
-                    id: "lastName",
                     required: ""
                   },
                   domProps: { value: _vm.staff.lastName },
@@ -809,9 +744,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "name",
                     type: "email",
                     name: "email",
-                    id: "name",
                     required: ""
                   },
                   domProps: { value: _vm.staff.email },
@@ -842,9 +777,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "password",
                     type: "password",
                     name: "password",
-                    id: "password",
                     required: ""
                   },
                   domProps: { value: _vm.staff.password },
@@ -873,9 +808,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "phone",
                     type: "text",
                     name: "phone",
-                    id: "phone",
                     required: ""
                   },
                   domProps: { value: _vm.staff.phone },
@@ -905,7 +840,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  attrs: { type: "text", name: "dob", id: "dob", required: "" },
+                  attrs: { id: "dob", type: "text", name: "dob", required: "" },
                   domProps: { value: _vm.staff.dob },
                   on: {
                     input: function($event) {
@@ -934,8 +869,8 @@ var render = function() {
                       ],
                       staticClass: "custom-control-input",
                       attrs: {
-                        type: "radio",
                         id: "defaultGroupExample1",
+                        type: "radio",
                         name: "gender",
                         value: "male"
                       },
@@ -972,8 +907,8 @@ var render = function() {
                       ],
                       staticClass: "custom-control-input",
                       attrs: {
-                        type: "radio",
                         id: "defaultGroupExample2",
+                        type: "radio",
                         name: "gender",
                         value: "female",
                         checked: ""
@@ -1015,9 +950,9 @@ var render = function() {
                   ],
                   staticClass: "form-control",
                   attrs: {
+                    id: "address",
                     rows: "2",
                     name: "address",
-                    id: "address",
                     required: ""
                   },
                   domProps: { value: _vm.staff.address },
@@ -1036,6 +971,7 @@ var render = function() {
                 _c("label", { attrs: { for: "profile_img_path" } }, [
                   _vm._v("Profile Photo")
                 ]),
+                _c("br"),
                 _vm._v(" "),
                 _c("img", {
                   directives: [
@@ -1047,7 +983,7 @@ var render = function() {
                     }
                   ],
                   staticStyle: { border: "1px solid #cac2c2" },
-                  attrs: { src: _vm.profile_img_path, width: "20%" }
+                  attrs: { src: _vm.profile_img_path, width: "25%" }
                 }),
                 _vm._v(" "),
                 _c("input", {
@@ -1055,10 +991,10 @@ var render = function() {
                   staticClass: "form-control",
                   staticStyle: { display: "none" },
                   attrs: {
+                    id: "profilePath",
                     type: "file",
                     accept: "image/*",
-                    name: "profilePath",
-                    id: "profilePath"
+                    name: "profilePath"
                   },
                   on: {
                     change: function($event) {
@@ -1089,7 +1025,10 @@ var render = function() {
               _c("div", { staticClass: "text-center" }, [
                 _c(
                   "button",
-                  { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
                   [_vm._v("SUBMIT")]
                 )
               ])
@@ -1130,7 +1069,7 @@ var render = function() {
             _c("div", { staticClass: "page-title-icon" }, [
               _c("i", {
                 staticClass:
-                  "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                  "pe-7s-user icon-gradient bg-premium-dark text-danger"
               })
             ]),
             _vm._v(" "),
@@ -1148,7 +1087,7 @@ var render = function() {
               _c(
                 "router-link",
                 {
-                  staticClass: "btn btn-info mb-5",
+                  staticClass: "btn btn-outline-primary mb-5 pull-right",
                   attrs: { to: "/add-staff-member" }
                 },
                 [_vm._v("Add New Staff")]

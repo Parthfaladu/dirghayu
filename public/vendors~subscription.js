@@ -1,7 +1,7 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["vendors~subscription"],{
+(window.webpackJsonp = window.webpackJsonp || []).push([["vendors~subscription"],{
 
 /***/ "./node_modules/moment/locale/af.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/af.js ***!
   \******************************************/
 /*! no static exports found */
@@ -82,7 +82,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar-dz.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ar-dz.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -149,7 +149,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar-kw.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ar-kw.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -216,7 +216,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar-ly.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ar-ly.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -241,25 +241,25 @@
         '8': '8',
         '9': '9',
         '0': '0'
-    }, pluralForm = function (n) {
+    }; var pluralForm = function (n) {
         return n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5;
-    }, plurals = {
+    }; var plurals = {
         s : ['أقل من ثانية', 'ثانية واحدة', ['ثانيتان', 'ثانيتين'], '%d ثوان', '%d ثانية', '%d ثانية'],
         m : ['أقل من دقيقة', 'دقيقة واحدة', ['دقيقتان', 'دقيقتين'], '%d دقائق', '%d دقيقة', '%d دقيقة'],
         h : ['أقل من ساعة', 'ساعة واحدة', ['ساعتان', 'ساعتين'], '%d ساعات', '%d ساعة', '%d ساعة'],
         d : ['أقل من يوم', 'يوم واحد', ['يومان', 'يومين'], '%d أيام', '%d يومًا', '%d يوم'],
         M : ['أقل من شهر', 'شهر واحد', ['شهران', 'شهرين'], '%d أشهر', '%d شهرا', '%d شهر'],
         y : ['أقل من عام', 'عام واحد', ['عامان', 'عامين'], '%d أعوام', '%d عامًا', '%d عام']
-    }, pluralize = function (u) {
+    }; var pluralize = function (u) {
         return function (number, withoutSuffix, string, isFuture) {
-            var f = pluralForm(number),
-                str = plurals[u][pluralForm(number)];
+            var f = pluralForm(number);
+                var str = plurals[u][pluralForm(number)];
             if (f === 2) {
                 str = str[withoutSuffix ? 0 : 1];
             }
             return str.replace(/%d/i, number);
         };
-    }, months = [
+    }; var months = [
         'يناير',
         'فبراير',
         'مارس',
@@ -291,7 +291,7 @@
         },
         meridiemParse: /ص|م/,
         isPM : function (input) {
-            return 'م' === input;
+            return input === 'م';
         },
         meridiem : function (hour, minute, isLower) {
             if (hour < 12) {
@@ -346,7 +346,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar-ma.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ar-ma.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -413,7 +413,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar-sa.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ar-sa.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -438,7 +438,7 @@
         '8': '٨',
         '9': '٩',
         '0': '٠'
-    }, numberMap = {
+    }; var numberMap = {
         '١': '1',
         '٢': '2',
         '٣': '3',
@@ -468,7 +468,7 @@
         },
         meridiemParse: /ص|م/,
         isPM : function (input) {
-            return 'م' === input;
+            return input === 'م';
         },
         meridiem : function (hour, minute, isLower) {
             if (hour < 12) {
@@ -525,7 +525,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar-tn.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ar-tn.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -592,7 +592,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ar.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ar.js ***!
   \******************************************/
 /*! no static exports found */
@@ -617,7 +617,7 @@
         '8': '٨',
         '9': '٩',
         '0': '٠'
-    }, numberMap = {
+    }; var numberMap = {
         '١': '1',
         '٢': '2',
         '٣': '3',
@@ -628,25 +628,25 @@
         '٨': '8',
         '٩': '9',
         '٠': '0'
-    }, pluralForm = function (n) {
+    }; var pluralForm = function (n) {
         return n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5;
-    }, plurals = {
+    }; var plurals = {
         s : ['أقل من ثانية', 'ثانية واحدة', ['ثانيتان', 'ثانيتين'], '%d ثوان', '%d ثانية', '%d ثانية'],
         m : ['أقل من دقيقة', 'دقيقة واحدة', ['دقيقتان', 'دقيقتين'], '%d دقائق', '%d دقيقة', '%d دقيقة'],
         h : ['أقل من ساعة', 'ساعة واحدة', ['ساعتان', 'ساعتين'], '%d ساعات', '%d ساعة', '%d ساعة'],
         d : ['أقل من يوم', 'يوم واحد', ['يومان', 'يومين'], '%d أيام', '%d يومًا', '%d يوم'],
         M : ['أقل من شهر', 'شهر واحد', ['شهران', 'شهرين'], '%d أشهر', '%d شهرا', '%d شهر'],
         y : ['أقل من عام', 'عام واحد', ['عامان', 'عامين'], '%d أعوام', '%d عامًا', '%d عام']
-    }, pluralize = function (u) {
+    }; var pluralize = function (u) {
         return function (number, withoutSuffix, string, isFuture) {
-            var f = pluralForm(number),
-                str = plurals[u][pluralForm(number)];
+            var f = pluralForm(number);
+                var str = plurals[u][pluralForm(number)];
             if (f === 2) {
                 str = str[withoutSuffix ? 0 : 1];
             }
             return str.replace(/%d/i, number);
         };
-    }, months = [
+    }; var months = [
         'يناير',
         'فبراير',
         'مارس',
@@ -678,7 +678,7 @@
         },
         meridiemParse: /ص|م/,
         isPM : function (input) {
-            return 'م' === input;
+            return input === 'م';
         },
         meridiem : function (hour, minute, isLower) {
             if (hour < 12) {
@@ -735,7 +735,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/az.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/az.js ***!
   \******************************************/
 /*! no static exports found */
@@ -829,9 +829,9 @@
             if (number === 0) {  // special case for zero
                 return number + '-ıncı';
             }
-            var a = number % 10,
-                b = number % 100 - a,
-                c = number >= 100 ? 100 : null;
+            var a = number % 10;
+                var b = number % 100 - a;
+                var c = number >= 100 ? 100 : null;
             return number + (suffixes[a] || suffixes[b] || suffixes[c]);
         },
         week : {
@@ -848,7 +848,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/be.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/be.js ***!
   \******************************************/
 /*! no static exports found */
@@ -988,7 +988,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/bg.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/bg.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1054,8 +1054,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
         ordinal : function (number) {
-            var lastDigit = number % 10,
-                last2Digits = number % 100;
+            var lastDigit = number % 10;
+                var last2Digits = number % 100;
             if (number === 0) {
                 return number + '-ев';
             } else if (last2Digits === 0) {
@@ -1086,7 +1086,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/bm.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/bm.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1152,7 +1152,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/bn.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/bn.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1177,8 +1177,8 @@
         '8': '৮',
         '9': '৯',
         '0': '০'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '১': '1',
         '২': '2',
         '৩': '3',
@@ -1279,7 +1279,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/bo.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/bo.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1304,8 +1304,8 @@
         '8': '༨',
         '9': '༩',
         '0': '༠'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '༡': '1',
         '༢': '2',
         '༣': '3',
@@ -1406,7 +1406,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/br.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/br.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1522,7 +1522,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/bs.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/bs.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1681,7 +1681,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ca.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ca.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1777,7 +1777,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/cs.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/cs.js ***!
   \******************************************/
 /*! no static exports found */
@@ -1791,8 +1791,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var months = 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split('_'),
-        monthsShort = 'led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro'.split('_');
+    var months = 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split('_');
+        var monthsShort = 'led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro'.split('_');
 
     var monthsParse = [/^led/i, /^úno/i, /^bře/i, /^dub/i, /^kvě/i, /^(čvn|červen$|června)/i, /^(čvc|červenec|července)/i, /^srp/i, /^zář/i, /^říj/i, /^lis/i, /^pro/i];
     // NOTE: 'červen' is substring of 'červenec'; therefore 'červenec' must precede 'červen' in the regex to be fully matched.
@@ -1957,7 +1957,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/cv.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/cv.js ***!
   \******************************************/
 /*! no static exports found */
@@ -2028,7 +2028,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/cy.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/cy.js ***!
   \******************************************/
 /*! no static exports found */
@@ -2085,9 +2085,9 @@
         dayOfMonthOrdinalParse: /\d{1,2}(fed|ain|af|il|ydd|ed|eg)/,
         // traditional ordinal numbers above 31 are not commonly used in colloquial Welsh
         ordinal: function (number) {
-            var b = number,
-                output = '',
-                lookup = [
+            var b = number;
+                var output = '';
+                var lookup = [
                     '', 'af', 'il', 'ydd', 'ydd', 'ed', 'ed', 'ed', 'fed', 'fed', 'fed', // 1af to 10fed
                     'eg', 'fed', 'eg', 'eg', 'fed', 'eg', 'eg', 'fed', 'eg', 'fed' // 11eg to 20fed
                 ];
@@ -2116,7 +2116,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/da.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/da.js ***!
   \******************************************/
 /*! no static exports found */
@@ -2184,7 +2184,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/de-at.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/de-at.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -2268,7 +2268,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/de-ch.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/de-ch.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -2352,7 +2352,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/de.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/de.js ***!
   \******************************************/
 /*! no static exports found */
@@ -2436,7 +2436,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/dv.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/dv.js ***!
   \******************************************/
 /*! no static exports found */
@@ -2463,7 +2463,7 @@
         'އޮކްޓޯބަރު',
         'ނޮވެމްބަރު',
         'ޑިސެމްބަރު'
-    ], weekdays = [
+    ]; var weekdays = [
         'އާދިއްތަ',
         'ހޯމަ',
         'އަންގާރަ',
@@ -2490,7 +2490,7 @@
         },
         meridiemParse: /މކ|މފ/,
         isPM : function (input) {
-            return 'މފ' === input;
+            return input === 'މފ';
         },
         meridiem : function (hour, minute, isLower) {
             if (hour < 12) {
@@ -2543,7 +2543,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/el.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/el.js ***!
   \******************************************/
 /*! no static exports found */
@@ -2612,8 +2612,8 @@
             sameElse : 'L'
         },
         calendar : function (key, mom) {
-            var output = this._calendarEl[key],
-                hours = mom && mom.hours();
+            var output = this._calendarEl[key];
+                var hours = mom && mom.hours();
             if (isFunction(output)) {
                 output = output.apply(mom);
             }
@@ -2651,7 +2651,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-SG.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-SG.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -2705,8 +2705,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -2726,7 +2726,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-au.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-au.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -2780,8 +2780,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -2801,7 +2801,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-ca.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-ca.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -2855,8 +2855,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -2872,7 +2872,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-gb.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-gb.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -2926,8 +2926,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -2947,7 +2947,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-ie.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-ie.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -3001,8 +3001,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -3022,7 +3022,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-il.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-il.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -3075,8 +3075,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -3092,7 +3092,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/en-nz.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/en-nz.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -3146,8 +3146,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -3167,7 +3167,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/eo.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/eo.js ***!
   \******************************************/
 /*! no static exports found */
@@ -3223,7 +3223,7 @@
             mm : '%d minutoj',
             h : 'horo',
             hh : '%d horoj',
-            d : 'tago',//ne 'diurno', ĉar estas uzita por proksimumo
+            d : 'tago',// ne 'diurno', ĉar estas uzita por proksimumo
             dd : '%d tagoj',
             M : 'monato',
             MM : '%d monatoj',
@@ -3246,7 +3246,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/es-do.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/es-do.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -3260,8 +3260,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_'),
-        monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
+    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_');
+        var monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
 
     var monthsParse = [/^ene/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i];
     var monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
@@ -3346,7 +3346,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/es-us.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/es-us.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -3360,8 +3360,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_'),
-        monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
+    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_');
+        var monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
 
     var monthsParse = [/^ene/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i];
     var monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
@@ -3446,7 +3446,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/es.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/es.js ***!
   \******************************************/
 /*! no static exports found */
@@ -3460,8 +3460,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_'),
-        monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
+    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_');
+        var monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
 
     var monthsParse = [/^ene/i, /^feb/i, /^mar/i, /^abr/i, /^may/i, /^jun/i, /^jul/i, /^ago/i, /^sep/i, /^oct/i, /^nov/i, /^dic/i];
     var monthsRegex = /^(enero|febrero|marzo|abril|mayo|junio|julio|agosto|septiembre|octubre|noviembre|diciembre|ene\.?|feb\.?|mar\.?|abr\.?|may\.?|jun\.?|jul\.?|ago\.?|sep\.?|oct\.?|nov\.?|dic\.?)/i;
@@ -3546,7 +3546,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/et.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/et.js ***!
   \******************************************/
 /*! no static exports found */
@@ -3634,7 +3634,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/eu.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/eu.js ***!
   \******************************************/
 /*! no static exports found */
@@ -3708,7 +3708,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fa.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/fa.js ***!
   \******************************************/
 /*! no static exports found */
@@ -3733,7 +3733,7 @@
         '8': '۸',
         '9': '۹',
         '0': '۰'
-    }, numberMap = {
+    }; var numberMap = {
         '۱': '1',
         '۲': '2',
         '۳': '3',
@@ -3822,7 +3822,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fi.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/fi.js ***!
   \******************************************/
 /*! no static exports found */
@@ -3836,8 +3836,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var numbersPast = 'nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän'.split(' '),
-        numbersFuture = [
+    var numbersPast = 'nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän'.split(' ');
+        var numbersFuture = [
             'nolla', 'yhden', 'kahden', 'kolmen', 'neljän', 'viiden', 'kuuden',
             numbersPast[7], numbersPast[8], numbersPast[9]
         ];
@@ -3939,7 +3939,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fo.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/fo.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4007,7 +4007,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fr-ca.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/fr-ca.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -4089,7 +4089,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fr-ch.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/fr-ch.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -4175,7 +4175,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fr.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/fr.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4266,7 +4266,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/fy.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/fy.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4280,8 +4280,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split('_'),
-        monthsShortWithoutDots = 'jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_');
+    var monthsShortWithDots = 'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split('_');
+        var monthsShortWithoutDots = 'jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_');
 
     var fy = moment.defineLocale('fy', {
         months : 'jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber'.split('_'),
@@ -4349,7 +4349,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ga.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ga.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4434,7 +4434,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/gd.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/gd.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4518,7 +4518,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/gl.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/gl.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4603,7 +4603,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/gom-latn.js":
-/*!************************************************!*\
+/*! ************************************************!*\
   !*** ./node_modules/moment/locale/gom-latn.js ***!
   \************************************************/
 /*! no static exports found */
@@ -4734,7 +4734,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/gu.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/gu.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4759,8 +4759,8 @@
             '8': '૮',
             '9': '૯',
             '0': '૦'
-        },
-        numberMap = {
+        };
+        var numberMap = {
             '૧': '1',
             '૨': '2',
             '૩': '3',
@@ -4866,7 +4866,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/he.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/he.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4971,7 +4971,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/hi.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/hi.js ***!
   \******************************************/
 /*! no static exports found */
@@ -4996,8 +4996,8 @@
         '8': '८',
         '9': '९',
         '0': '०'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '१': '1',
         '२': '2',
         '३': '3',
@@ -5103,7 +5103,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/hr.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/hr.js ***!
   \******************************************/
 /*! no static exports found */
@@ -5265,7 +5265,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/hu.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/hu.js ***!
   \******************************************/
 /*! no static exports found */
@@ -5383,7 +5383,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/hy-am.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/hy-am.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -5486,7 +5486,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/id.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/id.js ***!
   \******************************************/
 /*! no static exports found */
@@ -5576,7 +5576,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/is.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/is.js ***!
   \******************************************/
 /*! no static exports found */
@@ -5716,7 +5716,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/it-ch.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/it-ch.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -5793,7 +5793,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/it.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/it.js ***!
   \******************************************/
 /*! no static exports found */
@@ -5870,7 +5870,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ja.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ja.js ***!
   \******************************************/
 /*! no static exports found */
@@ -5970,7 +5970,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/jv.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/jv.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6060,7 +6060,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ka.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ka.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6157,7 +6157,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/kk.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/kk.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6234,8 +6234,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}-(ші|шы)/,
         ordinal : function (number) {
-            var a = number % 10,
-                b = number >= 100 ? 100 : null;
+            var a = number % 10;
+                var b = number >= 100 ? 100 : null;
             return number + (suffixes[number] || suffixes[a] || suffixes[b]);
         },
         week : {
@@ -6252,7 +6252,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/km.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/km.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6277,7 +6277,7 @@
         '8': '៨',
         '9': '៩',
         '0': '០'
-    }, numberMap = {
+    }; var numberMap = {
         '១': '1',
         '២': '2',
         '៣': '3',
@@ -6370,7 +6370,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/kn.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/kn.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6395,8 +6395,8 @@
         '8': '೮',
         '9': '೯',
         '0': '೦'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '೧': '1',
         '೨': '2',
         '೩': '3',
@@ -6504,7 +6504,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ko.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ko.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6593,7 +6593,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ku.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ku.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6618,7 +6618,7 @@
         '8': '٨',
         '9': '٩',
         '0': '٠'
-    }, numberMap = {
+    }; var numberMap = {
         '١': '1',
         '٢': '2',
         '٣': '3',
@@ -6629,8 +6629,8 @@
         '٨': '8',
         '٩': '9',
         '٠': '0'
-    },
-    months = [
+    };
+    var months = [
         'کانونی دووەم',
         'شوبات',
         'ئازار',
@@ -6720,7 +6720,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ky.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ky.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6797,8 +6797,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}-(чи|чы|чү|чу)/,
         ordinal : function (number) {
-            var a = number % 10,
-                b = number >= 100 ? 100 : null;
+            var a = number % 10;
+                var b = number >= 100 ? 100 : null;
             return number + (suffixes[number] || suffixes[a] || suffixes[b]);
         },
         week : {
@@ -6815,7 +6815,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/lb.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/lb.js ***!
   \******************************************/
 /*! no static exports found */
@@ -6870,13 +6870,13 @@
             return true;
         } else if (number < 10) {
             // Only 1 digit
-            if (4 <= number && number <= 7) {
+            if (number >= 4 && number <= 7) {
                 return true;
             }
             return false;
         } else if (number < 100) {
             // 2 digits
-            var lastDigit = number % 10, firstDigit = number / 10;
+            var lastDigit = number % 10; var firstDigit = number / 10;
             if (lastDigit === 0) {
                 return eifelerRegelAppliesToNumber(firstDigit);
             }
@@ -6959,7 +6959,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/lo.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/lo.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7037,7 +7037,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/lt.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/lt.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7163,7 +7163,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/lv.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/lv.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7268,7 +7268,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/me.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/me.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7283,7 +7283,7 @@
 
 
     var translator = {
-        words: { //Different grammatical cases
+        words: { // Different grammatical cases
             ss: ['sekund', 'sekunda', 'sekundi'],
             m: ['jedan minut', 'jednog minuta'],
             mm: ['minut', 'minuta', 'minuta'],
@@ -7388,7 +7388,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/mi.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/mi.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7460,7 +7460,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/mk.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/mk.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7526,8 +7526,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
         ordinal : function (number) {
-            var lastDigit = number % 10,
-                last2Digits = number % 100;
+            var lastDigit = number % 10;
+                var last2Digits = number % 100;
             if (number === 0) {
                 return number + '-ев';
             } else if (last2Digits === 0) {
@@ -7558,7 +7558,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ml.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ml.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7647,7 +7647,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/mn.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/mn.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7759,7 +7759,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/mr.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/mr.js ***!
   \******************************************/
 /*! no static exports found */
@@ -7784,8 +7784,8 @@
         '8': '८',
         '9': '९',
         '0': '०'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '१': '1',
         '२': '2',
         '३': '3',
@@ -7927,7 +7927,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ms-my.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ms-my.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -8017,7 +8017,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ms.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ms.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8107,7 +8107,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/mt.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/mt.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8175,7 +8175,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/my.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/my.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8200,7 +8200,7 @@
         '8': '၈',
         '9': '၉',
         '0': '၀'
-    }, numberMap = {
+    }; var numberMap = {
         '၁': '1',
         '၂': '2',
         '၃': '3',
@@ -8276,7 +8276,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/nb.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/nb.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8346,7 +8346,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ne.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ne.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8371,8 +8371,8 @@
         '8': '८',
         '9': '९',
         '0': '०'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '१': '1',
         '२': '2',
         '३': '3',
@@ -8477,7 +8477,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/nl-be.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/nl-be.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -8491,8 +8491,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
-        monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_');
+    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_');
+        var monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_');
 
     var monthsParse = [/^jan/i, /^feb/i, /^maart|mrt.?$/i, /^apr/i, /^mei$/i, /^jun[i.]?$/i, /^jul[i.]?$/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i];
     var monthsRegex = /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
@@ -8572,7 +8572,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/nl.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/nl.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8586,8 +8586,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
-        monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_');
+    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_');
+        var monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_');
 
     var monthsParse = [/^jan/i, /^feb/i, /^maart|mrt.?$/i, /^apr/i, /^mei$/i, /^jun[i.]?$/i, /^jul[i.]?$/i, /^aug/i, /^sep/i, /^okt/i, /^nov/i, /^dec/i];
     var monthsRegex = /^(januari|februari|maart|april|mei|ju[nl]i|augustus|september|oktober|november|december|jan\.?|feb\.?|mrt\.?|apr\.?|ju[nl]\.?|aug\.?|sep\.?|okt\.?|nov\.?|dec\.?)/i;
@@ -8667,7 +8667,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/nn.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/nn.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8735,7 +8735,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/pa-in.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/pa-in.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -8760,8 +8760,8 @@
         '8': '੮',
         '9': '੯',
         '0': '੦'
-    },
-    numberMap = {
+    };
+    var numberMap = {
         '੧': '1',
         '੨': '2',
         '੩': '3',
@@ -8867,7 +8867,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/pl.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/pl.js ***!
   \******************************************/
 /*! no static exports found */
@@ -8881,8 +8881,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var monthsNominative = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split('_'),
-        monthsSubjective = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split('_');
+    var monthsNominative = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split('_');
+        var monthsSubjective = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split('_');
     function plural(n) {
         return (n % 10 < 5) && (n % 10 > 1) && ((~~(n / 10) % 10) !== 1);
     }
@@ -9001,7 +9001,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/pt-br.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/pt-br.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -9070,7 +9070,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/pt.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/pt.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9143,7 +9143,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ro.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ro.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9165,8 +9165,8 @@
                 'dd': 'zile',
                 'MM': 'luni',
                 'yy': 'ani'
-            },
-            separator = ' ';
+            };
+            var separator = ' ';
         if (number % 100 >= 20 || (number >= 100 && number % 100 === 0)) {
             separator = ' de ';
         }
@@ -9226,7 +9226,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ru.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ru.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9416,7 +9416,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sd.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sd.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9470,7 +9470,7 @@
         },
         meridiemParse: /صبح|شام/,
         isPM : function (input) {
-            return 'شام' === input;
+            return input === 'شام';
         },
         meridiem : function (hour, minute, isLower) {
             if (hour < 12) {
@@ -9522,7 +9522,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/se.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/se.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9590,7 +9590,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/si.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/si.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9604,7 +9604,7 @@
 }(this, (function (moment) { 'use strict';
 
 
-    /*jshint -W100*/
+    /* jshint -W100 */
     var si = moment.defineLocale('si', {
         months : 'ජනවාරි_පෙබරවාරි_මාර්තු_අප්‍රේල්_මැයි_ජූනි_ජූලි_අගෝස්තු_සැප්තැම්බර්_ඔක්තෝබර්_නොවැම්බර්_දෙසැම්බර්'.split('_'),
         monthsShort : 'ජන_පෙබ_මාර්_අප්_මැයි_ජූනි_ජූලි_අගෝ_සැප්_ඔක්_නොවැ_දෙසැ'.split('_'),
@@ -9669,7 +9669,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sk.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sk.js ***!
   \******************************************/
 /*! no static exports found */
@@ -9683,8 +9683,8 @@
 }(this, (function (moment) { 'use strict';
 
 
-    var months = 'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split('_'),
-        monthsShort = 'jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec'.split('_');
+    var months = 'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split('_');
+        var monthsShort = 'jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec'.split('_');
     function plural(n) {
         return (n > 1) && (n < 5);
     }
@@ -9833,7 +9833,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sl.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sl.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10014,7 +10014,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sq.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sq.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10090,7 +10090,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sr-cyrl.js":
-/*!***********************************************!*\
+/*! ***********************************************!*\
   !*** ./node_modules/moment/locale/sr-cyrl.js ***!
   \***********************************************/
 /*! no static exports found */
@@ -10105,7 +10105,7 @@
 
 
     var translator = {
-        words: { //Different grammatical cases
+        words: { // Different grammatical cases
             ss: ['секунда', 'секунде', 'секунди'],
             m: ['један минут', 'једне минуте'],
             mm: ['минут', 'минуте', 'минута'],
@@ -10209,7 +10209,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sr.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sr.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10224,7 +10224,7 @@
 
 
     var translator = {
-        words: { //Different grammatical cases
+        words: { // Different grammatical cases
             ss: ['sekunda', 'sekunde', 'sekundi'],
             m: ['jedan minut', 'jedne minute'],
             mm: ['minut', 'minute', 'minuta'],
@@ -10328,7 +10328,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ss.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ss.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10424,7 +10424,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sv.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sv.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10480,8 +10480,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(e|a)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'e' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'e' :
                 (b === 1) ? 'a' :
                 (b === 2) ? 'a' :
                 (b === 3) ? 'e' : 'e';
@@ -10501,7 +10501,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/sw.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/sw.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10568,7 +10568,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ta.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ta.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10593,7 +10593,7 @@
         '8': '௮',
         '9': '௯',
         '0': '௦'
-    }, numberMap = {
+    }; var numberMap = {
         '௧': '1',
         '௨': '2',
         '௩': '3',
@@ -10705,7 +10705,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/te.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/te.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10802,7 +10802,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tet.js":
-/*!*******************************************!*\
+/*! *******************************************!*\
   !*** ./node_modules/moment/locale/tet.js ***!
   \*******************************************/
 /*! no static exports found */
@@ -10856,8 +10856,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(st|nd|rd|th)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -10877,7 +10877,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tg.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/tg.js ***!
   \******************************************/
 /*! no static exports found */
@@ -10983,8 +10983,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}-(ум|юм)/,
         ordinal: function (number) {
-            var a = number % 10,
-                b = number >= 100 ? 100 : null;
+            var a = number % 10;
+                var b = number >= 100 ? 100 : null;
             return number + (suffixes[number] || suffixes[a] || suffixes[b]);
         },
         week : {
@@ -11001,7 +11001,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/th.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/th.js ***!
   \******************************************/
 /*! no static exports found */
@@ -11076,7 +11076,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tl-ph.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/tl-ph.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -11146,7 +11146,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tlh.js":
-/*!*******************************************!*\
+/*! *******************************************!*\
   !*** ./node_modules/moment/locale/tlh.js ***!
   \*******************************************/
 /*! no static exports found */
@@ -11205,10 +11205,10 @@
     }
 
     function numberAsNoun(number) {
-        var hundred = Math.floor((number % 1000) / 100),
-        ten = Math.floor((number % 100) / 10),
-        one = number % 10,
-        word = '';
+        var hundred = Math.floor((number % 1000) / 100);
+        var ten = Math.floor((number % 100) / 10);
+        var one = number % 10;
+        var word = '';
         if (hundred > 0) {
             word += numbersNouns[hundred] + 'vatlh';
         }
@@ -11276,7 +11276,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tr.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/tr.js ***!
   \******************************************/
 /*! no static exports found */
@@ -11358,9 +11358,9 @@
                     if (number === 0) {  // special case for zero
                         return number + '\'ıncı';
                     }
-                    var a = number % 10,
-                        b = number % 100 - a,
-                        c = number >= 100 ? 100 : null;
+                    var a = number % 10;
+                        var b = number % 100 - a;
+                        var c = number >= 100 ? 100 : null;
                     return number + (suffixes[a] || suffixes[b] || suffixes[c]);
             }
         },
@@ -11378,7 +11378,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tzl.js":
-/*!*******************************************!*\
+/*! *******************************************!*\
   !*** ./node_modules/moment/locale/tzl.js ***!
   \*******************************************/
 /*! no static exports found */
@@ -11410,7 +11410,7 @@
         },
         meridiemParse: /d\'o|d\'a/i,
         isPM : function (input) {
-            return 'd\'o' === input.toLowerCase();
+            return input.toLowerCase() === 'd\'o';
         },
         meridiem : function (hours, minutes, isLower) {
             if (hours > 11) {
@@ -11477,7 +11477,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tzm-latn.js":
-/*!************************************************!*\
+/*! ************************************************!*\
   !*** ./node_modules/moment/locale/tzm-latn.js ***!
   \************************************************/
 /*! no static exports found */
@@ -11543,7 +11543,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/tzm.js":
-/*!*******************************************!*\
+/*! *******************************************!*\
   !*** ./node_modules/moment/locale/tzm.js ***!
   \*******************************************/
 /*! no static exports found */
@@ -11609,7 +11609,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ug-cn.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/ug-cn.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -11736,7 +11736,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/uk.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/uk.js ***!
   \******************************************/
 /*! no static exports found */
@@ -11781,10 +11781,10 @@
         };
 
         if (m === true) {
-            return weekdays['nominative'].slice(1, 7).concat(weekdays['nominative'].slice(0, 1));
+            return weekdays.nominative.slice(1, 7).concat(weekdays.nominative.slice(0, 1));
         }
         if (!m) {
-            return weekdays['nominative'];
+            return weekdays.nominative;
         }
 
         var nounCase = (/(\[[ВвУу]\]) ?dddd/).test(format) ?
@@ -11898,7 +11898,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/ur.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/ur.js ***!
   \******************************************/
 /*! no static exports found */
@@ -11952,7 +11952,7 @@
         },
         meridiemParse: /صبح|شام/,
         isPM : function (input) {
-            return 'شام' === input;
+            return input === 'شام';
         },
         meridiem : function (hour, minute, isLower) {
             if (hour < 12) {
@@ -12004,7 +12004,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/uz-latn.js":
-/*!***********************************************!*\
+/*! ***********************************************!*\
   !*** ./node_modules/moment/locale/uz-latn.js ***!
   \***********************************************/
 /*! no static exports found */
@@ -12070,7 +12070,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/uz.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/uz.js ***!
   \******************************************/
 /*! no static exports found */
@@ -12136,7 +12136,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/vi.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/vi.js ***!
   \******************************************/
 /*! no static exports found */
@@ -12223,7 +12223,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/x-pseudo.js":
-/*!************************************************!*\
+/*! ************************************************!*\
   !*** ./node_modules/moment/locale/x-pseudo.js ***!
   \************************************************/
 /*! no static exports found */
@@ -12278,8 +12278,8 @@
         },
         dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (~~(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (~~(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -12299,7 +12299,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/yo.js":
-/*!******************************************!*\
+/*! ******************************************!*\
   !*** ./node_modules/moment/locale/yo.js ***!
   \******************************************/
 /*! no static exports found */
@@ -12367,7 +12367,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/zh-cn.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/zh-cn.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -12485,7 +12485,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/zh-hk.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/zh-hk.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -12596,7 +12596,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/locale/zh-tw.js":
-/*!*********************************************!*\
+/*! *********************************************!*\
   !*** ./node_modules/moment/locale/zh-tw.js ***!
   \*********************************************/
 /*! no static exports found */
@@ -12707,7 +12707,7 @@
 /***/ }),
 
 /***/ "./node_modules/moment/moment.js":
-/*!***************************************!*\
+/*! ***************************************!*\
   !*** ./node_modules/moment/moment.js ***!
   \***************************************/
 /*! no static exports found */
@@ -12769,7 +12769,7 @@
     }
 
     function map(arr, fn) {
-        var res = [], i;
+        var res = []; var i;
         for (i = 0; i < arr.length; ++i) {
             res.push(fn(arr[i], i));
         }
@@ -12976,8 +12976,8 @@
     }
 
     function toInt(argumentForCoercion) {
-        var coercedNumber = +argumentForCoercion,
-            value = 0;
+        var coercedNumber = +argumentForCoercion;
+            var value = 0;
 
         if (coercedNumber !== 0 && isFinite(coercedNumber)) {
             value = absFloor(coercedNumber);
@@ -12988,10 +12988,10 @@
 
     // compare two arrays, return the number of differences
     function compareArrays(array1, array2, dontConvert) {
-        var len = Math.min(array1.length, array2.length),
-            lengthDiff = Math.abs(array1.length - array2.length),
-            diffs = 0,
-            i;
+        var len = Math.min(array1.length, array2.length);
+            var lengthDiff = Math.abs(array1.length - array2.length);
+            var diffs = 0;
+            var i;
         for (i = 0; i < len; i++) {
             if ((dontConvert && array1[i] !== array2[i]) ||
                 (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
@@ -13077,7 +13077,7 @@
     }
 
     function mergeConfigs(parentConfig, childConfig) {
-        var res = extend({}, parentConfig), prop;
+        var res = extend({}, parentConfig); var prop;
         for (prop in childConfig) {
             if (hasOwnProp(childConfig, prop)) {
                 if (isObject(parentConfig[prop]) && isObject(childConfig[prop])) {
@@ -13114,7 +13114,7 @@
         keys = Object.keys;
     } else {
         keys = function (obj) {
-            var i, res = [];
+            var i; var res = [];
             for (i in obj) {
                 if (hasOwnProp(obj, i)) {
                     res.push(i);
@@ -13134,7 +13134,7 @@
     };
 
     function calendar (key, mom, now) {
-        var output = this._calendar[key] || this._calendar['sameElse'];
+        var output = this._calendar[key] || this._calendar.sameElse;
         return isFunction(output) ? output.call(mom, now) : output;
     }
 
@@ -13148,8 +13148,8 @@
     };
 
     function longDateFormat (key) {
-        var format = this._longDateFormat[key],
-            formatUpper = this._longDateFormat[key.toUpperCase()];
+        var format = this._longDateFormat[key];
+            var formatUpper = this._longDateFormat[key.toUpperCase()];
 
         if (format || !formatUpper) {
             return format;
@@ -13216,9 +13216,9 @@
     }
 
     function normalizeObjectUnits(inputObject) {
-        var normalizedInput = {},
-            normalizedProp,
-            prop;
+        var normalizedInput = {};
+            var normalizedProp;
+            var prop;
 
         for (prop in inputObject) {
             if (hasOwnProp(inputObject, prop)) {
@@ -13250,9 +13250,9 @@
     }
 
     function zeroFill(number, targetLength, forceSign) {
-        var absNumber = '' + Math.abs(number),
-            zerosToFill = targetLength - absNumber.length,
-            sign = number >= 0;
+        var absNumber = '' + Math.abs(number);
+            var zerosToFill = targetLength - absNumber.length;
+            var sign = number >= 0;
         return (sign ? (forceSign ? '+' : '') : '-') +
             Math.pow(10, Math.max(0, zerosToFill)).toString().substr(1) + absNumber;
     }
@@ -13299,7 +13299,7 @@
     }
 
     function makeFormatFunction(format) {
-        var array = format.match(formattingTokens), i, length;
+        var array = format.match(formattingTokens); var i; var length;
 
         for (i = 0, length = array.length; i < length; i++) {
             if (formatTokenFunctions[array[i]]) {
@@ -13310,7 +13310,7 @@
         }
 
         return function (mom) {
-            var output = '', i;
+            var output = ''; var i;
             for (i = 0; i < length; i++) {
                 output += isFunction(array[i]) ? array[i].call(mom, format) : array[i];
             }
@@ -13401,7 +13401,7 @@
     var tokens = {};
 
     function addParseToken (token, callback) {
-        var i, func = callback;
+        var i; var func = callback;
         if (typeof token === 'string') {
             token = [token];
         }
@@ -13643,7 +13643,7 @@
     function localeMonths (m, format) {
         if (!m) {
             return isArray(this._months) ? this._months :
-                this._months['standalone'];
+                this._months.standalone;
         }
         return isArray(this._months) ? this._months[m.month()] :
             this._months[(this._months.isFormat || MONTHS_IN_FORMAT).test(format) ? 'format' : 'standalone'][m.month()];
@@ -13653,14 +13653,14 @@
     function localeMonthsShort (m, format) {
         if (!m) {
             return isArray(this._monthsShort) ? this._monthsShort :
-                this._monthsShort['standalone'];
+                this._monthsShort.standalone;
         }
         return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
             this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
     }
 
     function handleStrictParse(monthName, format, strict) {
-        var i, ii, mom, llc = monthName.toLocaleLowerCase();
+        var i; var ii; var mom; var llc = monthName.toLocaleLowerCase();
         if (!this._monthsParse) {
             // this is not used
             this._monthsParse = [];
@@ -13824,8 +13824,8 @@
             return b.length - a.length;
         }
 
-        var shortPieces = [], longPieces = [], mixedPieces = [],
-            i, mom;
+        var shortPieces = []; var longPieces = []; var mixedPieces = [];
+            var i; var mom;
         for (i = 0; i < 12; i++) {
             // make the regex if we don't have it already
             mom = createUTC([2000, i]);
@@ -13892,19 +13892,19 @@
     // start-of-first-week - start-of-year
     function firstWeekOffset(year, dow, doy) {
         var // first-week day -- which january is always in the first week (4 for iso, 1 for other)
-            fwd = 7 + dow - doy,
+            fwd = 7 + dow - doy;
             // first-week day local weekday -- which local weekday is fwd
-            fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
+            var fwdlw = (7 + createUTCDate(year, 0, fwd).getUTCDay() - dow) % 7;
 
         return -fwdlw + fwd - 1;
     }
 
     // https://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
     function dayOfYearFromWeeks(year, week, weekday, dow, doy) {
-        var localWeekday = (7 + weekday - dow) % 7,
-            weekOffset = firstWeekOffset(year, dow, doy),
-            dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset,
-            resYear, resDayOfYear;
+        var localWeekday = (7 + weekday - dow) % 7;
+            var weekOffset = firstWeekOffset(year, dow, doy);
+            var dayOfYear = 1 + 7 * (week - 1) + localWeekday + weekOffset;
+            var resYear; var resDayOfYear;
 
         if (dayOfYear <= 0) {
             resYear = year - 1;
@@ -13924,9 +13924,9 @@
     }
 
     function weekOfYear(mom, dow, doy) {
-        var weekOffset = firstWeekOffset(mom.year(), dow, doy),
-            week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1,
-            resWeek, resYear;
+        var weekOffset = firstWeekOffset(mom.year(), dow, doy);
+            var week = Math.floor((mom.dayOfYear() - weekOffset - 1) / 7) + 1;
+            var resWeek; var resYear;
 
         if (week < 1) {
             resYear = mom.year() - 1;
@@ -13946,8 +13946,8 @@
     }
 
     function weeksInYear(year, dow, doy) {
-        var weekOffset = firstWeekOffset(year, dow, doy),
-            weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
+        var weekOffset = firstWeekOffset(year, dow, doy);
+            var weekOffsetNext = firstWeekOffset(year + 1, dow, doy);
         return (daysInYear(year) - weekOffset + weekOffsetNext) / 7;
     }
 
@@ -14121,7 +14121,7 @@
     }
 
     function handleStrictParse$1(weekdayName, format, strict) {
-        var i, ii, mom, llc = weekdayName.toLocaleLowerCase();
+        var i; var ii; var mom; var llc = weekdayName.toLocaleLowerCase();
         if (!this._weekdaysParse) {
             this._weekdaysParse = [];
             this._shortWeekdaysParse = [];
@@ -14330,8 +14330,8 @@
             return b.length - a.length;
         }
 
-        var minPieces = [], shortPieces = [], longPieces = [], mixedPieces = [],
-            i, mom, minp, shortp, longp;
+        var minPieces = []; var shortPieces = []; var longPieces = []; var mixedPieces = [];
+            var i; var mom; var minp; var shortp; var longp;
         for (i = 0; i < 7; i++) {
             // make the regex if we don't have it already
             mom = createUTC([2000, 1]).day(i);
@@ -14533,7 +14533,7 @@
     // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
     // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
     function chooseLocale(names) {
-        var i = 0, j, next, locale, split;
+        var i = 0; var j; var next; var locale; var split;
 
         while (i < names.length) {
             split = normalizeLocale(names[i]).split('-');
@@ -14546,7 +14546,7 @@
                     return locale;
                 }
                 if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
-                    //the next array item is better than a shallower substring of this one
+                    // the next array item is better than a shallower substring of this one
                     break;
                 }
                 j--;
@@ -14590,7 +14590,7 @@
             }
             else {
                 if ((typeof console !==  'undefined') && console.warn) {
-                    //warn user if arguments are passed but the locale could not be set
+                    // warn user if arguments are passed but the locale could not be set
                     console.warn('Locale ' + key +  ' not found. Did you forget to load it?');
                 }
             }
@@ -14601,7 +14601,7 @@
 
     function defineLocale (name, config) {
         if (config !== null) {
-            var locale, parentConfig = baseConfig;
+            var locale; var parentConfig = baseConfig;
             config.abbr = name;
             if (locales[name] != null) {
                 deprecateSimple('defineLocaleOverride',
@@ -14653,7 +14653,7 @@
 
     function updateLocale(name, config) {
         if (config != null) {
-            var locale, tmpLocale, parentConfig = baseConfig;
+            var locale; var tmpLocale; var parentConfig = baseConfig;
             // MERGE
             tmpLocale = loadLocale(name);
             if (tmpLocale != null) {
@@ -14692,7 +14692,7 @@
         }
 
         if (!isArray(key)) {
-            //short-circuit everything else
+            // short-circuit everything else
             locale = loadLocale(key);
             if (locale) {
                 return locale;
@@ -14762,7 +14762,7 @@
     // note: all values past the year are optional and will default to the lowest possible value.
     // [year, month, day , hour, minute, second, millisecond]
     function configFromArray (config) {
-        var i, date, input = [], currentDate, expectedWeekday, yearToUse;
+        var i; var date; var input = []; var currentDate; var expectedWeekday; var yearToUse;
 
         if (config._d) {
             return;
@@ -14770,12 +14770,12 @@
 
         currentDate = currentDateArray(config);
 
-        //compute day of the year from weeks and weekdays
+        // compute day of the year from weeks and weekdays
         if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
             dayOfYearFromWeekInfo(config);
         }
 
-        //if the day of the year is set, figure out what it is
+        // if the day of the year is set, figure out what it is
         if (config._dayOfYear != null) {
             yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
 
@@ -14926,10 +14926,10 @@
 
     // date from iso format
     function configFromISO(config) {
-        var i, l,
-            string = config._i,
-            match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string),
-            allowTime, dateFormat, timeFormat, tzFormat;
+        var i; var l;
+            var string = config._i;
+            var match = extendedIsoRegex.exec(string) || basicIsoRegex.exec(string);
+            var allowTime; var dateFormat; var timeFormat; var tzFormat;
 
         if (match) {
             getParsingFlags(config).iso = true;
@@ -15014,8 +15014,8 @@
     function checkWeekday(weekdayStr, parsedInput, config) {
         if (weekdayStr) {
             // TODO: Replace the vanilla JS Date object with an indepentent day-of-week check.
-            var weekdayProvided = defaultLocaleWeekdaysShort.indexOf(weekdayStr),
-                weekdayActual = new Date(parsedInput[0], parsedInput[1], parsedInput[2]).getDay();
+            var weekdayProvided = defaultLocaleWeekdaysShort.indexOf(weekdayStr);
+                var weekdayActual = new Date(parsedInput[0], parsedInput[1], parsedInput[2]).getDay();
             if (weekdayProvided !== weekdayActual) {
                 getParsingFlags(config).weekdayMismatch = true;
                 config._isValid = false;
@@ -15046,7 +15046,7 @@
             return 0;
         } else {
             var hm = parseInt(numOffset, 10);
-            var m = hm % 100, h = (hm - m) / 100;
+            var m = hm % 100; var h = (hm - m) / 100;
             return h * 60 + m;
         }
     }
@@ -15130,10 +15130,10 @@
         getParsingFlags(config).empty = true;
 
         // This array is used to make a Date, either with `new Date` or `Date.UTC`
-        var string = '' + config._i,
-            i, parsedInput, tokens, token, skipped,
-            stringLength = string.length,
-            totalParsedInputLength = 0;
+        var string = '' + config._i;
+            var i; var parsedInput; var tokens; var token; var skipped;
+            var stringLength = string.length;
+            var totalParsedInputLength = 0;
 
         tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
 
@@ -15244,7 +15244,7 @@
             // if there is any input that was not parsed add a penalty for that format
             currentScore += getParsingFlags(tempConfig).charsLeftOver;
 
-            //or tokens
+            // or tokens
             currentScore += getParsingFlags(tempConfig).unusedTokens.length * 10;
 
             getParsingFlags(tempConfig).score = currentScore;
@@ -15283,8 +15283,8 @@
     }
 
     function prepareConfig (config) {
-        var input = config._i,
-            format = config._f;
+        var input = config._i;
+            var format = config._f;
 
         config._locale = config._locale || getLocale(config._l);
 
@@ -15462,16 +15462,16 @@
     }
 
     function Duration (duration) {
-        var normalizedInput = normalizeObjectUnits(duration),
-            years = normalizedInput.year || 0,
-            quarters = normalizedInput.quarter || 0,
-            months = normalizedInput.month || 0,
-            weeks = normalizedInput.week || normalizedInput.isoWeek || 0,
-            days = normalizedInput.day || 0,
-            hours = normalizedInput.hour || 0,
-            minutes = normalizedInput.minute || 0,
-            seconds = normalizedInput.second || 0,
-            milliseconds = normalizedInput.millisecond || 0;
+        var normalizedInput = normalizeObjectUnits(duration);
+            var years = normalizedInput.year || 0;
+            var quarters = normalizedInput.quarter || 0;
+            var months = normalizedInput.month || 0;
+            var weeks = normalizedInput.week || normalizedInput.isoWeek || 0;
+            var days = normalizedInput.day || 0;
+            var hours = normalizedInput.hour || 0;
+            var minutes = normalizedInput.minute || 0;
+            var seconds = normalizedInput.second || 0;
+            var milliseconds = normalizedInput.millisecond || 0;
 
         this._isValid = isDurationValid(normalizedInput);
 
@@ -15479,7 +15479,7 @@
         this._milliseconds = +milliseconds +
             seconds * 1e3 + // 1000
             minutes * 6e4 + // 1000 * 60
-            hours * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
+            hours * 1000 * 60 * 60; // using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
         // Because of dateAddRemove treats 24 hours as different from a
         // day when working around DST, we need to store them separately
         this._days = +days +
@@ -15599,8 +15599,8 @@
     // _changeInProgress == true case, then we have to adjust, because
     // there is no such time in the given timezone.
     function getSetOffset (input, keepLocalTime, keepMinutes) {
-        var offset = this._offset || 0,
-            localAdjust;
+        var offset = this._offset || 0;
+            var localAdjust;
         if (!this.isValid()) {
             return input != null ? this : NaN;
         }
@@ -15739,12 +15739,12 @@
     var isoRegex = /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
 
     function createDuration (input, key) {
-        var duration = input,
+        var duration = input;
             // matching against regexp is expensive, do it on demand
-            match = null,
-            sign,
-            ret,
-            diffRes;
+            var match = null;
+            var sign;
+            var ret;
+            var diffRes;
 
         if (isDuration(input)) {
             duration = {
@@ -15759,7 +15759,7 @@
             } else {
                 duration.milliseconds = input;
             }
-        } else if (!!(match = aspNetRegex.exec(input))) {
+        } else if (match = aspNetRegex.exec(input)) {
             sign = (match[1] === '-') ? -1 : 1;
             duration = {
                 y  : 0,
@@ -15769,7 +15769,7 @@
                 s  : toInt(match[SECOND])                       * sign,
                 ms : toInt(absRound(match[MILLISECOND] * 1000)) * sign // the millisecond decimal point is included in the match
             };
-        } else if (!!(match = isoRegex.exec(input))) {
+        } else if (match = isoRegex.exec(input)) {
             sign = (match[1] === '-') ? -1 : 1;
             duration = {
                 y : parseIso(match[2], sign),
@@ -15847,7 +15847,7 @@
     function createAdder(direction, name) {
         return function (val, period) {
             var dur, tmp;
-            //invert the arguments, but complain about it
+            // invert the arguments, but complain about it
             if (period !== null && !isNaN(+period)) {
                 deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period). ' +
                 'See http://momentjs.com/guides/#/warnings/add-inverted-param/ for more info.');
@@ -15862,9 +15862,9 @@
     }
 
     function addSubtract (mom, duration, isAdding, updateOffset) {
-        var milliseconds = duration._milliseconds,
-            days = absRound(duration._days),
-            months = absRound(duration._months);
+        var milliseconds = duration._milliseconds;
+            var days = absRound(duration._days);
+            var months = absRound(duration._months);
 
         if (!mom.isValid()) {
             // No op
@@ -15903,9 +15903,9 @@
     function calendar$1 (time, formats) {
         // We want to compare the start of today, vs this.
         // Getting start-of-today depends on whether we're local/utc/offset or not.
-        var now = time || createLocal(),
-            sod = cloneWithOffset(now, this).startOf('day'),
-            format = hooks.calendarFormat(this, sod) || 'sameElse';
+        var now = time || createLocal();
+            var sod = cloneWithOffset(now, this).startOf('day');
+            var format = hooks.calendarFormat(this, sod) || 'sameElse';
 
         var output = formats && (isFunction(formats[format]) ? formats[format].call(this, now) : formats[format]);
 
@@ -15943,8 +15943,8 @@
     }
 
     function isBetween (from, to, units, inclusivity) {
-        var localFrom = isMoment(from) ? from : createLocal(from),
-            localTo = isMoment(to) ? to : createLocal(to);
+        var localFrom = isMoment(from) ? from : createLocal(from);
+            var localTo = isMoment(to) ? to : createLocal(to);
         if (!(this.isValid() && localFrom.isValid() && localTo.isValid())) {
             return false;
         }
@@ -15954,8 +15954,8 @@
     }
 
     function isSame (input, units) {
-        var localInput = isMoment(input) ? input : createLocal(input),
-            inputMs;
+        var localInput = isMoment(input) ? input : createLocal(input);
+            var inputMs;
         if (!(this.isValid() && localInput.isValid())) {
             return false;
         }
@@ -16012,10 +16012,10 @@
 
     function monthDiff (a, b) {
         // difference in months
-        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
+        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month());
             // b is in (anchor - 1 month, anchor + 1 month)
-            anchor = a.clone().add(wholeMonthDiff, 'months'),
-            anchor2, adjust;
+            var anchor = a.clone().add(wholeMonthDiff, 'months');
+            var anchor2; var adjust;
 
         if (b - anchor < 0) {
             anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
@@ -16027,7 +16027,7 @@
             adjust = (b - anchor) / (anchor2 - anchor);
         }
 
-        //check for negative zero, return zero if negative zero
+        // check for negative zero, return zero if negative zero
         return -(wholeMonthDiff + adjust) || 0;
     }
 
@@ -16075,7 +16075,7 @@
             zone = 'Z';
         }
         var prefix = '[' + func + '("]';
-        var year = (0 <= this.year() && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
+        var year = (this.year() >= 0 && this.year() <= 9999) ? 'YYYY' : 'YYYYYY';
         var datetime = '-MM-DD[T]HH:mm:ss.SSS';
         var suffix = zone + '[")]';
 
@@ -16421,8 +16421,8 @@
     }
 
     function setWeekAll(weekYear, week, weekday, dow, doy) {
-        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy),
-            date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
+        var dayOfYearData = dayOfYearFromWeeks(weekYear, week, weekday, dow, doy);
+            var date = createUTCDate(dayOfYearData.year, 0, dayOfYearData.dayOfYear);
 
         this.year(date.getUTCFullYear());
         this.month(date.getUTCMonth());
@@ -16812,8 +16812,8 @@
             format = format || '';
         }
 
-        var locale = getLocale(),
-            shift = localeSorted ? locale._week.dow : 0;
+        var locale = getLocale();
+            var shift = localeSorted ? locale._week.dow : 0;
 
         if (index != null) {
             return get$1(format, (index + shift) % 7, field, 'day');
@@ -16850,8 +16850,8 @@
     getSetGlobalLocale('en', {
         dayOfMonthOrdinalParse: /\d{1,2}(th|st|nd|rd)/,
         ordinal : function (number) {
-            var b = number % 10,
-                output = (toInt(number % 100 / 10) === 1) ? 'th' :
+            var b = number % 10;
+                var output = (toInt(number % 100 / 10) === 1) ? 'th' :
                 (b === 1) ? 'st' :
                 (b === 2) ? 'nd' :
                 (b === 3) ? 'rd' : 'th';
@@ -17320,7 +17320,7 @@
 /***/ }),
 
 /***/ "./node_modules/webpack/buildin/module.js":
-/*!***********************************!*\
+/*! ***********************************!*\
   !*** (webpack)/buildin/module.js ***!
   \***********************************/
 /*! no static exports found */

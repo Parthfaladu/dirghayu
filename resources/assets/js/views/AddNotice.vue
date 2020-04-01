@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-note icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>NOTICE DETAIL</div>
@@ -18,21 +18,21 @@
 	            <form  @submit.prevent="submitForm()">
 	            	<div class="position-relative form-group">
                         <label for="to_id">Customer</label>
-                        <select class="form-control" name="to_id" v-model="notice.to_id" id="to_id" required>
+                        <select id="to_id" v-model="notice.to_id" class="form-control" name="to_id" required>
                             <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="notice.to_id ===  customer.id">{{customer.first_name}} {{customer.last_name}} </option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" v-model="notice.title" id="title" required>
+                        <input id="title" v-model="notice.title" type="text" class="form-control" name="title" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="detail">Detail</label>
-                        <textarea rows="2" class="form-control" name="detail" v-model="notice.detail" id="detail" required></textarea>
+                        <textarea id="detail" v-model="notice.detail" rows="2" class="form-control" name="detail" required></textarea>
                     </div>
                 	
                     <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -66,12 +66,12 @@ export default {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id       = this.$route.params.id
-				let res      = await axios.get('/api/v1/notice/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id       = this.$route.params.id
+				const res      = await axios.get('/api/v1/notice/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.notice = res.data.data
 		    }
 
-		    let customerRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+		    const customerRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 			this.customers = customerRes.data.data
 			
 		} catch (err) {

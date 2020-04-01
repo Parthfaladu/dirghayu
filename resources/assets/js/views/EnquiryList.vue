@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-call icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>ENQUIRY LIST</div>
@@ -15,9 +15,11 @@
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-12">
 	            <h5 class="card-title">
-	            	<router-link to="/add-enquiry" class="btn btn-info mb-5">Add Enquiry</router-link>
+	            	<router-link to="/add-enquiry" class="btn btn-outline-primary mb-5 pull-right">Add Enquiry</router-link>
 	            </h5>
-	           <EnquiryTable></EnquiryTable>
+				<div class="table-responsive">
+	           		<EnquiryTable></EnquiryTable>
+				</div>
 			</div>
 	    </div>
 	</div>

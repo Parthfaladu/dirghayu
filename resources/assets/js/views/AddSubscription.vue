@@ -5,7 +5,7 @@
 	    	<div class="page-title-wrapper">
 	            <div class="page-title-heading">
 	                <div class="page-title-icon">
-	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
+	                    <i class="pe-7s-bell icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
 	                <div>SUBSCRIPTION DETAIL</div>
@@ -19,43 +19,43 @@
             		<h5 class="card-title">Subscription Detail</h5>
 					<div class="position-relative form-group">
                         <label for="user_id">Customer</label>
-                        <select class="form-control" name="user_id" v-model="subscription.user_id" id="user_id" required>
+                        <select id="user_id" v-model="subscription.user_id" class="form-control" name="user_id" required>
                             <option v-for="user in users" :key="user.id" :value="user.id" :selected="subscription.user_id ===  user.id">{{user.first_name}} {{user.last_name}} </option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
                         <label for="package_id">Package</label>
-                        <select class="form-control" name="package_id" v-model="subscription.package_id" id="package_id" @change="onChange($event)"  required>
+                        <select id="package_id" v-model="subscription.package_id" class="form-control" name="package_id" required  @change="onChange($event)">
                             <option v-for="packageData in packages" :key="packageData.id" :value="packageData.id" :selected="subscription.package_id ===  packageData.id">{{packageData.name}}</option>
                         </select>
                     </div>
                     <div class="position-relative form-group">
                         <label for="amount">Amount</label>
-                        <input type="number" class="form-control" name="amount" v-model="subscription.amount" id="amount" required readonly>
+                        <input id="amount" v-model="subscription.amount" type="number" class="form-control" name="amount" required readonly>
                     </div>
                     <div class="position-relative form-group">
                         <label for="start_date">Start Date</label>
-                        <input type="text" class="form-control" name="start_date" v-model="subscription.start_date" id="start_date"  placeholder="yyyy-mm-dd" required>
+                        <input id="start_date" v-model="subscription.start_date" type="text" class="form-control" name="start_date"  placeholder="yyyy-mm-dd" required>
                     </div>
                     <div class="position-relative form-group">
                         <label for="duration">Duration(In Month)</label>
-                        <input type="number" class="form-control" name="duration" v-model="subscription.duration" id="duration" required readonly>
+                        <input id="duration" v-model="subscription.duration" type="number" class="form-control" name="duration" required readonly>
                     </div>
                     <div class="position-relative form-group">
                         <label for="end_date">End Date</label>
-                        <input type="text" class="form-control" name="end_date" v-model="endDate" id="end_date" placeholder="yyyy-mm-dd" required readonly>
+                        <input id="end_date" v-model="endDate" type="text" class="form-control" name="end_date" placeholder="yyyy-mm-dd" required readonly>
                     </div>
                     <div class="position-relative form-group">
                         <label for="trial_days">Trial Days</label>
-                        <input type="number" class="form-control" name="trial_days" v-model="subscription.trial_days" id="trial_days">
+                        <input id="trial_days" v-model="subscription.trial_days" type="number" class="form-control" name="trial_days">
                     </div>
                     <div class="position-relative form-group">
                         <label for="remark">Remark</label>
-                        <textarea rows="2" class="form-control" name="remark" v-model="subscription.remark" id="remark"></textarea>
+                        <textarea id="remark" v-model="subscription.remark" rows="2" class="form-control" name="remark"></textarea>
                     </div>
                     
                     <div class="text-center">
-	                	<button class="btn btn-primary" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>
@@ -94,7 +94,7 @@ export default {
 		endDate()
 		{
 			let endDate = null;
-            let currentDate = moment(this.subscription.start_date);
+            const currentDate = moment(this.subscription.start_date);
 			endDate = moment(currentDate).add(this.subscription.duration, 'M').endOf('month').format('YYYY-MM-DD');
 			return endDate;
 		}
@@ -103,15 +103,15 @@ export default {
 		try {
 			if(this.$route.params.id != null)
 			{
-				let id       = this.$route.params.id
-				let res      = await axios.get('/api/v1/subscription/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+				const id       = this.$route.params.id
+				const res      = await axios.get('/api/v1/subscription/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 				this.subscription = res.data.data
 		    }
 
-		    let packageRes      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+		    const packageRes      = await axios.get('/api/v1/package/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 			this.packages = packageRes.data.data
 			
-			let userRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
+			const userRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
 			this.users = userRes.data.data
 			
 		} catch (err) {

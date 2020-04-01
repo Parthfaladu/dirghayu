@@ -18,7 +18,7 @@ class StaffController extends Controller
     	//return $request->all();
 
     	$user = new User;
-    	$user->branch_id  = $request->get("branchId");
+    	//$user->branch_id  = $request->get("branchId");
 		$user->first_name = $request->get("firstName"); 
 		$user->last_name  = $request->get("lastName"); 
 		$user->email      = $request->get("email");
@@ -88,15 +88,16 @@ class StaffController extends Controller
 	{
 		//return $request->all();
 		$user = User::findOrFail($request->get("memberId"));
-    	$user->branch_id  = $request->get("branchId");
+    	//$user->branch_id  = $request->get("branchId");
 		$user->first_name = $request->get("firstName"); 
 		$user->last_name  = $request->get("lastName"); 
 		$user->email      = $request->get("email"); 
-		//$user->password   = bcrypt($request->get("password")); 
+		$user->password   = bcrypt($request->get("password")); 
 		$user->phone      = $request->get("phone");
 		$user->dob        = $request->get("dob"); 
 		$user->gender     = $request->get("gender");
 		$user->address    = $request->get("address"); 
+		$user = $this->uploadImage($user, $request->file('profileImage'));
 		$user->update();
 
 		$role = Role::where("id", $request->get("roleId"))->first();

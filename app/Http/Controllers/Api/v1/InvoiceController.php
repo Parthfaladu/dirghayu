@@ -8,6 +8,8 @@ use App\Models\Invoice;
 use App\Models\Customer;
 use App\Models\InvoiceItem;
 use Auth;
+use PDF;
+use Dompdf\Dompdf;
 use Yajra\DataTables\Facades\DataTables;
 
 class InvoiceController extends Controller
@@ -105,7 +107,6 @@ class InvoiceController extends Controller
         }
         catch (\Exception $e) 
         {
-            return $e;
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
             
         }
@@ -126,5 +127,23 @@ class InvoiceController extends Controller
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
             
         }
+    }
+    public function downloadPdf($id)
+    {
+        try
+        {
+            $invoice = Invoice::with('billto','user','invoiceitems')->where('id', $id)->first();
+            $pdf = PDF::loadView('invoice', compact('invoice'));
+            return $pdf->download('invoice.pdf');
+            
+        }
+        catch (\Exception $e) 
+        {
+            return $e;
+            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
+            
+        }
+        
+
     }
 }

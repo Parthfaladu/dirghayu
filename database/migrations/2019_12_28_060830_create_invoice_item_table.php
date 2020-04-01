@@ -17,9 +17,9 @@ class CreateInvoiceItemTable extends Migration
             $table->bigIncrements('id');
             $table->integer('invoice_id');
             $table->string('name');
-            $table->string('quantity');
-            $table->string('rate');
-            $table->string('amount');
+            $table->integer('quantity');
+            $table->integer('rate');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

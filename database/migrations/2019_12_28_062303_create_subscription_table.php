@@ -17,12 +17,14 @@ class CreateSubscriptionTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('package_id');
+            $table->integer('staff_member_id');
             $table->integer('amount');
             $table->integer('duration');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('trial_days')->nullable();
-           
+            $table->string('remark')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }
