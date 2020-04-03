@@ -15,10 +15,7 @@ class StaffController extends Controller
 {
     public function storeStaffMember(StaffMemberStoreRequest $request)
     {
-    	//return $request->all();
-
     	$user = new User;
-    	//$user->branch_id  = $request->get("branchId");
 		$user->first_name = $request->get("firstName"); 
 		$user->last_name  = $request->get("lastName"); 
 		$user->email      = $request->get("email");
@@ -28,11 +25,9 @@ class StaffController extends Controller
 		$user->gender     = $request->get("gender");
 		$user->address    = $request->get("address"); 
 		$user = $this->uploadImage($user, $request->file('profileImage'));
-
 		$user->save();
 
 		$role = Role::where("id", $request->get("roleId"))->first();
-
 		
 		$user->assignRole($role);
 
@@ -70,7 +65,6 @@ class StaffController extends Controller
      				    ->toArray();
 
      	return Datatables::of($user)->make(true);
-     	//return response()->json(["status" => "success", "data" => $response]);
 	}
 
 	public function getStaffMemberDetails(Request $request, $memberId)
@@ -86,9 +80,7 @@ class StaffController extends Controller
 
 	public function updateStaffMemberDetails(StaffMemberUpdateRequest $request)
 	{
-		//return $request->all();
 		$user = User::findOrFail($request->get("memberId"));
-    	//$user->branch_id  = $request->get("branchId");
 		$user->first_name = $request->get("firstName"); 
 		$user->last_name  = $request->get("lastName"); 
 		$user->email      = $request->get("email"); 
@@ -122,7 +114,7 @@ class StaffController extends Controller
 		$user = User::findOrFail($request->get('id'));
 		if($user->is_active == 0){
 			$user->is_active  = 1;	
-		}else{
+		} else {
 			$user->is_active  = 0;
 		}
 		$user->update();

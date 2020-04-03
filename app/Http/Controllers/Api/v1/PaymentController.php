@@ -14,12 +14,12 @@ use App\User;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
+use Exception;
 
 class PaymentController extends Controller
 {
     public function create(Request $request)
     {
-		//return $request->all();
         try
         {
             $payment                   = new Payment;
@@ -33,15 +33,13 @@ class PaymentController extends Controller
 
             return response()->json(["status" => "success", "message" => "Successfully Payment Added."]);
         }
-        catch (\Exception $e) 
-    	{
+        catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
     }
 
 	public function paymentList($id = null)
 	{
-		
         if($id != null)
     	{
     		$payments = Payment::with('subscription.user','subscription.package')->where('id',$id)->first();
@@ -56,7 +54,7 @@ class PaymentController extends Controller
 	public function getPackages($id)
 	{
 		try{
-			$packageIds = Subscription::where('user_id',$id)->pluck('package_id');
+			$packageIds = Subscription::where('user_id',$id)->pluck('package_id'); 
 			$packages = Package::whereIn('id',$packageIds)->get();
 			return response()->json(["status" => "success", "data" => $packages]);
         }
@@ -146,14 +144,11 @@ class PaymentController extends Controller
     	try
     	{
     		Payment::where('id', $request->get('id'))->delete();
-
     		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully payment deleted."])->setStatusCode(200);
     	}
     	catch (\Exception $e) 
     	{
-    		//return $e;
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    		
     	}
     }
 	
