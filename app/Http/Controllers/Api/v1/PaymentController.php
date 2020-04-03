@@ -7,19 +7,17 @@ use App\Http\Controllers\Controller;
 //use App\Http\Requests\{PaymentStoreRequest, PaymentUpdateRequest};
 use Spatie\Permission\Models\Role;
 use Spatie\Fractalistic\ArraySerializer;
-use App\Models\Payment;
-use App\Models\Subscription;
-use App\Models\Package;
+use App\Models\{Payment, Subscription, Package};
 use App\User;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Carbon\Carbon;
+use Exception;
 
 class PaymentController extends Controller
 {
     public function create(Request $request)
     {
-		//return $request->all();
         try
         {
             $payment                   = new Payment;
@@ -33,15 +31,14 @@ class PaymentController extends Controller
 
             return response()->json(["status" => "success", "message" => "Successfully Payment Added."]);
         }
-        catch (\Exception $e) 
-    	{
+        catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
     }
 
 	public function paymentList($id = null)
 	{
-		
+		//TODO
         if($id != null)
     	{
     		$payments = Payment::with('subscription.user','subscription.package')->where('id',$id)->first();
@@ -53,19 +50,19 @@ class PaymentController extends Controller
     	}
 	}
 
-	public function getPackages($id)
+	public function getPackages($userId)
 	{
-		try{
-			$packageIds = Subscription::where('user_id',$id)->pluck('package_id');
-			$packages = Package::whereIn('id',$packageIds)->get();
+		try {
+			$packages = Package::whereHas('subscription', function($q) use ($id) {
+				$q->where('user_id', $userId);
+			})->get();
 			return response()->json(["status" => "success", "data" => $packages]);
         }
-        catch (\Exception $e) 
-    	{
+        catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
-			
 	}
+
 	public function getAmount(Request $request)
 	{
 		try{
@@ -80,12 +77,11 @@ class PaymentController extends Controller
 				return response()->json(["status" => "success", "data" => $subscription, "message" => "subscription"]);
 			}
         }
-        catch (\Exception $e) 
-    	{
+        catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
-			
 	}
+
 	public function activeSubscriptionList()
 	{
 		try
@@ -98,11 +94,11 @@ class PaymentController extends Controller
 			}
 			return response()->json(["status" => "success", "data" => $customers]);
         }
-        catch (\Exception $e) 
-    	{
+        catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
 	}
+	
 	public function getSubscription($id)
 	{
 		try

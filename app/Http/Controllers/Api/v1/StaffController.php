@@ -70,7 +70,6 @@ class StaffController extends Controller
      				    ->toArray();
 
      	return Datatables::of($user)->make(true);
-     	//return response()->json(["status" => "success", "data" => $response]);
 	}
 
 	public function getStaffMemberDetails(Request $request, $memberId)
@@ -86,9 +85,7 @@ class StaffController extends Controller
 
 	public function updateStaffMemberDetails(StaffMemberUpdateRequest $request)
 	{
-		//return $request->all();
 		$user = User::findOrFail($request->get("memberId"));
-    	//$user->branch_id  = $request->get("branchId");
 		$user->first_name = $request->get("firstName"); 
 		$user->last_name  = $request->get("lastName"); 
 		$user->email      = $request->get("email"); 
