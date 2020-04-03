@@ -12,10 +12,12 @@ class Subscription extends Model
     {
         return $this->belongsTo('App\User');
     }
+    
     public function package()
     {
         return $this->belongsTo('App\Models\Package');
     }
+
     public function staff()
     {
         return $this->belongsTo('App\User','staff_member_id','id');
