@@ -19,7 +19,7 @@
                     <div class="position-relative form-group">
                         <label for="subscription_id">Customer</label>
                         <select id="user_id" v-model="payment.user_id" class="form-control" name="user_id" required @change="onChange($event)">
-							<option v-for="(user, index) in customers" :key="index" :value="index" :selected="payment.user_id ===  index">{{user}}</option>
+							<option v-for="(customer, index) in customers" :key="index" :value="id" :selected="payment.user_id ===  id">{{customer.first_name}} {{customer.last_name}}</option>
                         </select>
                     </div>
 					<div class="position-relative form-group">
