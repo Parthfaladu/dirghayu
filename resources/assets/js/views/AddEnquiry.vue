@@ -23,33 +23,36 @@
                             <input
                                 id="name"
                                 v-model="enquiry.name"
+                                v-validate="'required'"
                                 type="text"
                                 class="form-control"
                                 name="name"
-                                required
                             />
+                            <span v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</span>
                         </div>
                         <div class="position-relative form-group">
                             <label for="email">Email</label>
                             <input
                                 id="email"
                                 v-model="enquiry.email"
+                                v-validate="'required|email'"
                                 type="email"
                                 class="form-control"
                                 name="email"
-                                required
                             />
+                            <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
                         </div>
                         <div class="position-relative form-group">
                             <label for="phone">Phone</label>
                             <input
                                 id="phone"
                                 v-model="enquiry.phone"
+                                v-validate="'required'"
                                 type="text"
                                 class="form-control"
                                 name="phone"
-                                required
                             />
+                            <span v-show="errors.has('phone')" class="text-danger">{{ errors.first('phone') }}</span>
                         </div>
                         <div class="position-relative form-group">
                             <label for="gender">Gender</label>
@@ -57,7 +60,6 @@
                                 <div class="custom-control custom-radio">
                                     <input
                                         id="defaultGroupExample1"
-                                        v-model="enquiry.gender"
                                         type="radio"
                                         class="custom-control-input"
                                         name="gender"
@@ -96,12 +98,13 @@
                             <input
                                 id="last_follow_up_date"
                                 v-model="enquiry.last_follow_up_date"
+                                v-validate="'required'"
                                 type="text"
                                 class="form-control"
                                 name="last_follow_up_date"
                                 placeholder="yyyy-mm-dd"
-                                required
                             />
+                            <span v-show="errors.has('last_follow_up_date')" class="text-danger">{{ errors.first('last_follow_up_date') }}</span>
                         </div>
                         <div class="position-relative form-group">
                             <label for="next_follow_up_date"
@@ -110,12 +113,13 @@
                             <input
                                 id="next_follow_up_date"
                                 v-model="enquiry.next_follow_up_date"
+                                v-validate="'required'"
                                 type="text"
                                 class="form-control"
                                 name="next_follow_up_date"
                                 placeholder="yyyy-mm-dd"
-                                required
                             />
+                            <span v-show="errors.has('next_follow_up_date')" class="text-danger">{{ errors.first('next_follow_up_date') }}</span>
                         </div>
                         <div class="position-relative form-group">
                             <label for="remark">Remark</label>
@@ -125,12 +129,12 @@
                                 rows="2"
                                 class="form-control"
                                 name="remark"
-                                required
                             ></textarea>
                         </div>
 
                         <div class="text-center">
-                            <button class="btn btn-outline-info" type="submit">
+                            <button class="btn btn-outline-info" 
+                            type="submit">
                                 SUBMIT
                             </button>
                         </div>
@@ -182,6 +186,10 @@ export default {
     methods: {
         async submitForm() {
             try {
+                const result = await this.$validator.validateAll();
+				if(!result){
+					return
+				}
                 if (this.enquiry) {
                     let res = null;
                     if (this.$route.params.id != null) {

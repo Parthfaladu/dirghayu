@@ -64,7 +64,7 @@ export default {
     methods: {
         logout() {
 			this.$store.commit('auth/logout');
-            this.$snotify.success("Logout successfully!");
+            // this.$snotify.success("Logout successfully!");
             
 		},
     }

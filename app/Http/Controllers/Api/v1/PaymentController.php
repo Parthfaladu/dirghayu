@@ -38,13 +38,12 @@ class PaymentController extends Controller
 
 	public function paymentList($id = null)
 	{
-		//TODO
         if($id != null)
     	{
     		$payments = Payment::with('subscription.user','subscription.package')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $payments])->setStatusCode(200);
-
-    	}else{
+		}
+		else {
     		$payments = Payment::with('subscription.user','subscription.package')->get();
             return Datatables::of($payments)->make(true);
     	}
@@ -53,12 +52,13 @@ class PaymentController extends Controller
 	public function getPackages($userId)
 	{
 		try {
-			$packages = Package::whereHas('subscription', function($q) use ($id) {
+			$packages = Package::whereHas('subscription', function($q) use ($userId) {
 				$q->where('user_id', $userId);
 			})->get();
 			return response()->json(["status" => "success", "data" => $packages]);
         }
         catch (Exception $e) {
+			\Log::info($e);
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
     	}
 	}

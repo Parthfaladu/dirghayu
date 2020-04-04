@@ -24,19 +24,23 @@
                     </div> -->
                     <div class="position-relative form-group">
                         <label for="item_name">Item Name</label>
-                        <input id="item_name" v-model="expenseData.item_name" type="text" class="form-control" name="item_name" required>
+                        <input  id="item_name" v-model="expenseData.item_name" v-validate="'required'" type="text" class="form-control" name="item_name" >
+						<span v-show="errors.has('item_name')" class="text-danger">The item name field is required.</span>
                     </div>
                     <div class="position-relative form-group">
                         <label for="purchase_date">Purchase Date</label>
-                        <input id="purchase_date" v-model="expenseData.purchase_date" type="text" class="form-control" name="purchase_date" placeholder="yyyy-mm-dd" required>
+                        <input id="purchase_date" v-model="expenseData.purchase_date" v-validate="'required'" type="text" class="form-control" name="purchase_date" placeholder="yyyy-mm-dd">
+						<span v-show="errors.has('purchase_date')" class="text-danger">The purchase date field is required.</span>
                     </div>
                     <div class="position-relative form-group">
                         <label for="bill_no">Bill Number</label>
-                        <input id="bill_no" v-model="expenseData.bill_no" type="text" class="form-control" name="bill_no" required>
+                        <input id="bill_no" v-model="expenseData.bill_no" v-validate="'required'" type="text"  class="form-control" name="bill_no">
+						<span v-show="errors.has('bill_no')" class="text-danger">The bill number field is required.</span>
                     </div>
                 	<div class="position-relative form-group">
                         <label for="price">Price</label>
-                        <input id="price" v-model="expenseData.price" type="number" class="form-control" name="price" required>
+                        <input id="price" v-model="expenseData.price" v-validate="'required'" type="number" class="form-control" name="price">
+						<span v-show="errors.has('price')" class="text-danger">{{ errors.first('price') }}</span>
                     </div>
                 	<div class="position-relative form-group">
                         <label for="expense_img_path">Bill Photo</label><br>
@@ -106,6 +110,11 @@ export default {
 		async submitForm() {
 
 			try{
+				const result = await this.$validator.validateAll();
+				if(!result){
+					return
+				}
+				
 			 	if(this.expenseData) 
 			 	{
 					let res = null

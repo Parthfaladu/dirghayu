@@ -19,24 +19,29 @@
 	                
                     <div class="position-relative form-group">
                         <label for="name">{{ $t('NAME') }}</label>
-                        <input id="name" v-model="packageData.name" type="text" class="form-control" name="name" required>
+                        <input id="name" v-model="packageData.name" v-validate="'required'" type="text" class="form-control" name="name">
+						<span v-show="errors.has('name')" class="text-danger">{{ errors.first('name') }}</span>
                     </div>
                     <div class="position-relative form-group">
                         <label for="detail">Detail</label>
-                        <textarea id="detail" v-model="packageData.detail" rows="2" class="form-control" name="detail" required></textarea>
+                        <textarea id="detail" v-model="packageData.detail" v-validate="'required'" rows="2" class="form-control" name="detail"></textarea>
+						<span v-show="errors.has('detail')" class="text-danger">{{ errors.first('detail') }}</span>
                     </div>
                 	<div class="position-relative form-group">
                         <label for="price">Price</label>
-                        <input id="price" v-model="packageData.price" type="number" class="form-control" name="price" required>
+                        <input id="price" v-model="packageData.price" v-validate="'required'" type="number" class="form-control" name="price">
+						<span v-show="errors.has('price')" class="text-danger">{{ errors.first('price') }}</span>
                     </div>
                     <div class="position-relative form-group">
                         <label for="duration">Duration</label>
                         <div class="input-group" style="padding: 0px;">
-                        	<input id="duration" v-model="packageData.duration" type="number" class="form-control" name="duration" required>
+                        	<input id="duration" v-model="packageData.duration" v-validate="'required'" type="number" class="form-control" name="duration">
+							
 							<div class="input-group-append">
 								<span id="basic-addon2" class="input-group-text">Month</span>
 							</div>
                         </div>
+						<span v-show="errors.has('duration')" class="text-danger">{{ errors.first('duration') }}</span>
                     </div> 
                 	<div class="position-relative form-group">
                         <label for="package_img_path">Profile Photo</label><br>
@@ -84,6 +89,7 @@ export default {
 	},
 	async mounted() {
 		try {
+			
 			if(this.$route.params.id != null)
 			{
 				const id           = this.$route.params.id
@@ -103,6 +109,10 @@ export default {
 		async submitForm() {
 
 			try{
+				const result = await this.$validator.validateAll();
+				if(!result){
+					return
+				}
 			 	if(this.packageData) 
 			 	{
 					let res = null

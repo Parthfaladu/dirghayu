@@ -13,6 +13,7 @@ import App from "./App.vue";
 import VueI18n from 'vue-i18n'
 import messageEn from '@i18n/en';
 import Snotify from 'vue-snotify';
+import VeeValidate from 'vee-validate';
 
 import "./assets/js/jquery.dataTables.js";
 
@@ -26,7 +27,7 @@ const options = {
   
 Vue.use(Snotify, options)
 Vue.use(VueI18n)
-
+Vue.use(VeeValidate)
 const messages = {
 	en: messageEn
 }

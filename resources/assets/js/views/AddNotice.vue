@@ -18,17 +18,20 @@
 	            <form  @submit.prevent="submitForm()">
 	            	<div class="position-relative form-group">
                         <label for="to_id">Customer</label>
-                        <select id="to_id" v-model="notice.to_id" class="form-control" name="to_id" required>
+                        <select id="to_id" v-model="notice.to_id" v-validate="'required'" class="form-control" name="to_id" >
                             <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="notice.to_id ===  customer.id">{{customer.first_name}} {{customer.last_name}} </option>
                         </select>
+						<span v-show="errors.has('to_id')" class="text-danger">The to field is required</span>
                     </div>
                     <div class="position-relative form-group">
                         <label for="title">Title</label>
-                        <input id="title" v-model="notice.title" type="text" class="form-control" name="title" required>
+                        <input id="title" v-model="notice.title" v-validate="'required'" type="text" class="form-control" name="title" >
+						<span v-show="errors.has('title')" class="text-danger">{{ errors.first('title') }}</span>
                     </div>
                     <div class="position-relative form-group">
                         <label for="detail">Detail</label>
-                        <textarea id="detail" v-model="notice.detail" rows="2" class="form-control" name="detail" required></textarea>
+                        <textarea id="detail" v-model="notice.detail" v-validate="'required'" rows="2" class="form-control" name="detail" ></textarea>
+						<span v-show="errors.has('detail')" class="text-danger">{{ errors.first('detail') }}</span>
                     </div>
                 	
                     <div class="text-center">
@@ -82,6 +85,10 @@ export default {
 		async submitForm() {
 
 			try{
+				const result = await this.$validator.validateAll();
+				if(!result){
+					return
+				}
 			 	if(this.notice) 
 			 	{
 			 		let res = null

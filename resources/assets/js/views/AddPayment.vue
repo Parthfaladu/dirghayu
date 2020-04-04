@@ -158,7 +158,6 @@ export default {
 		},
 		async onPackageChange(event)
 		{
-			
 			const res = await axios.post('/api/v1/payment/amount',{user_id: this.payment.user_id,package_id:event.target.value} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			if(res.data.message == 'lastpayment')
 			{

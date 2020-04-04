@@ -22,4 +22,9 @@ class Subscription extends Model
     {
         return $this->belongsTo('App\User','staff_member_id','id');
     }
+
+    public function payment()
+    {
+        return $this->hasMany('App\Models\Payment');
+    }
 }
