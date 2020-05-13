@@ -511,7 +511,7 @@ var render = function() {
         _c("div", { staticClass: "page-title-wrapper" }, [
           _c("div", { staticClass: "page-title-heading" }, [
             _c("div", { staticClass: "page-title-icon" }, [
-              _c("i", { staticClass: "pe-7s-car icon-gradient bg-mean-fruit" })
+              _c("i", { staticClass: "pe-7s-home icon-gradient bg-mean-fruit" })
             ]),
             _vm._v(" "),
             _c("div", [
