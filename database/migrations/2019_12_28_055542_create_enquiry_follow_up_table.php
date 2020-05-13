@@ -14,10 +14,10 @@ class CreateEnquiryFollowUpTable extends Migration
     public function up()
     {
         Schema::create('enquiry_follow_up', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('enquiry_id');
             $table->date('next_date');
-            $table->string('remark')->nullable();
+            $table->string('remark', 255)->nullable();
             $table->timestamps();
         });
     }

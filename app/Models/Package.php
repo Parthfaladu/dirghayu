@@ -10,6 +10,6 @@ class Package extends Model
 
     public function subscription()
     {
-        return $this->hasMany('App\Models\Subscription');
+        return $this->hasMany('App\Models\Subscription', 'package_name', 'name');
     }
 }

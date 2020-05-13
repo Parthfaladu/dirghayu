@@ -1,5 +1,5 @@
 <template>
-	<DashboardPage>
+	<DashboardPage v-can:view__expense>
 		<div class="app-main__inner">
 		<div class="app-page-title">
 	    	<div class="page-title-wrapper">
@@ -14,7 +14,7 @@
 	    </div>            
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-12">
-	            <h5 class="card-title">
+	            <h5 v-can:add__expense class="card-title">
 	            	<router-link to="/add-expense" class="btn btn-outline-primary mb-5 pull-right">Add Expense</router-link>
 	            </h5>
 				<div class="table-responsive">
@@ -25,7 +25,6 @@
 	</div>
 	</DashboardPage>
 </template>
-
 <script>
 import ExpenseTable from '@components/ExpenseTable';
 import DashboardPage from '@layouts/DashboardPage';

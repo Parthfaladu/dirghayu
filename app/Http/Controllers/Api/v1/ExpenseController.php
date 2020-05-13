@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Expense;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
+use Exception;
+use Carbon\Carbon;
 
 class ExpenseController extends Controller
 {
@@ -17,33 +19,28 @@ class ExpenseController extends Controller
     		$expenses = Expense::where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $expenses])->setStatusCode(200);
 
-    	}else{
+    	} else {
     		$expenses = Expense::get();
             return Datatables::of($expenses)->make(true);
     	}
     }
+
     public function create(Request $request)
     {
-        //return $request->all();
         try
         {
             $expense                = new Expense;
             $expense->item_name     = $request->get('item_name');
-            $expense->purchase_date = $request->get('purchase_date');
+            $expense->purchase_date = Carbon::parse($request->get('purchase_date'));
             $expense->bill_no       = $request->get('bill_no');
             $expense->price         = $request->get('price');
-            $expense->user_id       = Auth::user()->id;
-            //$expense->branch_id     = $request->get('branch_id');
             $expense = $this->uploadImage($expense, $request->file('expenseImage'));
             $expense->save();
 
             return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense created."])->setStatusCode(200);
         }
-        catch (\Exception $e) 
-        {
-            //return $e;
+        catch (Exception $e) {
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
 
@@ -67,26 +64,20 @@ class ExpenseController extends Controller
     
     public function update(Request $request)
     {
-        //return $request->all();
     	try
     	{
 	    	$expense                = Expense::where('id', $request->get('id'))->first();
 	    	$expense->item_name     = $request->get('item_name');
-	    	$expense->purchase_date = $request->get('purchase_date');
+	    	$expense->purchase_date = Carbon::parse($request->get('purchase_date'));
 	    	$expense->bill_no       = $request->get('bill_no');
             $expense->price         = $request->get('price');
-            $expense->user_id       = Auth::user()->id;
-            //$expense->branch_id     = $request->get('branch_id');
             $expense = $this->uploadImage($expense, $request->file('expenseImage'));
 	    	$expense->update();
 
 	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense updated."])->setStatusCode(200);
     	}
-    	catch (\Exception $e) 
-    	{
-    		return $e;
+    	catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    		
     	}
     }
 
@@ -98,11 +89,8 @@ class ExpenseController extends Controller
 
     		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense deleted."])->setStatusCode(200);
     	}
-    	catch (\Exception $e) 
-    	{
-    		//return $e;
+    	catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    		
     	}
     }
 }

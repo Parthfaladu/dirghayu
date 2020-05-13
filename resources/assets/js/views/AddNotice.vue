@@ -1,5 +1,5 @@
 <template>
-	<DashboardPage>
+	<DashboardPage v-can:add__notice>
 		<div class="app-main__inner">
 		<div class="app-page-title">
 	    	<div class="page-title-wrapper">
@@ -15,108 +15,21 @@
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-6 offset-sm-3">
 	            <h5 class="card-title"></h5>
-	            <form  @submit.prevent="submitForm()">
-	            	<div class="position-relative form-group">
-                        <label for="to_id">Customer</label>
-                        <select id="to_id" v-model="notice.to_id" v-validate="'required'" class="form-control" name="to_id" >
-                            <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="notice.to_id ===  customer.id">{{customer.first_name}} {{customer.last_name}} </option>
-                        </select>
-						<span v-show="errors.has('to_id')" class="text-danger">The to field is required</span>
-                    </div>
-                    <div class="position-relative form-group">
-                        <label for="title">Title</label>
-                        <input id="title" v-model="notice.title" v-validate="'required'" type="text" class="form-control" name="title" >
-						<span v-show="errors.has('title')" class="text-danger">{{ errors.first('title') }}</span>
-                    </div>
-                    <div class="position-relative form-group">
-                        <label for="detail">Detail</label>
-                        <textarea id="detail" v-model="notice.detail" v-validate="'required'" rows="2" class="form-control" name="detail" ></textarea>
-						<span v-show="errors.has('detail')" class="text-danger">{{ errors.first('detail') }}</span>
-                    </div>
-                	
-                    <div class="text-center">
-	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
-	                </div>
-	            </form>
+	            <AddNoticeForm></AddNoticeForm>
 	        </div>
 	    </div>
 	</div>
 	</DashboardPage>
 </template>
-
 <script>
-
-import axios from 'axios';
 import DashboardPage from '@layouts/DashboardPage';
+import AddNoticeForm from '@components/forms/AddNoticeForm';
 
 export default {
 	name: 'AddNotice',
 	components: {
-		DashboardPage
+		DashboardPage,
+		AddNoticeForm,
 	},
-	data() {
-		return {
-			notice:{
-				title: null,
-				to_id: null,
-				detail:null
-			},
-			customers: null,
-			
-		}
-	},
-	async mounted() {
-		try {
-			if(this.$route.params.id != null)
-			{
-				const id       = this.$route.params.id
-				const res      = await axios.get('/api/v1/notice/list/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-				this.notice = res.data.data
-		    }
-
-		    const customerRes = await axios.get('/api/v1/customer/list' , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-			this.customers = customerRes.data.data
-			
-		} catch (err) {
-			this.$snotify.error(null, err.message);
-		}
-	},
-	methods: {
-		async submitForm() {
-
-			try{
-				const result = await this.$validator.validateAll();
-				if(!result){
-					return
-				}
-			 	if(this.notice) 
-			 	{
-			 		let res = null
-			 		if(this.$route.params.id != null)
-			 		{
-			 			res = await axios.post('/api/v1/notice/update', this.notice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
-			 		}else
-			 		{
-		        		res = await axios.post('/api/v1/notice/create', this.notice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
-			 		}
-		    
-		        	if(res.data.status == "success")
-		        	{
-		        		this.resetForm();
-						this.$router.push('/notice-list');
-						this.$snotify.success(null, res.data.message);
-						
-		        	}
-		      	}
-		  	}
-		  	catch(err){
-		  		this.$snotify.error(null, err.message);
-		  	}
-
-		},
-		resetForm() {
-			this.notice = null;	
-		}
-	}
 }
 </script>

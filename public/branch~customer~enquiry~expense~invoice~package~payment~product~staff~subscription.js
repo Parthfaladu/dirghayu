@@ -24,8 +24,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -78,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
             data: actionData
           };
           that.$emit('gaction', args);
-          jquery__WEBPACK_IMPORTED_MODULE_0___default()(that.$el).DataTable().draw();
+          datatable.draw();
         });
       }
     });

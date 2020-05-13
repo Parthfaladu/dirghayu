@@ -24,7 +24,6 @@ class StaffMemberStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "branchId"  => "required",
             "roleId"    => "required",
             "firstName" => "required",
             "lastName"  => "required",

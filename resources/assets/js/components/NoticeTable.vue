@@ -1,16 +1,17 @@
 <template>
-	<VueDatatable :columns="columns" :url="url" @gaction="onAction">
+	<VueDatatable ref="vueDatatable" v-can:view__notice v-if="userRoleList" :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
 		<th>Title</th>
 		<th>To</th>
 		<th>From</th>
-		<th>Detail</th>
+		<!-- <th>Detail</th> -->
 		<th>Action</th>
     </VueDatatable>
 </template>
 <script>
 import axios from 'axios';
 import VueDatatable from '@components/custom/VueDatatable.vue';
+import _ from 'lodash';
 
 export default {
 	name: 'NoticeTable',
@@ -19,43 +20,69 @@ export default {
 	},
 	data() {
 		return {
+			userRoleList: null,
 			columns: [
-		        {data:'id', name:'id'},
+		        {data:'id', name:'id', width:"100px"},
 		        {data:'title', name:'title'},
-		        {data:function(data){
-		        	return data.userto.first_name+' '+data.userto.last_name;
-		        }, name:'to_id'},
+		        {data:(data) => {
+		        	return this.getRoleName(data.role_id);
+		        }, name:'role_id'},
 		        {data:function(data){
 		        	return data.userfrom.first_name+' '+data.userfrom.last_name;
 		        }, name:'from_id'},
-		        {data:'detail', name:'detail'},
-		        {data:function(data){
-	            	return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
-	          	}, name:'action'}
+		        // {data:'detail', name:'detail'},
+		        {data:(data) => {
+					let actions = "";
+					if(this.$can('view__notice')) {
+						actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
+					}
+					if(this.$can('update__notice')) {
+						actions += " <button class='btn btn-outline-alternate' data-g-action='edit' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+					}
+					if(this.$can('delete__notice')) {
+						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+					}
+					return actions;
+	          	}, name:'action', width:"280px"}
 		    ],
 		    url: '/api/v1/notice/list',
 		}
 	},
+	async mounted() {
+		try {
+            await this.getUserRole();
+		} catch (err) {
+			this.$snotify.error(null, err.message);
+		}
+    },
 	methods: {
-		
 		async onAction(action) {
 			if(action.action === 'view') {
+				this.$router.push('/view-notice/'+action.data)
+			}
+			if(action.action === 'edit') {
 				this.$router.push('/update-notice/'+action.data)
-				// console.log(action.data);
 			}
 			if(action.action === 'delete'){
-				try{
-					const noticeId = action.data
-					const res = await axios.post('/api/v1/notice/delete' , { id: noticeId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+				try {
+					const res = await axios.post('/api/v1/notice/delete' , { id: action.data });
+					this.$refs.vueDatatable.draw();
 					this.$snotify.success(null, res.data.message);
 				}
-				catch(err){
+				catch(err) {
 					this.$snotify.error(null, err.message);
-
 				}
 			}
-		}
+		},
+		async getUserRole(){
+            const roleRes = await axios.get('/api/v1/auth/user/role')
+			this.userRoleList = roleRes.data.data;
+        },
+        getRoleName(roleid){
+			const roleData = _.find(this.userRoleList, (role) =>  role.id === parseInt(roleid));
+			return roleData.name;
+			
+        }
 	}
-
 }
 </script>

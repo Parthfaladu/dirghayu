@@ -1,16 +1,8 @@
 <template>
 	<div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div class="logo-src"></div>
-                <div class="header__pane ml-auto">
-                    <div>
-                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
+                <div v-if="$store.getters['init/settings'] && $store.getters['init/settings'].logoUrl"><img :src="$store.getters['init/settings'].logoUrl" height="53px" width="100px"></div>
+                <div v-else><img src="/images/logo-inverse.png" height="45px" width="97px"></div>
             </div>
             <div class="app-header__mobile-menu">
                 <div>
@@ -37,20 +29,24 @@
                     <div class="header-btn-lg pr-0">
                         <div class="widget-content p-0">
                             <div class="widget-content-wrapper">
-                                <!-- <div class="widget-content-left  ml-3 header-user-info">
-                                    <div class="widget-heading">
-                                        Alina Mclourd
+                                <div class="widget-content-left">
+                                    <div class="btn-group">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
+                                            <img width="42px" height="42px" class="rounded-circle" :src="$store.state.init.user.photo_url" alt="">
+                                            <i class="fa fa-angle-down ml-2 opacity-8"></i>
+                                        </a>
+                                        <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <router-link to="/profile" tag="button" type="button" tabindex="0" class="dropdown-item">User Profile</router-link>
+                                            <router-link to="/change-password" tag="button" type="button" tabindex="0" class="dropdown-item">Change Password</router-link>
+                                            <router-link to="/settings" tag="button" type="button" tabindex="0" class="dropdown-item">General Settings</router-link>
+                                            <div tabindex="-1" class="dropdown-divider"></div>
+                                            <button type="button" tabindex="0" class="dropdown-item" @click="logout()">Log Out</button>
+                                        </div>
                                     </div>
-                                    <div class="widget-subheading">
-                                        VP People Manager
-                                    </div>
-                                </div> -->
-                                <div class="widget-content-right header-user-info ml-3">
-                                    <button class="btn btn-outline-primary" @click="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
-
-                                    <!-- <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm show-toastr-example">
-                                    </button> -->
                                 </div>
+                                <!-- <div class="widget-content-right header-user-info ml-3">
+                                    <button class="btn btn-outline-primary" @click="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+                                </div> -->
                             </div>
                         </div>
                     </div>        
@@ -62,11 +58,13 @@
 export default {
     name: 'Header',
     methods: {
-        logout() {
-			this.$store.commit('auth/logout');
-            // this.$snotify.success("Logout successfully!");
-            
-		},
+        async logout() {
+            await this.$store.commit('auth/logout');
+            this.$router.push({name: 'login'});
+        },
+        changePassword() {
+            this.$router.push('/change-password');
+        }
     }
 }
 </script>

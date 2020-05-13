@@ -72,7 +72,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'zipcode'
       }, {
         data: function data(_data) {
-          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data.id + "><i class='fas fa-edit'></i> Edit</button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data.id + "><i class='fas fa-trash-alt'></i> Delete</button>";
+          return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
         },
         name: 'action'
       }],
@@ -86,14 +86,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var branchId, res;
+        var res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 if (action.action === 'view') {
-                  _this.$router.push('/update-branch/' + action.data); // console.log(action.data);
-
+                  _this.$router.push('/update-branch/' + action.data);
                 }
 
                 if (!(action.action === 'delete')) {
@@ -102,18 +101,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 _context.prev = 2;
-                branchId = action.data;
-                _context.next = 6;
+                _context.next = 5;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/branch/delete', {
-                  id: branchId
-                }, {
-                  headers: {
-                    "Authorization": _this.$store.getters['auth/authHeaders'].Authorization
-                  }
+                  id: action.data
                 });
 
-              case 6:
+              case 5:
                 res = _context.sent;
+
+                _this.$refs.vueDatatable.draw();
 
                 _this.$snotify.success(null, res.data.message);
 
@@ -139,10 +135,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/AddBranch.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/AddBranch.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -152,7 +148,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -198,34 +193,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'AddBranch',
-  components: {
-    DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
+  name: 'AddBranchForm',
   data: function data() {
     return {
       branchData: {
@@ -372,6 +342,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/AddBranch.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/AddBranch.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+/* harmony import */ var _components_forms_AddBranchForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @components/forms/AddBranchForm */ "./resources/assets/js/components/forms/AddBranchForm.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'AddBranch',
+  components: {
+    DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_0__["default"],
+    AddBranchForm: _components_forms_AddBranchForm__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/BranchList.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/BranchList.vue?vue&type=script&lang=js& ***!
@@ -383,7 +400,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_BranchTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/BranchTable */ "./resources/assets/js/components/BranchTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
-//
 //
 //
 //
@@ -441,6 +457,7 @@ var render = function() {
   return _c(
     "VueDatatable",
     {
+      ref: "vueDatatable",
       attrs: { columns: _vm.columns, url: _vm.url },
       on: { gaction: _vm.onAction }
     },
@@ -468,6 +485,271 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=template&id=be0f9380&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=template&id=be0f9380& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.submitForm()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.name,
+              expression: "branchData.name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "name", type: "text", name: "name", required: "" },
+          domProps: { value: _vm.branchData.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "name", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "incharge_name" } }, [
+          _vm._v("Incharge Name")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.incharge_name,
+              expression: "branchData.incharge_name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: {
+            id: "incharge_name",
+            type: "text",
+            name: "incharge_name",
+            required: ""
+          },
+          domProps: { value: _vm.branchData.incharge_name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "incharge_name", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.email,
+              expression: "branchData.email"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "email", type: "email", name: "email", required: "" },
+          domProps: { value: _vm.branchData.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "email", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "mobile" } }, [_vm._v("Mobile")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.mobile,
+              expression: "branchData.mobile"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "mobile", type: "text", name: "mobile", required: "" },
+          domProps: { value: _vm.branchData.mobile },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "mobile", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "address" } }, [_vm._v("Address")]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.address,
+              expression: "branchData.address"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "address", rows: "2", name: "address", required: "" },
+          domProps: { value: _vm.branchData.address },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "address", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "city" } }, [_vm._v("City")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.city,
+              expression: "branchData.city"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "city", type: "text", name: "city" },
+          domProps: { value: _vm.branchData.city },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "city", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.state,
+              expression: "branchData.state"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "state", type: "text", name: "state" },
+          domProps: { value: _vm.branchData.state },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "state", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "position-relative form-group" }, [
+        _c("label", { attrs: { for: "zipcode" } }, [_vm._v("Zipcode")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.branchData.zipcode,
+              expression: "branchData.zipcode"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "zipcode", type: "text", name: "zipcode", required: "" },
+          domProps: { value: _vm.branchData.zipcode },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.branchData, "zipcode", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-center" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        [_vm._v("SUBMIT")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -507,277 +789,16 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "main-card mb-3 card" }, [
-        _c("div", { staticClass: "card-body col-sm-6 offset-sm-3" }, [
-          _c("h5", { staticClass: "card-title" }),
-          _vm._v(" "),
-          _c(
-            "form",
-            {
-              on: {
-                submit: function($event) {
-                  $event.preventDefault()
-                  return _vm.submitForm()
-                }
-              }
-            },
-            [
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("Name")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.name,
-                      expression: "branchData.name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "name",
-                    type: "text",
-                    name: "name",
-                    required: ""
-                  },
-                  domProps: { value: _vm.branchData.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "name", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "incharge_name" } }, [
-                  _vm._v("Incharge Name")
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.incharge_name,
-                      expression: "branchData.incharge_name"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "incharge_name",
-                    type: "text",
-                    name: "incharge_name",
-                    required: ""
-                  },
-                  domProps: { value: _vm.branchData.incharge_name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.branchData,
-                        "incharge_name",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "email" } }, [_vm._v("Email")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.email,
-                      expression: "branchData.email"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "email",
-                    type: "email",
-                    name: "email",
-                    required: ""
-                  },
-                  domProps: { value: _vm.branchData.email },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "email", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "mobile" } }, [_vm._v("Mobile")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.mobile,
-                      expression: "branchData.mobile"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "mobile",
-                    type: "text",
-                    name: "mobile",
-                    required: ""
-                  },
-                  domProps: { value: _vm.branchData.mobile },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "mobile", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "address" } }, [_vm._v("Address")]),
-                _vm._v(" "),
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.address,
-                      expression: "branchData.address"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "address",
-                    rows: "2",
-                    name: "address",
-                    required: ""
-                  },
-                  domProps: { value: _vm.branchData.address },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "address", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "city" } }, [_vm._v("City")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.city,
-                      expression: "branchData.city"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "city", type: "text", name: "city" },
-                  domProps: { value: _vm.branchData.city },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "city", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "state" } }, [_vm._v("State")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.state,
-                      expression: "branchData.state"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { id: "state", type: "text", name: "state" },
-                  domProps: { value: _vm.branchData.state },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "state", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "position-relative form-group" }, [
-                _c("label", { attrs: { for: "zipcode" } }, [_vm._v("Zipcode")]),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.branchData.zipcode,
-                      expression: "branchData.zipcode"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: {
-                    id: "zipcode",
-                    type: "text",
-                    name: "zipcode",
-                    required: ""
-                  },
-                  domProps: { value: _vm.branchData.zipcode },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.branchData, "zipcode", $event.target.value)
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "text-center" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-outline-info",
-                    attrs: { type: "submit" }
-                  },
-                  [_vm._v("SUBMIT")]
-                )
-              ])
-            ]
-          )
-        ])
+        _c(
+          "div",
+          { staticClass: "card-body col-sm-6 offset-sm-3" },
+          [
+            _c("h5", { staticClass: "card-title" }),
+            _vm._v(" "),
+            _c("AddBranchForm")
+          ],
+          1
+        )
       ])
     ])
   ])
@@ -916,6 +937,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BranchTable_vue_vue_type_template_id_087348e5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BranchTable_vue_vue_type_template_id_087348e5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/forms/AddBranchForm.vue":
+/*!****************************************************************!*\
+  !*** ./resources/assets/js/components/forms/AddBranchForm.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddBranchForm_vue_vue_type_template_id_be0f9380___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddBranchForm.vue?vue&type=template&id=be0f9380& */ "./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=template&id=be0f9380&");
+/* harmony import */ var _AddBranchForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddBranchForm.vue?vue&type=script&lang=js& */ "./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddBranchForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddBranchForm_vue_vue_type_template_id_be0f9380___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddBranchForm_vue_vue_type_template_id_be0f9380___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/assets/js/components/forms/AddBranchForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBranchForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddBranchForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBranchForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=template&id=be0f9380&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=template&id=be0f9380& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBranchForm_vue_vue_type_template_id_be0f9380___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./AddBranchForm.vue?vue&type=template&id=be0f9380& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/forms/AddBranchForm.vue?vue&type=template&id=be0f9380&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBranchForm_vue_vue_type_template_id_be0f9380___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddBranchForm_vue_vue_type_template_id_be0f9380___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

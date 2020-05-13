@@ -14,12 +14,12 @@ class CreateProductSellTable extends Migration
     public function up()
     {
         Schema::create('product_sell', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('staff_member_id');
-            $table->integer('user_id');
-            $table->integer('product_id');
+            $table->increments('id');
+            $table->string('staff_member_name', 255);
+            $table->string('product_name', 255);
             $table->integer('quantity');
             $table->integer('paid_amount');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

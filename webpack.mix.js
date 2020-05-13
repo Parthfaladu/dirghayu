@@ -11,7 +11,8 @@ mix.webpackConfig({
     '@store': path.resolve(__dirname, 'resources/assets/js/store'),
     '@views': path.resolve(__dirname, 'resources/assets/js/views'),
     '@layouts': path.resolve(__dirname, 'resources/assets/js/layouts'),
-    '@i18n': path.resolve(__dirname, 'resources/assets/js/i18n')
+    '@i18n': path.resolve(__dirname, 'resources/assets/js/i18n'),
+    '@plugins': path.resolve(__dirname, 'resources/assets/js/plugins')
     }
   }
 })

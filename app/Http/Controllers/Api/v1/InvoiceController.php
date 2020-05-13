@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Invoice;
-use App\Models\Customer;
-use App\Models\InvoiceItem;
+use App\Models\{Invoice, Customer, InvoiceItem};
 use Auth;
 use PDF;
 use Dompdf\Dompdf;
 use Yajra\DataTables\Facades\DataTables;
+use Exception;
+use Carbon\Carbon;
+
 
 class InvoiceController extends Controller
 {
@@ -21,14 +22,14 @@ class InvoiceController extends Controller
             $invoices = Invoice::with('billto','user','invoiceitems')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $invoices])->setStatusCode(200);
 
-        }else{
+        } else {
             $invoices = Invoice::with('billto','user','invoiceitems')->get();
             return Datatables::of($invoices)->make(true);
         }
     }
+
     public function create(Request $request)
-    {
-       
+    {   
         try
         {
             $invoiceItems = $request->get('invoiceitems');
@@ -38,14 +39,13 @@ class InvoiceController extends Controller
             $invoice->customer_email   = $request->get('customer_email');
             $invoice->customer_address = $request->get('customer_address');
             $invoice->customer_phone   = $request->get('customer_phone');
-            $invoice->invoice_date     = $request->get('invoice_date');
+            $invoice->invoice_date     = Carbon::parse($request->get('invoice_date'));
             $invoice->subtotal         = $request->get('subtotal');
-            $invoice->discount         = $request->get('discount');
-            $invoice->tax              = $request->get('tax');
+            $invoice->discount         = (int)$request->get('discount');
+            $invoice->tax              = (int)$request->get('tax');
             $invoice->total            = $request->get('total');
             $invoice->user_id          = $request->get('user_id');
             $invoice->save();
-
 
             foreach($invoiceItems as $item) 
             {
@@ -57,22 +57,16 @@ class InvoiceController extends Controller
                 $invoiceItem->amount     = $item['amount'];
                 $invoiceItem->save();
             }
-
-
             return response()->json(["code" => 200, "status" => "success", "message" => " Successfully invoice created."])->setStatusCode(200);
         }
-        catch (\Exception $e) 
-        {
+        catch (Exception $e) {
             return $e;
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
 
-        
     public function update(Request $request)
     {
-       
         try
         {
             $invoiceItems = $request->get('invoiceitems');
@@ -82,10 +76,10 @@ class InvoiceController extends Controller
             $invoice->customer_email   = $request->get('customer_email');
             $invoice->customer_address = $request->get('customer_address');
             $invoice->customer_phone   = $request->get('customer_phone');
-            $invoice->invoice_date     = $request->get('invoice_date');
+            $invoice->invoice_date     = Carbon::parse($request->get('invoice_date'));
             $invoice->subtotal         = $request->get('subtotal');
-            $invoice->discount         = $request->get('discount');
-            $invoice->tax              = $request->get('tax');
+            $invoice->discount         = (int)$request->get('discount');
+            $invoice->tax              = (int)$request->get('tax');
             $invoice->total            = $request->get('total');
             $invoice->user_id          = $request->get('user_id');
             $invoice->update();
@@ -102,13 +96,10 @@ class InvoiceController extends Controller
                 $invoiceItem->amount     = $item['amount'];
                 $invoiceItem->save();
             }
-
             return response()->json(["code" => 200, "status" => "success", "message" => " Successfully invoice updated."])->setStatusCode(200);
         }
-        catch (\Exception $e) 
-        {
+        catch (Exception $e) {
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
 
@@ -121,29 +112,22 @@ class InvoiceController extends Controller
 
             return response()->json(["code" => 200, "status" => "success", "message" => " Successfully invoice deleted."])->setStatusCode(200);
         }
-        catch (\Exception $e) 
-        {
-            //return $e;
+        catch (Exception $e) {
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
+
     public function downloadPdf($id)
     {
         try
         {
             $invoice = Invoice::with('billto','user','invoiceitems')->where('id', $id)->first();
             $pdf = PDF::loadView('invoice', compact('invoice'));
-            return $pdf->download('invoice.pdf');
-            
-        }
-        catch (\Exception $e) 
-        {
-            return $e;
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
-        }
-        
 
+            return $pdf->download('invoice.pdf');
+        }
+        catch (Exception $e) {
+            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
+        }
     }
 }

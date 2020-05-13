@@ -1,5 +1,5 @@
 <template>
-    <VueDatatable :columns="columns" :url="url" @gaction="onAction">
+    <VueDatatable ref="vueDatatable" v-can:view__enquiry :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
         <th>Staff Member Name</th>
 		<th>Name</th>
@@ -15,54 +15,60 @@
  
 import axios from 'axios';
 import VueDatatable from '@components/custom/VueDatatable.vue';
+import moment from 'moment';
 
-
-	export default {
-		name: 'EnquiryTable',
-		components: {
-			VueDatatable
-		},
-		data() {
-			return {
-				columns: [
-			        {data:'id', name:'id'},
-			        {data:function(data){
-                        return data.user.first_name+' '+data.user.last_name;
-                    }, name:'user_id'},
-			        {data:'name', name:'name'},
-			        {data:'email', name:'email'},
-                    {data:'phone', name:'phone'},
-                    {data:'gender', name:'gender'},
-                    {data:'last_follow_up_date', name:'last_follow_up_date'},
-                    {data:'next_follow_up_date', name:'next_follow_up_date'},
-			        {data:function(data){
-		            	return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
-		          	}, name:'action'}
-			    ],
-			    url: '/api/v1/enquiry/list',
-			}
-		},
-		methods: {
-
-			async onAction(action) {
-				if(action.action === 'view') {
-					this.$router.push('/update-enquiry/'+action.data)
-				}
-				if(action.action === 'delete'){
-					try{
-						const enquiryId = action.data
-						const res = await axios.post('/api/v1/enquiry/delete' , { id: enquiryId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
-						this.$snotify.success(null, res.data.message);
-
+export default {
+	name: 'EnquiryTable',
+	components: {
+		VueDatatable
+	},
+	data() {
+		return {
+			columns: [
+				{data:'id', name:'id', width:"100px"},
+				{data:function(data){
+					return data.user.first_name+' '+data.user.last_name;
+				}, name:'user_id'},
+				{data:'name', name:'name'},
+				{data:'email', name:'email'},
+				{data:'phone', name:'phone', width:"120px"},
+				{data:'gender', name:'gender', width:"80px"},
+				{data:(data) =>{
+					return moment(data.last_follow_up_date).format("DD-MM-YYYY");
+				}, name:'last_follow_up_date'},
+				{data:(data) =>{
+					return moment(data.next_follow_up_date).format("DD-MM-YYYY");
+				}, name:'next_follow_up_date'},
+				{data:(data) => {
+					let actions = "";
+					if(this.$can('update__enquiry')) {
+						actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
 					}
-					catch(err){
-						this.$snotify.error(null, err.message);
-
+					if(this.$can('delete__enquiry')) {
+						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
-				}
-			}
-
+					return actions;
+				}, name:'action', width:"150px"}
+			],
+			url: '/api/v1/enquiry/list',
 		}
-
+	},
+	methods: {
+		async onAction(action) {
+			if(action.action === 'view') {
+				this.$router.push('/update-enquiry/'+action.data)
+			}
+			if(action.action === 'delete'){
+				try {
+					const res = await axios.post('/api/v1/enquiry/delete' , { id: action.data });
+					this.$refs.vueDatatable.draw();
+					this.$snotify.success(null, res.data.message);
+				}
+				catch(err) {
+					this.$snotify.error(null, err.message);
+				}
+			}
+		}
 	}
+}
 </script>

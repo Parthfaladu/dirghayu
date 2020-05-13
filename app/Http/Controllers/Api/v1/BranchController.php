@@ -17,11 +17,12 @@ class BranchController extends Controller
     		$branchs = Branch::where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $branchs])->setStatusCode(200);
 
-    	}else{
+    	} else {
     		$branchs = Branch::get();
             return Datatables::of($branchs)->make(true);
     	}
     }
+    
     public function create(Request $request)
     {
         //return $request->all();

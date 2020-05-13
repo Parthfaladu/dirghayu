@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router'
 import Login from '@views/Login.vue'
-
-
 import store from '@store/store'
 
 Vue.use(Router);
@@ -211,18 +209,26 @@ const router = new Router({
                 authenticated: true,
             }
         },
+        // {
+        //     path: '/update-subscription/:id',
+        //     name: 'updatesubscription',
+        //     component: () => import(/* webpackChunkName: "subscription" */ '@views/AddSubscription.vue'),
+        //     meta: {
+        //         authenticated: true,
+        //     }
+        // },
         {
-            path: '/update-subscription/:id',
-            name: 'updatesubscription',
-            component: () => import(/* webpackChunkName: "subscription" */ '@views/AddSubscription.vue'),
+            path: '/notice-list',
+            name: 'noticelist',
+            component: () => import(/* webpackChunkName: "notice" */ '@views/NoticeList.vue'),
             meta: {
                 authenticated: true,
             }
         },
         {
-            path: '/notice-list',
-            name: 'noticelist',
-            component: () => import(/* webpackChunkName: "notice" */ '@views/NoticeList.vue'),
+            path: '/view-notice/:id',
+            name: 'viewnotice',
+            component: () => import(/* webpackChunkName: "notice" */ '@views/ViewNotice.vue'),
             meta: {
                 authenticated: true,
             }
@@ -331,6 +337,76 @@ const router = new Router({
                 authenticated: true,
             }
         },
+        {
+            path: '/attendance',
+            name: 'attendance',
+            component: () => import(/* webpackChunkName: "invoice" */ '@views/AttendanceList.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/attendance-report',
+            name: 'attendanceReport',
+            component: () => import(/* webpackChunkName: "report" */ '@views/AttendanceReport.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/subscription-report',
+            name: 'subscriptionReport',
+            component: () => import(/* webpackChunkName: "report" */ '@views/SubscriptionReport.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/product-sell-report',
+            name: 'productSellReport',
+            component: () => import(/* webpackChunkName: "report" */ '@views/ProductSellReport.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/user-permission',
+            name: 'userPermission',
+            component: () => import(/* webpackChunkName: "setting" */ '@views/UserPermission.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/change-password',
+            name: 'changePassword',
+            component: () => import(/* webpackChunkName: "setting" */ '@views/ChangePassword.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/profile',
+            name: 'userProfile',
+            component: () => import(/* webpackChunkName: "setting" */ '@views/UserProfile.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/settings',
+            name: 'settings',
+            component: () => import(/* webpackChunkName: "setting" */ '@views/Settings.vue'),
+            meta: {
+                authenticated: true,
+            }
+        },
+        {
+            path: '/forgot-password',
+            name: 'forgotPassword',
+            component: () => import(/* webpackChunkName: "user" */ '@views/ForgotPassword.vue'),
+        },
+
         // {
         //     path: '*',
         //     redirect: '/'

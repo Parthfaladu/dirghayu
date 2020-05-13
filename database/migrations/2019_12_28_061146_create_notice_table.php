@@ -14,11 +14,11 @@ class CreateNoticeTable extends Migration
     public function up()
     {
         Schema::create('notice', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('title');
-            $table->integer('to_id'); 
+            $table->increments('id');
+            $table->string('title', 255);
+            $table->integer('role_id'); 
             $table->integer('from_id');
-            $table->string('detail'); 
+            $table->string('detail', 255); 
             $table->timestamps();
         });
     }

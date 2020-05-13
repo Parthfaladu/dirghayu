@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Package;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
+use Exception;
 
 class PackageController extends Controller
 {
@@ -17,18 +18,17 @@ class PackageController extends Controller
     		$packages = Package::where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $packages])->setStatusCode(200);
 
-    	}else{
+    	} else {
     		$packages = Package::get();
             return Datatables::of($packages)->make(true);
     	}
     }
+
     public function create(Request $request)
     {
-        //return $request->all();
         try
         {
             $package                   = new Package;
-            $package->staff_member_id  = Auth::user()->id;
             $package->name             = $request->get('name');
             $package->price            = $request->get('price');
             $package->duration         = $request->get('duration');
@@ -38,11 +38,8 @@ class PackageController extends Controller
 
             return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package created."])->setStatusCode(200);
         }
-        catch (\Exception $e) 
-        {
-            //return $e;
+        catch (Exception $e) {
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
 
@@ -66,7 +63,6 @@ class PackageController extends Controller
     
     public function update(Request $request)
     {
-
     	try
     	{
 	    	$package           = Package::where('id', $request->get('id'))->first();
@@ -79,11 +75,9 @@ class PackageController extends Controller
 
 	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package updated."])->setStatusCode(200);
     	}
-    	catch (\Exception $e) 
-    	{
-    		//return $e;
+    	catch (Exception $e) {
+            \Log::info($e);
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    		
     	}
     }
 
@@ -95,11 +89,8 @@ class PackageController extends Controller
 
     		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package deleted."])->setStatusCode(200);
     	}
-    	catch (\Exception $e) 
-    	{
-    		//return $e;
+    	catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    		
     	}
     }
 }

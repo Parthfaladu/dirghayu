@@ -2,8 +2,7 @@
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
     "/branch.js": "/branch.js",
-    "/branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user.js": "/branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~staff~subscription~user.js",
-    "/branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js": "/branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js",
+    "/branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757.js": "/branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757.js",
     "/customer.js": "/customer.js",
     "/dashboard.js": "/dashboard.js",
     "/enquiry.js": "/enquiry.js",
@@ -13,10 +12,12 @@
     "/package.js": "/package.js",
     "/payment.js": "/payment.js",
     "/product.js": "/product.js",
+    "/report.js": "/report.js",
+    "/setting.js": "/setting.js",
     "/staff.js": "/staff.js",
     "/subscription.js": "/subscription.js",
     "/user.js": "/user.js",
-    "/vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js": "/vendors~branch~customer~enquiry~expense~invoice~notice~package~payment~product~staff~subscription.js",
-    "/vendors~invoice~subscription~user.js": "/vendors~invoice~subscription~user.js",
-    "/vendors~customer.js": "/vendors~customer.js"
+    "/vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user.js": "/vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user.js",
+    "/vendors~customer~report~subscription.js": "/vendors~customer~report~subscription.js",
+    "/vendors~notice~payment~product~setting~user.js": "/vendors~notice~payment~product~setting~user.js"
 }

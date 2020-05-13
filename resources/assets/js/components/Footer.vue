@@ -2,12 +2,11 @@
 	<div class="app-wrapper-footer">
         <div class="app-footer">
             <div class="app-footer__inner">
-                <div class="app-footer-left">
-                    <strong>Copyright &copy; 2020 <router-link to="#"> Gym System</router-link>. </strong>
-		    &nbsp;&nbsp;All rights reserved.
+                <div v-if="$store.getters['init/settings'] && $store.getters['init/settings'].footerText" class="app-footer-left">
+                    {{$store.getters['init/settings'].footerText}}
                 </div>
-                <div class="app-footer-right">
-                    <p>Gym System</p>
+                <div v-if="$store.getters['init/settings'] && $store.getters['init/settings'].companyTitle" class="app-footer-right">
+                    <p>{{$store.getters['init/settings'].companyTitle}}</p>
                 </div>
             </div>
         </div>

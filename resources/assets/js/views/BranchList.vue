@@ -25,7 +25,6 @@
 	</div>
 	</DashboardPage>
 </template>
-
 <script>
 import BranchTable from '@components/BranchTable';
 import DashboardPage from '@layouts/DashboardPage';

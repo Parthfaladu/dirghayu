@@ -4196,6 +4196,11 @@ dotenv@^8.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
+downloadjs@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/downloadjs/-/downloadjs-1.4.7.tgz#f69f96f940e0d0553dac291139865a3cd0101e3c"
+  integrity sha1-9p+W+UDg0FU9rCkROYZaPNAQHjw=
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
@@ -10313,6 +10318,11 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
+sweetalert2@^9.10.9:
+  version "9.10.9"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.10.9.tgz#a727178ea89a0976d3d1bf6ee9ea94d25cef59d1"
+  integrity sha512-EvCwcS9omZHhxp8XXiWwPMGq2ywGcU0VXeBr3DCibUMmfRkh8f8SxBWFSKMtw57HnK0tKYDhyhQV/vFERtRciQ==
+
 sweetalert@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/sweetalert/-/sweetalert-2.1.2.tgz#010baaa80d0dbdc86f96bfcaa96b490728594b79"
@@ -10893,10 +10903,10 @@ vue-i18n@^8.15.3:
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-8.15.3.tgz#9f947802d9b734fcb92e2ce724da654f2f9fc0f4"
   integrity sha512-PVNgo6yhOmacZVFjSapZ314oewwLyXHjJwAqjnaPN1GJAJd/dvsrShGzSiJuCX4Hc36G4epJvNXUwO8y7wEKew==
 
-vue-jquery-calendar@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/vue-jquery-calendar/-/vue-jquery-calendar-1.0.0.tgz#f0067d371e74aa492dfa04d72d3bf958b3ae77f7"
-  integrity sha512-O4v5i6fT6GafE5eE6M/CUjuil/6hcbAvJXPcghbG7q2A8QpGRDT4UKgrvAIdHYT57qxYSVAr7SNTnbtJmxjsOg==
+vue-jquery-calendar@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/vue-jquery-calendar/-/vue-jquery-calendar-1.1.4.tgz#fc56954944a5176713bdad86cb174f5f78c82a7c"
+  integrity sha512-17xJJs7fpzBpt4zIxlmiJX7cWtP94lCS72maiX3naQdt4JNHN9q+UJEuAyRGEizud4ZMSH4d+uchhpZpt9zVGA==
   dependencies:
     core-js "^3.6.4"
     jquery "^3.4.1"

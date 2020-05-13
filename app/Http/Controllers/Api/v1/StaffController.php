@@ -10,6 +10,7 @@ use Spatie\Fractalistic\ArraySerializer;
 use App\Transformers\StaffMemberTransformer;
 use App\User;
 use Yajra\DataTables\Facades\DataTables;
+use Carbon\Carbon;
 
 class StaffController extends Controller
 {
@@ -21,7 +22,7 @@ class StaffController extends Controller
 		$user->email      = $request->get("email");
 		$user->password   = bcrypt($request->get("password")); 
 		$user->phone      = $request->get("phone"); 
-		$user->dob        = $request->get("dob"); 
+		$user->dob        = Carbon::parse($request->get("dob")); 
 		$user->gender     = $request->get("gender");
 		$user->address    = $request->get("address"); 
 		$user = $this->uploadImage($user, $request->file('profileImage'));
@@ -83,10 +84,9 @@ class StaffController extends Controller
 		$user = User::findOrFail($request->get("memberId"));
 		$user->first_name = $request->get("firstName"); 
 		$user->last_name  = $request->get("lastName"); 
-		$user->email      = $request->get("email"); 
-		$user->password   = bcrypt($request->get("password")); 
+		$user->email      = $request->get("email");
 		$user->phone      = $request->get("phone");
-		$user->dob        = $request->get("dob"); 
+		$user->dob        = Carbon::parse($request->get("dob")); 
 		$user->gender     = $request->get("gender");
 		$user->address    = $request->get("address"); 
 		$user = $this->uploadImage($user, $request->file('profileImage'));

@@ -11,6 +11,24 @@ export const state = {
 
 export const getters = {
 	isInitialized: (state) => state.initialized && !!state.user,
+	currency: (state) => {
+		if(state.user && state.user.settings){
+			return state.user.settings.currency
+		}
+		return '$';
+	},
+	userPermissions: (state) => {
+		if(state.user && state.user.permission){
+			return state.user.permission
+		}
+		return [];
+	},
+	settings: (state) => {
+		if(state.user && state.user.settings) {
+			return state.user.settings
+		}
+		return null;
+	}
 }
 
 export const actions = {

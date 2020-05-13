@@ -14,11 +14,11 @@ class CreateInvoiceTable extends Migration
     public function up()
     {
         Schema::create('invoice', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('bill_to');
-            $table->string('customer_email')->nullable();
-            $table->string('customer_address')->nullable();
-            $table->string('customer_phone')->nullable();
+            $table->string('customer_email', 255)->nullable();
+            $table->string('customer_address', 255)->nullable();
+            $table->string('customer_phone', 255)->nullable();
             $table->date('invoice_date');
             $table->integer('subtotal'); 
             $table->integer('discount');

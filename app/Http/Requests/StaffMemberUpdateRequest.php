@@ -28,7 +28,6 @@ class StaffMemberUpdateRequest extends FormRequest
             "roleId"    => "required",
             "firstName" => "required",
             "lastName"  => "required",
-            "password"  => "required|min:6",
             "phone"     => "required",
             "gender"    => "required",
             "address"   => "required"

@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import modules from './modules'
+import AuthPermission from '@plugins/permissions';
 
 Vue.use(Vuex)
+Vue.use(AuthPermission)
 
 const store = new Vuex.Store({
     modules,

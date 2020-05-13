@@ -1,5 +1,5 @@
 <template>
-    <DashboardPage>
+    <DashboardPage v-can:view__package>
         <div class="app-main__inner">
             <div class="app-page-title">
                 <div class="page-title-wrapper">
@@ -16,7 +16,7 @@
             </div>
             <div class="main-card mb-3 card">
                 <div class="card-body col-sm-12">
-                    <h5 class="card-title">
+                    <h5 v-can:add__package class="card-title">
                         <router-link
                             to="/add-package"
                             class="btn btn-outline-primary mb-5 pull-right"

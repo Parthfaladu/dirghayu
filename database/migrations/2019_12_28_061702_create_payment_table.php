@@ -14,8 +14,8 @@ class CreatePaymentTable extends Migration
     public function up()
     {
         Schema::create('payment', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('staff_member_id');
+            $table->increments('id');
+            $table->string('staff_member_name', 255);
             $table->integer('subscription_id');
             $table->integer('paid_amount');
             $table->integer('remaining_amount');

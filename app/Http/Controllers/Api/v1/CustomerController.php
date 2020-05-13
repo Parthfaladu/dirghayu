@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Customer;
+use App\Models\{Customer, Subscription, Payment, Package};
 use Spatie\Permission\Models\Role;
 use Spatie\Fractalistic\ArraySerializer;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\CustomerStoreRequest;
 use App\User;
-use App\Models\Subscription;
-use App\Models\Payment;
+use Exception;
+use Carbon\Carbon;
 
 class CustomerController extends Controller
 {
@@ -21,37 +21,31 @@ class CustomerController extends Controller
     	if($id != null)
     	{
             $user = User::with("customer")->where('id',$id)->first();
-    		//$customers = Customer::with('user')->where('user_id',$id)->first();
-    	}else{
+    	} else {
             $user = User::with("roles","customer","subscription")
 				   ->whereHas("roles", function($q){
 						return $q->whereIn("name", ["customer"]);
 					})
 				   ->get();
-    		//$customers = Customer::with('user.subscription')->get();
             return Datatables::of($user)->make(true);
     	}
     	return response()->json(["code" => 200, "status" => "success", "data" => $user])->setStatusCode(200);
-    	
     }
     
     public function create(Request $request)
-    {
+    {  
         try
         {
-            //return $request->all();
             $user = new User;
             $user->first_name = $request->get("firstName");
             $user->last_name  = $request->get("lastName");
             $user->gender     = $request->get("gender");
-            $user->dob        = $request->get("dob");
+            $user->dob        = Carbon::parse($request->get("dob"));
             $user->phone      = $request->get("phone");
             $user->address    = $request->get("address");
             $user->email      = $request->get("email");
             $user->password   = bcrypt($request->get("password"));
-            //$user->branch_id  = $request->get('branchId');
             $user = $this->uploadImage($user, $request->file('profileImage'));
-
             $user->save();
 
             $role = Role::where("id", 4)->first();
@@ -74,66 +68,53 @@ class CustomerController extends Controller
 
             $subscription = new Subscription;
             $subscription->user_id         = $user->id;
-            $subscription->package_id      = $request->get("packageId");
-            $subscription->staff_member_id = Auth::user()->id;
+            $subscription->package_name    = $request->get("package_name");
             $subscription->amount          = $request->get("amount");
             $subscription->duration        = $request->get("duration");
-            $subscription->start_date      = $request->get("startDate");
-            $subscription->trial_days      = $request->get("trailDays");
-            $subscription->end_date        = $request->get("endDate");
+            $subscription->start_date      = Carbon::parse($request->get("startDate"));
+            $subscription->trial_days      = $request->get("trialDays");
+            $subscription->end_date        = Carbon::parse($request->get("endDate"));
             $subscription->remark          = $request->get("remark");
             $subscription->save();
 
             return response()->json(["status" => "success", "message" => "Successfully customer created."]);
         }
-        catch (\Exception $e) 
-        {
+        catch (Exception $e) {
+            return $e;
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
 
     private function uploadImage($user, $profileImage)
     {
-        try
+        $imagePath   = '';
+
+        if($profileImage && $profileImage->isValid()) 
         {
-            $imagePath   = '';
+            $destinationPath = 'profile/';
+            $extension = $profileImage->getClientOriginalExtension(); 
+            $imageName = str_random(32).'.'.$extension;
 
-            if($profileImage && $profileImage->isValid()) 
-            {
-                $destinationPath = 'profile/';
-                $extension = $profileImage->getClientOriginalExtension(); 
-                $imageName = str_random(32).'.'.$extension;
-
-                if($profileImage->move($destinationPath, $imageName)){
-                    $imagePath = $destinationPath.$imageName;
-                }
-                $user->photo_url = '/'.$imagePath;
+            if($profileImage->move($destinationPath, $imageName)){
+                $imagePath = $destinationPath.$imageName;
             }
-            return $user;
+            $user->photo_url = '/'.$imagePath;
         }
-        catch (\Exception $e) 
-        {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
-        }
+        return $user;
     }
 
     public function update(Request $request)
     {
         try
         {
-            //return $request->all();
             $user = User::where('id',$request->get('user_id'))->first();
             $user->first_name = $request->get("first_name");
             $user->last_name  = $request->get("last_name");
             $user->gender     = $request->get("gender");
-            $user->dob        = $request->get("dob");
+            $user->dob        = Carbon::parse($request->get("dob"));
             $user->phone      = $request->get("phone");
             $user->address    = $request->get("address");
             $user->email      = $request->get("email");
-            $user->password   = bcrypt($request->get("password"));
-            //$user->branch_id  = $request->get('branch_id');
             $user = $this->uploadImage($user, $request->file('profileImage'));
             $user->update();
 
@@ -153,12 +134,11 @@ class CustomerController extends Controller
 
             return response()->json(["status" => "success", "message" => "Successfully customer Update."]);
         }
-        catch (\Exception $e) 
-        {
+        catch (Exception $e) {
             return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-            
         }
     }
+
     public function delete(Request $request)
     {
     	try
@@ -166,24 +146,17 @@ class CustomerController extends Controller
             User::where('id', $request->get('id'))->delete();
             Customer::where('user_id',$request->get('id'))->delete();
             $subscriptions = Subscription::where('user_id',$request->get('id'))->get();
+
             foreach($subscriptions as $subscription)
             {
                 Payment::where('subscription_id',$subscription->id)->delete();
             }
+            
             Subscription::where('user_id',$request->get('id'))->delete();
     		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully Customer deleted."])->setStatusCode(200);
     	}
-    	catch (\Exception $e) 
-    	{
-    		return $e;
+    	catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    		
     	}
     }
-
-
-    // public function customerList()
-    // {
-    //     return Customer::with('user', 'user.subscription')->get();
-    // }
 }

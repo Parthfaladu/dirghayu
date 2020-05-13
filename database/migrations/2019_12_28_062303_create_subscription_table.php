@@ -14,15 +14,14 @@ class CreateSubscriptionTable extends Migration
     public function up()
     {
         Schema::create('subscription', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->integer('user_id');
-            $table->integer('package_id');
-            $table->integer('staff_member_id');
+            $table->string('package_name', 255);
             $table->integer('amount');
             $table->integer('duration');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('trial_days')->nullable();
+            $table->integer('trial_days')->default('0');
             $table->string('remark')->nullable();
             $table->tinyInteger('status')->default('1');
             $table->timestamps();

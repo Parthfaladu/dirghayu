@@ -1,5 +1,5 @@
 <template>
-	<VueDatatable :columns="columns" :url="url" @gaction="onAction">
+	<VueDatatable ref="vueDatatable" :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
 		<th>Name</th>
         <th>Address</th>
@@ -41,21 +41,18 @@ export default {
 		}
 	},
 	methods: {
-		
 		async onAction(action) {
 			if(action.action === 'view') {
 				this.$router.push('/update-branch/'+action.data)
-				// console.log(action.data);
 			}
 			if(action.action === 'delete'){
-				try{
-					const branchId = action.data
-					const res = await axios.post('/api/v1/branch/delete' , { id: branchId }, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+				try {
+					const res = await axios.post('/api/v1/branch/delete' , { id: action.data });
+					this.$refs.vueDatatable.draw();
 					this.$snotify.success(null, res.data.message);
 				}
-				catch(err){
+				catch(err) {
 					this.$snotify.error(null, err.message);
-
 				}
 			}
 		}

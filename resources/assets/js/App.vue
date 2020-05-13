@@ -20,6 +20,7 @@ export default {
 @import '~@assets/css/main.css';
 @import '~@assets/css/dataTables.bootstrap4.min.css';
 @import "~vue-snotify/styles/material.css";
+@import '~jquery-ui-dist/jquery-ui.css';
 
 	@media only screen and (min-width: 667px) {
 		.snotifyToast__title {
@@ -47,6 +48,12 @@ export default {
 		.button-text {
 			display: none;
 		}
+	}
+	.cursor-pointer {
+		cursor: pointer;
+	}
+	.datepicker.form-control[readonly] {
+		background-color: white !important;
 	}
 </style>
 	

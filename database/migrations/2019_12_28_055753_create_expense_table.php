@@ -14,13 +14,12 @@ class CreateExpenseTable extends Migration
     public function up()
     {
         Schema::create('expense', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('item_name');
+            $table->increments('id');
+            $table->string('item_name', 255);
             $table->date('purchase_date');
-            $table->string('bill_no')->nullable();
+            $table->string('bill_no', 255)->nullable();
             $table->text('bill_photo')->nullable();
             $table->integer('price');
-            $table->integer('user_id');
             $table->timestamps();
         });
     }

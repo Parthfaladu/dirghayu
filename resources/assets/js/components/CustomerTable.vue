@@ -1,74 +1,88 @@
 <template>
-	<div>
-		<VueDatatable :columns="columns" :url="url" @gaction="onAction">
+	<div v-can:view__customer>
+		<VueDatatable ref="vueDatatable" :columns="columns" :url="url" @gaction="onAction">
 			<th>Id</th>
 			<th>Name</th>
 			<th>Email</th>
-			<th>Gender</th>
 			<th>Phone</th>
-			<th>Address</th>
+			<th>Gender</th>
+			<th>City</th>
 			<th>Action</th>
 		</VueDatatable>
-		<VueJqueryCalendar></VueJqueryCalendar>
 	</div>
 </template>
 <script>
- 
 import axios from 'axios';
 import VueDatatable from '@components/custom/VueDatatable.vue';
-import VueJqueryCalendar from 'vue-jquery-calendar';
+import Swal from 'sweetalert2'
 
-	export default {
-		name: 'CustomerTable',
-		components: {
-			VueDatatable,
-			VueJqueryCalendar,
-		},
-		data() {
-			return {
-				columns: [
-			        {data:'id', name:'id'},
-			        {data:function(data){
-						return data.first_name+' '+data.last_name;
-                    }, name:'name'},
-                    {data:'email', name:'email'},
-                    {data:'gender', name:'gender'},
-                    {data:'phone', name:'phone'},
-					{data:'address', name:'address'},
-			        // {data:function(data){
-					// 	return data.customer.city;
-                    // }, name:'city'},
-			        {data:function(data){
-		            	return "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
-		          	}, name:'action'}
-			    ],
-			    url: '/api/v1/customer/list',
+export default {
+	name: 'CustomerTable',
+	components: {
+		VueDatatable,
+	},
+	data() {
+		return {
+			columns: [
+				{data:'id', name:'id', width:"100px"},
+				{data:function(data){
+					let customer = '';
+					if(data.photo_url) {
+						customer += `<img src=${data.photo_url} width='50px' class='rounded-circle mr-3'>`;
+					}
+					customer += `${data.first_name} ${data.last_name}`;
+					return customer;
+				}, name:'name'},
+				{data:'email', name:'email'},
+				{data:'phone', name:'phone', width:"100px"},
+				{data:'gender', name:'gender', width:"100px"},
+				{data:function(data){
+					return data.customer ? data.customer.city : null;
+				}, name:'city', width:"120px"},
+				{data:(data) => {
+					let actions = "";
+					if(this.$can('update__customer')) {
+						actions += "<button class='btn btn-outline-alternate mr-2' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+					}
+					if(this.$can('delete__customer')) {
+						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+					}
+					return  actions;
+				}, name:'action', width:"150px"}
+			],
+			url: '/api/v1/customer/list',
+		}
+	},
+	methods: {
+		async onAction(action) {
+			if(action.action === 'view') {
+				this.$router.push('/update-customer/'+action.data)
 			}
-		},
-		methods: {                                                                     
-
-			async onAction(action) {
-				if(action.action === 'view') {
-					this.$router.push('/update-customer/'+action.data)
-				}
-				if(action.action === 'delete'){
-					try{
-						const customerId = action.data
-						const res = await axios.post('/api/v1/customer/delete' , { id: customerId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
+			if(action.action === 'delete'){
+				try {
+					const result = await Swal.fire({
+						title: "Along with this customer delete all it's subscription and payment details will be deleted so Are you sure want to delete this customer?",
+						icon: 'warning',
+						showCancelButton: true,
+						confirmButtonColor: '#3085d6',
+						cancelButtonColor: '#d33',
+						confirmButtonText: 'Yes, delete it!'
+					});
+					if (result.value) {
+						const res = await axios.post('/api/v1/customer/delete' , { id: action.data });
+						this.$refs.vueDatatable.draw();
 						this.$snotify.success(null, res.data.message);
 					}
-					catch(err){
-						this.$snotify.error(null, err.message);
-
-					}
+				}
+				catch(err) {
+					this.$snotify.error(null, err.message);
 				}
 			}
-
 		}
-
 	}
+}
 </script>
 
 <style scoped>
-@import '~vue-jquery-calendar/dist/vuejquerycalendar.css';
+@import '~jquery-ui-dist/jquery-ui.css';
 </style>

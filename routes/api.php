@@ -14,15 +14,31 @@ use Illuminate\Http\Request;
 */
 
 Route::post('/auth/login', 'Api\v1\UserController@doLogin');
+Route::post('/forgot/password','Api\v1\UserController@forgotPassword');
+Route::get('/settings', 'Api\v1\SettingController@getSettings');
 
 
 Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function(){
 	//Route::group(['middleware' => ['role:super_admin']], function () {
 
-	;
-		Route::get('/auth/user', 'AuthController@userDetails');
-		Route::post('/auth/user/status', 'AuthController@changeUserStatus');
+		Route::get('/dashboard/detail', 'DashboardController@viewDashboard');
+		Route::get('/newcustomer/list', 'DashboardController@newCustomer');
+		Route::get('/expiry/subscription', 'DashboardController@expirySubscription');
+		Route::get('/active/subscription/list', 'DashboardController@activeSubscription');
+		Route::post('/change/password','UserController@changePassword');
 
+		Route::get('/auth/user', 'AuthController@userDetails');
+		Route::post('/auth/user', 'AuthController@updateUserDetails');
+		Route::post('/auth/user/status', 'AuthController@changeUserStatus');
+		Route::get('/auth/user/role', 'AuthController@userRole');
+
+		Route::get('/currency/list', 'SettingController@getCurrencyList')->middleware('can:permission_manage');
+		Route::post('/settings', 'SettingController@updateSettings')->middleware('can:permission_manage');
+
+		Route::get('/permissions', 'PermissionController@getAllPermission')->middleware('can:permission_manage');
+		Route::get('/roles/permissions', 'PermissionController@getAllRolePermission')->middleware('can:permission_manage');
+		Route::post('/roles/permissions', 'PermissionController@updateRolePermission')->middleware('can:permission_manage');
+		
 		Route::post('/staff/member', 'StaffController@storeStaffMember')->middleware('can:add__staff_member');
 		Route::get('/staff/member/{memberId}', 'StaffController@getStaffMemberDetails')->middleware('can:view__staff_member');
 		Route::post('/staff/member/update', 'StaffController@updateStaffMemberDetails')->middleware('can:update__staff_member');
@@ -60,17 +76,20 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 		Route::post('/productsell/create', 'ProductController@createProductSell')->middleware('can:add__product_sell');
 		Route::post('/productsell/update', 'ProductController@updateProductSell')->middleware('can:update__product_sell');
 		Route::post('/productsell/delete', 'ProductController@deleteProductSell')->middleware('can:delete__product_sell');
+		Route::get('/productsell/report/{customerId?}/{packageName?}', 'ProductController@productSellReport');
+		Route::post('/productsell/report/download', 'ProductController@downloadProductSellReport');
 
 		Route::get('/enquiry/list/{id?}', 'EnquiryController@enquiryList')->middleware('can:view__enquiry');
 		Route::post('/enquiry/create', 'EnquiryController@create')->middleware('can:add__enquiry');
 		Route::post('/enquiry/update', 'EnquiryController@update')->middleware('can:update__enquiry');
 		Route::post('/enquiry/delete', 'EnquiryController@delete')->middleware('can:delete__enquiry');
 
-
 		Route::get('/subscription/list/{id?}', 'SubscriptionController@subscriptionList')->middleware('can:view__subscription');
 		Route::post('/subscription/create', 'SubscriptionController@create')->middleware('can:add__subscription');
 		Route::post('/subscription/update', 'SubscriptionController@update')->middleware('can:update__subscription');
 		Route::post('/subscription/delete', 'SubscriptionController@delete')->middleware('can:delete__subscription');
+		Route::get('/subscription/report/{customerId?}/{packageId?}/{status?}', 'SubscriptionController@subscriptionReport');
+		Route::post('/subscription/report/download', 'SubscriptionController@downloadSubscriptionReport');
 
 		Route::get('/notice/list/{id?}', 'NoticeController@noticeList')->middleware('can:view__notice');
 		Route::post('/notice/create', 'NoticeController@create')->middleware('can:add__notice');
@@ -93,75 +112,11 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 		Route::post('/invoice/delete', 'InvoiceController@delete')->middleware('can:delete__invoice');
 		Route::get('/invoice/download/{id}', 'InvoiceController@downloadPdf')->middleware('can:view__invoice');
 
-		// Route::post('/staff/member', 'StaffController@storeStaffMember');
-		// Route::get('/staff/member/{memberId}', 'StaffController@getStaffMemberDetails');
-		// Route::post('/staff/member/update', 'StaffController@updateStaffMemberDetails');
-		// Route::delete('/staff/member/{memberId}', 'StaffController@deleteStaffMember');
-		// Route::post('/staff/member/list', 'StaffController@staffMemberList');
-		// Route::post('/staff/member/status', 'StaffController@changeStaffMemberStatus');
-
-		// Route::get('/payment/list/{id?}', 'PaymentController@paymentList');
-		// Route::post('/payment/create', 'PaymentController@create');
-		// Route::post('/payment/update', 'PaymentController@update');
-		// Route::post('/payment/delete', 'PaymentController@delete');
-		// Route::post('/payment/status', 'PaymentController@changePaymentStatus');
-		// Route::get('/payment/customer', 'PaymentController@activeSubscriptionList');
-		// Route::get('/payment/package/{id}', 'PaymentController@getPackages');
-		// Route::post('/payment/amount', 'PaymentController@getAmount');
-		// Route::get('/payment/subscription/{id}', 'PaymentController@getSubscription');
-
-
-		// Route::get('/customer/list/{id?}', 'CustomerController@customerList');
-		// Route::post('/customer/create', 'CustomerController@create');
-		// Route::post('/customer/update', 'CustomerController@update');
-		// Route::post('/customer/delete', 'CustomerController@delete');
-
-		// Route::get('/package/list/{id?}', 'PackageController@packageList');
-		// Route::post('/package/create', 'PackageController@create');
-		// Route::post('/package/update', 'PackageController@update');
-		// Route::post('/package/delete', 'PackageController@delete');
-
-		// Route::get('/product/list/{id?}', 'ProductController@productList');
-		// Route::post('/product/create', 'ProductController@create');
-		// Route::post('/product/update', 'ProductController@update');
-		// Route::post('/product/delete', 'ProductController@delete');
-
-		// Route::get('/productsell/list/{id?}', 'ProductController@productSellList');
-		// Route::post('/productsell/create', 'ProductController@createProductSell');
-		// Route::post('/productsell/update', 'ProductController@updateProductSell');
-		// Route::post('/productsell/delete', 'ProductController@deleteProductSell');
-
-		// Route::get('/enquiry/list/{id?}', 'EnquiryController@enquiryList');
-		// Route::post('/enquiry/create', 'EnquiryController@create');
-		// Route::post('/enquiry/update', 'EnquiryController@update');
-		// Route::post('/enquiry/delete', 'EnquiryController@delete');
-
-
-		// Route::get('/subscription/list/{id?}', 'SubscriptionController@subscriptionList');
-		// Route::post('/subscription/create', 'SubscriptionController@create');
-		// Route::post('/subscription/update', 'SubscriptionController@update');
-		// Route::post('/subscription/delete', 'SubscriptionController@delete');
-
-		// Route::get('/notice/list/{id?}', 'NoticeController@noticeList');
-		// Route::post('/notice/create', 'NoticeController@create');
-		// Route::post('/notice/update', 'NoticeController@update');
-		// Route::post('/notice/delete', 'NoticeController@delete');
-
-		// Route::get('/expense/list/{id?}', 'ExpenseController@expenseList');
-		// Route::post('/expense/create', 'ExpenseController@create');
-		// Route::post('/expense/update', 'ExpenseController@update');
-		// Route::post('/expense/delete', 'ExpenseController@delete');
-
-		// Route::get('/branch/list/{id?}', 'BranchController@branchList');
-		// Route::post('/branch/create', 'BranchController@create');
-		// Route::post('/branch/update', 'BranchController@update');
-		// Route::post('/branch/delete', 'BranchController@delete');
-
-		// Route::get('/invoice/list/{id?}', 'InvoiceController@invoiceList');
-		// Route::post('/invoice/create', 'InvoiceController@create');
-		// Route::post('/invoice/update', 'InvoiceController@update');
-		// Route::post('/invoice/delete', 'InvoiceController@delete');
-		// Route::get('/invoice/download/{id}', 'InvoiceController@downloadPdf');
+		Route::get('/attendance/list/{attendanceDate}', 'AttendanceController@attendanceList')->middleware('can:view__attendance');;
+		Route::post('/attendance/create', 'AttendanceController@create')->middleware('can:add__attendance');;
+		Route::post('/attendance/uncheck', 'AttendanceController@attendanceUnchecked')->middleware('can:update__attendance');;
+		Route::get('/attendance/report/{fromDate}/{toDate}/{customerId?}', 'AttendanceController@attendanceReport')->middleware('can:view__attendance');;
+		Route::post('/attendance/report/download', 'AttendanceController@downloadReport')->middleware('can:view__attendance');;
 
 	//});
 });

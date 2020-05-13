@@ -12,10 +12,7 @@
 */
 
 // Route::get('/test', function(){
-// 	return \DB::table('subscription')
-// 		->join('payment', 'payment.subscription_id', '=', 'subscription.id')
-// 		->select('subscription.*','payment.*', DB::raw('sum(payment.paid_amount) AS paid_amount_total'))
-// 		->get();
+// 	return bcrypt('123456');
 // });
 Route::get('/{vue?}', function () {
     return view('app');

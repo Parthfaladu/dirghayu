@@ -20,13 +20,13 @@ class PaymentController extends Controller
     {
         try
         {
-            $payment                   = new Payment;
-            $payment->staff_member_id  = Auth::user()->id;
-            $payment->subscription_id  = $request->get("subscription_id");
-            $payment->paid_amount      = $request->get("paid_amount");
-            $payment->remaining_amount = $request->get("remaining_amount");
-            $payment->payment_source   = $request->get("payment_source");
-            $payment->remark           = $request->get("remark");
+            $payment                    = new Payment;
+            $payment->staff_member_name = Auth::user()->first_name.' '.Auth::user()->last_name;
+            $payment->subscription_id   = $request->get("subscription_id");
+            $payment->paid_amount       = $request->get("paid_amount");
+            $payment->remaining_amount  = $request->get("remaining_amount");
+            $payment->payment_source    = $request->get("payment_source");
+            $payment->remark            = $request->get("remark");
             $payment->save();
 
             return response()->json(["status" => "success", "message" => "Successfully Payment Added."]);
@@ -40,11 +40,11 @@ class PaymentController extends Controller
 	{
         if($id != null)
     	{
-    		$payments = Payment::with('subscription.user','subscription.package')->where('id',$id)->first();
+    		$payments = Payment::with('subscription.user')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $payments])->setStatusCode(200);
 		}
 		else {
-    		$payments = Payment::with('subscription.user','subscription.package')->get();
+    		$payments = Payment::with('subscription.user')->get();
             return Datatables::of($payments)->make(true);
     	}
 	}
@@ -67,13 +67,13 @@ class PaymentController extends Controller
 	{
 		try {
 			$subscription = Subscription::where('user_id', $request->get('user_id'))
-										->where('package_id',$request->get('package_id'))
+										->where('package_name',$request->get('package_name'))
 										->with(['payment' => function($q){
 											$q->latest()->limit(1);
 										}])
 										->first();
 			
-			return response()->json(["status" => "success", "data" => $subscription, "message" => "subscription"]);
+			return response()->json(["status" => "success", "data" => $subscription]);
         }
         catch (Exception $e) {
 	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
@@ -98,7 +98,7 @@ class PaymentController extends Controller
 	{
 		try
 		{
-			$subscriptions = Subscription::with('user','package','staff')
+			$subscriptions = Subscription::with('user','staff')
 										->whereHas('payment', function($q) use ($id){
 											$q->where("id", $id);
 										})

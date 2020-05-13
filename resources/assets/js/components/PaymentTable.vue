@@ -1,5 +1,5 @@
 <template>
-    <VueDatatable :columns="columns" :url="url" @gaction="onAction">
+    <VueDatatable ref="vueDatatable" v-can:view__payment :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
 		<th>Subscriber Name</th>
 		<th>Package</th>
@@ -7,63 +7,65 @@
 		<th>Remaining Amount</th>
 		<th>Payment Source</th>
         <th>Payment Date</th>
-		<th>Remark</th>
+		
 		<th>Action</th>
 	</VueDatatable>
 </template>
-<script>
- 
+<script> 
 import axios from 'axios';
 import VueDatatable from '@components/custom/VueDatatable.vue';
 
-
-	export default {
-		name: 'PaymentTable',
-		components: {
-			VueDatatable
-		},
-		data() {
-			return {
-				columns: [
-			        {data:'id', name:'id'},
-			        {data:function(data){
-						return data.subscription.user.first_name+' '+data.subscription.user.last_name;
-					}, name:'subscription_id'},
-					{data:function(data){
-						return data.subscription.package.name;
-					}, name:'subscription_id'},
-			        {data:'paid_amount', name:'paid_amount'},
-			        {data:'remaining_amount', name:'remaining_amount'},
-                    {data:'payment_source', name:'payment_source'},
-                    {data:'updated_at', name:'updated_at'},
-                    {data:'remark', name:'remark'},
-			        {data:function(data){
-		            	return " <button class='btn btn-outline-info' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
-		          	}, name:'action'}
-			    ],
-			    url: '/api/v1/payment/list',
-			}
-		},
-		methods: {
-
-			async onAction(action) {
-				if(action.action === 'view') {
-					this.$router.push('/payment-invoice/'+action.data)
-				}
-				if(action.action === 'delete'){
-					try{
-						const paymentId = action.data
-						const res = await axios.post('/api/v1/payment/delete' , { id: paymentId } ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} });
-						this.$snotify.success(null, res.data.message);
+export default {
+	name: 'PaymentTable',
+	components: {
+		VueDatatable
+	},
+	data() {
+		return {
+			columns: [
+				{data:'id', name:'id' ,width:"80px"},
+				{data:function(data){
+					return data.subscription.user.first_name+' '+data.subscription.user.last_name;
+				}, name:'subscription_id', width:"230px"},
+				{data:function(data){
+					return data.subscription.package_name ;
+				}, name:'package'},
+				{data:(data) => {
+					return data.paid_amount+' '+this.$store.getters['init/currency'];
+				}, name:'paid_amount', width:"80px"},
+				{data:(data) =>{
+					return data.remaining_amount+' '+this.$store.getters['init/currency'];
+				}, name:'remaining_amount', width:"80px"},
+				{data:'payment_source', name:'payment_source', width:"100px"},
+				{data:'updated_at', name:'updated_at', width:"120px"},
+				
+				{data:(data) => {
+					let actions = "";
+					if(this.$can('add__invoice')) {
+						actions += "<button class='btn btn-outline-info' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button>";
 					}
-					catch(err){
-						this.$snotify.error(null, err.message);
-
-					}
-				}
-			}
-
+					return actions;
+				}, name:'action', width:"100px"}
+			],
+			url: '/api/v1/payment/list',
 		}
-
+	},
+	methods: {
+		async onAction(action) {
+			if(action.action === 'view') {
+				this.$router.push('/payment-invoice/'+action.data)
+			}
+			if(action.action === 'delete'){
+				try {
+					const res = await axios.post('/api/v1/payment/delete' , { id: action.data });
+					this.$refs.vueDatatable.draw();
+					this.$snotify.success(null, res.data.message);
+				}
+				catch(err) {
+					this.$snotify.error(null, err.message);
+				}
+			}
+		}
 	}
+}
 </script>

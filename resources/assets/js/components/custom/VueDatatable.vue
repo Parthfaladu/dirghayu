@@ -1,6 +1,5 @@
 <template>
-
-	<table align="center" width="100%" class="table table-hover">
+	<table align="center" width="100%" class="table table-hover" :class="className">
 		<thead>
 			<tr>
 				<slot></slot>
@@ -8,7 +7,6 @@
 		</thead>
 		<tbody></tbody>
 	</table>
-	
 </template>
 <script>
 import $ from "jquery";
@@ -29,19 +27,41 @@ export default {
 		type: {
 			type: String,
 			default: 'GET'
+		},
+		searching: {
+			type: Boolean,
+			default: true
+		},
+		lengthChange: {
+			type: Boolean,
+			default: true
+		},
+		order: {
+			type: Array,
+			default: () => []
+		},
+		className: {
+			type: String,
+			default: ''
+		}
+	},
+	data() {
+		return {
+			datatable: null,
 		}
 	},
 	mounted() {
 		var that = this;
-		var datatable = $(this.$el).DataTable({
+		this.datatable = $(this.$el).DataTable({
 		    "paging": true,
-		    "lengthChange": true,
-		    "searching": true,
+		    "lengthChange": this.lengthChange,
+		    "searching": this.searching,
 		    "ordering": true,
 		    "info": true,
 		    "responsive": true,
 		    "processing": true,
-        	"serverSide": true,
+			"serverSide": true,
+			"order": this.order,
 		    ajax: {
 		        'url': this.url,
 		        'type' : this.type,
@@ -64,10 +84,18 @@ export default {
 		            }
 
 					that.$emit('gaction', args)
-					$(that.$el).DataTable().draw();
 		        });
 		    },
 	    });
+	},
+	methods: {
+		reload(url) {
+			this.datatable.ajax.url(url).load();
+		},
+		draw() {
+			this.datatable.draw();
+			// this.datatable.fnDraw();
+		}
 	}
 }
 </script>

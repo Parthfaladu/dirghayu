@@ -61,24 +61,16 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'update__invoice','guard_name' => 'web']);
         Permission::create(['name' => 'view__invoice','guard_name' => 'web']);
         Permission::create(['name' => 'delete__invoice','guard_name' => 'web']);
+        Permission::create(['name' => 'view__attendance','guard_name' => 'web']);
+        Permission::create(['name' => 'add__attendance','guard_name' => 'web']);
+        Permission::create(['name' => 'update__attendance','guard_name' => 'web']);
+        Permission::create(['name' => 'delete__attendance','guard_name' => 'web']);
         Permission::create(['name' => 'permission_manage','guard_name' => 'web']);
 
-        // create roles and assign created permissions
-
-        // this can be done as separate statements
-        $role = Role::create(['name' => 'super_admin','guard_name' => 'web'])->givePermissionTo(Permission::all());
-        $role = Role::create(['name' => 'manager','guard_name' => 'web'])->givePermissionTo(['add__package','update__package','view__package','delete__package','add__product','update__product','view__product','delete__product','add__product_sell','add__product_sell', 'update__product_sell', 'view__product_sell', 'add__staff_member', 'view__staff_member', 'add__payment', 'update__payment', 'view__payment', 'add__enquiry', 'update__enquiry', 'view__enquiry', 'delete__enquiry', 'add__customer', 'update__customer', 'view__customer', 'add__subscription', 'view__subscription', 'add__notice', 'update__notice', 'view__notice', 'delete__notice', 'add__expense', 'update__expense', 'view__expense', 'add__invoice', 'update__invoice', 'view__invoice']);
-        $role = Role::create(['name' => 'staff','guard_name' => 'web'])->givePermissionTo(['view__package', 'add__product', 'view__product', 'add__product_sell', 'update__product_sell', 'view__product_sell', 'add__payment', 'view__payment', 'add__enquiry', 'update__enquiry', 'view__enquiry', 'delete__enquiry', 'add__customer', 'update__customer', 'view__customer', 'add__subscription', 'view__subscription', 'view__notice', 'add__invoice', 'update__invoice', 'view__invoice',]);
-        $role = Role::create(['name' => 'customer','guard_name' => 'web'])->givePermissionTo(['view__product', 'view__product_sell', 'view__payment', 'view__subscription', 'view__notice', 'view__invoice',]);
-
-
-        // or may be done by chaining
-        // $role = Role::create(['name' => 'moderator'])
-        //     ->givePermissionTo(['publish articles', 'unpublish articles']);
-
-        // $role = Role::create(['name' => 'super-admin']);
-        // $role->givePermissionTo(Permission::all());
-
         
+        $role = Role::create(['name' => 'super_admin','guard_name' => 'web'])->givePermissionTo(Permission::all());
+        $role = Role::create(['name' => 'manager','guard_name' => 'web'])->givePermissionTo(['add__package','update__package','view__package','delete__package','add__product','update__product','view__product','delete__product','add__product_sell','add__product_sell', 'update__product_sell', 'view__product_sell', 'add__staff_member', 'view__staff_member', 'add__payment', 'update__payment', 'view__payment', 'add__enquiry', 'update__enquiry', 'view__enquiry', 'delete__enquiry', 'add__customer', 'update__customer', 'view__customer', 'add__subscription', 'view__subscription', 'add__notice', 'update__notice', 'view__notice', 'delete__notice', 'add__expense', 'update__expense', 'view__expense', 'add__invoice', 'update__invoice', 'view__invoice', 'view__attendance', 'add__attendance', 'update__attendance','delete__attendance']);
+        $role = Role::create(['name' => 'staff','guard_name' => 'web'])->givePermissionTo(['view__package', 'add__product', 'view__product', 'add__product_sell', 'update__product_sell', 'view__product_sell', 'add__payment', 'view__payment', 'add__enquiry', 'update__enquiry', 'view__enquiry', 'delete__enquiry', 'add__customer', 'update__customer', 'view__customer', 'add__subscription', 'view__subscription', 'view__notice', 'add__invoice', 'update__invoice', 'view__invoice', 'view__attendance', 'add__attendance']);
+        $role = Role::create(['name' => 'customer','guard_name' => 'web'])->givePermissionTo(['view__product', 'view__product_sell', 'view__payment', 'view__subscription', 'view__notice', 'view__invoice', 'view__attendance']);
     }
 }  

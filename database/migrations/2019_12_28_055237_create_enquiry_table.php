@@ -14,15 +14,15 @@ class CreateEnquiryTable extends Migration
     public function up()
     {
         Schema::create('enquiry', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->nullable();
-            $table->string('phone');
-            $table->string('gender');
-            $table->string('remark')->nullable();
+            $table->increments('id');
+            $table->string('name', 255);
+            $table->string('email', 255)->nullable();
+            $table->string('phone', 255);
+            $table->string('gender', 10);
+            $table->string('remark', 255)->nullable();
             $table->date('last_follow_up_date')->nullable();
             $table->date('next_follow_up_date')->nullable();
-            $table->integer('user_id');            
+            $table->integer('user_id');      
             $table->timestamps();
         });
     }

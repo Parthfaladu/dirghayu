@@ -1,5 +1,5 @@
 <template>
-	<DashboardPage>
+	<DashboardPage v-can:add__invoice>
 		<div class="app-main__inner">
 		<div class="app-page-title">
 	    	<div class="page-title-wrapper">
@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="position-relative form-group">
-                                <label for="to_id">Bill To</label>
+                                <label for="bill_to">Bill To</label>
                                 <input id="customer_name" v-model="invoice.customer_name" type="text" class="form-control" name="customer_name" required>
                                 <!-- <select class="form-control" name="bill_to" v-model="invoice.bill_to" id="bill_to" required>
                                     <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="invoice.bill_to ===  customer.id">{{customer.first_name}} {{customer.last_name}} </option>
@@ -31,7 +31,8 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label for="invoice_date">Invoice Date</label>
-                                <input id="invoice_date" v-model="invoice.invoice_date" type="text" class="form-control" name="invoice_date" placeholder="yyyy-mm-dd" required>
+								<VueJqueryCalendar v-model="invoice.invoice_date" v-validate="'required'" name="invoice_date" date-format="dd-mm-yy" :readonly="true" class-name="form-control"/>
+                                <!-- <input id="invoice_date" v-model="invoice.invoice_date" type="text" class="form-control" name="invoice_date" placeholder="yyyy-mm-dd" required> -->
                             </div>
                         </div>
                         <div class="col-sm-6">
@@ -49,9 +50,9 @@
 						<thead>
 							<tr>
 								<th>Name</th>
-								<th>Quantity</th>
-								<th>Rate</th>
-								<th>Amount</th>
+								<th>Quantity (Each)</th>
+								<th>Rate {{ $store.getters['init/currency'] }}</th>
+								<th>Amount {{ $store.getters['init/currency'] }}</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -69,22 +70,54 @@
 							<tr>
 								<td colspan="3"></td>
 								<td>Subtotal</td>
-								<td><input id="subtotal" v-model="subTotal" type="number" class="form-control" name="subtotal" style="border:none;" readonly required></td>
+								<td>
+									<!-- <input id="subtotal" v-model="subTotal" type="number" class="form-control" name="subtotal" style="border:none;" readonly required> -->
+									<div class="input-group" style="margin-top:0px;">
+										<input id="subtotal" v-model="subTotal" v-validate="'required'" type="number" class="form-control" name="subtotal" style="border:none;" readonly>
+										<div class="input-group-append">
+											<span id="basic-addon2" class="input-group-text">{{ $store.getters['init/currency'] }}</span>
+										</div>
+									</div>
+								</td>
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 								<td>Discount</td>
-								<td><input id="discount" v-model="invoice.discount" type="number" class="form-control" name="discount" required></td>
+								<td>
+									<div class="input-group" style="margin-top:0px;">
+										<input id="discount" v-model="invoice.discount" v-validate="'required'" type="number" class="form-control" name="discount">
+										<div class="input-group-append">
+											<span id="basic-addon2" class="input-group-text">{{ $store.getters['init/currency'] }}</span>
+										</div>
+									</div>
+									<!-- <input id="discount" v-model="invoice.discount" type="number" class="form-control" name="discount" required> -->
+								</td>
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 								<td>Tax</td>
-								<td><input id="tax" v-model="invoice.tax" type="number" class="form-control" name="tax" required></td>
+								<td>
+									<!-- <input id="tax" v-model="invoice.tax" type="number" class="form-control" name="tax" required> -->
+									<div class="input-group" style="margin-top:0px;">
+										<input id="tax" v-model="invoice.tax" v-validate="'required'" type="number" class="form-control" name="tax">
+										<div class="input-group-append">
+											<span id="basic-addon2" class="input-group-text">{{ $store.getters['init/currency'] }}</span>
+										</div>
+									</div>
+								</td>
 							</tr>
 							<tr>
 								<td colspan="3"></td>
 								<td>Total</td>
-								<td><input id="total" v-model="totalVal" type="number" class="form-control" name="total" style="border:none;" readonly required></td>
+								<td>
+									<!-- <input id="total" v-model="totalVal" type="number" class="form-control" name="total" style="border:none;" readonly required> -->
+									<div class="input-group" style="margin-top:0px;">
+										<input id="total" v-model="totalVal" v-validate="'required'" type="number" class="form-control" name="total" style="border:none;" readonly>
+										<div class="input-group-append">
+											<span id="basic-addon2" class="input-group-text">{{ $store.getters['init/currency'] }}</span>
+										</div>
+									</div>
+								</td>
 							</tr>
 							<tr>
 								<td colspan="3"></td>
@@ -107,16 +140,16 @@
 	</div>
 	</DashboardPage>
 </template>
-
 <script>
-
 import axios from 'axios';
 import DashboardPage from '@layouts/DashboardPage';
-
+import moment from 'moment';
+import VueJqueryCalendar from 'vue-jquery-calendar';
 export default {
 	name: 'AddInvoice',
 	components: {
-		DashboardPage
+		DashboardPage,
+		VueJqueryCalendar,
 	},
 	data() {
 		return {
@@ -126,12 +159,12 @@ export default {
                 customer_email: null,
                 customer_address: null,
                 customer_phone: null,
-                invoice_date: null,
+                invoice_date: moment().format("DD-MM-YYYY"),
                 subtotal: 0,
                 discount: 0,
                 tax: 0,
                 total: 0,
-				user_id: null,
+				user_id: this.$store.state.init.user.id,
 				invoiceitems:[
 					{
 						name: null,
@@ -141,7 +174,6 @@ export default {
 					},
 				],
 			},
-			
 			staffs: null,
 			customers: null,
 			
@@ -158,74 +190,57 @@ export default {
 		},
 		totalVal(){
 			let totalVal = 0;
-			totalVal = this.subTotal + parseInt(this.invoice.discount) + parseInt(this.invoice.tax);
+			totalVal = this.subTotal - parseInt(this.invoice.discount) + parseInt(this.invoice.tax);
 			return totalVal;
 		}
 	},
 	async mounted() {
 		try {
-			if(this.$route.params.id != null)
-			{
-				var moment = require('moment');
-				const id       = this.$route.params.id
-				const res      = await axios.get('/api/v1/payment/subscription/'+id , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-                this.invoice.bill_to                  = res.data.data.user_id
-                 this.invoice.customer_name           = res.data.data.user.first_name+' '+res.data.data.user.last_name
-                this.invoice.customer_email           = res.data.data.user.email
-                this.invoice.customer_address         = res.data.data.user.address
-                this.invoice.customer_phone           = res.data.data.user.phone
-                this.invoice.invoice_date             = moment().format("YYYY-MM-DD")
-                this.invoice.invoiceitems[0].name     = res.data.data.package.name
-                this.invoice.invoiceitems[0].quantity = 1
-                this.invoice.invoiceitems[0].rate     = res.data.data.package.price
-				console.log(this.invoice)
+			if(this.$route.params.id != null) {
+				await this.getPaymentSubscriptionList();
 		    }
-
-			const staffRes = await axios.post('/api/v1/staff/member/list' , null, { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} })
-			this.staffs = staffRes.data.data
-			
+			await this.getStaffMemberList();
 		} catch (err) {
 			this.$snotify.error(null, err.message);
 		}
 	},
 	methods: {
+		async getPaymentSubscriptionList() {
+			const res = await axios.get('/api/v1/payment/subscription/'+this.$route.params.id)
+			this.invoice.bill_to                  = res.data.data.user_id
+			this.invoice.customer_name            = res.data.data.user.first_name+' '+res.data.data.user.last_name
+			this.invoice.customer_email           = res.data.data.user.email
+			this.invoice.customer_address         = res.data.data.user.address
+			this.invoice.customer_phone           = res.data.data.user.phone
+			this.invoice.invoice_date             = moment().format("DD-MM-YYYY")
+			this.invoice.invoiceitems[0].name     = res.data.data.package_name
+			this.invoice.invoiceitems[0].quantity = 1
+			this.invoice.invoiceitems[0].rate     = res.data.data.amount
+		},
+		async getStaffMemberList() {
+			const staffRes = await axios.post('/api/v1/staff/member/list' , null)
+			this.staffs = staffRes.data.data
+		},
 		async submitForm() {
-
-			try{
-			 	if(this.invoice) 
-			 	{
-					let res = null
-					this.invoice.invoiceitems.forEach((invoiceItem) => {
-						invoiceItem.amount += invoiceItem.quantity * invoiceItem.rate
-					});
-					this.invoice.subtotal = this.subTotal;
-					this.invoice.total    = this.totalVal;
-
-			 		if(this.$route.params.id != null)
-			 		{
-			 			res = await axios.post('/api/v1/invoice/update', this.invoice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
-			 		}else
-			 		{
-		        		res = await axios.post('/api/v1/invoice/create', this.invoice ,{ headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
-			 		}
-		    
-		        	if(res.status == "success")
-		        	{
-		        		this.resetForm();
-						this.$router.push('/invoice-list');
-						this.$snotify.success(null, res.data.message);
-						
-		        	}
-		      	}
+			try {
+				let res = null
+				this.invoice.invoiceitems.forEach((invoiceItem) => {
+					invoiceItem.amount += invoiceItem.quantity * invoiceItem.rate
+				});
+				this.invoice.subtotal = this.subTotal;
+				this.invoice.total    = this.totalVal;
+				res = await axios.post('/api/v1/invoice/create', this.invoice)
+				// if(this.$route.params.id != null) {
+				// 	res = await axios.post('/api/v1/invoice/update', this.invoice)
+				// } else {
+				// 	res = await axios.post('/api/v1/invoice/create', this.invoice)
+				// }		
+				this.$router.push('/invoice-list');
+				this.$snotify.success(null, res.data.message);
 		  	}
-		  	catch(err){
+		  	catch(err) {
 		  		this.$snotify.error(null, err.message);
 		  	}
-
-		},
-		resetForm() {
-			this.invoice = null;	
-			this.invoice.invoiceitems = null;
 		},
 		addRow(){
 			this.invoice.invoiceitems.push({name: null, quantity: 0, rate: 0, amount: 0});
