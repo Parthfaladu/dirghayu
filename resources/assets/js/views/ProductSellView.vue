@@ -121,9 +121,9 @@ export default {
 			try {
 				const result = await this.$validator.validateAll();
 				if(!result){
-					return
+					return;
 				}
-				return;
+				
 				
 				let res = null
 				

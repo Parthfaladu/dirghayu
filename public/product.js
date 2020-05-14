@@ -980,40 +980,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context5.abrupt("return");
 
               case 6:
-                return _context5.abrupt("return");
+                res = null;
 
-              case 11:
+                if (!(_this6.$route.params.id != null)) {
+                  _context5.next = 13;
+                  break;
+                }
+
+                _context5.next = 10;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/productsell/update', _this6.productSell);
+
+              case 10:
                 res = _context5.sent;
-                _context5.next = 17;
+                _context5.next = 16;
                 break;
 
-              case 14:
-                _context5.next = 16;
+              case 13:
+                _context5.next = 15;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/productsell/create', _this6.productSell);
 
-              case 16:
+              case 15:
                 res = _context5.sent;
 
-              case 17:
+              case 16:
                 _this6.$router.push('/productsell-list');
 
                 _this6.$snotify.success(null, res.data.message);
 
-                _context5.next = 24;
+                _context5.next = 23;
                 break;
 
-              case 21:
-                _context5.prev = 21;
+              case 20:
+                _context5.prev = 20;
                 _context5.t0 = _context5["catch"](0);
 
                 _this6.$snotify.error(null, _context5.t0.message);
 
-              case 24:
+              case 23:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 21]]);
+        }, _callee5, null, [[0, 20]]);
       }))();
     }
   }
