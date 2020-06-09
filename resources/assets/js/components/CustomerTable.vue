@@ -7,7 +7,7 @@
 			<th>Phone</th>
 			<th>Gender</th>
 			<th>City</th>
-			<th>Action</th>
+			<th v-show="$can('update__customer') || $can('delete__customer')">Action</th>
 		</VueDatatable>
 	</div>
 </template>

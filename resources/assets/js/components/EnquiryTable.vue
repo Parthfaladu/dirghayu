@@ -8,7 +8,7 @@
 		<th>Gender</th>
         <th>Last FollowUp Date</th>
 		<th>Next FollowUp Date</th>
-		<th>Action</th>
+		<th v-show="$can('update__enquiry') || $can('delete__enquiry')">Action</th>
 	</VueDatatable>
 </template>
 <script>

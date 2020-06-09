@@ -185,7 +185,7 @@ export default {
 		},
 		totalVal(){
 			let totalVal = 0;
-			totalVal = this.subTotal + parseInt(this.invoice.discount) + parseInt(this.invoice.tax);
+			totalVal = this.subTotal - parseInt(this.invoice.discount) + parseInt(this.invoice.tax);
 			return totalVal;
 		}
 	},
@@ -235,7 +235,6 @@ export default {
                 }
         
                 this.$router.push('/invoice-list');
-                this.$snotify.success(null, res.data.message);
 		  	}
 		  	catch(err){
 		  		this.$snotify.error(null, err.message);

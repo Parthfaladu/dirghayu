@@ -102,7 +102,6 @@ export default {
 					this.$snotify.success(null, res.data.message);
 				} else {
 					res = await axios.post('/api/v1/package/create', data,{headers: {'Content-Type': 'multipart/form-data'}})
-					this.$snotify.success(null, res.data.message);
 					this.$router.push('/package-list');
 				}
 		  	}

@@ -5,7 +5,7 @@
 		<th>Purchase Date</th>
 		<th>Bill No.</th>
         <th>Price</th>
-		<th>Action</th>
+		<th v-show="$can('update__expense') || $can('delete__expense')">Action</th>
     </VueDatatable>
 </template>
 <script>

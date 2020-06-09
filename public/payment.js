@@ -386,7 +386,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this4.$snotify.success(null, res.data.message);
 
-                _context4.next = 20;
+                _context4.next = 19;
                 break;
 
               case 15:
@@ -396,26 +396,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 17:
                 res = _context4.sent;
 
-                _this4.$snotify.success(null, res.data.message);
-
                 _this4.$router.push('/payment-list');
 
-              case 20:
-                _context4.next = 25;
+              case 19:
+                _context4.next = 24;
                 break;
 
-              case 22:
-                _context4.prev = 22;
+              case 21:
+                _context4.prev = 21;
                 _context4.t0 = _context4["catch"](0);
 
                 _this4.$snotify.error(null, _context4.t0.message);
 
-              case 25:
+              case 24:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 22]]);
+        }, _callee4, null, [[0, 21]]);
       }))();
     },
     onChange: function onChange(event) {
@@ -630,7 +628,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Payment Date")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("add_invoice"),
+              expression: "$can('add_invoice')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }

@@ -1,5 +1,5 @@
 <template>
-<div v-can:view__attendance>
+<div>
 	<div class="position-relative form-group row mb-5">
 		<div class="col-sm-2">
 			<label for="attendanceDate" class="mr-3 mt-2">From</label>
@@ -9,14 +9,14 @@
 			<label for="attendanceDate" class="mr-3 mt-2">To</label>
 			<VueJqueryCalendar v-model="toDate" :class-name="'form-control'" date-format="dd-mm-yy" :readonly="true" @change="changeFilter" />
 		</div>
-		<div class="col-sm-2">
+		<div v-can:add__attendance class="col-sm-2" >
 			<label for="attendanceDate" class="mr-3 mt-2">Customer</label>
 			<select v-model="customerId" class="form-control" @change="changeFilter">
 				<option :value="null">All Customer</option>
                 <option v-for="customer in customerList" :key="customer.id" :value="customer.id" :selected="customer.id ===  customerId">{{customer.first_name}} {{customer.last_name}} </option>
             </select>
 		</div>
-		<div class="col-sm-4 offset-2 text-right mt-4">
+		<div v-can:add__attendance  class="col-sm-4 offset-2 text-right mt-4">
 			<button class="btn btn-danger" @click="downloadReport()">Download in PDF</button>
 		</div>
 	</div>
@@ -36,7 +36,7 @@ import VueJqueryCalendar from 'vue-jquery-calendar';
 import downloadjs from 'downloadjs';
 
 export default {
-	name: 'AttendanceTable',
+	name: 'AttendanceReportTable',
 	components: {
 		VueDatatable,
 		VueJqueryCalendar,
@@ -56,7 +56,7 @@ export default {
 					return null;
 				}, name:'name'},
 				{data:(data) => {
-                    return this.fromDate;
+                    return   moment(data.date).format("DD-MM-YYYY");
 				}, name:'date'},
 				{data:function(data){
 					return 'Present';

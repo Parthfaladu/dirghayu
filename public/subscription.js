@@ -471,23 +471,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 17:
                 _this5.$router.push('/subscription-list');
 
-                _this5.$snotify.success(null, res.data.message);
-
-                _context5.next = 24;
+                _context5.next = 23;
                 break;
 
-              case 21:
-                _context5.prev = 21;
+              case 20:
+                _context5.prev = 20;
                 _context5.t0 = _context5["catch"](0);
 
                 _this5.$snotify.error(null, _context5.t0.message);
 
-              case 24:
+              case 23:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 21]]);
+        }, _callee5, null, [[0, 20]]);
       }))();
     },
     onChange: function onChange(event) {
@@ -647,7 +645,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Remaining Amount")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("delete__subscription"),
+              expression: "$can('delete__subscription')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }

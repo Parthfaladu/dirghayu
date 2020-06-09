@@ -102,6 +102,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'Header',
   methods: {
@@ -766,6 +768,16 @@ var render = function() {
                       }
                     },
                     [
+                      _c("span", { staticClass: "dropdown-item" }, [
+                        _c("i", { staticClass: "fa fa-user-circle pr-2" }),
+                        _vm._v(
+                          " " +
+                            _vm._s(_vm.$store.state.init.user.first_name) +
+                            " " +
+                            _vm._s(_vm.$store.state.init.user.last_name)
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c(
                         "router-link",
                         {
@@ -927,269 +939,185 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__attendance",
-                  arg: "view__attendance"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/attendance" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-news-paper" }),
-                _vm._v(
-                  "\n                            Attendance\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__attendance")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/attendance" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-news-paper" }),
+                    _vm._v(
+                      "\n                            Attendance\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__package",
-                  arg: "view__package"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/package-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-gift" }),
-                _vm._v(
-                  "\n                            Package\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__package")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/package-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-gift" }),
+                    _vm._v(
+                      "\n                            Package\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__product",
-                  arg: "view__product"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/product-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diskette" }),
-                _vm._v(
-                  "\n                            Product\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__product")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/product-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-diskette" }),
+                    _vm._v(
+                      "\n                            Product\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__product_sell",
-                  arg: "view__product_sell"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/productsell-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-shopbag" }),
-                _vm._v(
-                  "\n                            Product Sell\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__product_sell")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/productsell-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-shopbag" }),
+                    _vm._v(
+                      "\n                            Product Sell\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__staff_member",
-                  arg: "view__staff_member"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/staff-member-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-user" }),
-                _vm._v(
-                  "\n                            Staff Member\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__staff_member")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/staff-member-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-user" }),
+                    _vm._v(
+                      "\n                            Staff Member\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__payment",
-                  arg: "view__payment"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/payment-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-cash" }),
-                _vm._v(
-                  "\n                            Payment\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__payment")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/payment-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-cash" }),
+                    _vm._v(
+                      "\n                            Payment\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__enquiry",
-                  arg: "view__enquiry"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/enquiry-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-call" }),
-                _vm._v(
-                  "\n                            Enquiry\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__enquiry")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/enquiry-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-call" }),
+                    _vm._v(
+                      "\n                            Enquiry\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__customer",
-                  arg: "view__customer"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/customer-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-add-user" }),
-                _vm._v(
-                  "\n                            Customer\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__customer")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/customer-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-add-user" }),
+                    _vm._v(
+                      "\n                            Customer\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__subscription",
-                  arg: "view__subscription"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/subscription-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-bell" }),
-                _vm._v(
-                  "\n                            Subscription\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__subscription")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/subscription-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-bell" }),
+                    _vm._v(
+                      "\n                            Subscription\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__notice",
-                  arg: "view__notice"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/notice-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-note" }),
-                _vm._v(
-                  "\n                            Notice\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__notice")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/notice-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-note" }),
+                    _vm._v(
+                      "\n                            Notice\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__expense",
-                  arg: "view__expense"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/expense-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
-                _vm._v(
-                  "\n                            Expense\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__expense")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/expense-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-diamond" }),
+                    _vm._v(
+                      "\n                            Expense\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:view__invoice",
-                  arg: "view__invoice"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/invoice-list" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-news-paper" }),
-                _vm._v(
-                  "\n                            Invoice\n                        "
-                )
-              ])
-            ],
-            1
-          ),
+          _vm.$can("view__invoice")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/invoice-list" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-news-paper" }),
+                    _vm._v(
+                      "\n                            Invoice\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
           _vm.$can("view__attendance") ||
           _vm.$can("view__subscription") ||
@@ -1280,27 +1208,20 @@ var render = function() {
               )
             : _vm._e(),
           _vm._v(" "),
-          _c(
-            "li",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:permission_manage",
-                  arg: "permission_manage"
-                }
-              ]
-            },
-            [
-              _c("router-link", { attrs: { to: "/user-permission" } }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-tools" }),
-                _vm._v(
-                  "\n                            User Permissions\n                        "
-                )
-              ])
-            ],
-            1
-          )
+          _vm.$can("permission_manage")
+            ? _c(
+                "li",
+                [
+                  _c("router-link", { attrs: { to: "/user-permission" } }, [
+                    _c("i", { staticClass: "metismenu-icon pe-7s-tools" }),
+                    _vm._v(
+                      "\n                            User Permissions\n                        "
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e()
         ])
       ])
     ])

@@ -1,7 +1,7 @@
 <template>
-    <div v-can:view__subscription>
+    <div>
         <div class="position-relative form-group row mb-5">
-            <div class="col-sm-2">
+            <div v-can:add__subscription class="col-sm-2">
                 <label for="attendanceDate" class="mr-3 mt-2">Customer</label>
                 <select v-model="customerId" class="form-control" @change="changeFilter">
                     <option :value="null">All Customer</option>
@@ -23,7 +23,7 @@
                     <option :value="'expired'">Expired</option>
                 </select>
             </div>
-            <div class="col-sm-4 offset-2 text-right mt-4">
+            <div v-can:add__subscription class="col-sm-4 offset-2 text-right mt-4">
                 <button class="btn btn-danger" @click="downloadReport()">Download in PDF</button>
             </div>
         </div>

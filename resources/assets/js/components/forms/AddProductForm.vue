@@ -78,9 +78,8 @@ export default {
 				{
 					res = await axios.post('/api/v1/product/create', this.product)
 				}
-		
+
 				this.$router.push('/product-list');
-				this.$snotify.success(null, res.data.message);
 		  	}
 		  	catch(err){
 		  		this.$snotify.error(null, err.message);

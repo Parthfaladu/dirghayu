@@ -1,5 +1,5 @@
 <template>
-    <div v-can:view__product_sell>
+    <div>
         <div class="position-relative form-group row mb-5">
             <div class="col-sm-2">
                 <label for="attendanceDate" class="mr-3 mt-2">Customer</label>

@@ -55,6 +55,7 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Api\v1'], function()
 		Route::get('/payment/package/{id}', 'PaymentController@getPackages')->middleware('can:view__payment');
 		Route::post('/payment/amount', 'PaymentController@getAmount')->middleware('can:view__payment');
 		Route::get('/payment/subscription/{id}', 'PaymentController@getSubscription')->middleware('can:view__payment');
+		Route::get('/payment/{id}', 'PaymentController@getPayment')->middleware('can:view__payment');
 
 
 		Route::get('/customer/list/{id?}', 'CustomerController@customerList')->middleware('can:view__customer');

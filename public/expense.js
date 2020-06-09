@@ -361,23 +361,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 23:
                 _this3.$router.push('/expense-list');
 
-                _this3.$snotify.success(null, res.data.message);
-
-                _context3.next = 30;
+                _context3.next = 29;
                 break;
 
-              case 27:
-                _context3.prev = 27;
+              case 26:
+                _context3.prev = 26;
                 _context3.t0 = _context3["catch"](0);
 
                 _this3.$snotify.error(null, _context3.t0.message);
 
-              case 30:
+              case 29:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 27]]);
+        }, _callee3, null, [[0, 26]]);
       }))();
     },
     onImageUpload: function onImageUpload() {
@@ -530,7 +528,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Price")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("update__expense") || _vm.$can("delete__expense"),
+              expression: "$can('update__expense') || $can('delete__expense')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }

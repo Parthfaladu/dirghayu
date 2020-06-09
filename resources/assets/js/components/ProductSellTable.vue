@@ -5,7 +5,7 @@
 		<th>Customer</th>
 		<th>Quantity</th>
 		<th>Amount</th>
-		<th>Action</th>
+		<th v-show="$can('delete__product_sell')">Action</th>
 	</VueDatatable>
 </template>
 <script>

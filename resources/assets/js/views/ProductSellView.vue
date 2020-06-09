@@ -134,7 +134,6 @@ export default {
 				}
 		
 				this.$router.push('/productsell-list');
-				this.$snotify.success(null, res.data.message);
 		  	}
 		  	catch(err) {
 		  		this.$snotify.error(null, err.message);

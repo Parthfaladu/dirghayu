@@ -6,7 +6,7 @@
 		<th>Phone</th>
 		<th>Date Of Birth</th>
 		<th>Gender</th>
-		<th>Action</th>
+		<th v-show="$can('update__staff_member') || $can('delete__staff_member')">Action</th>
 	</VueDatatable>
 </template>
 <script>
@@ -41,7 +41,7 @@ export default {
 					let action = "";
 					if(this.$can('update__staff_member')) {
 						action += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning' data-g-action='status' data-g-actiondata="+data.id+"><i class='fas fa-toggle-on'></i> ";
-						if(data.is_active === 1)
+						if(data.is_active == 1)
 						{
 							action += "<span class='button-text'>Active</span>";
 						}

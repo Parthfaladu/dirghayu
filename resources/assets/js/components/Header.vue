@@ -33,9 +33,11 @@
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
                                             <img width="42px" height="42px" class="rounded-circle" :src="$store.state.init.user.photo_url" alt="">
+                                            
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
                                         <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
+                                            <span class="dropdown-item"><i class="fa fa-user-circle pr-2"></i> {{$store.state.init.user.first_name}} {{$store.state.init.user.last_name}}</span>
                                             <router-link to="/profile" tag="button" type="button" tabindex="0" class="dropdown-item">User Profile</router-link>
                                             <router-link to="/change-password" tag="button" type="button" tabindex="0" class="dropdown-item">Change Password</router-link>
                                             <router-link to="/settings" tag="button" type="button" tabindex="0" class="dropdown-item">General Settings</router-link>

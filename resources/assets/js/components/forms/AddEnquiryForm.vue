@@ -177,7 +177,6 @@ export default {
                 }
 
                 this.$router.push("/enquiry-list");
-                this.$snotify.success(null, res.data.message);
             } catch (err) {
                 this.$snotify.error(null, err.message);
             }

@@ -370,25 +370,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 12:
                 res = _context3.sent;
 
-                _this3.$snotify.success(null, res.message);
-
                 _this3.$router.push('/customer-list');
 
-                _context3.next = 20;
+                _context3.next = 19;
                 break;
 
-              case 17:
-                _context3.prev = 17;
+              case 16:
+                _context3.prev = 16;
                 _context3.t0 = _context3["catch"](0);
 
                 _this3.$snotify.error(null, _context3.t0.message);
 
-              case 20:
+              case 19:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 17]]);
+        }, _callee3, null, [[0, 16]]);
       }))();
     },
     onImageUpload: function onImageUpload() {
@@ -512,6 +510,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ForgotPassword',
@@ -522,7 +526,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         email: null
       },
       settings: null,
-      isError: false
+      isError: false,
+      isSuccess: false
     };
   },
   mounted: function mounted() {
@@ -559,20 +564,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/forgot/password', _this.form);
 
               case 8:
-                _context.next = 13;
+                _this.isSuccess = true;
+                _this.form.email = null;
+                _context.next = 15;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
                 _this.isError = true;
 
-              case 13:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 12]]);
       }))();
     },
     getSettings: function getSettings() {
@@ -2291,6 +2298,43 @@ var render = function() {
                           on: {
                             click: function($event) {
                               _vm.isError = false
+                            }
+                          }
+                        },
+                        [
+                          _c("span", { attrs: { "aria-hidden": "true" } }, [
+                            _vm._v("×")
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.isSuccess === true
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "alert alert-success alert-dismissible fade show",
+                      attrs: { role: "alert" }
+                    },
+                    [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t\tPlease Check Your Email Account.\n\t\t\t\t\t\t\t"
+                      ),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: {
+                            type: "button",
+                            "data-dismiss": "alert",
+                            "aria-label": "Close"
+                          },
+                          on: {
+                            click: function($event) {
+                              _vm.isSuccess = false
                             }
                           }
                         },

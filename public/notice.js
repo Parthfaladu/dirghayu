@@ -416,23 +416,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 _this4.$router.push('/notice-list');
 
-                _this4.$snotify.success(null, res.data.message);
-
-                _context4.next = 23;
+                _context4.next = 22;
                 break;
 
-              case 20:
-                _context4.prev = 20;
+              case 19:
+                _context4.prev = 19;
                 _context4.t0 = _context4["catch"](0);
 
                 _this4.$snotify.error(null, _context4.t0.message);
 
-              case 23:
+              case 22:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 20]]);
+        }, _callee4, null, [[0, 19]]);
       }))();
     }
   }
@@ -796,7 +794,24 @@ var render = function() {
           _vm._v(" "),
           _c("th", [_vm._v("From")]),
           _vm._v(" "),
-          _c("th", [_vm._v("Action")])
+          _c(
+            "th",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value:
+                    _vm.$can("view_notice") ||
+                    _vm.$can("update__notice") ||
+                    _vm.$can("delete__notice"),
+                  expression:
+                    "$can('view_notice') || $can('update__notice') || $can('delete__notice')"
+                }
+              ]
+            },
+            [_vm._v("Action")]
+          )
         ]
       )
     : _vm._e()

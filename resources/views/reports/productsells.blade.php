@@ -13,7 +13,7 @@
     @foreach($productSells as $productSell)
       <tr>
         <td>{{ $productSell->id }}</td>
-        <td>{{ $productSell->package_name }}</td>
+        <td>{{ $productSell->product_name }}</td>
         <td>{{ $productSell->user->first_name.' '.$productSell->user->last_name }}</td>
         <td>{{ $productSell->quantity }}</td>
         <td>{{ $productSell->paid_amount }}</td>

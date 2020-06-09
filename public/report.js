@@ -61,14 +61,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'AttendanceTable',
+  name: 'AttendanceReportTable',
   components: {
     VueDatatable: _components_custom_VueDatatable_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     VueJqueryCalendar: vue_jquery_calendar__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
-    var _this = this;
-
     return {
       fromDate: moment__WEBPACK_IMPORTED_MODULE_3___default()().subtract(30, "days").format("DD-MM-YYYY"),
       toDate: moment__WEBPACK_IMPORTED_MODULE_3___default()().format("DD-MM-YYYY"),
@@ -89,7 +87,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'name'
       }, {
         data: function data(_data2) {
-          return _this.fromDate;
+          return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data2.date).format("DD-MM-YYYY");
         },
         name: 'date'
       }, {
@@ -107,7 +105,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     getCustomerList: function getCustomerList() {
-      var _this2 = this;
+      var _this = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
@@ -122,7 +120,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 res = _context.sent;
-                _this2.customerList = res.data.data;
+                _this.customerList = res.data.data;
 
               case 4:
               case "end":
@@ -136,7 +134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.$refs.vueDatatable.reload("/api/v1/attendance/report/".concat(this.fromDate, "/").concat(this.toDate, "/").concat(this.customerId));
     },
     downloadReport: function downloadReport() {
-      var _this3 = this;
+      var _this2 = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
@@ -152,9 +150,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   method: 'POST',
                   responseType: 'blob',
                   data: {
-                    from: _this3.fromDate,
-                    to: _this3.toDate,
-                    customerId: _this3.customerId
+                    from: _this2.fromDate,
+                    to: _this2.toDate,
+                    customerId: _this2.customerId
                   }
                 });
 
@@ -947,15 +945,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      directives: [
-        {
-          name: "can",
-          rawName: "v-can:view__attendance",
-          arg: "view__attendance"
-        }
-      ]
-    },
     [
       _c("div", { staticClass: "position-relative form-group row mb-5" }, [
         _c(
@@ -1016,88 +1005,114 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-2" }, [
-          _c(
-            "label",
-            { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-            [_vm._v("Customer")]
-          ),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customerId,
-                  expression: "customerId"
-                }
-              ],
-              staticClass: "form-control",
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.customerId = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  _vm.changeFilter
-                ]
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "can",
+                rawName: "v-can:add__attendance",
+                arg: "add__attendance"
               }
-            },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("All Customer")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.customerList, function(customer) {
-                return _c(
-                  "option",
-                  {
-                    key: customer.id,
-                    domProps: {
-                      value: customer.id,
-                      selected: customer.id === _vm.customerId
-                    }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(customer.first_name) +
-                        " " +
-                        _vm._s(customer.last_name) +
-                        " "
-                    )
-                  ]
-                )
-              })
             ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-4 offset-2 text-right mt-4" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.downloadReport()
+            staticClass: "col-sm-2"
+          },
+          [
+            _c(
+              "label",
+              { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+              [_vm._v("Customer")]
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.customerId,
+                    expression: "customerId"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.customerId = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    _vm.changeFilter
+                  ]
                 }
+              },
+              [
+                _c("option", { domProps: { value: null } }, [
+                  _vm._v("All Customer")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.customerList, function(customer) {
+                  return _c(
+                    "option",
+                    {
+                      key: customer.id,
+                      domProps: {
+                        value: customer.id,
+                        selected: customer.id === _vm.customerId
+                      }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(customer.first_name) +
+                          " " +
+                          _vm._s(customer.last_name) +
+                          " "
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "can",
+                rawName: "v-can:add__attendance",
+                arg: "add__attendance"
               }
-            },
-            [_vm._v("Download in PDF")]
-          )
-        ])
+            ],
+            staticClass: "col-sm-4 offset-2 text-right mt-4"
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                on: {
+                  click: function($event) {
+                    return _vm.downloadReport()
+                  }
+                }
+              },
+              [_vm._v("Download in PDF")]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(
@@ -1141,15 +1156,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      directives: [
-        {
-          name: "can",
-          rawName: "v-can:view__product_sell",
-          arg: "view__product_sell"
-        }
-      ]
-    },
     [
       _c("div", { staticClass: "position-relative form-group row mb-5" }, [
         _c("div", { staticClass: "col-sm-2" }, [
@@ -1341,84 +1347,88 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      directives: [
-        {
-          name: "can",
-          rawName: "v-can:view__subscription",
-          arg: "view__subscription"
-        }
-      ]
-    },
     [
       _c("div", { staticClass: "position-relative form-group row mb-5" }, [
-        _c("div", { staticClass: "col-sm-2" }, [
-          _c(
-            "label",
-            { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-            [_vm._v("Customer")]
-          ),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customerId,
-                  expression: "customerId"
-                }
-              ],
-              staticClass: "form-control",
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.customerId = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  _vm.changeFilter
-                ]
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "can",
+                rawName: "v-can:add__subscription",
+                arg: "add__subscription"
               }
-            },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("All Customer")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.customerList, function(customer) {
-                return _c(
-                  "option",
-                  {
-                    key: customer.id,
-                    domProps: {
-                      value: customer.id,
-                      selected: customer.id === _vm.customerId
-                    }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(customer.first_name) +
-                        " " +
-                        _vm._s(customer.last_name) +
-                        " "
-                    )
-                  ]
-                )
-              })
             ],
-            2
-          )
-        ]),
+            staticClass: "col-sm-2"
+          },
+          [
+            _c(
+              "label",
+              { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+              [_vm._v("Customer")]
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.customerId,
+                    expression: "customerId"
+                  }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.customerId = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    _vm.changeFilter
+                  ]
+                }
+              },
+              [
+                _c("option", { domProps: { value: null } }, [
+                  _vm._v("All Customer")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.customerList, function(customer) {
+                  return _c(
+                    "option",
+                    {
+                      key: customer.id,
+                      domProps: {
+                        value: customer.id,
+                        selected: customer.id === _vm.customerId
+                      }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(customer.first_name) +
+                          " " +
+                          _vm._s(customer.last_name) +
+                          " "
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
+            )
+          ]
+        ),
         _vm._v(" "),
         _c("div", { staticClass: "col-sm-2" }, [
           _c(
@@ -1535,20 +1545,33 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-sm-4 offset-2 text-right mt-4" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.downloadReport()
-                }
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "can",
+                rawName: "v-can:add__subscription",
+                arg: "add__subscription"
               }
-            },
-            [_vm._v("Download in PDF")]
-          )
-        ])
+            ],
+            staticClass: "col-sm-4 offset-2 text-right mt-4"
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-danger",
+                on: {
+                  click: function($event) {
+                    return _vm.downloadReport()
+                  }
+                }
+              },
+              [_vm._v("Download in PDF")]
+            )
+          ]
+        )
       ]),
       _vm._v(" "),
       _c(

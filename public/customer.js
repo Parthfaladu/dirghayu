@@ -719,7 +719,23 @@ var render = function() {
           _vm._v(" "),
           _c("th", [_vm._v("City")]),
           _vm._v(" "),
-          _c("th", [_vm._v("Action")])
+          _c(
+            "th",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value:
+                    _vm.$can("update__customer") ||
+                    _vm.$can("delete__customer"),
+                  expression:
+                    "$can('update__customer') || $can('delete__customer')"
+                }
+              ]
+            },
+            [_vm._v("Action")]
+          )
         ]
       )
     ],

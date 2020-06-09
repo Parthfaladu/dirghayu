@@ -8,7 +8,7 @@
 		<th>Payment Source</th>
         <th>Payment Date</th>
 		
-		<th>Action</th>
+		<th v-show="$can('add_invoice')">Action</th>
 	</VueDatatable>
 </template>
 <script> 

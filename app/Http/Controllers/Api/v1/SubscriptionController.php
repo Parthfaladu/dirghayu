@@ -16,6 +16,8 @@ class SubscriptionController extends Controller
 {
     public function subscriptionList($id = null)
     {
+        $userRole = Auth::user()->roles[0];
+        $userId = Auth::user()->id;
     	if($id != null)
     	{
     		$subscriptions = Subscription::with('user','package')->where('id',$id)->first();
@@ -23,8 +25,12 @@ class SubscriptionController extends Controller
 
     	} else {
     		$subscriptions = Subscription::with(['user','package','payment'=>function($q){
-                $q->latest()->limit(1);
-            }])->get();
+                                                $q->latest()->limit(1);
+                                            }])
+                                        ->when($userRole->name == "customer", function($q) use($userId){
+                                            $q->where("user_id", $userId);
+                                        })
+                                        ->get();
             return Datatables::of($subscriptions)->make(true);
     	}
     }
@@ -77,14 +83,14 @@ class SubscriptionController extends Controller
     {
     	try
     	{
-            $subscriptions = Subscription::where('user_id',$request->get('id'))->get();
+            $subscriptions = Subscription::where('id',$request->get('id'))->get();
             
             foreach($subscriptions as $subscription)
             {
                 Payment::where('subscription_id',$subscription->id)->delete();
             }
 
-            Subscription::where('user_id', $request->get('id'))->delete();
+            Subscription::where('id', $request->get('id'))->delete();
     		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
     	}
     	catch (Exception $e) {
@@ -94,6 +100,8 @@ class SubscriptionController extends Controller
 
     private function getSubscriptionReport($customerId, $packageName, $status)
     {
+        $userRole = Auth::user()->roles[0];
+        $userId = Auth::user()->id;
         $subscriptions = Subscription::with(['user','package','payment'=>function($q){
             $q->latest()->limit(1);
         }]);
@@ -113,7 +121,9 @@ class SubscriptionController extends Controller
             $subscriptions = $subscriptions->whereDate('end_date', '<',Carbon::now());
         }
 
-        return $subscriptions->get();
+        return $subscriptions->when($userRole->name == "customer", function($q) use($userId){
+                                $q->where("user_id", $userId);
+                            })->get();
     }
 
     public function subscriptionReport($customerId = null, $packageName = null, $status = null)

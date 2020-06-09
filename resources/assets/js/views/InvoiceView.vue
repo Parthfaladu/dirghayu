@@ -8,7 +8,7 @@
 	                    <i class="pe-7s-display1 icon-gradient bg-premium-dark text-danger">
 	                    </i>
 	                </div>
-	                <div>GENERATE INVOICE</div>wqe
+	                <div>GENERATE INVOICE</div>
 	            </div>    
 	        </div>
 	    </div>            
@@ -125,8 +125,8 @@ export default {
 					},
 				],
 			},
-			staffs: null,
-			customers: null,
+			// staffs: null,
+			// customers: null,
 		}
 	},
 	async mounted() {
@@ -134,8 +134,8 @@ export default {
 			if(this.$route.params.id != null) {
 				this.getInvoiceList();
 		    }			
-            this.getCustomerList();
-            await this.getStaffMemberList();
+            // this.getCustomerList();
+            // await this.getStaffMemberList();
 		} catch (err) {
 			this.$snotify.error(null, err.message);
 		}
@@ -145,14 +145,14 @@ export default {
             const res      = await axios.get('/api/v1/invoice/list/'+this.$route.params.id)
             this.invoice = res.data.data
         },
-        async getCustomerList() {
-            const customerRes = await axios.get('/api/v1/customer/list')
-            this.customers = customerRes.data.data
-        },
-        async getStaffMemberList() {
-            const staffRes = await axios.post('/api/v1/staff/member/list' , null)
-            this.staffs = staffRes.data.data
-        },
+        // async getCustomerList() {
+        //     const customerRes = await axios.get('/api/v1/customer/list')
+        //     this.customers = customerRes.data.data
+        // },
+        // async getStaffMemberList() {
+        //     const staffRes = await axios.post('/api/v1/staff/member/list' , null)
+        //     this.staffs = staffRes.data.data
+        // },
         async downloadPdf(id) {
            
             const response = await axios({

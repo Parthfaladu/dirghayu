@@ -113,23 +113,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this.$router.push('/dashboard');
 
-                _this.$snotify.success(null, res.data.message);
-
-                _context.next = 16;
+                _context.next = 15;
                 break;
 
-              case 13:
-                _context.prev = 13;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
 
                 _this.$snotify.error("There is some internal error.");
 
-              case 16:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 13]]);
+        }, _callee, null, [[0, 12]]);
       }))();
     },
     resetForm: function resetForm() {

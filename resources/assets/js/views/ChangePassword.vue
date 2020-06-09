@@ -68,7 +68,6 @@ export default {
                 }
                 const res = await axios.post('/api/v1/change/password', this.form)
                 this.$router.push('/dashboard');
-                this.$snotify.success(null, res.data.message);
             }
             catch(err) {
                 this.$snotify.error("There is some internal error.");

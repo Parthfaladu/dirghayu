@@ -5,7 +5,7 @@
 		<th>To</th>
 		<th>From</th>
 		<!-- <th>Detail</th> -->
-		<th>Action</th>
+		<th v-show="$can('view_notice') || $can('update__notice') || $can('delete__notice')">Action</th>
     </VueDatatable>
 </template>
 <script>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\{Notice, Customer};
 use Auth;
+
 use Yajra\DataTables\Facades\DataTables;
 use Exception;
 
@@ -13,13 +14,14 @@ class NoticeController extends Controller
 {
     public function noticeList($id = null)
     {
+        $userRole = Auth::user()->roles[0];
         if($id != null)
         {
             $notices = Notice::with('userfrom')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $notices])->setStatusCode(200);
 
         } else {
-            $notices = Notice::with('userfrom')->get();
+            $notices = Notice::with('userfrom')->where('role_id',$userRole->id)->get();
             return Datatables::of($notices)->make(true);
         }
     }

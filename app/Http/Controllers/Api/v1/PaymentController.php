@@ -38,13 +38,21 @@ class PaymentController extends Controller
 
 	public function paymentList($id = null)
 	{
+		$userRole = Auth::user()->roles[0];
+        $userId = Auth::user()->id;
         if($id != null)
     	{
     		$payments = Payment::with('subscription.user')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $payments])->setStatusCode(200);
 		}
 		else {
-    		$payments = Payment::with('subscription.user')->get();
+			$payments = Payment::with('subscription.user')
+								->when($userRole->name == "customer", function($q) use($userId){
+									$q->whereHas("subscription", function($query) use($userId){
+										$query->where("user_id", $userId);
+									});
+								})
+								->get();
             return Datatables::of($payments)->make(true);
     	}
 	}
@@ -98,7 +106,9 @@ class PaymentController extends Controller
 	{
 		try
 		{
-			$subscriptions = Subscription::with('user','staff')
+			$subscriptions = Subscription::with(['user','staff','payment' => function($q) use ($id){
+											$q->where("id", $id);
+										}])
 										->whereHas('payment', function($q) use ($id){
 											$q->where("id", $id);
 										})
@@ -149,5 +159,12 @@ class PaymentController extends Controller
 		$payment->update();
 
 		return response()->json(["status" => "success", "message" => "Successfully Payment status updated."]);
+	}
+
+	public function getPayment(Request $request, $id)
+	{
+		$payment = Payment::findOrFail($request->get('id'));
+
+		return response()->json(["status" => "success", "data" => $payment]);
 	}
 }

@@ -6,7 +6,7 @@
 	</div>
     <VueDatatable ref="vueDatatable" :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
-		<th>Action</th>
+		<th v-show="$can('update__attendance')">Action</th>
 		<th>Customer Name</th>	
 	</VueDatatable>
 </div>

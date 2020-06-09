@@ -85,7 +85,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           if (_this.$can('update__staff_member')) {
             action += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning' data-g-action='status' data-g-actiondata=" + _data3.id + "><i class='fas fa-toggle-on'></i> ";
 
-            if (_data3.is_active === 1) {
+            if (_data3.is_active == 1) {
               action += "<span class='button-text'>Active</span>";
             } else {
               action += "<span class='button-text'>In Active</span>";
@@ -432,7 +432,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this3.$snotify.success(null, res.data.message);
 
-                _context3.next = 31;
+                _context3.next = 30;
                 break;
 
               case 25:
@@ -447,26 +447,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 28:
                 res = _context3.sent;
 
-                _this3.$snotify.success(null, res.data.message);
-
                 _this3.$router.push('/staff-member-list');
 
-              case 31:
-                _context3.next = 36;
+              case 30:
+                _context3.next = 35;
                 break;
 
-              case 33:
-                _context3.prev = 33;
+              case 32:
+                _context3.prev = 32;
                 _context3.t0 = _context3["catch"](0);
 
                 _this3.$snotify.error(null, _context3.t0.message);
 
-              case 36:
+              case 35:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 33]]);
+        }, _callee3, null, [[0, 32]]);
       }))();
     },
     onImageUpload: function onImageUpload() {
@@ -625,7 +623,23 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Gender")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value:
+                _vm.$can("update__staff_member") ||
+                _vm.$can("delete__staff_member"),
+              expression:
+                "$can('update__staff_member') || $can('delete__staff_member')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }

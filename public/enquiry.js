@@ -439,23 +439,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 _this3.$router.push("/enquiry-list");
 
-                _this3.$snotify.success(null, res.data.message);
-
-                _context3.next = 23;
+                _context3.next = 22;
                 break;
 
-              case 20:
-                _context3.prev = 20;
+              case 19:
+                _context3.prev = 19;
                 _context3.t0 = _context3["catch"](0);
 
                 _this3.$snotify.error(null, _context3.t0.message);
 
-              case 23:
+              case 22:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 20]]);
+        }, _callee3, null, [[0, 19]]);
       }))();
     },
     updateEnquiry: function updateEnquiry() {
@@ -656,7 +654,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Next FollowUp Date")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("update__enquiry") || _vm.$can("delete__enquiry"),
+              expression: "$can('update__enquiry') || $can('delete__enquiry')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }

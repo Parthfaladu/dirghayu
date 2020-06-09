@@ -15,6 +15,12 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
+						<div v-if="isSuccess === true" class="alert alert-success alert-dismissible fade show" role="alert">
+							Please Check Your Email Account.
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="isSuccess = false">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
 			            <form class="" @submit.prevent="submitForm()">
 			              	<div class="form-label-group pb-4">
 			                	<input v-model="form.email" type="email" name="email" class="form-control mb-3" v-validate="'required|email'" placeholder="Email address">
@@ -44,6 +50,7 @@ export default {
             },
 			settings: null,
 			isError: false,
+			isSuccess: false,
         }
 	},
 	mounted(){
@@ -56,7 +63,10 @@ export default {
 				if(!result){
 					return
                 }
-                await axios.post('/api/v1/forgot/password', this.form)
+				
+				await axios.post('/api/v1/forgot/password', this.form)
+				this.isSuccess = true;
+				this.form.email = null
             }
             catch(err) {
                 this.isError = true

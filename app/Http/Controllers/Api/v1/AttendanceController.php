@@ -17,9 +17,14 @@ class AttendanceController extends Controller
 {
     public function attendanceList($date)
     {
+        $userRole = Auth::user()->roles[0];
+        $userId = Auth::user()->id;
         $users   = User::with(['attendance' => function($q) use ($date){
                                 $q->whereDate("date", Carbon::parse($date));
-                            }])->get();
+                            }])
+                            ->when($userRole->name == "customer", function($q) use($userId){
+                                $q->where("id", $userId);
+                            })->get();
         return Datatables::of($users)->make(true);
 
     }
@@ -53,13 +58,18 @@ class AttendanceController extends Controller
 
     private function getAttendance($fromDate, $toDate, $customerId)
     {
+        $userRole = Auth::user()->roles[0];
+        $userId = Auth::user()->id;
         $attendance = Attendance::with('user');
         
         if($customerId !== null && $customerId !== 'null') {
             $attendance = $attendance->where('user_id', $customerId);
         }
         return $attendance->whereBetween('date', [Carbon::parse($fromDate), Carbon::parse($toDate)])
-                                 ->get();
+                            ->when($userRole->name == "customer", function($q) use($userId){
+                                $q->where("user_id", $userId);
+                            })               
+                            ->get();
     }
 
     public function attendanceReport($fromDate, $toDate, $customerId = null)

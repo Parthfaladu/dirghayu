@@ -521,7 +521,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     totalVal: function totalVal() {
       var totalVal = 0;
-      totalVal = this.subTotal + parseInt(this.invoice.discount) + parseInt(this.invoice.tax);
+      totalVal = this.subTotal - parseInt(this.invoice.discount) + parseInt(this.invoice.tax);
       return totalVal;
     }
   },
@@ -701,23 +701,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 19:
                 _this5.$router.push('/invoice-list');
 
-                _this5.$snotify.success(null, res.data.message);
-
-                _context5.next = 26;
+                _context5.next = 25;
                 break;
 
-              case 23:
-                _context5.prev = 23;
+              case 22:
+                _context5.prev = 22;
                 _context5.t0 = _context5["catch"](0);
 
                 _this5.$snotify.error(null, _context5.t0.message);
 
-              case 26:
+              case 25:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 23]]);
+        }, _callee5, null, [[0, 22]]);
       }))();
     },
     addRow: function addRow() {
@@ -1025,9 +1023,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           rate: 0,
           amount: 0
         }]
-      },
-      staffs: null,
-      customers: null
+      } // staffs: null,
+      // customers: null,
+
     };
   },
   mounted: function mounted() {
@@ -1040,33 +1038,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
+              try {
+                if (_this.$route.params.id != null) {
+                  _this.getInvoiceList();
+                } // this.getCustomerList();
+                // await this.getStaffMemberList();
 
-              if (_this.$route.params.id != null) {
-                _this.getInvoiceList();
+              } catch (err) {
+                _this.$snotify.error(null, err.message);
               }
 
-              _this.getCustomerList();
-
-              _context.next = 5;
-              return _this.getStaffMemberList();
-
-            case 5:
-              _context.next = 10;
-              break;
-
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-
-              _this.$snotify.error(null, _context.t0.message);
-
-            case 10:
+            case 1:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 7]]);
+      }, _callee);
     }))();
   },
   methods: {
@@ -1096,23 +1083,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getCustomerList: function getCustomerList() {
+    // async getCustomerList() {
+    //     const customerRes = await axios.get('/api/v1/customer/list')
+    //     this.customers = customerRes.data.data
+    // },
+    // async getStaffMemberList() {
+    //     const staffRes = await axios.post('/api/v1/staff/member/list' , null)
+    //     this.staffs = staffRes.data.data
+    // },
+    downloadPdf: function downloadPdf(id) {
       var _this3 = this;
 
       return _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var customerRes;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/v1/customer/list');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
+                  url: '/api/v1/invoice/download/' + id,
+                  method: 'GET',
+                  responseType: 'blob',
+                  // important
+                  headers: {
+                    "Authorization": _this3.$store.getters['auth/authHeaders'].Authorization
+                  }
+                });
 
               case 2:
-                customerRes = _context3.sent;
-                _this3.customers = customerRes.data.data;
+                response = _context3.sent;
+                downloadjs__WEBPACK_IMPORTED_MODULE_3___default()(response.data, 'invoice.pdf', 'application/pdf');
 
               case 4:
               case "end":
@@ -1120,66 +1123,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3);
-      }))();
-    },
-    getStaffMemberList: function getStaffMemberList() {
-      var _this4 = this;
-
-      return _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var staffRes;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _context4.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/staff/member/list', null);
-
-              case 2:
-                staffRes = _context4.sent;
-                _this4.staffs = staffRes.data.data;
-
-              case 4:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4);
-      }))();
-    },
-    downloadPdf: function downloadPdf(id) {
-      var _this5 = this;
-
-      return _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()({
-                  url: '/api/v1/invoice/download/' + id,
-                  method: 'GET',
-                  responseType: 'blob',
-                  // important
-                  headers: {
-                    "Authorization": _this5.$store.getters['auth/authHeaders'].Authorization
-                  }
-                });
-
-              case 2:
-                response = _context5.sent;
-                downloadjs__WEBPACK_IMPORTED_MODULE_3___default()(response.data, 'invoice.pdf', 'application/pdf');
-
-              case 4:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
       }))();
     }
   }
@@ -1468,7 +1411,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.invoice.invoice_date = moment__WEBPACK_IMPORTED_MODULE_3___default()().format("DD-MM-YYYY");
                 _this2.invoice.invoiceitems[0].name = res.data.data.package_name;
                 _this2.invoice.invoiceitems[0].quantity = 1;
-                _this2.invoice.invoiceitems[0].rate = res.data.data.amount;
+                _this2.invoice.invoiceitems[0].rate = res.data.data.payment[0].paid_amount;
 
               case 12:
               case "end":
@@ -1537,23 +1480,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 // }		
                 _this4.$router.push('/invoice-list');
 
-                _this4.$snotify.success(null, res.data.message);
-
-                _context4.next = 15;
+                _context4.next = 14;
                 break;
 
-              case 12:
-                _context4.prev = 12;
+              case 11:
+                _context4.prev = 11;
                 _context4.t0 = _context4["catch"](0);
 
                 _this4.$snotify.error(null, _context4.t0.message);
 
-              case 15:
+              case 14:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 12]]);
+        }, _callee4, null, [[0, 11]]);
       }))();
     },
     addRow: function addRow() {
@@ -1811,7 +1752,20 @@ var render = function() {
         [
           _c("th", [_vm._v("Id")]),
           _vm._v(" "),
-          _c("th", [_vm._v("Action")]),
+          _c(
+            "th",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.$can("update__attendance"),
+                  expression: "$can('update__attendance')"
+                }
+              ]
+            },
+            [_vm._v("Action")]
+          ),
           _vm._v(" "),
           _c("th", [_vm._v("Customer Name")])
         ]
@@ -1863,7 +1817,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Generated By")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("view__invoice") || _vm.$can("delete__invoice"),
+              expression: "$can('view__invoice') || $can('delete__invoice')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }
@@ -3121,8 +3088,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", [_vm._v("GENERATE INVOICE")]),
-              _vm._v("wqe\n\t            ")
+              _c("div", [_vm._v("GENERATE INVOICE")])
             ])
           ])
         ]),

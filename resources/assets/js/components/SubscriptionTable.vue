@@ -8,7 +8,7 @@
 		<th>End Date</th>
 		<th>Paid Amount</th>
 		<th>Remaining Amount</th>
-		<th>Action</th>
+		<th v-show="$can('delete__subscription')">Action</th>
 	</VueDatatable>
 </template>
 <script>
@@ -79,6 +79,7 @@ export default {
 						cancelButtonColor: '#d33',
 						confirmButtonText: 'Yes, delete it!'
 					});
+					
 					if (result.value) {
 						const res = await axios.post('/api/v1/subscription/delete' , { id: action.data });
 						this.$refs.vueDatatable.draw();

@@ -215,7 +215,7 @@ export default {
 			this.invoice.invoice_date             = moment().format("DD-MM-YYYY")
 			this.invoice.invoiceitems[0].name     = res.data.data.package_name
 			this.invoice.invoiceitems[0].quantity = 1
-			this.invoice.invoiceitems[0].rate     = res.data.data.amount
+			this.invoice.invoiceitems[0].rate     = res.data.data.payment[0].paid_amount;
 		},
 		async getStaffMemberList() {
 			const staffRes = await axios.post('/api/v1/staff/member/list' , null)
@@ -236,7 +236,6 @@ export default {
 				// 	res = await axios.post('/api/v1/invoice/create', this.invoice)
 				// }		
 				this.$router.push('/invoice-list');
-				this.$snotify.success(null, res.data.message);
 		  	}
 		  	catch(err) {
 		  		this.$snotify.error(null, err.message);

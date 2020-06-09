@@ -248,9 +248,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 5:
                 res = _context.sent;
 
-                _this2.$refs.vueDatatable.draw();
-
                 _this2.$snotify.success(null, res.data.message);
+
+                _this2.$refs.vueDatatable.draw();
 
                 _context.next = 13;
                 break;
@@ -460,23 +460,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 _this3.$router.push('/product-list');
 
-                _this3.$snotify.success(null, res.data.message);
-
-                _context3.next = 23;
+                _context3.next = 22;
                 break;
 
-              case 20:
-                _context3.prev = 20;
+              case 19:
+                _context3.prev = 19;
                 _context3.t0 = _context3["catch"](0);
 
                 _this3.$snotify.error(null, _context3.t0.message);
 
-              case 23:
+              case 22:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 20]]);
+        }, _callee3, null, [[0, 19]]);
       }))();
     }
   }
@@ -1005,23 +1003,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 _this6.$router.push('/productsell-list');
 
-                _this6.$snotify.success(null, res.data.message);
-
-                _context5.next = 23;
+                _context5.next = 22;
                 break;
 
-              case 20:
-                _context5.prev = 20;
+              case 19:
+                _context5.prev = 19;
                 _context5.t0 = _context5["catch"](0);
 
                 _this6.$snotify.error(null, _context5.t0.message);
 
-              case 23:
+              case 22:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 20]]);
+        }, _callee5, null, [[0, 19]]);
       }))();
     }
   }
@@ -1117,7 +1113,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Amount")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("delete__product_sell"),
+              expression: "$can('delete__product_sell')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }
@@ -1164,7 +1173,20 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Detail")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Action")])
+      _c(
+        "th",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.$can("update__product") || _vm.$can("delete__product"),
+              expression: "$can('update__product') || $can('delete__product')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
+      )
     ]
   )
 }

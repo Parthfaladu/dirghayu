@@ -5,7 +5,7 @@
 		<th>Price</th>
 		<th>Quantity</th>
 		<th>Detail</th>
-		<th>Action</th>
+		<th v-show="$can('update__product') || $can('delete__product')">Action</th>
 	</VueDatatable>
 </template>
 <script>
@@ -49,8 +49,8 @@ export default {
 			if(action.action === 'delete'){
 				try {
 					const res = await axios.post('/api/v1/product/delete' , { id: action.data });
-					this.$refs.vueDatatable.draw();
 					this.$snotify.success(null, res.data.message);
+					this.$refs.vueDatatable.draw();
 				}
 				catch(err) {
 					this.$snotify.error(null, err.message);

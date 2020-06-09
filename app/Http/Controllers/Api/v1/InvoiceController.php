@@ -17,13 +17,18 @@ class InvoiceController extends Controller
 {
     public function invoiceList($id = null)
     {
+        $userRole = Auth::user()->roles[0];
+        $userId = Auth::user()->id;
         if($id != null)
         {
             $invoices = Invoice::with('billto','user','invoiceitems')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $invoices])->setStatusCode(200);
 
         } else {
-            $invoices = Invoice::with('billto','user','invoiceitems')->get();
+            $invoices = Invoice::with('billto','user','invoiceitems')
+                                ->when($userRole->name == "customer", function($q) use($userId){
+                                    $q->where("bill_to", $userId);
+                                })->get();
             return Datatables::of($invoices)->make(true);
         }
     }

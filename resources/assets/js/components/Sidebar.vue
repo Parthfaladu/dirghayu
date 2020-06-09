@@ -38,73 +38,73 @@
                             Dashboard
                         </router-link>
                     </li>
-                    <li v-can:view__attendance>
+                    <li v-if="$can('view__attendance')">
                         <router-link to="/attendance">
                             <i class="metismenu-icon pe-7s-news-paper"></i>
                             Attendance
                         </router-link>
                     </li>
-                     <li v-can:view__package>
+                     <li v-if="$can('view__package')">
                         <router-link to="/package-list">
                             <i class="metismenu-icon pe-7s-gift"></i>
                             Package
                         </router-link>
                     </li>
-                    <li v-can:view__product>
+                    <li v-if="$can('view__product')">
                         <router-link to="/product-list">
                             <i class="metismenu-icon pe-7s-diskette"></i>
                             Product
                         </router-link>
                     </li>
-                    <li v-can:view__product_sell>
+                    <li v-if="$can('view__product_sell')">
                         <router-link to="/productsell-list">
                             <i class="metismenu-icon pe-7s-shopbag"></i>
                             Product Sell
                         </router-link>
                     </li>
-                    <li v-can:view__staff_member>
+                    <li v-if="$can('view__staff_member')">
                         <router-link to="/staff-member-list">
                             <i class="metismenu-icon pe-7s-user"></i>
                             Staff Member
                         </router-link>
                     </li> 
-                    <li v-can:view__payment>
+                    <li v-if="$can('view__payment')">
                         <router-link to="/payment-list">
                             <i class="metismenu-icon pe-7s-cash"></i>
                             Payment
                         </router-link>
                     </li>
-                    <li v-can:view__enquiry>
+                    <li v-if="$can('view__enquiry')">
                         <router-link to="/enquiry-list">
                             <i class="metismenu-icon pe-7s-call"></i>
                             Enquiry
                         </router-link>
                     </li>
-                    <li v-can:view__customer> 
+                    <li v-if="$can('view__customer')"> 
                         <router-link to="/customer-list">
                             <i class="metismenu-icon pe-7s-add-user"></i>
                             Customer
                         </router-link>
                     </li> 
-                    <li v-can:view__subscription>
+                    <li v-if="$can('view__subscription')">
                         <router-link to="/subscription-list">
                             <i class="metismenu-icon pe-7s-bell"></i>
                             Subscription
                         </router-link>
                     </li>
-                    <li v-can:view__notice>
+                    <li v-if="$can('view__notice')">
                         <router-link to="/notice-list">
                             <i class="metismenu-icon pe-7s-note"></i>
                             Notice
                         </router-link>
                     </li>
-                    <li v-can:view__expense>
+                    <li v-if="$can('view__expense')">
                         <router-link to="/expense-list">
                             <i class="metismenu-icon pe-7s-diamond"></i>
                             Expense
                         </router-link>
                     </li>
-                    <li v-can:view__invoice>
+                    <li v-if="$can('view__invoice')">
                         <router-link to="/invoice-list">
                             <i class="metismenu-icon pe-7s-news-paper"></i>
                             Invoice
@@ -137,7 +137,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li v-can:permission_manage>
+                    <li v-if="$can('permission_manage')">
                         <router-link to="/user-permission">
                             <i class="metismenu-icon pe-7s-tools"></i>
                             User Permissions

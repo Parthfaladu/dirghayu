@@ -5,7 +5,7 @@
 		<th>Price</th>
 		<th>Duration</th>
 		<th>Detail</th>
-		<th>Action</th>
+		<th v-show="$can('update__package') || $can('delete__package')">Action</th>
     </VueDatatable>
 </template>
 <script>
