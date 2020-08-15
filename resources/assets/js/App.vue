@@ -1,7 +1,7 @@
 <template>
   <div id="app">
   	<DashboardComp>
-    	<router-view></router-view>
+    	<router-view :key="$route.fullPath"></router-view>
     </DashboardComp>
   </div>
 </template>

@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
         $setting = new Settings;
         $setting->currency_id = 1;
         $setting->title = 'Dirghayu Fitness Factory';
-        $setting->logo_url = '/images/9EkEUgzqCPr3tYNl2AUQvxNWeE6T65p0.png';
+        $setting->logo_url = '/images/dirghayu_logo.svg';
         $setting->footer = 'Copyright © 2020 Dirghayu Fitness Factory. All rights reserved.';
         $setting->save();
 

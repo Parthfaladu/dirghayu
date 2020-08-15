@@ -1,6 +1,6 @@
 <template>
 	<VueDatatable ref="vueDatatable" v-can:view__invoice :columns="columns" :url="url" @gaction="onAction">
-		<th>Id</th>
+		<th>Invoice No.</th>
 		<th>Client</th>
 		<th>Date</th>
 		<th>Total</th>

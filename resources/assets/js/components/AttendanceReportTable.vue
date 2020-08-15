@@ -9,14 +9,16 @@
 			<label for="attendanceDate" class="mr-3 mt-2">To</label>
 			<VueJqueryCalendar v-model="toDate" :class-name="'form-control'" date-format="dd-mm-yy" :readonly="true" @change="changeFilter" />
 		</div>
-		<div v-can:add__attendance class="col-sm-2" >
-			<label for="attendanceDate" class="mr-3 mt-2">Customer</label>
-			<select v-model="customerId" class="form-control" @change="changeFilter">
-				<option :value="null">All Customer</option>
-                <option v-for="customer in customerList" :key="customer.id" :value="customer.id" :selected="customer.id ===  customerId">{{customer.first_name}} {{customer.last_name}} </option>
-            </select>
+		<div class="col-sm-2">
+			<span v-if="$can('add__attendance')">
+				<label for="attendanceDate" class="mr-3 mt-2">Customer</label>
+				<select v-model="customerId" class="form-control" @change="changeFilter">
+					<option :value="null">All Customer</option>
+					<option v-for="customer in customerList" :key="customer.id" :value="customer.id" :selected="customer.id ===  customerId">{{customer.first_name}} {{customer.last_name}} </option>
+				</select>
+			</span>
 		</div>
-		<div v-can:add__attendance  class="col-sm-4 offset-2 text-right mt-4">
+		<div v-can:view__attendance  class="col-sm-4 offset-2 text-right mt-4">
 			<button class="btn btn-danger" @click="downloadReport()">Download in PDF</button>
 		</div>
 	</div>
@@ -66,7 +68,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.getCustomerList();
+		if(this.$can('view__customer')){
+			this.getCustomerList();
+		}
 	},
 	methods: {
 		async getCustomerList() {

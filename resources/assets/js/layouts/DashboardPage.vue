@@ -301,6 +301,9 @@ export default {
 		Footer,
 		Header,
 		Sidebar,
-	}
+    },
+    mounted() {
+        this.$snotify.clear();
+    }
 }
 </script>

@@ -68,12 +68,12 @@ export default {
 			 	
 				let res = null
 				if(this.$route.params.id != null) {
-					res = await axios.post('/api/v1/notice/update', this.notice)
+					res = await axios.post('/api/v1/notice/update', this.notice);
+					this.$snotify.success(null, res.data.message);
 				} else {
-					res = await axios.post('/api/v1/notice/create', this.notice)
+					res = await axios.post('/api/v1/notice/create', this.notice);
+					this.$router.push('/notice-list');
 				}
-		
-				this.$router.push('/notice-list');
 		  	}
 		  	catch(err) {
 		  		this.$snotify.error(null, err.message);

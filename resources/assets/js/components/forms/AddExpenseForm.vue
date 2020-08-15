@@ -34,7 +34,7 @@
         </div>
         <div class="position-relative form-group">
             <label for="expense_img_path">Bill Photo</label><br>
-            <img v-show="showPreview" :src="expense_img_path" width="25%" style="border: 1px solid #cac2c2;" />
+            <img v-show="expense_img_path" :src="expense_img_path" width="25%" style="border: 1px solid #cac2c2;" />
             <input id="expensePath" ref="expensePath" type="file" class="form-control" accept="image/*" name="expensePath" style="display:none;" @change="onImageUpload()">
                             
         </div>
@@ -67,7 +67,6 @@ export default {
 				expenseImage: '',
 			},
 			expense_img_path: null,
-			showPreview: false,
 		}
 	},
 	async mounted() {
@@ -81,7 +80,6 @@ export default {
 				const res = await axios.get('/api/v1/expense/list/'+this.$route.params.id)
 				this.expenseData = res.data.data
 				this.expense_img_path = this.expenseData.bill_photo;
-				this.showPreview = true;
 			} catch (err) {
 				this.$snotify.error(null, err.message);
 			}
@@ -103,12 +101,12 @@ export default {
 				data.append('expenseImage', this.expenseData.expenseImage)
 
 				if(this.$route.params.id != null) {
-					res = await axios.post('/api/v1/expense/update', data,{headers: {'Content-Type': 'multipart/form-data'}})
+                    res = await axios.post('/api/v1/expense/update', data,{headers: {'Content-Type': 'multipart/form-data'}})
+                    this.$snotify.success(null, res.data.message);
 				} else {
-					res = await axios.post('/api/v1/expense/create', data,{headers: {'Content-Type': 'multipart/form-data'}})
+                    res = await axios.post('/api/v1/expense/create', data,{headers: {'Content-Type': 'multipart/form-data'}})
+                    this.$router.push('/expense-list');
 				}
-
-				this.$router.push('/expense-list');
 		  	}
 		  	catch(err){
 		  		this.$snotify.error(null, err.message);
@@ -119,7 +117,6 @@ export default {
 
             const reader  = new FileReader();
             reader.addEventListener("load", function () {
-                this.showPreview = true;
                 this.expense_img_path = reader.result;
             }.bind(this), false);
 

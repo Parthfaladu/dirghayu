@@ -10,7 +10,7 @@ class Notice extends Model
 
     public function userto()
     {
-        return $this->belongsTo('App\User', 'to_id' ,'id');
+        return $this->belongsTo('App\User', 'role_id' ,'id');
     }
     public function userfrom()
     {

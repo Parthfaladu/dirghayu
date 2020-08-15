@@ -11,91 +11,73 @@ use Yajra\DataTables\Facades\DataTables;
 use Exception;
 use Carbon\Carbon;
 use PDF;
+use App\Http\Requests\{SubscriptionStoreRequest, SubscriptionUpdateRequest, SubscriptionDeleteRequest};
 
 class SubscriptionController extends Controller
 {
     public function subscriptionList($id = null)
     {
         $userRole = Auth::user()->roles[0];
-        $userId = Auth::user()->id;
+        $userId   = Auth::user()->id;
+
     	if($id != null)
     	{
     		$subscriptions = Subscription::with('user','package')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $subscriptions])->setStatusCode(200);
 
-    	} else {
-    		$subscriptions = Subscription::with(['user','package','payment'=>function($q){
-                                                $q->latest()->limit(1);
-                                            }])
-                                        ->when($userRole->name == "customer", function($q) use($userId){
-                                            $q->where("user_id", $userId);
-                                        })
-                                        ->get();
-            return Datatables::of($subscriptions)->make(true);
-    	}
+    	} 
+        $subscriptions = Subscription::with(['user','package','payment'=>function($q){
+                                            $q->latest()->limit(1);
+                                        }])
+                                    ->when($userRole->name == "customer", function($q) use($userId){
+                                        $q->where("user_id", $userId);
+                                    })
+                                    ->get();
+        return Datatables::of($subscriptions)->make(true);
     }
     
-    public function create(Request $request)
+    public function create(SubscriptionStoreRequest $request)
     {
-        //return $request->all();
-        try
+        $subscription                  = new Subscription;
+        $subscription->user_id         = $request->get('user_id');
+        $subscription->package_name    = $request->get('package_name');
+        $subscription->amount          = $request->get('amount');
+        $subscription->duration        = $request->get('duration');
+        $subscription->start_date      = Carbon::parse($request->get('start_date'));
+        $subscription->end_date        = Carbon::parse($request->get('end_date'));
+        $subscription->trial_days      = $request->get('trial_days');
+        $subscription->remark          = $request->get('remark');
+        $subscription->save();
+
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully subscription created."])->setStatusCode(200);
+    }
+
+    public function update(SubscriptionUpdateRequest $request)
+    {
+        $subscription               = Subscription::where('id', $request->get('id'))->first();
+        $subscription->user_id      = $request->get('user_id');
+        $subscription->package_name = $request->get('package_name');
+        $subscription->amount       = $request->get('amount');
+        $subscription->duration     = $request->get('duration');
+        $subscription->start_date   = Carbon::parse($request->get('start_date'));
+        $subscription->trial_days   = $request->get('trial_days');
+        $subscription->remark       = $request->get('remark');
+        $subscription->update();
+
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully Subscription updated."])->setStatusCode(200);
+    }
+
+    public function delete(SubscriptionDeleteRequest $request)
+    {
+        $subscriptions = Subscription::where('id',$request->get('id'))->get();
+        
+        foreach($subscriptions as $subscription)
         {
-            $subscription                  = new Subscription;
-            $subscription->user_id         = $request->get('user_id');
-            $subscription->package_name    = $request->get('package_name');
-            $subscription->amount          = $request->get('amount');
-            $subscription->duration        = $request->get('duration');
-            $subscription->start_date      = Carbon::parse($request->get('start_date'));
-            $subscription->end_date        = Carbon::parse($request->get('end_date'));
-            $subscription->trial_days      = $request->get('trial_days');
-            $subscription->remark          = $request->get('remark');
-            $subscription->save();
-
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully subscription created."])->setStatusCode(200);
+            Payment::where('subscription_id',$subscription->id)->delete();
         }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
-    }
 
-    public function update(Request $request)
-    {
-    	try
-    	{
-	    	$subscription               = Subscription::where('id', $request->get('id'))->first();
-	    	$subscription->user_id      = $request->get('user_id');
-            $subscription->package_name = $request->get('package_name');
-            $subscription->amount       = $request->get('amount');
-            $subscription->duration     = $request->get('duration');
-            $subscription->start_date   = Carbon::parse($request->get('start_date'));
-            $subscription->trial_days   = $request->get('trial_days');
-            $subscription->remark       = $request->get('remark');
-	    	$subscription->update();
-
-	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully Subscription updated."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
-    }
-
-    public function delete(Request $request)
-    {
-    	try
-    	{
-            $subscriptions = Subscription::where('id',$request->get('id'))->get();
-            
-            foreach($subscriptions as $subscription)
-            {
-                Payment::where('subscription_id',$subscription->id)->delete();
-            }
-
-            Subscription::where('id', $request->get('id'))->delete();
-    		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        Subscription::where('id', $request->get('id'))->delete();
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
     }
 
     private function getSubscriptionReport($customerId, $packageName, $status)

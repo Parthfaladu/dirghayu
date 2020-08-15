@@ -93,6 +93,7 @@ export default {
                 const res = await axios.post('/api/v1/settings', settingsData,{headers: {'Content-Type': 'multipart/form-data'}})
                 
                 this.$snotify.success(null, res.data.message);
+                this.$store.dispatch('init/initialized');
             }
             catch(err) {
                 this.$snotify.error("There is some internal error.");

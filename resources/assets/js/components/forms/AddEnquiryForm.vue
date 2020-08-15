@@ -172,11 +172,11 @@ export default {
                 let res = null;
                 if (this.$route.params.id != null) {
                     res = await this.updateEnquiry();
+                    this.$snotify.success(null, res.data.message);
                 } else {
                     res = await this.createEnquiry();
+                    this.$router.push("/enquiry-list");
                 }
-
-                this.$router.push("/enquiry-list");
             } catch (err) {
                 this.$snotify.error(null, err.message);
             }

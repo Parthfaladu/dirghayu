@@ -21,12 +21,12 @@
         </div>
         <div class="position-relative form-group">
             <label for="email">Email</label>
-            <input id="name" v-model="staff.email" type="email" class="form-control" name="email" v-validate="'required'">
+            <input id="name" v-model="staff.email" type="email" class="form-control" name="email" v-validate="'required|email'">
             <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
         </div>
         <div v-if="!this.$route.params.id" class="position-relative form-group">
             <label for="password">Password</label>
-            <input id="password" v-model="staff.password" type="password" class="form-control" name="password" v-validate="'required'">
+            <input id="password" v-model="staff.password" type="password" class="form-control" name="password" v-validate="'required|min:6'">
             <span v-show="errors.has('password')" class="text-danger">{{ errors.first('password') }}</span>
         </div>
         <div class="position-relative form-group">
@@ -60,7 +60,7 @@
         </div>
         <div class="position-relative form-group">
             <label for="profile_img_path">Profile Photo</label><br>
-            <img v-show="showPreview" :src="profile_img_path" width="25%" style="border: 1px solid #cac2c2;" />
+            <img v-if="profile_img_path" :src="profile_img_path" width="25%" style="border: 1px solid #cac2c2;" />
             <input id="profilePath" ref="profilePath" type="file" class="form-control" accept="image/*" name="profilePath" style="display:none;" @change="onImageUpload()">
                          
         </div>
@@ -99,7 +99,6 @@ export default {
 				
 			},
 			profile_img_path: null,
-			showPreview: false,
 		}
 	},
 	async mounted() {
@@ -116,7 +115,6 @@ export default {
             const res          = await axios.get('/api/v1/staff/member/'+this.$route.params.id)
             this.staff = res.data.data
             this.profile_img_path = this.staff.photoUrl;
-            this.showPreview = true;
         },
 		async submitForm() {
 			try {
@@ -155,7 +153,6 @@ export default {
 
             const reader  = new FileReader();
             reader.addEventListener("load", function () {
-                this.showPreview = true;
                 this.profile_img_path = reader.result;
             }.bind(this), false);
 

@@ -9,6 +9,7 @@ use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Exception;
 use Carbon\Carbon;
+use App\Http\Requests\{ExpenseStoreRequest, ExpenseUpdateRequest, ExpenseDeleteRequest};
 
 class ExpenseController extends Controller
 {
@@ -19,30 +20,23 @@ class ExpenseController extends Controller
     		$expenses = Expense::where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $expenses])->setStatusCode(200);
 
-    	} else {
-    		$expenses = Expense::get();
-            return Datatables::of($expenses)->make(true);
     	}
+        $expenses = Expense::get();
+        return Datatables::of($expenses)->make(true);
     }
 
-    public function create(Request $request)
+    public function create(ExpenseStoreRequest $request)
     {
-        try
-        {
-            $expense                = new Expense;
-            $expense->item_name     = $request->get('item_name');
-            $expense->purchase_date = Carbon::parse($request->get('purchase_date'));
-            $expense->bill_no       = $request->get('bill_no');
-            $expense->price         = $request->get('price');
-            $expense = $this->uploadImage($expense, $request->file('expenseImage'));
-            $expense->save();
+        $expense                = new Expense;
+        $expense->item_name     = $request->get('item_name');
+        $expense->purchase_date = Carbon::parse($request->get('purchase_date'));
+        $expense->bill_no       = $request->get('bill_no');
+        $expense->price         = $request->get('price');
+        $expense = $this->uploadImage($expense, $request->file('expenseImage'));
+        $expense->save();
 
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense created."])->setStatusCode(200);
-        }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
-    }
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense created."])->setStatusCode(200);
+    }   
 
     private function uploadImage($expense, $expenseImage)
     {
@@ -62,35 +56,23 @@ class ExpenseController extends Controller
         return $expense;
     }
     
-    public function update(Request $request)
+    public function update(ExpenseUpdateRequest $request)
     {
-    	try
-    	{
-	    	$expense                = Expense::where('id', $request->get('id'))->first();
-	    	$expense->item_name     = $request->get('item_name');
-	    	$expense->purchase_date = Carbon::parse($request->get('purchase_date'));
-	    	$expense->bill_no       = $request->get('bill_no');
-            $expense->price         = $request->get('price');
-            $expense = $this->uploadImage($expense, $request->file('expenseImage'));
-	    	$expense->update();
+        $expense                = Expense::where('id', $request->get('id'))->first();
+        $expense->item_name     = $request->get('item_name');
+        $expense->purchase_date = Carbon::parse($request->get('purchase_date'));
+        $expense->bill_no       = $request->get('bill_no');
+        $expense->price         = $request->get('price');
+        $expense = $this->uploadImage($expense, $request->file('expenseImage'));
+        $expense->update();
 
-	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense updated."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense updated."])->setStatusCode(200);
     }
 
-    public function delete(Request $request)
+    public function delete(ExpenseDeleteRequest $request)
     {
-    	try
-    	{
-    		Expense::where('id', $request->get('id'))->delete();
+        Expense::where('id', $request->get('id'))->delete();
 
-    		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense deleted."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully expense deleted."])->setStatusCode(200);
     }
 }

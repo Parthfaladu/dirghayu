@@ -11,6 +11,7 @@ use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Exception;
 use PDF;
+use App\Http\Requests\{ProductStoreRequest, ProductUpdateRequest, ProductDeleteRequest, ProductSellRequest, ProductSellUpdateRequest};
 
 class ProductController extends Controller
 {
@@ -21,59 +22,40 @@ class ProductController extends Controller
     		$products = Product::where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $products])->setStatusCode(200);
 
-    	} else {
-    		$products = Product::get();
-            return Datatables::of($products)->make(true);
-    	}
+    	} 
+        $products = Product::get();
+        return Datatables::of($products)->make(true);
     }
 
-    public function create(Request $request)
+    public function create(ProductStoreRequest $request)
     {
-        try
-        {
-            $product           = new Product;
-            $product->name     = $request->get('name');
-            $product->price    = $request->get('price');
-            $product->quantity = $request->get('quantity');
-            $product->detail   = $request->get('detail');
-            $product->save();
+        $product           = new Product;
+        $product->name     = $request->get('name');
+        $product->price    = $request->get('price');
+        $product->quantity = $request->get('quantity');
+        $product->detail   = $request->get('detail');
+        $product->save();
 
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product created."])->setStatusCode(200);
-        }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product created."])->setStatusCode(200);
     }
 
-    public function update(Request $request)
+    public function update(ProductUpdateRequest $request)
     {
-    	try
-    	{
-	    	$product           = Product::where('id', $request->get('id'))->first();
-	    	$product->name     = $request->get('name');
-	    	$product->price    = $request->get('price');
-	    	$product->quantity = $request->get('quantity');
-	    	$product->detail   = $request->get('detail');
-	    	$product->update();
+        $product           = Product::where('id', $request->get('id'))->first();
+        $product->name     = $request->get('name');
+        $product->price    = $request->get('price');
+        $product->quantity = $request->get('quantity');
+        $product->detail   = $request->get('detail');
+        $product->update();
 
-	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product updated."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product updated."])->setStatusCode(200);
     }
 
-    public function delete(Request $request)
+    public function delete(ProductDeleteRequest $request)
     {
-    	try
-    	{
-    		Product::where('id', $request->get('id'))->delete();
+        Product::where('id', $request->get('id'))->delete();
 
-    		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
     }
 
     public function productSellList($id = null)
@@ -85,22 +67,23 @@ class ProductController extends Controller
             $productSell = ProductSell::with('user','product')->where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $productSell])->setStatusCode(200);
 
-        } else {
-            $productSell = ProductSell::with('user','product')->get();
-            return Datatables::of($productSell)->make(true);
-        }
+        } 
+        $productSell = ProductSell::with('user','product')->get();
+        return Datatables::of($productSell)
+                        ->addColumn('customer', function($row){
+                            return $row->user->first_name.' '.$row->user->last_name;
+                        })
+                        ->make(true);
     }
 
-    public function createProductSell(Request $request)
+    public function createProductSell(ProductSellRequest $request)
     {
-        try
-        {
-            $product = Product::where("name", $request->get('product_name'))->first();
+        $product = Product::where("name", $request->get('product_name'))->first();
 
-            if($product != null) {
-                $product->quantity = $product->quantity - (int)$request->get('quantity');
-                $product->update();
-            }
+        if($product != null) {
+            $product->quantity = $product->quantity - (int)$request->get('quantity');
+            $product->update();
+        
 
             $productSell                    = new ProductSell;
             $productSell->user_id           = $request->get('user_id');
@@ -109,43 +92,29 @@ class ProductController extends Controller
             $productSell->quantity          = $request->get('quantity');
             $productSell->paid_amount       = $request->get('paid_amount');
             $productSell->save();
-
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product created."])->setStatusCode(200);
+        
+            return response()->json(["code" => 200, "status" => "success", "message" => "Successfully product created."])->setStatusCode(200);
         }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
+        return response()->json(["code" => 404, "status" => "error", "message" => "Product not found."])->setStatusCode(404);
     }
 
-    public function updateProductSell(Request $request)
+    public function updateProductSell(ProductSellUpdateRequest $request)
     {
-        try
-        {
-            $productSell                = ProductSell::where('id', $request->get('id'))->first();
-            $productSell->product_name  = $request->get('product_name');
-            $productSell->user_id       = $request->get('user_id');
-            $productSell->quantity      = $request->get('quantity');
-            $productSell->paid_amount   = $request->get('paid_amount');
-            $productSell->update();
+        $productSell                = ProductSell::where('id', $request->get('id'))->first();
+        $productSell->product_name  = $request->get('product_name');
+        $productSell->user_id       = $request->get('user_id');
+        $productSell->quantity      = $request->get('quantity');
+        $productSell->paid_amount   = $request->get('paid_amount');
+        $productSell->update();
 
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product Sell updated."])->setStatusCode(200);
-        }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product Sell updated."])->setStatusCode(200);
     }
 
-    public function deleteProductSell(Request $request)
+    public function deleteProductSell(ProductDeleteRequest $request)
     {
-        try
-        {
-            ProductSell::where('id', $request->get('id'))->delete();
+        ProductSell::where('id', $request->get('id'))->delete();
 
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
-        }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully product deleted."])->setStatusCode(200);
     }
 
     private function getProductSellReport($customerId, $packageName)

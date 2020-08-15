@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\{Permission, Role};
+use App\Http\Requests\RolePermissionUpdateRequest;
 
 class PermissionController extends Controller
 {
@@ -22,7 +23,7 @@ class PermissionController extends Controller
         return response()->json(["status" => "success", "data" => $allPermission]);
     }
 
-    public function updateRolePermission(Request $request)
+    public function updateRolePermission(RolePermissionUpdateRequest $request)
     {
         $managerRole = Role::where("name", "manager")->first();
         $managerPermissions = Permission::whereIn("id", $request->get("manager"))->get();

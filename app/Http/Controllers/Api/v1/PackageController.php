@@ -8,6 +8,7 @@ use App\Models\Package;
 use Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Exception;
+use App\Http\Requests\{PackageStoreRequest, PackageUpdateRequest, PackageDeleteRequest};
 
 class PackageController extends Controller
 {
@@ -18,29 +19,22 @@ class PackageController extends Controller
     		$packages = Package::where('id',$id)->first();
             return response()->json(["code" => 200, "status" => "success", "data" => $packages])->setStatusCode(200);
 
-    	} else {
-    		$packages = Package::get();
-            return Datatables::of($packages)->make(true);
-    	}
+    	} 
+        $packages = Package::get();
+        return Datatables::of($packages)->make(true);
     }
 
-    public function create(Request $request)
+    public function create(PackageStoreRequest $request)
     {
-        try
-        {
-            $package                   = new Package;
-            $package->name             = $request->get('name');
-            $package->price            = $request->get('price');
-            $package->duration         = $request->get('duration');
-            $package->detail           = $request->get('detail');
-            $package = $this->uploadImage($package, $request->file('packageImage'));
-            $package->save();
+        $package                   = new Package;
+        $package->name             = $request->get('name');
+        $package->price            = $request->get('price');
+        $package->duration         = $request->get('duration');
+        $package->detail           = $request->get('detail');
+        $package = $this->uploadImage($package, $request->file('packageImage'));
+        $package->save();
 
-            return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package created."])->setStatusCode(200);
-        }
-        catch (Exception $e) {
-            return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-        }
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package created."])->setStatusCode(200);
     }
 
     private function uploadImage($package, $packageImage)
@@ -61,36 +55,23 @@ class PackageController extends Controller
         return $package;
     }
     
-    public function update(Request $request)
+    public function update(PackageUpdateRequest $request)
     {
-    	try
-    	{
-	    	$package           = Package::where('id', $request->get('id'))->first();
-	    	$package->name     = $request->get('name');
-	    	$package->price    = $request->get('price');
-	    	$package->duration = $request->get('duration');
-            $package->detail   = $request->get('detail');
-            $package = $this->uploadImage($package, $request->file('packageImage'));
-	    	$package->update();
+        $package           = Package::where('id', $request->get('id'))->first();
+        $package->name     = $request->get('name');
+        $package->price    = $request->get('price');
+        $package->duration = $request->get('duration');
+        $package->detail   = $request->get('detail');
+        $package = $this->uploadImage($package, $request->file('packageImage'));
+        $package->update();
 
-	    	return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package updated."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-            \Log::info($e);
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package updated."])->setStatusCode(200);
     }
 
-    public function delete(Request $request)
+    public function delete(PackageDeleteRequest $request)
     {
-    	try
-    	{
-    		Package::where('id', $request->get('id'))->delete();
+        Package::where('id', $request->get('id'))->delete();
 
-    		return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package deleted."])->setStatusCode(200);
-    	}
-    	catch (Exception $e) {
-	    	return response()->json(["code" => 500, "status" => "failed", "message" => "There is some internal error."])->setStatusCode(500);
-    	}
+        return response()->json(["code" => 200, "status" => "success", "message" => " Successfully package deleted."])->setStatusCode(200);
     }
 }

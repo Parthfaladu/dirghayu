@@ -10,12 +10,14 @@ use App\User;
 use App\Models\Settings;
 use Spatie\Permission\Models\Role;
 use Carbon\Carbon;
+use App\Http\Requests\UpdateUserRequest;
 
 class AuthController extends Controller
 {
-    public function userDetails(Request $request)
+    public function userDetails()
 	{
 		$settings = Settings::with('currency')->first();
+
 		$user = Auth::user();
 		$user['permission'] = Auth::user()->getAllPermissions();
 		$user['settings'] = [	'currency' 	   => $settings['currency']['symbol'],
@@ -24,8 +26,7 @@ class AuthController extends Controller
 								'logoUrl' 	   => $settings['logo_url'],
 								'footerText'   => $settings['footer']
 							];
-		return $user;
-		//return Auth::user();
+		return response()->json($user);
 	}
 
 	public function changeUserStatus(UserStatusChangeRequest $request)
@@ -43,7 +44,7 @@ class AuthController extends Controller
 		return response()->json(["status" => "success", "data" => $userrole]);
 	}
 
-	public function updateUserDetails(Request $request)
+	public function updateUserDetails(UpdateUserRequest $request)
 	{
 		$user = User::findOrFail(Auth::user()->id);
 		$user->gender 	  = $request->get("gender");

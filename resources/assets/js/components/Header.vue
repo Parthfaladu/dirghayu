@@ -1,8 +1,8 @@
 <template>
 	<div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div v-if="$store.getters['init/settings'] && $store.getters['init/settings'].logoUrl"><img :src="$store.getters['init/settings'].logoUrl" height="53px" width="100px"></div>
-                <div v-else><img src="/images/logo-inverse.png" height="45px" width="97px"></div>
+                <div v-if="$store.getters['init/settings'] && $store.getters['init/settings'].logoUrl"><img :src="$store.getters['init/settings'].logoUrl" height="53px"></div>
+                <div v-else><img src="/images/dirghayu_logo.svg" height="53px"></div>
             </div>
             <div class="app-header__mobile-menu">
                 <div>
@@ -40,7 +40,7 @@
                                             <span class="dropdown-item"><i class="fa fa-user-circle pr-2"></i> {{$store.state.init.user.first_name}} {{$store.state.init.user.last_name}}</span>
                                             <router-link to="/profile" tag="button" type="button" tabindex="0" class="dropdown-item">User Profile</router-link>
                                             <router-link to="/change-password" tag="button" type="button" tabindex="0" class="dropdown-item">Change Password</router-link>
-                                            <router-link to="/settings" tag="button" type="button" tabindex="0" class="dropdown-item">General Settings</router-link>
+                                            <router-link v-if="$can('permission_manage')" to="/settings" tag="button" type="button" tabindex="0" class="dropdown-item">General Settings</router-link>
                                             <div tabindex="-1" class="dropdown-divider"></div>
                                             <button type="button" tabindex="0" class="dropdown-item" @click="logout()">Log Out</button>
                                         </div>

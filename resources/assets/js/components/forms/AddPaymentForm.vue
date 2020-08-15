@@ -128,11 +128,7 @@ export default {
 			this.packages = res.data.data;
 		},
 		async onPackageChange(event) {
-			// console.log(this.packages)
-			// console.log(event.target.value)
-
 			const singlePackage = _.find(this.packages, (singlePackage) => singlePackage.id === parseInt(event.target.value));
-			console.log(singlePackage)
 
 			const res = await axios.post('/api/v1/payment/amount',{user_id: this.payment.user_id, package_name:singlePackage.name} , { headers: {"Authorization" : this.$store.getters['auth/authHeaders'].Authorization} } )
 			

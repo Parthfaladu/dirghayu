@@ -1,12 +1,14 @@
 <template>
     <div>
         <div class="position-relative form-group row mb-5">
-            <div v-can:add__subscription class="col-sm-2">
-                <label for="attendanceDate" class="mr-3 mt-2">Customer</label>
-                <select v-model="customerId" class="form-control" @change="changeFilter">
-                    <option :value="null">All Customer</option>
-                    <option v-for="customer in customerList" :key="customer.id" :value="customer.id" :selected="customer.id ===  customerId">{{customer.first_name}} {{customer.last_name}} </option>
-                </select>
+            <div class="col-sm-2">
+                <span v-can:add__subscription>
+                    <label for="attendanceDate" class="mr-3 mt-2">Customer</label>
+                    <select v-model="customerId" class="form-control" @change="changeFilter">
+                        <option :value="null">All Customer</option>
+                        <option v-for="customer in customerList" :key="customer.id" :value="customer.id" :selected="customer.id ===  customerId">{{customer.first_name}} {{customer.last_name}} </option>
+                    </select>
+                </span>
             </div>
             <div class="col-sm-2">
                 <label for="attendanceDate" class="mr-3 mt-2">Package</label>
@@ -23,7 +25,7 @@
                     <option :value="'expired'">Expired</option>
                 </select>
             </div>
-            <div v-can:add__subscription class="col-sm-4 offset-2 text-right mt-4">
+            <div v-can:view__subscription class="col-sm-4 offset-2 text-right mt-4">
                 <button class="btn btn-danger" @click="downloadReport()">Download in PDF</button>
             </div>
         </div>
@@ -96,7 +98,9 @@ export default {
 		}
     },
     mounted() {
-        this.getCustomerList();
+        if(this.$can('add__subscription')) {
+            this.getCustomerList();
+        }
         this.getPackageList();
     },
 	methods: {
@@ -105,7 +109,7 @@ export default {
 			this.customerList = res.data.data
         },
         async getPackageList() {
-			const packageRes = await axios.get('/api/v1/package/list')
+            const packageRes = await axios.get('/api/v1/package/list')
 			this.packageList = packageRes.data.data
 		},
         changeFilter() {

@@ -1,6 +1,6 @@
 <template>
     <DashboardPage>
-        <div class="app-main__inner">
+        <div v-if="dashboard" class="app-main__inner">
             <div class="app-page-title">
                 <div class="page-title-wrapper">
                     <div class="page-title-heading">
@@ -24,7 +24,7 @@
                                 <div class="widget-subheading"></div>
                             </div>
                             <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>{{ totalCustomer }}</span></div>
+                                <div class="widget-numbers text-white"><span>{{ dashboard.totalCustomer }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                                 <div class="widget-subheading"></div>
                             </div>
                             <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>{{ totalSubscription }}</span></div>
+                                <div class="widget-numbers text-white"><span>{{ dashboard.totalSubscription }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                 <div class="widget-subheading"></div>
                             </div>
                             <div class="widget-content-right">
-                                <div class="widget-numbers text-white"><span>{{ $store.getters['init/currency'] }} {{ totalExpense }}</span></div>
+                                <div class="widget-numbers text-white"><span>{{ $store.getters['init/currency'] }} {{ dashboard.totalExpense }}</span></div>
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                     <div class="widget-subheading"></div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-success">{{ totalStaffmember }}</div>
+                                    <div class="widget-numbers text-success">{{ dashboard.totalStaffmember }}</div>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +111,7 @@
                                     <div class="widget-subheading"></div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-warning">{{ $store.getters['init/currency'] }} {{ totalProductSell }}</div>
+                                    <div class="widget-numbers text-warning">{{ $store.getters['init/currency'] }} {{ dashboard.totalProductSell }}</div>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +126,7 @@
                                     <div class="widget-subheading"></div>
                                 </div>
                                 <div class="widget-content-right">
-                                    <div class="widget-numbers text-danger">{{ totalEnquiry }}</div>
+                                    <div class="widget-numbers text-danger">{{ dashboard.totalEnquiry }}</div>
                                 </div>
                             </div>
                         </div>
@@ -151,14 +151,7 @@ export default {
     },
 	data(){
 		return {
-			totalCustomer: null,
-			totalExpense: null,
-			totalSubscription: null,
-			totalPayment: null,
-			activeSubscription: null,
-			totalStaffmember: null,
-			totalProductSell: null,
-			totalEnquiry: null
+            dashboard: null,
 		}
 	},
 	async mounted() {
@@ -167,16 +160,8 @@ export default {
 	methods: {
 		async getDashboardDetail() {
 			try {
-				const res = await axios.get('/api/v1/dashboard/detail');
-                this.totalCustomer = res.data.data.totalCustomer
-                this.totalExpense = res.data.data.totalExpense
-                this.totalSubscription = res.data.data.totalSubscription
-                this.totalPayment = res.data.data.totalPayment
-                this.activeSubscription = res.data.data.activeSubscription
-                this.totalStaffmember = res.data.data.totalStaffMember
-                this.totalProductSell = res.data.data.totalProductSell
-                this.totalEnquiry = res.data.data.totalEnquiry
-				
+                const res = await axios.get('/api/v1/dashboard/detail');
+                this.dashboard = res.data.data;
 			} catch (err) {
 				this.$snotify.error(null, err.message);
 			}

@@ -7,6 +7,7 @@
     <VueDatatable ref="vueDatatable" :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
 		<th v-show="$can('update__attendance')">Action</th>
+		<th v-show="!$can('update__attendance')">Status</th>
 		<th>Customer Name</th>	
 	</VueDatatable>
 </div>
@@ -37,10 +38,16 @@ export default {
 							return "<button class='btn btn-outline-danger' data-g-action='check' data-g-actiondata="+data.id+"><i class='fas fa-unlock'></i> <span class='button-text'>Check In</span></button>";
 						}
 					}
+					if(data.attendance.length > 0)
+					{
+						return "<label class='text-success'>Present</label>"
+					}else{
+						return "<label class='text-danger'>Absent</label>"
+					}
 				}, name:'action', width:"20%"},
                 {data:function(data){
-                    return data.first_name+' '+data.last_name;
-                }, name:'name'}
+                    return data.customer;
+                }, name:'customer'}
 			],
 			url: '/api/v1/attendance/list/'+ moment().format("DD-MM-YYYY"),
 		}

@@ -6,11 +6,11 @@
         		<div class="card card-signin my-5">
           			<div class="card-body">
 						<div class="text-center mb-5">
-							<img v-if="settings" :src="settings[0].logo_url" width="100px"/>
+							<img v-if="settings" :src="settings[0].logo_url" />
 						</div>
             			<h5 class="card-title text-center h2 mb-4 sign-in-text">Sign In</h5>
-						<div v-if="isError === true" class="alert alert-danger alert-dismissible fade show" role="alert">
-							Invalid Email Address Or Password.
+						<div v-if="errMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+							{{errMessage}}
 							<button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="isError = false">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -50,7 +50,7 @@ export default {
 				password: null
 			},
 			settings: null,
-			isError: false,
+			errMessage: null,
 		}
 	},
 	mounted(){
@@ -66,7 +66,12 @@ export default {
 				await auth.login(this.form);
 				window.location.href = '/dashboard';
 			} catch(err) {
-				this.isError = true
+				if(err.response && err.response.status === 403 && err.response.data && err.response.data.message){
+					this.errMessage = err.response.data.message;
+				}
+				else {
+					this.errMessage = 'Invalid Email Address Or Password.';
+				}
 			}
 		},
 		async getSettings() {

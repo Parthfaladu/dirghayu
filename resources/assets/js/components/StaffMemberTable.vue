@@ -4,7 +4,7 @@
 		<th>Name</th>
 		<th>Email address</th>
 		<th>Phone</th>
-		<th>Date Of Birth</th>
+		<th>Role</th>
 		<th>Gender</th>
 		<th v-show="$can('update__staff_member') || $can('delete__staff_member')">Action</th>
 	</VueDatatable>
@@ -33,9 +33,12 @@ export default {
 				}, name:'name'},
 				{data:'email', name:'email'},
 				{data:'phone', name:'phone', width:"100px"},
-				{data:(data) =>{
-					return moment(data.dob).format("DD-MM-YYYY");
-				}, name:'dob', width:"100px"},
+				{data:(data) => {
+					if(data.roles.length > 0){
+						return data.roles[0].name;
+					}
+					return null;
+				}, name:'role', width:"100px"},
 				{data:'gender', name:'gender', width:"80px"},
 				{data:(data) => {
 					let action = "";

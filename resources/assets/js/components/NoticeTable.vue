@@ -4,7 +4,6 @@
 		<th>Title</th>
 		<th>To</th>
 		<th>From</th>
-		<!-- <th>Detail</th> -->
 		<th v-show="$can('view_notice') || $can('update__notice') || $can('delete__notice')">Action</th>
     </VueDatatable>
 </template>
@@ -30,7 +29,6 @@ export default {
 		        {data:function(data){
 		        	return data.userfrom.first_name+' '+data.userfrom.last_name;
 		        }, name:'from_id'},
-		        // {data:'detail', name:'detail'},
 		        {data:(data) => {
 					let actions = "";
 					if(this.$can('view__notice')) {

@@ -5,10 +5,7 @@
                 <div class="page-title-wrapper">
                     <div class="page-title-heading">
                         <div class="page-title-icon">
-                            <i
-                                class="pe-7s-gift icon-gradient bg-premium-dark text-danger"
-                            >
-                            </i>
+                            <i class="pe-7s-gift icon-gradient bg-premium-dark text-danger"></i>
                         </div>
                         <div>PACKAGE LIST</div>
                     </div>

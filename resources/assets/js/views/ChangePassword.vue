@@ -36,6 +36,7 @@
                     </div>
                 </form>
 	        </div>
+            <VueJsDatatable></VueJsDatatable>
 	    </div>
 	</div>
 	</DashboardPage>
@@ -43,11 +44,13 @@
 <script>
 import DashboardPage from '@layouts/DashboardPage';
 import axios from 'axios';
+import VueJsDatatable from  '@parthfaladu/vue-js-datatable';
 
 export default {
 	name: 'ChangePassword',
 	components: {
-		DashboardPage,
+        DashboardPage,
+        VueJsDatatable,
     },
     data() {
         return {

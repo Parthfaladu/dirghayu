@@ -15,21 +15,20 @@
 	    <div v-if="notice && userRoleList" class="main-card mb-3 card">
 	        <div class="card-body">
 	            <h5 class="card-title"></h5>
-	            <div class="position-relative form-group row">
-                    <label for="to_id" class="title-data h5">From</label>
-                    <div class="col-9"> : {{ notice.userfrom.first_name }} {{ notice.userfrom.last_name }}</div>
-                    
+				<div class="row justify-content-center">
+					<h3>{{notice.title}}</h3>
+				</div>
+				<div class="row offset-sm-1 mt-5">
+					<h5>Dear, {{ getRoleName(notice.role_id) }}</h5>
+				</div>
+				<div class="row offset-sm-1 mt-2">
+					<h6>{{notice.detail}}</h6>
+				</div>
+	            <div class="position-relative form-group float-right from-margin">
+					<div class="mt-2"><h5>From</h5></div>
+                    <div class="">{{ notice.userfrom.first_name }} {{ notice.userfrom.last_name }}</div>
                 </div>
-                <div class="position-relative form-group row">
-                    <label for="title" class="title-data h5">Title</label>
-                    <div class="col-9"> : {{notice.title}}</div>
-                   
-                </div>
-                <div class="position-relative form-group row">
-                    <label for="detail" class="title-data h5">Detail</label>
-                    <div class="col-9"> : {{notice.detail}}</div>
-                    
-                </div>
+                
 	        </div>
 	    </div>
 	</div>
@@ -65,7 +64,6 @@ export default {
 		async getNoticeList() {
 			const res   = await axios.get('/api/v1/notice/list/'+this.$route.params.id)
 			this.notice = res.data.data
-			console.log(this.notice)
         },
         async getUserRole(){
             const roleRes = await axios.get('/api/v1/auth/user/role')
@@ -81,5 +79,8 @@ export default {
 <style scoped>
 	.title-data{
 		width: 60px;
+	}
+	.from-margin{
+		margin-right:60px;
 	}
 </style>

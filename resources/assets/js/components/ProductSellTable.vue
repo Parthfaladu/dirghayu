@@ -23,10 +23,10 @@ export default {
 				{data:'id', name:'id', width:"100px"},
 				{data:function(data){
 					return data.product_name;
-				}, name:'product'},
+				}, name:'product_name'},
 				{data:function(data){
-					return data.user.first_name+' '+data.user.last_name;
-				}, name:'user_id'},
+					return data.customer;
+				}, name:'customer'},
 				{data:'quantity', name:'quantity', width:"80px"},
 				{data:(data)=>{
 					return data.paid_amount+' '+this.$store.getters['init/currency'];

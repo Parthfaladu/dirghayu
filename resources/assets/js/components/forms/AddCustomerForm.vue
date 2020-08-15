@@ -264,17 +264,15 @@ export default {
 					return
                 }
                 
-                let res = null
                 const customerData = new FormData();
                 
                 _.forEach(this.customer, (customerProperty, key) => {
-                    // console.log(key+' '+customerProperty);
                     customerData.append(key, customerProperty);
                 });
     
                 customerData.append('endDate', this.endDate)
 
-                res = await axios.post('/api/v1/customer/create', customerData ,{ headers: {'Content-Type': 'multipart/form-data'}})
+                let res = await axios.post('/api/v1/customer/create', customerData ,{ headers: {'Content-Type': 'multipart/form-data'}})
                 
                 this.$router.push('/customer-list');
 		  	}

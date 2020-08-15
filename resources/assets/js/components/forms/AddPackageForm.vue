@@ -33,7 +33,7 @@
         </div> 
         <div class="position-relative form-group">
             <label for="package_img_path">Profile Photo</label><br>
-            <img v-show="showPreview" :src="package_img_path" width="25%" style="border: 1px solid #cac2c2;" />
+            <img v-if="package_img_path" :src="package_img_path" width="25%" style="border: 1px solid #cac2c2;" />
             <input id="packagePath" ref="packagePath" type="file" class="form-control" accept="image/*" name="packagePath" style="display:none;" @change="onImageUpload()">
                             
         </div>
@@ -62,7 +62,6 @@ export default {
 				packageImage: '',
 			},
 			package_img_path: null,
-			showPreview: false,
 		}
 	},
 	async mounted() {
@@ -79,7 +78,6 @@ export default {
 			const res          = await axios.get('/api/v1/package/list/'+this.$route.params.id)
 			this.packageData = res.data.data
 			this.package_img_path = this.packageData.image;
-			this.showPreview = true;
 		},
 		async submitForm() {
 			try {
@@ -114,7 +112,6 @@ export default {
 
             const reader  = new FileReader();
             reader.addEventListener("load", function () {
-                this.showPreview = true;
                 this.package_img_path = reader.result;
             }.bind(this), false);
 

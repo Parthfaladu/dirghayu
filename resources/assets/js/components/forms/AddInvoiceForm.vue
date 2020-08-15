@@ -4,7 +4,7 @@
             <div class="col-sm-6">
                 <div class="position-relative form-group">
                     <label for="to_id">Bill To</label>
-                    <select id="bill_to" v-model="invoice.bill_to" v-validate="'required'" class="form-control"  name="bill_to">
+                    <select id="bill_to" v-model="invoice.bill_to" v-validate="'required'" class="form-control" name="bill_to" @change="onCustomerSelect()">
                         <option v-for="customer in customers" :key="customer.id" :value="customer.id" :selected="invoice.bill_to ===  customer.id">{{customer.first_name}} {{customer.last_name}} </option>
                     </select>
                     <span v-show="errors.has('bill_to')" class="text-danger">{{ errors.first('bill_to') }}</span>
@@ -140,6 +140,7 @@
 <script>
 import axios from 'axios';
 import VueJqueryCalendar from 'vue-jquery-calendar';
+import _ from 'lodash';
 
 export default {
     name: 'AddInvoiceForm',
@@ -162,16 +163,14 @@ export default {
 				invoiceitems:[
 					{
 						name: null,
-						quantity: 0,
+						quantity: 1,
 						rate: 0,
 						amount: 0,
 					},
 				],
 			},
-			
 			staffs: null,
 			customers: null,
-			
 		}
 	},
 	computed: {
@@ -245,7 +244,15 @@ export default {
 		},
 		removeRow(index){
 			this.invoice.invoiceitems.splice(index, 1)
-		}
+        },
+        onCustomerSelect() {
+            const customer = _.find(this.customers, (customer) => customer.id === this.invoice.bill_to);
+            if(customer) {
+                this.invoice.customer_email = customer.email;
+                this.invoice.customer_address = customer.address;
+                this.invoice.customer_phone = customer.phone;
+            }
+        }
 	}
 }
 </script>

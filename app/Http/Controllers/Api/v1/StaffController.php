@@ -24,7 +24,8 @@ class StaffController extends Controller
 		$user->phone      = $request->get("phone"); 
 		$user->dob        = Carbon::parse($request->get("dob")); 
 		$user->gender     = $request->get("gender");
-		$user->address    = $request->get("address"); 
+		$user->address    = $request->get("address");
+		$user->is_active  = 1;
 		$user = $this->uploadImage($user, $request->file('profileImage'));
 		$user->save();
 

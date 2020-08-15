@@ -35,7 +35,7 @@
                     <div class="position-relative form-group">
                         <label for="quantity">Quantity</label>
                         <div class="input-group" style="padding: 0px;">
-							<input id="quantity" v-model="productSell.quantity" v-validate="{'required':true, 'min_value':0, 'max_value': quantityMaxValue}" type="text" class="form-control" name="quantity" required>
+							<input id="quantity" v-model="productSell.quantity" v-validate="{'required':true, 'min_value':0, 'max_value': quantityMaxValue}" type="text" class="form-control" name="quantity" >
                             <div class="input-group-append">
                                 <span id="" class="input-group-text">Each</span>
                             </div>
@@ -45,7 +45,7 @@
                     <div class="position-relative form-group">
                         <label for="price">Amount</label>
 						<div class="input-group" style="padding: 0px;">
-							<input id="price" v-model="productSell.paid_amount" v-validate="'required'" type="text" class="form-control" name="amount" required>
+							<input id="price" v-model="productSell.paid_amount" v-validate="'required'" type="text" class="form-control" name="amount">
 							<div class="input-group-append">
 									<span id="basic-addon2" class="input-group-text">{{ $store.getters['init/currency'] }}</span>
 							</div>
@@ -87,7 +87,6 @@ export default {
 		quantityMaxValue() {
 			if(this.productSell.product_name) {
 				const product = _.find(this.products, (product) => product.name === this.productSell.product_name);
-				console.log(product)
 				return product ? parseInt(product.quantity) : 1000000;
 			}
 			return 1000000;
@@ -111,7 +110,7 @@ export default {
 		},
 		async getProductList() {
 			const productRes = await axios.get('/api/v1/product/list')
-		    this.products = productRes.data.data
+		    this.products = _.filter(productRes.data.data, (product) => product.quantity > 0);
 		},
 		async getCustomerList() {
 			const userRes = await axios.get('/api/v1/customer/list')
