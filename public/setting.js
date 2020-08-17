@@ -1,268 +1,5 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["setting"],{
 
-/***/ "./node_modules/@parthfaladu/vue-js-datatable/dist/VueJsDatatable.esm.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/@parthfaladu/vue-js-datatable/dist/VueJsDatatable.esm.js ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _assets_js_jquery_dataTables_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @assets/js/jquery.dataTables.js */ "./resources/assets/js/assets/js/jquery.dataTables.js");
-/* harmony import */ var _assets_js_dataTables_bootstrap4_min_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @assets/js/dataTables.bootstrap4.min.js */ "./resources/assets/js/assets/js/dataTables.bootstrap4.min.js");
-/* harmony import */ var _assets_js_dataTables_bootstrap4_min_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_assets_js_dataTables_bootstrap4_min_js__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
-
-//
-
-var script = {    
-	name: 'VueJsDatatable',
-	props: {
-		columns: {
-			type: Array|null,
-			default: function () { return []; }
-		},
-		url: {
-			type: String,
-			default: null	
-		},
-		type: {
-			type: String,
-			default: 'GET'
-		},
-		searching: {
-			type: Boolean,
-			default: true
-		},
-		lengthChange: {
-			type: Boolean,
-			default: true
-		},
-		order: {
-			type: Array,
-			default: function () { return []; }
-		},
-		className: {
-			type: String,
-			default: ''
-		},
-        paging: {
-            type: Boolean,
-            default: true
-        },
-        ordering: {
-            type: Boolean,
-            default: true
-        },
-        serverSide: {
-            type: Boolean,
-            default: true
-		},
-		authorization: {
-			type: String,
-			default: undefined.$store.getters['auth/authHeaders'].Authorization
-		}
-	},
-	data: function data() {
-		return {
-			datatable: null,
-		}
-	},
-	mounted: function mounted() {
-		var this$1 = this;
-
-		var that = this;
-		this.datatable = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this.$el).DataTable({
-		    "paging": this.paging,
-		    "lengthChange": this.lengthChange,
-		    "searching": this.searching,
-		    "ordering": this.ordering,
-		    "info": true,
-		    "responsive": true,
-		    "processing": true,
-			"serverSide": this.serverSide,
-			"order": this.order,
-		    ajax: {
-		        'url': this.url,
-		        'type' : this.type,
-		        "beforeSend": function (xhr) {
-		            xhr.setRequestHeader("Authorization", this$1.authorization);
-		         }
-		    },
-	      	"columns": this.columns,
-	      	"drawCallback":function(setting){
-		        jquery__WEBPACK_IMPORTED_MODULE_0___default()('td [data-g-action]').click(function(e){
-		            e.preventDefault();
-		            
-		            var action = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-g-action');
-		            
-		            var actionData = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).attr('data-g-actiondata');
-		            
-		            var args = {
-		            	action: action,
-		            	data: actionData
-		            };
-
-					that.$emit('gaction', args);
-		        });
-		    },
-	    });
-	},
-	methods: {
-		reload: function reload(url) {
-			this.datatable.ajax.url(url).load();
-		},
-		draw: function draw() {
-			this.datatable.draw();
-		}
-	}
-};
-
-function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier /* server only */, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
-    if (typeof shadowMode !== 'boolean') {
-        createInjectorSSR = createInjector;
-        createInjector = shadowMode;
-        shadowMode = false;
-    }
-    // Vue.extend constructor export interop.
-    var options = typeof script === 'function' ? script.options : script;
-    // render functions
-    if (template && template.render) {
-        options.render = template.render;
-        options.staticRenderFns = template.staticRenderFns;
-        options._compiled = true;
-        // functional template
-        if (isFunctionalTemplate) {
-            options.functional = true;
-        }
-    }
-    // scopedId
-    if (scopeId) {
-        options._scopeId = scopeId;
-    }
-    var hook;
-    if (moduleIdentifier) {
-        // server build
-        hook = function (context) {
-            // 2.3 injection
-            context =
-                context || // cached call
-                    (this.$vnode && this.$vnode.ssrContext) || // stateful
-                    (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-            // 2.2 with runInNewContext: true
-            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-                context = __VUE_SSR_CONTEXT__;
-            }
-            // inject component styles
-            if (style) {
-                style.call(this, createInjectorSSR(context));
-            }
-            // register component module identifier for async chunk inference
-            if (context && context._registeredComponents) {
-                context._registeredComponents.add(moduleIdentifier);
-            }
-        };
-        // used by ssr in case component is cached and beforeCreate
-        // never gets called
-        options._ssrRegister = hook;
-    }
-    else if (style) {
-        hook = shadowMode
-            ? function (context) {
-                style.call(this, createInjectorShadow(context, this.$root.$options.shadowRoot));
-            }
-            : function (context) {
-                style.call(this, createInjector(context));
-            };
-    }
-    if (hook) {
-        if (options.functional) {
-            // register for functional component in vue file
-            var originalRender = options.render;
-            options.render = function renderWithStyleInjection(h, context) {
-                hook.call(context);
-                return originalRender(h, context);
-            };
-        }
-        else {
-            // inject component registration as beforeCreate hook
-            var existing = options.beforeCreate;
-            options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
-        }
-    }
-    return script;
-}
-
-/* script */
-var __vue_script__ = script;
-
-/* template */
-var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('table',{staticClass:"table table-hover",class:_vm.className,attrs:{"align":"center","width":"100%"}},[_c('thead',[_c('tr',[_vm._t("default")],2)]),_vm._v(" "),_c('tbody')])};
-var __vue_staticRenderFns__ = [];
-
-  /* style */
-  var __vue_inject_styles__ = undefined;
-  /* scoped */
-  var __vue_scope_id__ = undefined;
-  /* module identifier */
-  var __vue_module_identifier__ = undefined;
-  /* functional template */
-  var __vue_is_functional_template__ = false;
-  /* style inject */
-  
-  /* style inject SSR */
-  
-  /* style inject shadow dom */
-  
-
-  
-  var __vue_component__ = /*#__PURE__*/normalizeComponent(
-    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
-    __vue_inject_styles__,
-    __vue_script__,
-    __vue_scope_id__,
-    __vue_is_functional_template__,
-    __vue_module_identifier__,
-    false,
-    undefined,
-    undefined,
-    undefined
-  );
-
-function install(Vue) {
-  if (install.installed) { return; }
-  install.installed = true;
-  Vue.component("VueJsDatatable", __vue_component__);
-}
-
-var plugin = {
-  install: install
-};
-
-var GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.vue;
-}
-
-if (GlobalVue) {
-  GlobalVue.use(plugin);
-}
-
-__vue_component__.install = install;
-
-/* harmony default export */ __webpack_exports__["default"] = (__vue_component__);
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/views/ChangePassword.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/views/ChangePassword.vue?vue&type=script&lang=js& ***!
@@ -277,7 +14,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _parthfaladu_vue_js_datatable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @parthfaladu/vue-js-datatable */ "./node_modules/@parthfaladu/vue-js-datatable/dist/VueJsDatatable.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -326,15 +62,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'ChangePassword',
   components: {
-    DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__["default"],
-    VueJsDatatable: _parthfaladu_vue_js_datatable__WEBPACK_IMPORTED_MODULE_3__["default"]
+    DashboardPage: _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -1130,197 +863,190 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "main-card mb-3 card" },
-        [
-          _c("div", { staticClass: "card-body col-sm-6 offset-sm-3" }, [
-            _c("h5", { staticClass: "card-title" }),
-            _vm._v(" "),
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.submitForm()
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "position-relative form-group" }, [
-                  _c("label", { attrs: { for: "title" } }, [
-                    _vm._v("Old Password")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.old_password,
-                        expression: "form.old_password"
-                      },
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|min:6",
-                        expression: "'required|min:6'"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "password", name: "old_password" },
-                    domProps: { value: _vm.form.old_password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "old_password", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("old_password"),
-                          expression: "errors.has('old_password')"
-                        }
-                      ],
-                      staticClass: "text-danger"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("old_password")))]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "position-relative form-group" }, [
-                  _c("label", { attrs: { for: "detail" } }, [
-                    _vm._v("New Password")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.new_password,
-                        expression: "form.new_password"
-                      },
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|min:6",
-                        expression: "'required|min:6'"
-                      }
-                    ],
-                    ref: "new_password",
-                    staticClass: "form-control",
-                    attrs: { type: "password", name: "new_password" },
-                    domProps: { value: _vm.form.new_password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.form, "new_password", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("new_password"),
-                          expression: "errors.has('new_password')"
-                        }
-                      ],
-                      staticClass: "text-danger"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("new_password")))]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "position-relative form-group" }, [
-                  _c("label", { attrs: { for: "detail" } }, [
-                    _vm._v("Confirm Password")
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.confirm_password,
-                        expression: "form.confirm_password"
-                      },
-                      {
-                        name: "validate",
-                        rawName: "v-validate",
-                        value: "required|min:6|confirmed:new_password",
-                        expression: "'required|min:6|confirmed:new_password'"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "password", name: "confirm_password" },
-                    domProps: { value: _vm.form.confirm_password },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.form,
-                          "confirm_password",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.errors.has("confirm_password"),
-                          expression: "errors.has('confirm_password')"
-                        }
-                      ],
-                      staticClass: "text-danger"
-                    },
-                    [_vm._v(_vm._s(_vm.errors.first("confirm_password")))]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "text-center" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("SUBMIT")]
-                  )
-                ])
-              ]
-            )
-          ]),
+      _c("div", { staticClass: "main-card mb-3 card" }, [
+        _c("div", { staticClass: "card-body col-sm-6 offset-sm-3" }, [
+          _c("h5", { staticClass: "card-title" }),
           _vm._v(" "),
-          _c("VueJsDatatable")
-        ],
-        1
-      )
+          _c(
+            "form",
+            {
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.submitForm()
+                }
+              }
+            },
+            [
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("label", { attrs: { for: "title" } }, [
+                  _vm._v("Old Password")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.old_password,
+                      expression: "form.old_password"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:6",
+                      expression: "'required|min:6'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "password", name: "old_password" },
+                  domProps: { value: _vm.form.old_password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "old_password", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("old_password"),
+                        expression: "errors.has('old_password')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("old_password")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("label", { attrs: { for: "detail" } }, [
+                  _vm._v("New Password")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.new_password,
+                      expression: "form.new_password"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:6",
+                      expression: "'required|min:6'"
+                    }
+                  ],
+                  ref: "new_password",
+                  staticClass: "form-control",
+                  attrs: { type: "password", name: "new_password" },
+                  domProps: { value: _vm.form.new_password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "new_password", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("new_password"),
+                        expression: "errors.has('new_password')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("new_password")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "position-relative form-group" }, [
+                _c("label", { attrs: { for: "detail" } }, [
+                  _vm._v("Confirm Password")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.confirm_password,
+                      expression: "form.confirm_password"
+                    },
+                    {
+                      name: "validate",
+                      rawName: "v-validate",
+                      value: "required|min:6|confirmed:new_password",
+                      expression: "'required|min:6|confirmed:new_password'"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "password", name: "confirm_password" },
+                  domProps: { value: _vm.form.confirm_password },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.form,
+                        "confirm_password",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("confirm_password"),
+                        expression: "errors.has('confirm_password')"
+                      }
+                    ],
+                    staticClass: "text-danger"
+                  },
+                  [_vm._v(_vm._s(_vm.errors.first("confirm_password")))]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "text-center" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-info",
+                    attrs: { type: "submit" }
+                  },
+                  [_vm._v("SUBMIT")]
+                )
+              ])
+            ]
+          )
+        ])
+      ])
     ])
   ])
 }

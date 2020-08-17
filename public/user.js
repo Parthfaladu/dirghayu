@@ -525,7 +525,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       settings: null,
       isError: false,
-      isSuccess: false
+      isSuccess: false,
+      isFormSubmit: false
     };
   },
   mounted: function mounted() {
@@ -558,26 +559,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return");
 
               case 6:
-                _context.next = 8;
+                _this.isFormSubmit = true;
+                _context.next = 9;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/forgot/password', _this.form);
 
-              case 8:
+              case 9:
                 _this.isSuccess = true;
+
+                _this.$validator.reset();
+
                 _this.form.email = null;
-                _context.next = 15;
+                _this.isFormSubmit = false;
+                _context.next = 19;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 15:
+                _context.prev = 15;
                 _context.t0 = _context["catch"](0);
+                _this.isFormSubmit = false;
                 _this.isError = true;
 
-              case 15:
+              case 19:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 12]]);
+        }, _callee, null, [[0, 15]]);
       }))();
     },
     getSettings: function getSettings() {
@@ -633,7 +640,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.sign-in-text[data-v-75fd2871]{\n\tcolor: rgb(63, 106, 216);\n\tfont-size: 1.3rem;\n}\n.login-background[data-v-75fd2871]{\n\tbackground-image: url(/images/login-back.jpg);\n\tbackground-repeat:no-repeat;\n\tbackground-size: cover;\n}\n", ""]);
+exports.push([module.i, "\n.sign-in-text[data-v-75fd2871]{\n\tcolor: rgb(63, 106, 216);\n\tfont-size: 1.3rem;\n}\n.login-background[data-v-75fd2871]{\n\tbackground-image: url(/images/login-bg.jpg);\n\tbackground-repeat:no-repeat;\n\tbackground-size: cover;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -2412,7 +2419,7 @@ var render = function() {
                     {
                       staticClass:
                         "btn btn-lg btn-primary btn-block text-uppercase",
-                      attrs: { type: "submit" }
+                      attrs: { type: "submit", disabled: _vm.isFormSubmit }
                     },
                     [_vm._v("Submit")]
                   ),

@@ -1,8 +1,8 @@
 <template>
 	<div class="app-header header-shadow">
             <div class="app-header__logo">
-                <div v-if="$store.getters['init/settings'] && $store.getters['init/settings'].logoUrl"><img :src="$store.getters['init/settings'].logoUrl" height="53px"></div>
-                <div v-else><img src="/images/dirghayu_logo.svg" height="53px"></div>
+                <!-- <div v-if="logoUrl"><img :src="logoUrl" height="53px"></div> -->
+                <div><img src="/images/dirghayu_logo.svg" height="53px"></div>
             </div>
             <div class="app-header__mobile-menu">
                 <div>
@@ -32,7 +32,7 @@
                                 <div class="widget-content-left">
                                     <div class="btn-group">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn">
-                                            <img width="42px" height="42px" class="rounded-circle" :src="$store.state.init.user.photo_url" alt="">
+                                            <img width="42px" height="42px" class="rounded-circle" :src="userProfilePic" alt="">
                                             
                                             <i class="fa fa-angle-down ml-2 opacity-8"></i>
                                         </a>
@@ -59,6 +59,28 @@
 <script>
 export default {
     name: 'Header',
+    data() {
+        return {
+            logoUrl: null,
+            userProfilePic: this.$store.state.init.user.photo_url,
+        }
+    },
+    computed: {
+        storeLogoUrl() {
+            if(this.$store.getters['init/settings'] && this.$store.getters['init/settings'].logoUrl) {
+                return this.$store.getters['init/settings'].logoUrl
+            }
+            return null
+        }
+    },
+    watch: {
+        storeLogoUrl(newValue) {
+            console.log(newValue)
+            if(newValue !== this.logoUrl) {
+                this.logoUrl = newValue;
+            }
+        }
+    },
     methods: {
         async logout() {
             await this.$store.commit('auth/logout');

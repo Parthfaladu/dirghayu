@@ -93,7 +93,7 @@ export default {
 		font-size: 1.3rem;
 	}
 	.login-background{
-		background-image: url(/images/login-back.jpg);
+		background-image: url(/images/login-bg.jpg);
 		background-repeat:no-repeat;
 		background-size: cover;
 	}

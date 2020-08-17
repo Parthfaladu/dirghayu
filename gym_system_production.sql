@@ -799,7 +799,7 @@ CREATE TABLE `settings` (
 --
 
 INSERT INTO `settings` (`id`, `currency_id`, `title`, `logo_url`, `footer`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Dirghayu Fitness Factory', '/images/logo.jpeg', 'Copyright © 2020 Dirghayu Fitness Factory. All rights reserved.', '2020-04-17 07:31:07', '2020-04-17 07:31:07');
+(1, 1, 'Dirghayu Fitness Factory', '/images/logo.png', 'Copyright © 2020 Dirghayu Fitness Factory. All rights reserved.', '2020-04-17 07:31:07', '2020-04-17 07:31:07');
 
 -- --------------------------------------------------------
 

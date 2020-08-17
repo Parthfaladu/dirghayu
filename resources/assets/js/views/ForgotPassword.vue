@@ -26,7 +26,7 @@
 			                	<input v-model="form.email" type="email" name="email" class="form-control mb-3" v-validate="'required|email'" placeholder="Email address">
                                 <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
 			              	</div>
-			              	<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Submit</button>
+			              	<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" :disabled="isFormSubmit">Submit</button>
 							<router-link to="/login" class="pull-right pt-4 h5 text-primary">Login</router-link><br>
 			            </form>
           			</div>
@@ -51,6 +51,7 @@ export default {
 			settings: null,
 			isError: false,
 			isSuccess: false,
+			isFormSubmit: false,
         }
 	},
 	mounted(){
@@ -62,13 +63,17 @@ export default {
                 const result = await this.$validator.validateAll();
 				if(!result){
 					return
-                }
+				}
+				this.isFormSubmit = true;
 				
 				await axios.post('/api/v1/forgot/password', this.form)
 				this.isSuccess = true;
+				this.$validator.reset();
 				this.form.email = null
+				this.isFormSubmit = false;
             }
             catch(err) {
+				this.isFormSubmit = false;
                 this.isError = true
             }
 		},
@@ -93,7 +98,7 @@ export default {
 		font-size: 1.3rem;
 	}
 	.login-background{
-		background-image: url(/images/login-back.jpg);
+		background-image: url(/images/login-bg.jpg);
 		background-repeat:no-repeat;
 		background-size: cover;
 	}

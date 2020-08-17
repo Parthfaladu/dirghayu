@@ -7355,7 +7355,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.sign-in-text[data-v-2e00a526]{\n\tcolor: rgb(63, 106, 216);\n\tfont-size: 1.3rem;\n}\n.login-background[data-v-2e00a526]{\n\tbackground-image: url(/images/login-back.jpg);\n\tbackground-repeat:no-repeat;\n\tbackground-size: cover;\n}\n", ""]);
+exports.push([module.i, "\n.sign-in-text[data-v-2e00a526]{\n\tcolor: rgb(63, 106, 216);\n\tfont-size: 1.3rem;\n}\n.login-background[data-v-2e00a526]{\n\tbackground-image: url(/images/login-bg.jpg);\n\tbackground-repeat:no-repeat;\n\tbackground-size: cover;\n}\n", ""]);
 // Exports
 module.exports = exports;
 

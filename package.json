@@ -41,7 +41,7 @@
         "webpack-cli": "^3.3.11"
     },
     "dependencies": {
-        "@parthfaladu/vue-js-datatable": "^1.0.2",
+        "@parthfaladu/vue-js-datatable": "^1.0.5",
         "axios": "^0.19.0",
         "bootstrap": "^4.4.1",
         "bootstrap-scss": "^4.4.1",

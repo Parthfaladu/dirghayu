@@ -1487,10 +1487,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@parthfaladu/vue-js-datatable@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@parthfaladu/vue-js-datatable/-/vue-js-datatable-1.0.2.tgz#8148baadcb88290a936c67e72acc8fafac0579d5"
-  integrity sha512-XbOqiUpkrXWI0nGry4JryAJZn+kwehL5Gs+6tu86OhDcP8MlJc9e/F/77EKaSVK87ZROB/dpIZmpPGxlAv3JgA==
+"@parthfaladu/vue-js-datatable@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@parthfaladu/vue-js-datatable/-/vue-js-datatable-1.0.5.tgz#10491b7f04bf241b55b8ec58871bfa030944dadd"
+  integrity sha512-j5nrNoiZyStMuf6HYv5lrMm/6LuLmr8I7ITJ+ogXr3GvEMsXUCfnPLNfG+nyEyX8OdW1glr/8pNwzhXOhb/aDg==
   dependencies:
     core-js "^3.6.4"
     datatables.net "1.10.20"
