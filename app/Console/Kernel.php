@@ -24,8 +24,16 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function () {
+            $tables = DB::select('SHOW TABLES');
+            foreach($tables as $table){
+                $table_array = get_object_vars($table);
+                DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+                Schema::drop($table_array[key($table_array)]);
+                DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+            } 
+            DB::unprepared(file_get_contents('gym_system_production.sql'));
+        })->everyMinute(30);
     }
 
     /**
