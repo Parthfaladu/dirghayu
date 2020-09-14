@@ -33,8 +33,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 
@@ -50,12 +48,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "100px"
-      }, {
-        data: function data(_data) {
-          return _data.user.first_name + ' ' + _data.user.last_name;
-        },
-        name: 'user_id'
+        width: "40px"
       }, {
         data: 'name',
         name: 'name'
@@ -65,31 +58,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }, {
         data: 'phone',
         name: 'phone',
-        width: "120px"
+        width: "100px"
       }, {
-        data: 'gender',
-        name: 'gender',
-        width: "80px"
-      }, {
-        data: function data(_data2) {
-          return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data2.last_follow_up_date).format("DD-MM-YYYY");
+        data: function data(_data) {
+          return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data.last_follow_up_date).format("DD-MM-YYYY");
         },
         name: 'last_follow_up_date'
       }, {
-        data: function data(_data3) {
-          return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data3.next_follow_up_date).format("DD-MM-YYYY");
+        data: function data(_data2) {
+          return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data2.next_follow_up_date).format("DD-MM-YYYY");
         },
         name: 'next_follow_up_date'
       }, {
-        data: function data(_data4) {
+        data: function data(_data3) {
           var actions = "";
 
           if (_this.$can('update__enquiry')) {
-            actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data4.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+            actions += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> ";
           }
 
           if (_this.$can('delete__enquiry')) {
-            actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data4.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+            actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
           }
 
           return actions;
@@ -550,9 +539,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -576,6 +562,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_EnquiryTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/EnquiryTable */ "./resources/assets/js/components/EnquiryTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
 //
 //
 //
@@ -643,19 +631,15 @@ var render = function() {
     [
       _c("th", [_vm._v("Id")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Staff Member Name")]),
-      _vm._v(" "),
       _c("th", [_vm._v("Name")]),
       _vm._v(" "),
       _c("th", [_vm._v("Email")]),
       _vm._v(" "),
       _c("th", [_vm._v("Phone")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Gender")]),
+      _c("th", [_vm._v("Last FollowUp")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Last FollowUp Date")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Next FollowUp Date")]),
+      _c("th", [_vm._v("Next FollowUp")]),
       _vm._v(" "),
       _c(
         "th",
@@ -1073,7 +1057,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-outline-success-new",
+          attrs: { type: "submit" }
+        },
         [_vm._v("\n            SUBMIT\n        ")]
       )
     ])
@@ -1110,17 +1097,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-call icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("ENQUIRY DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-call icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("ENQUIRY DETAIL")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -1172,24 +1165,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-call icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("ENQUIRY LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-call icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("ENQUIRY LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -1198,21 +1193,25 @@ var render = function() {
                     arg: "add__enquiry"
                   }
                 ],
-                staticClass: "card-title"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-enquiry" }
                   },
                   [_vm._v("Add Enquiry")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },

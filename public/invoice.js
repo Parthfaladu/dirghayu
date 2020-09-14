@@ -37,6 +37,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -60,9 +62,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         data: function data(_data) {
           if (_this.$can('update__attendance')) {
             if (_data.attendance.length > 0) {
-              return "<button class='btn btn-outline-success' data-g-action='uncheck' data-g-actiondata=" + _data.id + "><i class='fas fa-lock'></i> <span class='button-text'>Checked In</span></button>";
+              return "<button class='btn btn-outline-success-new' data-g-action='uncheck' data-g-actiondata=" + _data.id + "><i class='fas fa-lock'></i> <span class='button-text'>Checked In</span></button>";
             } else {
-              return "<button class='btn btn-outline-danger' data-g-action='check' data-g-actiondata=" + _data.id + "><i class='fas fa-unlock'></i> <span class='button-text'>Check In</span></button>";
+              return "<button class='btn btn-outline-danger-new' data-g-action='check' data-g-actiondata=" + _data.id + "><i class='fas fa-unlock'></i> <span class='button-text'>Check In</span></button>";
             }
           }
 
@@ -230,7 +232,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "100px"
+        width: "80px"
       }, {
         data: function data(_data) {
           return _data.billto.first_name + ' ' + _data.billto.last_name;
@@ -240,13 +242,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         data: function data(_data2) {
           return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data2.invoice_date).format("DD-MM-YYYY");
         },
-        name: 'invoice_date'
+        name: 'invoice_date',
+        width: "70px"
       }, {
         data: function data(_data3) {
           return _data3.total + ' ' + _this.$store.getters['init/currency'];
         },
         name: 'total',
-        width: "100px"
+        width: "50px"
       }, {
         data: function data(_data4) {
           return _data4.user.first_name + ' ' + _data4.user.last_name;
@@ -257,17 +260,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           var actions = "";
 
           if (_this.$can('view__invoice')) {
-            actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data5.id + "><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
+            actions += "<button class='btn btn-outline-info-new' data-g-action='view' data-g-actiondata=" + _data5.id + "><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
           }
 
           if (_this.$can('delete__invoice')) {
-            actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data5.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+            actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata=" + _data5.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
           }
 
           return actions;
         },
         name: 'action',
-        width: "150px"
+        width: "140px"
       }],
       url: '/api/v1/invoice/list'
     };
@@ -790,7 +793,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -835,11 +837,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -863,6 +860,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_InvoiceTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/InvoiceTable */ "./resources/assets/js/components/InvoiceTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
+//
 //
 //
 //
@@ -1737,7 +1737,7 @@ var render = function() {
     },
     [
       _c(
-        "div",
+        "span",
         { staticClass: "position-relative form-group row ml-1 mb-5" },
         [
           _c(
@@ -1766,50 +1766,56 @@ var render = function() {
       ),
       _vm._v(" "),
       _c(
-        "VueDatatable",
-        {
-          ref: "vueDatatable",
-          attrs: { columns: _vm.columns, url: _vm.url },
-          on: { gaction: _vm.onAction }
-        },
+        "div",
+        { staticClass: "table-responsive" },
         [
-          _c("th", [_vm._v("Id")]),
-          _vm._v(" "),
           _c(
-            "th",
+            "VueDatatable",
             {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.$can("update__attendance"),
-                  expression: "$can('update__attendance')"
-                }
-              ]
+              ref: "vueDatatable",
+              attrs: { columns: _vm.columns, url: _vm.url },
+              on: { gaction: _vm.onAction }
             },
-            [_vm._v("Action")]
-          ),
-          _vm._v(" "),
-          _c(
-            "th",
-            {
-              directives: [
+            [
+              _c("th", [_vm._v("Id")]),
+              _vm._v(" "),
+              _c(
+                "th",
                 {
-                  name: "show",
-                  rawName: "v-show",
-                  value: !_vm.$can("update__attendance"),
-                  expression: "!$can('update__attendance')"
-                }
-              ]
-            },
-            [_vm._v("Status")]
-          ),
-          _vm._v(" "),
-          _c("th", [_vm._v("Customer Name")])
-        ]
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.$can("update__attendance"),
+                      expression: "$can('update__attendance')"
+                    }
+                  ]
+                },
+                [_vm._v("Action")]
+              ),
+              _vm._v(" "),
+              _c(
+                "th",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: !_vm.$can("update__attendance"),
+                      expression: "!$can('update__attendance')"
+                    }
+                  ]
+                },
+                [_vm._v("Status")]
+              ),
+              _vm._v(" "),
+              _c("th", [_vm._v("Customer Name")])
+            ]
+          )
+        ],
+        1
       )
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
@@ -1845,7 +1851,7 @@ var render = function() {
       on: { gaction: _vm.onAction }
     },
     [
-      _c("th", [_vm._v("Invoice No.")]),
+      _c("th", [_vm._v("Invoice #")]),
       _vm._v(" "),
       _c("th", [_vm._v("Client")]),
       _vm._v(" "),
@@ -2879,7 +2885,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-outline-success-new",
+          attrs: { type: "submit" }
+        },
         [_vm._v("SUBMIT")]
       )
     ])
@@ -2916,17 +2925,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("INVOICE DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("INVOICE DETAIL")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -2982,26 +2997,33 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-news-paper" })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("ATTANDANCE LIST")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("ATTANDANCE LIST")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [_c("AttendanceTable")],
-              1
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "card-body col-sm-12" },
+            [_c("AttendanceTable")],
+            1
+          )
         ])
       ])
     ]
@@ -3039,24 +3061,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("INVOICE LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("INVOICE LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -3065,21 +3089,25 @@ var render = function() {
                     arg: "add__invoice"
                   }
                 ],
-                staticClass: "card-title"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-invoice" }
                   },
                   [_vm._v("Add Invoice")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },
@@ -3129,7 +3157,7 @@ var render = function() {
               _c("div", { staticClass: "page-title-icon" }, [
                 _c("i", {
                   staticClass:
-                    "pe-7s-display1 icon-gradient bg-premium-dark text-danger"
+                    "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
                 })
               ]),
               _vm._v(" "),
@@ -3312,7 +3340,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-lg btn-info",
+                          staticClass: "btn btn-lg btn-outline-alternate-new",
                           attrs: { type: "button" },
                           on: {
                             click: function($event) {
@@ -3765,7 +3793,7 @@ var render = function() {
                             _c(
                               "button",
                               {
-                                staticClass: "btn btn-info",
+                                staticClass: "btn btn-outline-alternate-new",
                                 attrs: { type: "button" },
                                 on: {
                                   click: function($event) {
@@ -4148,7 +4176,7 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-outline-info",
+                      staticClass: "btn btn-outline-alternate-new",
                       attrs: { type: "submit" }
                     },
                     [_vm._v("SUBMIT")]

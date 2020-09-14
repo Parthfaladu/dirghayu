@@ -1,7 +1,7 @@
 <template>
 	<VueDatatable ref="vueDatatable" v-can:view__expense :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
-		<th>Item Name</th>
+		<th>Item</th>
 		<th>Purchase Date</th>
 		<th>Bill No.</th>
         <th>Price</th>
@@ -21,25 +21,25 @@ export default {
 	data() {
 		return {
 			columns: [
-		        {data:'id', name:'id', width:"100px"},
+		        {data:'id', name:'id', width:"40px"},
 		        {data:'item_name', name:'item_name'},
 		        {data:(data) =>{
 					return moment(data.purchase_date).format("DD-MM-YYYY");
-				}, name:'purchase_date'},
-		        {data:'bill_no', name:'bill_no'},
+				}, name:'purchase_date', width:"100px"},
+		        {data:'bill_no', name:'bill_no', width:"120px"},
                 {data:(data) => {
 					return data.price+' '+this.$store.getters['init/currency'];
-				}, name:'price', width:"100px"},
+				}, name:'price', width:"50px"},
 		        {data:(data) => {
 					let actions = "";
 					if(this.$can('update__expense')) {
-						actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+						actions += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
 					}
 					if(this.$can('delete__expense')) {
-						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return actions;
-	          	}, name:'action', width:"150px"}
+	          	}, name:'action', width:"130px"}
 		    ],
 		    url: '/api/v1/expense/list',
 		}

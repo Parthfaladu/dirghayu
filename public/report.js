@@ -57,6 +57,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -77,7 +79,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "20%"
+        width: "15%"
       }, {
         data: function data(_data) {
           if (_data && _data.user) {
@@ -91,7 +93,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         data: function data(_data2) {
           return moment__WEBPACK_IMPORTED_MODULE_3___default()(_data2.date).format("DD-MM-YYYY");
         },
-        name: 'date'
+        name: 'date',
+        width: "20%"
       }, {
         data: function data(_data3) {
           return 'Present';
@@ -229,6 +232,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -248,7 +253,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "100px"
+        width: "40px"
       }, {
         data: function data(_data) {
           return _data.product_name;
@@ -258,17 +263,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         data: function data(_data2) {
           return _data2.user.first_name + ' ' + _data2.user.last_name;
         },
-        name: 'user_id'
+        name: 'user_id',
+        width: "200"
       }, {
         data: 'quantity',
         name: 'quantity',
-        width: "80px"
+        width: "70px"
       }, {
         data: function data(_data3) {
           return _data3.paid_amount + ' ' + _this.$store.getters['init/currency'];
         },
         name: 'paid_amount',
-        width: "120px"
+        width: "60px"
       }],
       url: '/api/v1/productsell/report'
     };
@@ -442,6 +448,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -464,7 +472,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "80px"
+        width: "40px"
       }, {
         data: function data(_data) {
           return _data.user.first_name + ' ' + _data.user.last_name;
@@ -478,11 +486,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return moment__WEBPACK_IMPORTED_MODULE_4___default()(_data2.start_date).format("DD-MM-YYYY");
         },
         name: 'start_date',
-        width: "100px"
+        width: "120px"
       }, {
         data: 'duration',
         name: 'duration',
-        width: "50px"
+        width: "40px"
       }, {
         data: function data(_data3) {
           return moment__WEBPACK_IMPORTED_MODULE_4___default()(_data3.end_date).format("DD-MM-YYYY");
@@ -498,7 +506,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         name: 'paid_amount',
-        width: "80px"
+        width: "50px"
       }, {
         data: function data(_data5) {
           if (_data5.payment.length > 0) {
@@ -509,13 +517,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         },
         name: 'remaining_amount',
-        width: "80px"
+        width: "50px"
       }, {
         data: function data(_data6) {
           return moment__WEBPACK_IMPORTED_MODULE_4___default()(_data6.end_date).isSameOrAfter(moment__WEBPACK_IMPORTED_MODULE_4___default()()) ? 'Active' : 'Expired';
         },
         name: 'status',
-        width: "100px"
+        width: "60px"
       }],
       url: '/api/v1/subscription/report'
     };
@@ -655,9 +663,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -702,9 +707,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -728,9 +730,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SubscriptionReportTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/SubscriptionReportTable */ "./resources/assets/js/components/SubscriptionReportTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
-//
-//
-//
 //
 //
 //
@@ -952,419 +951,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "position-relative form-group row mb-5" }, [
-        _c(
-          "div",
-          { staticClass: "col-sm-2" },
-          [
-            _c(
-              "label",
-              { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-              [_vm._v("From")]
-            ),
-            _vm._v(" "),
-            _c("VueJqueryCalendar", {
-              attrs: {
-                "class-name": "form-control",
-                "date-format": "dd-mm-yy",
-                readonly: true
-              },
-              on: { change: _vm.changeFilter },
-              model: {
-                value: _vm.fromDate,
-                callback: function($$v) {
-                  _vm.fromDate = $$v
-                },
-                expression: "fromDate"
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-sm-2" },
-          [
-            _c(
-              "label",
-              { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-              [_vm._v("To")]
-            ),
-            _vm._v(" "),
-            _c("VueJqueryCalendar", {
-              attrs: {
-                "class-name": "form-control",
-                "date-format": "dd-mm-yy",
-                readonly: true
-              },
-              on: { change: _vm.changeFilter },
-              model: {
-                value: _vm.toDate,
-                callback: function($$v) {
-                  _vm.toDate = $$v
-                },
-                expression: "toDate"
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-2" }, [
-          _vm.$can("add__attendance")
-            ? _c("span", [
-                _c(
-                  "label",
-                  {
-                    staticClass: "mr-3 mt-2",
-                    attrs: { for: "attendanceDate" }
-                  },
-                  [_vm._v("Customer")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.customerId,
-                        expression: "customerId"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    on: {
-                      change: [
-                        function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.customerId = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        },
-                        _vm.changeFilter
-                      ]
-                    }
-                  },
-                  [
-                    _c("option", { domProps: { value: null } }, [
-                      _vm._v("All Customer")
-                    ]),
-                    _vm._v(" "),
-                    _vm._l(_vm.customerList, function(customer) {
-                      return _c(
-                        "option",
-                        {
-                          key: customer.id,
-                          domProps: {
-                            value: customer.id,
-                            selected: customer.id === _vm.customerId
-                          }
-                        },
-                        [
-                          _vm._v(
-                            _vm._s(customer.first_name) +
-                              " " +
-                              _vm._s(customer.last_name) +
-                              " "
-                          )
-                        ]
-                      )
-                    })
-                  ],
-                  2
-                )
-              ])
-            : _vm._e()
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "can",
-                rawName: "v-can:view__attendance",
-                arg: "view__attendance"
-              }
-            ],
-            staticClass: "col-sm-4 offset-2 text-right mt-4"
-          },
-          [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-danger",
-                on: {
-                  click: function($event) {
-                    return _vm.downloadReport()
-                  }
-                }
-              },
-              [_vm._v("Download in PDF")]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
+  return _c("div", [
+    _c("div", { staticClass: "position-relative form-group row mb-5" }, [
       _c(
-        "VueDatatable",
-        { ref: "vueDatatable", attrs: { columns: _vm.columns, url: _vm.url } },
+        "div",
+        { staticClass: "col-sm-2" },
         [
-          _c("th", [_vm._v("Id")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Customer Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Date")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Status")])
-        ]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ProductSellReportTable.vue?vue&type=template&id=7cba8c60&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ProductSellReportTable.vue?vue&type=template&id=7cba8c60& ***!
-  \********************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "position-relative form-group row mb-5" }, [
-        _c("div", { staticClass: "col-sm-2" }, [
           _c(
             "label",
             { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-            [_vm._v("Customer")]
+            [_vm._v("From")]
           ),
           _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.customerId,
-                  expression: "customerId"
-                }
-              ],
-              staticClass: "form-control",
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.customerId = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  _vm.changeFilter
-                ]
-              }
+          _c("VueJqueryCalendar", {
+            attrs: {
+              "class-name": "form-control",
+              "date-format": "dd-mm-yy",
+              readonly: true
             },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("All Customer")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.customerList, function(customer) {
-                return _c(
-                  "option",
-                  {
-                    key: customer.id,
-                    domProps: {
-                      value: customer.id,
-                      selected: customer.id === _vm.customerId
-                    }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(customer.first_name) +
-                        " " +
-                        _vm._s(customer.last_name) +
-                        " "
-                    )
-                  ]
-                )
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-2" }, [
+            on: { change: _vm.changeFilter },
+            model: {
+              value: _vm.fromDate,
+              callback: function($$v) {
+                _vm.fromDate = $$v
+              },
+              expression: "fromDate"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-sm-2" },
+        [
           _c(
             "label",
             { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-            [_vm._v("Product")]
+            [_vm._v("To")]
           ),
           _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.productName,
-                  expression: "productName"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { name: "product_name" },
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.productName = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  _vm.changeFilter
-                ]
-              }
+          _c("VueJqueryCalendar", {
+            attrs: {
+              "class-name": "form-control",
+              "date-format": "dd-mm-yy",
+              readonly: true
             },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("All Product")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.productList, function(product) {
-                return _c(
-                  "option",
-                  {
-                    key: product.id,
-                    domProps: {
-                      value: product.name,
-                      selected: _vm.productName === product.name
-                    }
-                  },
-                  [_vm._v(_vm._s(product.name))]
-                )
-              })
-            ],
-            2
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-4 offset-4 text-right mt-4" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-danger",
-              on: {
-                click: function($event) {
-                  return _vm.downloadReport()
-                }
-              }
-            },
-            [_vm._v("Download in PDF")]
-          )
-        ])
-      ]),
+            on: { change: _vm.changeFilter },
+            model: {
+              value: _vm.toDate,
+              callback: function($$v) {
+                _vm.toDate = $$v
+              },
+              expression: "toDate"
+            }
+          })
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c(
-        "VueDatatable",
-        { ref: "vueDatatable", attrs: { columns: _vm.columns, url: _vm.url } },
-        [
-          _c("th", [_vm._v("Id")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Product")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Customer")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Quantity")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Amount")])
-        ]
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/SubscriptionReportTable.vue?vue&type=template&id=5ca73594&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/SubscriptionReportTable.vue?vue&type=template&id=5ca73594& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "position-relative form-group row mb-5" }, [
-        _c("div", { staticClass: "col-sm-2" }, [
-          _c(
-            "span",
-            {
-              directives: [
-                {
-                  name: "can",
-                  rawName: "v-can:add__subscription",
-                  arg: "add__subscription"
-                }
-              ]
-            },
-            [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _vm.$can("add__attendance")
+          ? _c("span", [
               _c(
                 "label",
                 { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
@@ -1430,180 +1079,541 @@ var render = function() {
                 ],
                 2
               )
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-2" }, [
-          _c(
-            "label",
-            { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-            [_vm._v("Package")]
-          ),
-          _vm._v(" "),
-          _c(
-            "select",
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
             {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.packageName,
-                  expression: "packageName"
-                }
-              ],
-              staticClass: "form-control",
+              name: "can",
+              rawName: "v-can:view__attendance",
+              arg: "view__attendance"
+            }
+          ],
+          staticClass: "col-sm-3 offset-2 text-right mt-4"
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-alternate-new",
               on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.packageName = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  _vm.changeFilter
-                ]
+                click: function($event) {
+                  return _vm.downloadReport()
+                }
               }
             },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("All Package")
-              ]),
-              _vm._v(" "),
-              _vm._l(_vm.packageList, function(singlePackage) {
-                return _c(
-                  "option",
-                  {
-                    key: singlePackage.id,
-                    domProps: {
-                      value: singlePackage.name,
-                      selected: singlePackage.id === _vm.packageName
-                    }
-                  },
-                  [_vm._v(_vm._s(singlePackage.name))]
-                )
-              })
-            ],
-            2
+            [_vm._v("Download in PDF")]
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-sm-2" }, [
-          _c(
-            "label",
-            { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
-            [_vm._v("Status")]
-          ),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.status,
-                  expression: "status"
-                }
-              ],
-              staticClass: "form-control",
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.status = $event.target.multiple
-                      ? $$selectedVal
-                      : $$selectedVal[0]
-                  },
-                  _vm.changeFilter
-                ]
-              }
-            },
-            [
-              _c("option", { domProps: { value: null } }, [
-                _vm._v("All Status")
-              ]),
-              _vm._v(" "),
-              _c("option", { domProps: { value: "active" } }, [
-                _vm._v("Active")
-              ]),
-              _vm._v(" "),
-              _c("option", { domProps: { value: "expired" } }, [
-                _vm._v("Expired")
-              ])
-            ]
-          )
-        ]),
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c(
+          "VueDatatable",
+          {
+            ref: "vueDatatable",
+            attrs: { columns: _vm.columns, url: _vm.url }
+          },
+          [
+            _c("th", [_vm._v("Id")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Customer Name")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Date")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Status")])
+          ]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/ProductSellReportTable.vue?vue&type=template&id=7cba8c60&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/ProductSellReportTable.vue?vue&type=template&id=7cba8c60& ***!
+  \********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "position-relative form-group row mb-5" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c(
+          "label",
+          { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+          [_vm._v("Customer")]
+        ),
         _vm._v(" "),
         _c(
-          "div",
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.customerId,
+                expression: "customerId"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.customerId = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.changeFilter
+              ]
+            }
+          },
+          [
+            _c("option", { domProps: { value: null } }, [
+              _vm._v("All Customer")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.customerList, function(customer) {
+              return _c(
+                "option",
+                {
+                  key: customer.id,
+                  domProps: {
+                    value: customer.id,
+                    selected: customer.id === _vm.customerId
+                  }
+                },
+                [
+                  _vm._v(
+                    _vm._s(customer.first_name) +
+                      " " +
+                      _vm._s(customer.last_name) +
+                      " "
+                  )
+                ]
+              )
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c(
+          "label",
+          { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+          [_vm._v("Product")]
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.productName,
+                expression: "productName"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { name: "product_name" },
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.productName = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.changeFilter
+              ]
+            }
+          },
+          [
+            _c("option", { domProps: { value: null } }, [
+              _vm._v("All Product")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.productList, function(product) {
+              return _c(
+                "option",
+                {
+                  key: product.id,
+                  domProps: {
+                    value: product.name,
+                    selected: _vm.productName === product.name
+                  }
+                },
+                [_vm._v(_vm._s(product.name))]
+              )
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3 offset-3 text-right mt-4" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-outline-alternate-new",
+            on: {
+              click: function($event) {
+                return _vm.downloadReport()
+              }
+            }
+          },
+          [_vm._v("Download in PDF")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c(
+          "VueDatatable",
+          {
+            ref: "vueDatatable",
+            attrs: { columns: _vm.columns, url: _vm.url }
+          },
+          [
+            _c("th", [_vm._v("Id")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Product")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Customer")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Quantity")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Amount")])
+          ]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/assets/js/components/SubscriptionReportTable.vue?vue&type=template&id=5ca73594&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/assets/js/components/SubscriptionReportTable.vue?vue&type=template&id=5ca73594& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "position-relative form-group row mb-5" }, [
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c(
+          "span",
           {
             directives: [
               {
                 name: "can",
-                rawName: "v-can:view__subscription",
-                arg: "view__subscription"
+                rawName: "v-can:add__subscription",
+                arg: "add__subscription"
               }
-            ],
-            staticClass: "col-sm-4 offset-2 text-right mt-4"
+            ]
           },
           [
             _c(
-              "button",
+              "label",
+              { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+              [_vm._v("Customer")]
+            ),
+            _vm._v(" "),
+            _c(
+              "select",
               {
-                staticClass: "btn btn-danger",
-                on: {
-                  click: function($event) {
-                    return _vm.downloadReport()
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.customerId,
+                    expression: "customerId"
                   }
+                ],
+                staticClass: "form-control",
+                on: {
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.customerId = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                    _vm.changeFilter
+                  ]
                 }
               },
-              [_vm._v("Download in PDF")]
+              [
+                _c("option", { domProps: { value: null } }, [
+                  _vm._v("All Customer")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.customerList, function(customer) {
+                  return _c(
+                    "option",
+                    {
+                      key: customer.id,
+                      domProps: {
+                        value: customer.id,
+                        selected: customer.id === _vm.customerId
+                      }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(customer.first_name) +
+                          " " +
+                          _vm._s(customer.last_name) +
+                          " "
+                      )
+                    ]
+                  )
+                })
+              ],
+              2
             )
           ]
         )
       ]),
       _vm._v(" "),
+      _c("div", { staticClass: "col-sm-3" }, [
+        _c(
+          "label",
+          { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+          [_vm._v("Package")]
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.packageName,
+                expression: "packageName"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.packageName = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.changeFilter
+              ]
+            }
+          },
+          [
+            _c("option", { domProps: { value: null } }, [
+              _vm._v("All Package")
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.packageList, function(singlePackage) {
+              return _c(
+                "option",
+                {
+                  key: singlePackage.id,
+                  domProps: {
+                    value: singlePackage.name,
+                    selected: singlePackage.id === _vm.packageName
+                  }
+                },
+                [_vm._v(_vm._s(singlePackage.name))]
+              )
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-2" }, [
+        _c(
+          "label",
+          { staticClass: "mr-3 mt-2", attrs: { for: "attendanceDate" } },
+          [_vm._v("Status")]
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.status,
+                expression: "status"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: [
+                function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.status = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                },
+                _vm.changeFilter
+              ]
+            }
+          },
+          [
+            _c("option", { domProps: { value: null } }, [_vm._v("All Status")]),
+            _vm._v(" "),
+            _c("option", { domProps: { value: "active" } }, [_vm._v("Active")]),
+            _vm._v(" "),
+            _c("option", { domProps: { value: "expired" } }, [
+              _vm._v("Expired")
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
       _c(
-        "VueDatatable",
-        { ref: "vueDatatable", attrs: { columns: _vm.columns, url: _vm.url } },
+        "div",
+        {
+          directives: [
+            {
+              name: "can",
+              rawName: "v-can:view__subscription",
+              arg: "view__subscription"
+            }
+          ],
+          staticClass: "col-sm-3 offset-1 text-right mt-4"
+        },
         [
-          _c("th", [_vm._v("Id")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Customer")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Package")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Start Date")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Duration(In Month)")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("End Date")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Paid Amount")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Remaining Amount")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Status")])
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-alternate-new",
+              on: {
+                click: function($event) {
+                  return _vm.downloadReport()
+                }
+              }
+            },
+            [_vm._v("Download in PDF")]
+          )
         ]
       )
-    ],
-    1
-  )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "table-responsive" },
+      [
+        _c(
+          "VueDatatable",
+          {
+            ref: "vueDatatable",
+            attrs: { columns: _vm.columns, url: _vm.url }
+          },
+          [
+            _c("th", [_vm._v("Id")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Customer")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Package")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Start Date")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Duration")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("End Date")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Paid")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Remaining")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Status")])
+          ]
+        )
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1641,29 +1651,33 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-usb icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("ATTANDANCE REPORT")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-news-paper icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("ATTANDANCE REPORT")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [_c("AttendanceReportTable")],
-              1
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "card-body col-sm-12" },
+            [_c("AttendanceReportTable")],
+            1
+          )
         ])
       ])
     ]
@@ -1705,29 +1719,33 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-usb icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("PRODUCT SELL REPORT")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-shopbag icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("PRODUCT SELL REPORT")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [_c("ProductSellReportTable")],
-              1
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "card-body col-sm-12" },
+            [_c("ProductSellReportTable")],
+            1
+          )
         ])
       ])
     ]
@@ -1769,29 +1787,33 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-usb icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("SUBSCRIPTION REPORT")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-bell icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("SUBSCRIPTION REPORT")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
-            _c(
-              "div",
-              { staticClass: "table-responsive" },
-              [_c("SubscriptionReportTable")],
-              1
-            )
-          ])
+          _c(
+            "div",
+            { staticClass: "card-body col-sm-12" },
+            [_c("SubscriptionReportTable")],
+            1
+          )
         ])
       ])
     ]

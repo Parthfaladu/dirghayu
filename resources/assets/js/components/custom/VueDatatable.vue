@@ -53,6 +53,12 @@ export default {
 	mounted() {
 		var that = this;
 		this.datatable = $(this.$el).DataTable({
+			"language": {
+    			"paginate": {
+					"previous": "<i class='fas fa-angle-left'></i>",
+					"next": "<i class='fas fa-angle-right'></i>"
+    			}
+  			},
 		    "paging": true,
 		    "lengthChange": this.lengthChange,
 		    "searching": this.searching,

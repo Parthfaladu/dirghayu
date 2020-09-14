@@ -53,7 +53,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "100px"
+        width: "40px"
       }, {
         data: function data(_data) {
           return _data.user.first_name + ' ' + _data.user.last_name;
@@ -67,11 +67,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return moment__WEBPACK_IMPORTED_MODULE_4___default()(_data2.start_date).format("DD-MM-YYYY");
         },
         name: 'start_date',
-        width: "100px"
+        width: "110px"
       }, {
         data: 'duration',
         name: 'duration',
-        width: "80px"
+        width: "20px"
       }, {
         data: function data(_data3) {
           return moment__WEBPACK_IMPORTED_MODULE_4___default()(_data3.end_date).format("DD-MM-YYYY");
@@ -104,13 +104,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           var actions = "";
 
           if (_this.$can('delete__subscription')) {
-            actions += "<button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data6.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+            actions += "<button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata=" + _data6.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
           }
 
           return actions;
         },
         name: 'action',
-        width: "100px"
+        width: "80px"
       }],
       url: '/api/v1/subscription/list'
     };
@@ -536,7 +536,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -560,6 +559,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SubscriptionTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/SubscriptionTable */ "./resources/assets/js/components/SubscriptionTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
+//
 //
 //
 //
@@ -637,13 +639,13 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Start Date")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Duration(In Month)")]),
+      _c("th", [_vm._v("Duration")]),
       _vm._v(" "),
       _c("th", [_vm._v("End Date")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Paid Amount")]),
+      _c("th", [_vm._v("Paid")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Remaining Amount")]),
+      _c("th", [_vm._v("Remaining")]),
       _vm._v(" "),
       _c(
         "th",
@@ -1139,7 +1141,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-outline-success-new",
+          attrs: { type: "submit" }
+        },
         [_vm._v("SUBMIT")]
       )
     ])
@@ -1180,17 +1185,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-bell icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("SUBSCRIPTION DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-bell icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("SUBSCRIPTION DETAIL")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -1246,24 +1257,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-bell icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("SUBSCRIPTION LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-bell icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("SUBSCRIPTION LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -1272,21 +1285,25 @@ var render = function() {
                     arg: "add__subscription"
                   }
                 ],
-                staticClass: "card-title"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-subscription" }
                   },
                   [_vm._v("Add Subscription")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },

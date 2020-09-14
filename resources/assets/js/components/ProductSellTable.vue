@@ -20,7 +20,7 @@ export default {
 	data() {
 		return {
 			columns: [
-				{data:'id', name:'id', width:"100px"},
+				{data:'id', name:'id', width:"40px"},
 				{data:function(data){
 					return data.product_name;
 				}, name:'product_name'},
@@ -30,14 +30,14 @@ export default {
 				{data:'quantity', name:'quantity', width:"80px"},
 				{data:(data)=>{
 					return data.paid_amount+' '+this.$store.getters['init/currency'];
-				}, name:'paid_amount', width:"120px"},
+				}, name:'paid_amount', width:"80px"},
 				{data:(data) => {
 					let actions = "";
 					if(this.$can('delete__product_sell')) {
-						actions += "<button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += "<button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return actions;
-				}, name:'action', width:"100px"}
+				}, name:'action', width:"130px"}
 			],
 			url: '/api/v1/productsell/list',
 		}

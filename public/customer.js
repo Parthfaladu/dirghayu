@@ -32,9 +32,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 
 
@@ -50,7 +47,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "100px"
+        width: "40px"
       }, {
         data: function data(_data) {
           var customer = '';
@@ -71,25 +68,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         name: 'phone',
         width: "100px"
       }, {
-        data: 'gender',
-        name: 'gender',
-        width: "100px"
-      }, {
         data: function data(_data2) {
           return _data2.customer ? _data2.customer.city : null;
         },
         name: 'city',
-        width: "120px"
+        width: "100px"
       }, {
         data: function data(_data3) {
           var actions = "";
 
           if (_this.$can('update__customer')) {
-            actions += "<button class='btn btn-outline-alternate mr-2' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+            actions += "<button class='btn btn-outline-primary-new mr-2' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
           }
 
           if (_this.$can('delete__customer')) {
-            actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+            actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
           }
 
           return actions;
@@ -186,6 +179,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_CustomerTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/CustomerTable */ "./resources/assets/js/components/CustomerTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
+//
 //
 //
 //
@@ -692,54 +688,42 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
+    "VueDatatable",
     {
       directives: [
         { name: "can", rawName: "v-can:view__customer", arg: "view__customer" }
-      ]
+      ],
+      ref: "vueDatatable",
+      attrs: { columns: _vm.columns, url: _vm.url },
+      on: { gaction: _vm.onAction }
     },
     [
+      _c("th", [_vm._v("Id")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Email")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Phone")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("City")]),
+      _vm._v(" "),
       _c(
-        "VueDatatable",
+        "th",
         {
-          ref: "vueDatatable",
-          attrs: { columns: _vm.columns, url: _vm.url },
-          on: { gaction: _vm.onAction }
-        },
-        [
-          _c("th", [_vm._v("Id")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Name")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Email")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Phone")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("Gender")]),
-          _vm._v(" "),
-          _c("th", [_vm._v("City")]),
-          _vm._v(" "),
-          _c(
-            "th",
+          directives: [
             {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value:
-                    _vm.$can("update__customer") ||
-                    _vm.$can("delete__customer"),
-                  expression:
-                    "$can('update__customer') || $can('delete__customer')"
-                }
-              ]
-            },
-            [_vm._v("Action")]
-          )
-        ]
+              name: "show",
+              rawName: "v-show",
+              value:
+                _vm.$can("update__customer") || _vm.$can("delete__customer"),
+              expression: "$can('update__customer') || $can('delete__customer')"
+            }
+          ]
+        },
+        [_vm._v("Action")]
       )
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
@@ -774,24 +758,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-add-user icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("CUSTOMER LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-add-user icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("CUSTOMER LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -800,21 +786,25 @@ var render = function() {
                     arg: "add__customer"
                   }
                 ],
-                staticClass: "card-title"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-customer" }
                   },
                   [_vm._v("Add Customer")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },
@@ -1246,7 +1236,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-info",
+                          staticClass: "btn btn-outline-alternate-new",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -1927,7 +1917,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-outline-info",
+                    staticClass: "btn btn-outline-success-new",
                     staticStyle: { width: "23%" },
                     attrs: { type: "submit" }
                   },

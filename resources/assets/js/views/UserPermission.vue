@@ -1,73 +1,72 @@
 <template>
 	<DashboardPage v-can:permission_manage>
-		<div class="app-main__inner">
-		<div class="app-page-title">
-	    	<div class="page-title-wrapper">
-	            <div class="page-title-heading">
-	                <div class="page-title-icon">
-	                    <i class="metismenu-icon pe-7s-tools">
-	                    </i>
-	                </div>
-	                <div>USER PERMISSIONS</div>
-	            </div>    
-	        </div>
-	    </div>            
-	    <div class="main-card mb-3 card">
-	        <div class="card-body">
-	            <div id="accordion" class="accordion-wrapper mb-3">
-					<div v-if="manager" class="card">
-						<div :id="'managercard'" class="card-header">
-							<button type="button" data-toggle="collapse" :data-target="'#collapseOne'" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-								<h5 class="m-0 p-0"><i class="fas fa-chevron-down"></i> {{manager.name}}</h5>
-							</button>
+		<div class="app-main__inner">   
+			<div class="app-page-title">
+                <div class="page-title-wrapper d-flex">
+                    <div class="page-title-heading mr-auto align-content-start">
+                        <div class="page-title-icon">
+                            <i class="pe-7s-tools icon-gradient bg-premium-dark text-danger"></i>
+                        </div>
+                        <div class="heading-font-weight">USER PERMISSIONS</div>
+                    </div>
+                </div>
+        	</div>          
+			<div class="main-card mb-3 card">
+				<div class="card-body">
+					<div id="accordion" class="accordion-wrapper mb-3">
+						<div v-if="manager" class="card">
+							<div :id="'managercard'" class="card-header">
+								<button type="button" data-toggle="collapse" :data-target="'#collapseOne'" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
+									<h5 class="m-0 p-0"><i class="fas fa-chevron-down"></i> {{manager.name}}</h5>
+								</button>
+							</div>
+							<div :data-parent="'#managercard'" :id="'collapseOne'" aria-labelledby="headingOne" class="collapse show">
+								<div class="card-body">
+									<div class="row">
+										<div v-for="(permission, permissionIndex) in permissionList" :key="permissionIndex" class="col-sm-4 mb-3">
+											<label><input v-model="managerPermissionIds" type="checkbox" class="mr-1" :value="permission.id" /> {{permission.name}}</label>
+										</div>
+									</div>			
+								</div>
+							</div>
 						</div>
-						<div :data-parent="'#managercard'" :id="'collapseOne'" aria-labelledby="headingOne" class="collapse show">
-							<div class="card-body">
-								<div class="row">
-									<div v-for="(permission, permissionIndex) in permissionList" :key="permissionIndex" class="col-sm-4 mb-3">
-										<label><input v-model="managerPermissionIds" type="checkbox" class="mr-1" :value="permission.id" /> {{permission.name}}</label>
-									</div>
-								</div>			
+						<div v-if="staff" class="card">
+							<div :id="'cardstaff'" class="card-header">
+								<button type="button" data-toggle="collapse" :data-target="'#collapseSec'" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
+									<h5 class="m-0 p-0"><i class="fas fa-chevron-down"></i> {{staff.name}}</h5>
+								</button>
+							</div>
+							<div :data-parent="'#cardstaff'" :id="'collapseSec'" aria-labelledby="headingOne" class="collapse">
+								<div class="card-body">
+									<div class="row">
+										<div v-for="(permission, permissionIndex) in permissionList" :key="permissionIndex" class="col-sm-4 mb-3">
+											<label><input type="checkbox" class="mr-1" v-model="staffPermissionIds" :value="permission.id" /> {{permission.name}}</label>
+										</div>
+									</div>			
+								</div>
+							</div>
+						</div>
+						<div v-if="customer" class="card">
+							<div :id="'cardcustomer'" class="card-header">
+								<button type="button" data-toggle="collapse" :data-target="'#collapseThird'" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
+									<h5 class="m-0 p-0"><i class="fas fa-chevron-down"></i> {{customer.name}}</h5>
+								</button>
+							</div>
+							<div :data-parent="'#cardcustomer'" :id="'collapseThird'" aria-labelledby="headingOne" class="collapse">
+								<div class="card-body">
+									<div class="row">
+										<div v-for="(permission, permissionIndex) in permissionList" :key="permissionIndex" class="col-sm-4 mb-3">
+											<label><input type="checkbox" class="mr-1" v-model="customerPermissionIds" :value="permission.id" /> {{permission.name}}</label>
+										</div>
+									</div>			
+								</div>
 							</div>
 						</div>
 					</div>
-					<div v-if="staff" class="card">
-						<div :id="'cardstaff'" class="card-header">
-							<button type="button" data-toggle="collapse" :data-target="'#collapseSec'" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-								<h5 class="m-0 p-0"><i class="fas fa-chevron-down"></i> {{staff.name}}</h5>
-							</button>
-						</div>
-						<div :data-parent="'#cardstaff'" :id="'collapseSec'" aria-labelledby="headingOne" class="collapse">
-							<div class="card-body">
-								<div class="row">
-									<div v-for="(permission, permissionIndex) in permissionList" :key="permissionIndex" class="col-sm-4 mb-3">
-										<label><input type="checkbox" class="mr-1" v-model="staffPermissionIds" :value="permission.id" /> {{permission.name}}</label>
-									</div>
-								</div>			
-							</div>
-						</div>
-					</div>
-					<div v-if="customer" class="card">
-						<div :id="'cardcustomer'" class="card-header">
-							<button type="button" data-toggle="collapse" :data-target="'#collapseThird'" aria-expanded="false" aria-controls="collapseOne" class="text-left m-0 p-0 btn btn-link btn-block collapsed">
-								<h5 class="m-0 p-0"><i class="fas fa-chevron-down"></i> {{customer.name}}</h5>
-							</button>
-						</div>
-						<div :data-parent="'#cardcustomer'" :id="'collapseThird'" aria-labelledby="headingOne" class="collapse">
-							<div class="card-body">
-								<div class="row">
-									<div v-for="(permission, permissionIndex) in permissionList" :key="permissionIndex" class="col-sm-4 mb-3">
-										<label><input type="checkbox" class="mr-1" v-model="customerPermissionIds" :value="permission.id" /> {{permission.name}}</label>
-									</div>
-								</div>			
-							</div>
-						</div>
-					</div>
+					<center><button class="btn btn-outline-success-new btn-lg mt-3" @click="submitForm" :disabled="isSubmit">Update Permissions</button></center>
 				</div>
-				<center><button class="btn btn-success btn-lg mt-3" @click="submitForm" :disabled="isSubmit">Update Permissions</button></center>
-	        </div>
-	    </div>
-	</div>
+			</div>
+		</div>
 	</DashboardPage>
 </template>
 <script>

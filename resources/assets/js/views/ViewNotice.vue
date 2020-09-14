@@ -2,8 +2,8 @@
 	<DashboardPage v-can:view__notice>
 		<div class="app-main__inner">
 		<div class="app-page-title">
-	    	<div class="page-title-wrapper">
-	            <div class="page-title-heading">
+	    	<div class="page-title-wrapper d-flex">
+	            <div class="page-title-heading mr-auto align-content-start">
 	                <div class="page-title-icon">
 	                    <i class="pe-7s-note icon-gradient bg-premium-dark text-danger">
 	                    </i>

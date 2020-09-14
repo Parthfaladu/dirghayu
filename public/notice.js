@@ -47,7 +47,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "100px"
+        width: "40px"
       }, {
         data: 'title',
         name: 'title'
@@ -55,32 +55,34 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         data: function data(_data) {
           return _this.getRoleName(_data.role_id);
         },
-        name: 'role_id'
+        name: 'role_id',
+        width: "120px"
       }, {
         data: function data(_data2) {
           return _data2.userfrom.first_name + ' ' + _data2.userfrom.last_name;
         },
-        name: 'from_id'
+        name: 'from_id',
+        width: "120px"
       }, {
         data: function data(_data3) {
           var actions = "";
 
           if (_this.$can('view__notice')) {
-            actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
+            actions += "<button class='btn btn-outline-info-new' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
           }
 
           if (_this.$can('update__notice')) {
-            actions += " <button class='btn btn-outline-alternate' data-g-action='edit' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+            actions += " <button class='btn btn-outline-primary-new' data-g-action='edit' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
           }
 
           if (_this.$can('delete__notice')) {
-            actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+            actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
           }
 
           return actions;
         },
         name: 'action',
-        width: "280px"
+        width: "220px"
       }],
       url: '/api/v1/notice/list'
     };
@@ -472,7 +474,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -496,6 +497,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_NoticeTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/NoticeTable */ "./resources/assets/js/components/NoticeTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
+//
 //
 //
 //
@@ -1037,7 +1041,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-outline-success-new",
+          attrs: { type: "submit" }
+        },
         [_vm._v("SUBMIT")]
       )
     ])
@@ -1074,17 +1081,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-note icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("NOTICE DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-note icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("NOTICE DETAIL")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -1136,24 +1149,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-note icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("NOTICE LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-note icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("NOTICE LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -1162,21 +1177,25 @@ var render = function() {
                     arg: "add__notice"
                   }
                 ],
-                staticClass: "card-title"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-notice" }
                   },
                   [_vm._v("Add Notice")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },
@@ -1221,17 +1240,21 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-note icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("NOTICE DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-note icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", [_vm._v("NOTICE DETAIL")])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),

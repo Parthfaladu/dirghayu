@@ -2,13 +2,13 @@
 	<DashboardPage>
 		<div class="app-main__inner">
 		<div class="app-page-title">
-	    	<div class="page-title-wrapper">
-	            <div class="page-title-heading">
+	    	<div class="page-title-wrapper d-flex">
+	            <div class="page-title-heading mr-auto align-content-start">
 	                <div class="page-title-icon">
 	                    <i class="metismenu-icon pe-7s-tools">
 	                    </i>
 	                </div>
-	                <div>User Profile</div>
+	                <div class="heading-font-weight">USER PROFILE</div>
 	            </div>    
 	        </div>
 	    </div>            
@@ -33,7 +33,7 @@
                     </div>
                     <div class="position-relative form-group">
                         <label></label>
-                        <button class="btn btn-info" @click.prevent="$refs.profilePath.click()">Upload Image</button>
+                        <button class="btn btn-outline-alternate-new" @click.prevent="$refs.profilePath.click()">Upload Image</button>
                     </div>
                     <div class="position-relative form-group">
                         <label for="title">Email address</label>
@@ -61,7 +61,7 @@
                         <span v-show="errors.has('address')" class="text-danger">{{ errors.first('address') }}</span>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-outline-info" type="submit">SUBMIT</button>
+                        <button class="btn btn-outline-success-new" type="submit">SUBMIT</button>
                     </div>
                 </form>
 	        </div>

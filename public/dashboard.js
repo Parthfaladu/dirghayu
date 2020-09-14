@@ -454,7 +454,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".card-body[data-v-361a3c51] {\n  padding: 1.25rem !important;\n}", ""]);
+exports.push([module.i, ".card-body[data-v-361a3c51] {\n  padding: 1.25rem !important;\n}\n.card-enquiry-color[data-v-361a3c51] {\n  background: #FFE2E5;\n  color: #F64E60;\n}\n.card-product-sold-color[data-v-361a3c51] {\n  background: #FFF4DE;\n  color: #FFA800;\n}\n.card-staff-member[data-v-361a3c51] {\n  background: #EEE5FF;\n  color: #8950FC;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -515,7 +515,7 @@ var render = function() {
               _c("i", { staticClass: "pe-7s-home icon-gradient bg-mean-fruit" })
             ]),
             _vm._v(" "),
-            _c("div", [
+            _c("div", { staticClass: "dashboard-head-font" }, [
               _vm._v("Dirghayu Fitness Factory\n                            "),
               _c("div", { staticClass: "page-title-subheading" })
             ])
@@ -690,81 +690,90 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-md-6 col-xl-4" }, [
-                _c("div", { staticClass: "card mb-3 widget-content" }, [
-                  _c("div", { staticClass: "widget-content-outer" }, [
-                    _c("div", { staticClass: "widget-content-wrapper" }, [
-                      _c("div", { staticClass: "widget-content-left" }, [
-                        _c("div", { staticClass: "widget-heading" }, [
-                          _vm._v("Total Staff Members")
+                _c(
+                  "div",
+                  { staticClass: "card mb-3 widget-content card-staff-member" },
+                  [
+                    _c("div", { staticClass: "widget-content-outer" }, [
+                      _c("div", { staticClass: "widget-content-wrapper" }, [
+                        _c("div", { staticClass: "widget-content-left" }, [
+                          _c("div", { staticClass: "widget-heading" }, [
+                            _vm._v("Total Staff Members")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "widget-subheading" })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "widget-subheading" })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "widget-content-right" }, [
-                        _c(
-                          "div",
-                          { staticClass: "widget-numbers text-success" },
-                          [_vm._v(_vm._s(_vm.totalStaffmember))]
-                        )
+                        _c("div", { staticClass: "widget-content-right" }, [
+                          _c("div", { staticClass: "widget-numbers" }, [
+                            _vm._v(_vm._s(_vm.totalStaffmember))
+                          ])
+                        ])
                       ])
                     ])
-                  ])
-                ])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 col-xl-4" }, [
-                _c("div", { staticClass: "card mb-3 widget-content" }, [
-                  _c("div", { staticClass: "widget-content-outer" }, [
-                    _c("div", { staticClass: "widget-content-wrapper" }, [
-                      _c("div", { staticClass: "widget-content-left" }, [
-                        _c("div", { staticClass: "widget-heading" }, [
-                          _vm._v("Total Products Sold")
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "card mb-3 widget-content card-product-sold-color"
+                  },
+                  [
+                    _c("div", { staticClass: "widget-content-outer" }, [
+                      _c("div", { staticClass: "widget-content-wrapper" }, [
+                        _c("div", { staticClass: "widget-content-left" }, [
+                          _c("div", { staticClass: "widget-heading" }, [
+                            _vm._v("Total Products Sold")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "widget-subheading" })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "widget-subheading" })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "widget-content-right" }, [
-                        _c(
-                          "div",
-                          { staticClass: "widget-numbers text-warning" },
-                          [
+                        _c("div", { staticClass: "widget-content-right" }, [
+                          _c("div", { staticClass: "widget-numbers" }, [
                             _vm._v(
                               _vm._s(_vm.$store.getters["init/currency"]) +
                                 " " +
                                 _vm._s(_vm.totalProductSell)
                             )
-                          ]
-                        )
+                          ])
+                        ])
                       ])
                     ])
-                  ])
-                ])
+                  ]
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 col-xl-4" }, [
-                _c("div", { staticClass: "card mb-3 widget-content" }, [
-                  _c("div", { staticClass: "widget-content-outer" }, [
-                    _c("div", { staticClass: "widget-content-wrapper" }, [
-                      _c("div", { staticClass: "widget-content-left" }, [
-                        _c("div", { staticClass: "widget-heading" }, [
-                          _vm._v("Total Enquiry")
+                _c(
+                  "div",
+                  {
+                    staticClass: "card mb-3 widget-content card-enquiry-color"
+                  },
+                  [
+                    _c("div", { staticClass: "widget-content-outer" }, [
+                      _c("div", { staticClass: "widget-content-wrapper" }, [
+                        _c("div", { staticClass: "widget-content-left" }, [
+                          _c("div", { staticClass: "widget-heading" }, [
+                            _vm._v("Total Enquiry")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "widget-subheading" })
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "widget-subheading" })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "widget-content-right" }, [
-                        _c(
-                          "div",
-                          { staticClass: "widget-numbers text-danger" },
-                          [_vm._v(_vm._s(_vm.totalEnquiry))]
-                        )
+                        _c("div", { staticClass: "widget-content-right" }, [
+                          _c("div", { staticClass: "widget-numbers" }, [
+                            _vm._v(_vm._s(_vm.totalEnquiry))
+                          ])
+                        ])
                       ])
                     ])
-                  ])
-                ])
+                  ]
+                )
               ])
             ])
           ])

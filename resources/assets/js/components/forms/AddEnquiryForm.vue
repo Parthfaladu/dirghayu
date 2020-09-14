@@ -118,7 +118,7 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-outline-info" 
+            <button class="btn btn-outline-success-new" 
             type="submit">
                 SUBMIT
             </button>

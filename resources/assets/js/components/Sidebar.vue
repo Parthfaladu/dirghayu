@@ -29,7 +29,8 @@
                     </span>
                 </button>
             </span>
-        </div>    <div class="scrollbar-sidebar">
+        </div>    
+        <div class="scrollbar-sidebar">
             <div class="app-sidebar__inner">
                 <ul class="vertical-nav-menu mt-4">
                     <li>
@@ -116,7 +117,7 @@
                             Report
                             <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                         </a>
-                        <ul v-if="showReport">
+                        <ul v-if="showReport || $route.name === 'attendanceReport' || $route.name === 'subscriptionReport' || $route.name === 'productSellReport'">
                             <li v-if="$can('view__attendance')">
                                 <router-link to="/attendance-report">
                                     <i class="metismenu-icon pe-7s-news-paper"></i>

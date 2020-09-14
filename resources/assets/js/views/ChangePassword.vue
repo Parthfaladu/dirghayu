@@ -8,7 +8,7 @@
 	                    <i class="metismenu-icon pe-7s-tools">
 	                    </i>
 	                </div>
-	                <div>Change Password</div>
+	                <div class="heading-font-weight">CHANGE PASSWORD</div>
 	            </div>    
 	        </div>
 	    </div>            
@@ -32,7 +32,7 @@
                         <span v-show="errors.has('confirm_password')" class="text-danger">{{ errors.first('confirm_password') }}</span>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-outline-info" type="submit">SUBMIT</button>
+                        <button class="btn btn-outline-success-new" type="submit">SUBMIT</button>
                     </div>
                 </form>
 	        </div>

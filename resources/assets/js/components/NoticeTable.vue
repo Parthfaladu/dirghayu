@@ -21,27 +21,27 @@ export default {
 		return {
 			userRoleList: null,
 			columns: [
-		        {data:'id', name:'id', width:"100px"},
+		        {data:'id', name:'id', width:"40px"},
 		        {data:'title', name:'title'},
 		        {data:(data) => {
 		        	return this.getRoleName(data.role_id);
-		        }, name:'role_id'},
+		        }, name:'role_id', width:"120px"},
 		        {data:function(data){
 		        	return data.userfrom.first_name+' '+data.userfrom.last_name;
-		        }, name:'from_id'},
+		        }, name:'from_id', width:"120px"},
 		        {data:(data) => {
 					let actions = "";
 					if(this.$can('view__notice')) {
-						actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
+						actions += "<button class='btn btn-outline-info-new' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
 					}
 					if(this.$can('update__notice')) {
-						actions += " <button class='btn btn-outline-alternate' data-g-action='edit' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+						actions += " <button class='btn btn-outline-primary-new' data-g-action='edit' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
 					}
 					if(this.$can('delete__notice')) {
-						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return actions;
-	          	}, name:'action', width:"280px"}
+	          	}, name:'action', width:"220px"}
 		    ],
 		    url: '/api/v1/notice/list',
 		}

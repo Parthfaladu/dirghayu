@@ -4,7 +4,6 @@
 		<th>Name</th>
 		<th>Price</th>
 		<th>Duration</th>
-		<th>Detail</th>
 		<th v-show="$can('update__package') || $can('delete__package')">Action</th>
     </VueDatatable>
 </template>
@@ -20,7 +19,7 @@ export default {
 	data() {
 		return {
 			columns: [
-				{data:'id', name:'id' , width:"100px"},
+				{data:'id', name:'id' , width:"40px"},
 				{data:function(data){
 					let packageName = '';
 					if(data.image) {
@@ -33,14 +32,13 @@ export default {
 					return data.price+' '+this.$store.getters['init/currency'];
 				}, name:'price', width:"80px"},
 		        {data:'duration', name:'duration', width:"50px"},
-		        {data:'detail', name:'detail'},
 		        {data:(data) => {
 					let actions = "";
 					if(this.$can('update__package')) {
-						actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+						actions += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
 					}
 					if(this.$can('delete__package')) {
-						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return actions;
 	          	}, name:'action', width:"150px"}

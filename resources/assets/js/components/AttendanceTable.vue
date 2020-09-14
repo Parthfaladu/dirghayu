@@ -1,15 +1,17 @@
 <template>
 <div v-can:view__attendance>
-	<div class="position-relative form-group row ml-1 mb-5">
+	<span class="position-relative form-group row ml-1 mb-5" >
 		<label for="attendanceDate" class="mr-3 mt-2">Date</label>
 		<VueJqueryCalendar v-model="attendanceDate" :class-name="'form-control'" date-format="dd-mm-yy" :readonly="true" @change="changeDate" />
-	</div>
+	</span>
+	<div class="table-responsive">
     <VueDatatable ref="vueDatatable" :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
 		<th v-show="$can('update__attendance')">Action</th>
 		<th v-show="!$can('update__attendance')">Status</th>
 		<th>Customer Name</th>	
 	</VueDatatable>
+	</div>
 </div>
 </template>
 <script>
@@ -33,9 +35,9 @@ export default {
 					if(this.$can('update__attendance')) {
 						if(data.attendance.length > 0)
 						{
-							return "<button class='btn btn-outline-success' data-g-action='uncheck' data-g-actiondata="+data.id+"><i class='fas fa-lock'></i> <span class='button-text'>Checked In</span></button>"
+							return "<button class='btn btn-outline-success-new' data-g-action='uncheck' data-g-actiondata="+data.id+"><i class='fas fa-lock'></i> <span class='button-text'>Checked In</span></button>"
 						}else{
-							return "<button class='btn btn-outline-danger' data-g-action='check' data-g-actiondata="+data.id+"><i class='fas fa-unlock'></i> <span class='button-text'>Check In</span></button>";
+							return "<button class='btn btn-outline-danger-new' data-g-action='check' data-g-actiondata="+data.id+"><i class='fas fa-unlock'></i> <span class='button-text'>Check In</span></button>";
 						}
 					}
 					if(data.attendance.length > 0)

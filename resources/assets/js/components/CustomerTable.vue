@@ -1,15 +1,12 @@
 <template>
-	<div v-can:view__customer>
-		<VueDatatable ref="vueDatatable" :columns="columns" :url="url" @gaction="onAction">
-			<th>Id</th>
-			<th>Name</th>
-			<th>Email</th>
-			<th>Phone</th>
-			<th>Gender</th>
-			<th>City</th>
-			<th v-show="$can('update__customer') || $can('delete__customer')">Action</th>
-		</VueDatatable>
-	</div>
+	<VueDatatable  ref="vueDatatable" v-can:view__customer :columns="columns" :url="url" @gaction="onAction" >
+		<th>Id</th>
+		<th>Name</th>
+		<th>Email</th>
+		<th>Phone</th>
+		<th>City</th>
+		<th v-show="$can('update__customer') || $can('delete__customer')">Action</th>
+	</VueDatatable>
 </template>
 <script>
 import axios from 'axios';
@@ -24,7 +21,7 @@ export default {
 	data() {
 		return {
 			columns: [
-				{data:'id', name:'id', width:"100px"},
+				{data:'id', name:'id', width:"40px"},
 				{data:function(data){
 					let customer = '';
 					if(data.photo_url) {
@@ -35,17 +32,16 @@ export default {
 				}, name:'name'},
 				{data:'email', name:'email'},
 				{data:'phone', name:'phone', width:"100px"},
-				{data:'gender', name:'gender', width:"100px"},
 				{data:function(data){
 					return data.customer ? data.customer.city : null;
-				}, name:'city', width:"120px"},
+				}, name:'city', width:"100px"},
 				{data:(data) => {
 					let actions = "";
 					if(this.$can('update__customer')) {
-						actions += "<button class='btn btn-outline-alternate mr-2' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
+						actions += "<button class='btn btn-outline-primary-new mr-2' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button>";
 					}
 					if(this.$can('delete__customer')) {
-						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return  actions;
 				}, name:'action', width:"150px"}

@@ -1,17 +1,16 @@
 <template>
 	<DashboardPage>
 		<div class="app-main__inner">
-		<div class="app-page-title">
-	    	<div class="page-title-wrapper">
-	            <div class="page-title-heading">
-	                <div class="page-title-icon">
-	                    <i class="pe-7s-usb icon-gradient bg-premium-dark text-danger">
-	                    </i>
-	                </div>
-	                <div>BRANCH DETAIL</div>
-	            </div>    
-	        </div>
-	    </div>            
+			<div class="app-page-title">
+                <div class="page-title-wrapper d-flex">
+                    <div class="page-title-heading mr-auto align-content-start">
+                        <div class="page-title-icon">
+                            <i class="pe-7s-gift icon-gradient bg-premium-dark text-danger"></i>
+                        </div>
+                        <div class="heading-font-weight">BRANCH DETAIL</div>
+                    </div>
+                </div>     
+			</div>
 	    <div class="main-card mb-3 card">
 	        <div class="card-body col-sm-6 offset-sm-3">
 	            <h5 class="card-title"></h5>

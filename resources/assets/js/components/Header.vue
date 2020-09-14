@@ -3,6 +3,16 @@
             <div class="app-header__logo">
                 <!-- <div v-if="logoUrl"><img :src="logoUrl" height="53px"></div> -->
                 <div><img src="/images/dirghayu_logo.svg" height="53px"></div>
+            
+                <!-- <div class="header__pane ml-auto">
+                    <div>
+                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div> -->
             </div>
             <div class="app-header__mobile-menu">
                 <div>
@@ -26,6 +36,7 @@
                 <div class="app-header-left">
                 </div>
                 <div class="app-header-right">
+                    <QuickMenu></QuickMenu>
                     <div class="header-btn-lg pr-0">
                         <div class="widget-content p-0">
                             <div class="widget-content-wrapper">
@@ -47,18 +58,23 @@
                                     </div>
                                 </div>
                                 <!-- <div class="widget-content-right header-user-info ml-3">
-                                    <button class="btn btn-outline-primary" @click="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+                                    <button class="btn btn-outline-primary-new" @click="logout()"><i class="fas fa-sign-out-alt"></i> Log Out</button>
                                 </div> -->
                             </div>
                         </div>
-                    </div>        
+                    </div>
+                    
                 </div>
             </div>
         </div> 
 </template>
 <script>
+import QuickMenu from '@components/QuickMenu.vue';
 export default {
     name: 'Header',
+    components: {
+        QuickMenu
+    },
     data() {
         return {
             logoUrl: null,

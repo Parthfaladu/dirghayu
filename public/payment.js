@@ -32,7 +32,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -47,13 +46,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "80px"
+        width: "40px"
       }, {
         data: function data(_data) {
           return _data.subscription.user.first_name + ' ' + _data.subscription.user.last_name;
         },
         name: 'subscription_id',
-        width: "230px"
+        width: "100px"
       }, {
         data: function data(_data2) {
           return _data2.subscription.package_name;
@@ -64,17 +63,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return _data3.paid_amount + ' ' + _this.$store.getters['init/currency'];
         },
         name: 'paid_amount',
-        width: "80px"
+        width: "60px"
       }, {
         data: function data(_data4) {
           return _data4.remaining_amount + ' ' + _this.$store.getters['init/currency'];
         },
         name: 'remaining_amount',
-        width: "80px"
+        width: "60px"
       }, {
         data: 'payment_source',
         name: 'payment_source',
-        width: "100px"
+        width: "80px"
       }, {
         data: 'updated_at',
         name: 'updated_at',
@@ -84,7 +83,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           var actions = "";
 
           if (_this.$can('add__invoice')) {
-            actions += "<button class='btn btn-outline-info' data-g-action='view' data-g-actiondata=" + _data5.id + "><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button>";
+            actions += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata=" + _data5.id + "><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button>";
           }
 
           return actions;
@@ -522,7 +521,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -546,6 +544,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PaymentTable__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/PaymentTable */ "./resources/assets/js/components/PaymentTable.vue");
 /* harmony import */ var _layouts_DashboardPage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
 //
 //
 //
@@ -613,17 +613,17 @@ var render = function() {
     [
       _c("th", [_vm._v("Id")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Subscriber Name")]),
+      _c("th", [_vm._v("Subscriber")]),
       _vm._v(" "),
       _c("th", [_vm._v("Package")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Paid Amount")]),
+      _c("th", [_vm._v("Paid")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Remaining Amount")]),
+      _c("th", [_vm._v("Remaining")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Payment Source")]),
+      _c("th", [_vm._v("Source")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Payment Date")]),
+      _c("th", [_vm._v("Date")]),
       _vm._v(" "),
       _c(
         "th",
@@ -632,8 +632,8 @@ var render = function() {
             {
               name: "show",
               rawName: "v-show",
-              value: _vm.$can("add_invoice"),
-              expression: "$can('add_invoice')"
+              value: _vm.$can("add__invoice"),
+              expression: "$can('add__invoice')"
             }
           ]
         },
@@ -1090,7 +1090,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-outline-success-new",
+          attrs: { type: "submit" }
+        },
         [_vm._v("SUBMIT")]
       )
     ])
@@ -1127,17 +1130,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-cash icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("PAYMENT DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-cash icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("PAYMENT DETAIL")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -1189,24 +1198,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-cash icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("PAYMENT LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-cash icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("PAYMENT LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -1215,21 +1226,25 @@ var render = function() {
                     arg: "add__payment"
                   }
                 ],
-                staticClass: "card-title"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-payment" }
                   },
                   [_vm._v("Add Payment")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },

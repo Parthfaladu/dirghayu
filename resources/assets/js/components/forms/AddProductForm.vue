@@ -32,7 +32,7 @@
 			<span v-show="errors.has('quantity')" class="text-danger">{{ errors.first('quantity') }}</span>
         </div>
         <div class="text-center">
-            <button class="btn btn-outline-info" type="submit">SUBMIT</button>
+            <button class="btn btn-outline-success-new" type="submit">SUBMIT</button>
         </div>
     </form>
 </template>

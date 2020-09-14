@@ -65,7 +65,7 @@
 								<td><button type="button" class="btn btn-danger" @click="removeRow(index)">Remove</button></td>
 							</tr>
 							<tr>
-								<td><button type="button" class="btn btn-info" @click="addRow()">Add Item</button></td>
+								<td><button type="button" class="btn btn-outline-alternate-new" @click="addRow()">Add Item</button></td>
 							</tr>
 							<tr>
 								<td colspan="3"></td>
@@ -132,7 +132,7 @@
 					</table>
 					
                     <div class="text-center">
-	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-alternate-new" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>

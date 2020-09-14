@@ -32,7 +32,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -48,7 +47,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       columns: [{
         data: 'id',
         name: 'id',
-        width: "80px"
+        width: "40px"
       }, {
         data: function data(_data) {
           var user = '';
@@ -77,17 +76,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           return null;
         },
         name: 'role',
-        width: "100px"
-      }, {
-        data: 'gender',
-        name: 'gender',
-        width: "80px"
+        width: "50px"
       }, {
         data: function data(_data3) {
           var action = "";
 
           if (_this.$can('update__staff_member')) {
-            action += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning' data-g-action='status' data-g-actiondata=" + _data3.id + "><i class='fas fa-toggle-on'></i> ";
+            action += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning-new' data-g-action='status' data-g-actiondata=" + _data3.id + "><i class='fas fa-toggle-on'></i> ";
 
             if (_data3.is_active == 1) {
               action += "<span class='button-text'>Active</span>";
@@ -97,7 +92,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
 
           if (_this.$can('delete__staff_member')) {
-            action += " </button> <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+            action += " </button> <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata=" + _data3.id + "><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
           }
 
           return action;
@@ -519,7 +514,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -543,6 +537,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_StaffMemberTable_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @components/StaffMemberTable.vue */ "./resources/assets/js/components/StaffMemberTable.vue");
 /* harmony import */ var _layouts_DashboardPage_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @layouts/DashboardPage.vue */ "./resources/assets/js/layouts/DashboardPage.vue");
+//
+//
 //
 //
 //
@@ -616,13 +612,11 @@ var render = function() {
       _vm._v(" "),
       _c("th", [_vm._v("Name")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Email address")]),
+      _c("th", [_vm._v("Email")]),
       _vm._v(" "),
       _c("th", [_vm._v("Phone")]),
       _vm._v(" "),
       _c("th", [_vm._v("Role")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Gender")]),
       _vm._v(" "),
       _c(
         "th",
@@ -1207,7 +1201,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-info",
+            staticClass: "btn btn-outline-alternate-new",
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -1231,7 +1225,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "text-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-info", attrs: { type: "submit" } },
+        {
+          staticClass: "btn btn-outline-success-new",
+          attrs: { type: "submit" }
+        },
         [_vm._v("SUBMIT")]
       )
     ])
@@ -1272,17 +1269,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-user icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("STAFF MEMBER DETAIL")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-user icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("STAFF MEMBER DETAIL")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -1338,24 +1341,26 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", {
-                  staticClass:
-                    "pe-7s-user icon-gradient bg-premium-dark text-danger"
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("STAFF MEMBER LIST")])
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-12" }, [
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
             _c(
-              "h5",
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-user icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("STAFF MEMBER LIST")
+                ])
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
               {
                 directives: [
                   {
@@ -1364,21 +1369,25 @@ var render = function() {
                     arg: "add__staff_member"
                   }
                 ],
-                staticClass: "card-title mt-4"
+                staticClass: "align-content-end"
               },
               [
                 _c(
                   "router-link",
                   {
-                    staticClass: "btn btn-outline-primary mb-5 pull-right",
+                    staticClass: "btn btn-outline-alternate-new all-add-new",
                     attrs: { to: "/add-staff-member" }
                   },
                   [_vm._v("Add New Staff")]
                 )
               ],
               1
-            ),
-            _vm._v(" "),
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main-card mb-3 card" }, [
+          _c("div", { staticClass: "card-body col-sm-12" }, [
             _c(
               "div",
               { staticClass: "table-responsive" },

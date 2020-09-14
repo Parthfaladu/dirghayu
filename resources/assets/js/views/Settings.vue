@@ -8,7 +8,7 @@
 	                    <i class="metismenu-icon pe-7s-tools">
 	                    </i>
 	                </div>
-	                <div>General Settings</div>
+	                <div class="heading-font-weight">GENERAL SETTINGS</div>
 	            </div>    
 	        </div>
 	    </div>            
@@ -28,7 +28,7 @@
                     </div>
                     <div class="position-relative form-group">
                         <label></label>
-                        <button class="btn btn-info" @click.prevent="$refs.profilePath.click()">Upload logo</button>
+                        <button class="btn btn-outline-alternate-new" @click.prevent="$refs.profilePath.click()">Upload logo</button>
                     </div>
                     <div class="position-relative form-group">
                         <label for="title">Display currency</label>
@@ -41,7 +41,7 @@
                         <input type="text" name="footer" v-model="form.footerText" class="form-control">
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-outline-info" type="submit">SUBMIT</button>
+                        <button class="btn btn-outline-success-new" type="submit">SUBMIT</button>
                     </div>
                 </form>
 	        </div>

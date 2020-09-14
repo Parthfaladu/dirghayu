@@ -3,13 +3,12 @@
 		<div class="app-main__inner">
 		<div class="app-page-title">
 	    	<div class="page-title-wrapper">
-	            <div class="page-title-heading">
-	                <div class="page-title-icon">
-	                    <i class="pe-7s-shopbag icon-gradient bg-premium-dark text-danger">
-	                    </i>
-	                </div>
-	                <div>PRODUCT SELL</div>
-	            </div>    
+	            <div class="page-title-heading mr-auto align-content-start">
+					<div class="page-title-icon">
+						<i class="pe-7s-shopbag icon-gradient bg-premium-dark text-danger"></i>
+					</div>
+					<div class="heading-font-weight">PRODUCT SELL</div>
+				</div>
 	        </div>
 	    </div>            
 	    <div class="main-card mb-3 card">
@@ -53,7 +52,7 @@
 						<span v-show="errors.has('amount')" class="text-danger">{{ errors.first('amount') }}</span>
                     </div>
                     <div class="text-center">
-	                	<button class="btn btn-outline-info" type="submit">SUBMIT</button>
+	                	<button class="btn btn-outline-success-new" type="submit">SUBMIT</button>
 	                </div>
 	            </form>
 	        </div>

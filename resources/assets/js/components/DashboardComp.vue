@@ -8,7 +8,7 @@
                             <i class="pe-7s-home icon-gradient bg-mean-fruit">
                             </i>
                         </div>
-                        <div>Dirghayu Fitness Factory
+                        <div class="dashboard-head-font">Dirghayu Fitness Factory
                             <div class="page-title-subheading">
                             </div>
                         </div>

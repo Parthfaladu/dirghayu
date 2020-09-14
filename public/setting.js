@@ -434,7 +434,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 
@@ -858,7 +857,9 @@ var render = function() {
               _c("i", { staticClass: "metismenu-icon pe-7s-tools" })
             ]),
             _vm._v(" "),
-            _c("div", [_vm._v("Change Password")])
+            _c("div", { staticClass: "heading-font-weight" }, [
+              _vm._v("CHANGE PASSWORD")
+            ])
           ])
         ])
       ]),
@@ -1037,7 +1038,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-outline-info",
+                    staticClass: "btn btn-outline-success-new",
                     attrs: { type: "submit" }
                   },
                   [_vm._v("SUBMIT")]
@@ -1092,7 +1093,9 @@ var render = function() {
                 _c("i", { staticClass: "metismenu-icon pe-7s-tools" })
               ]),
               _vm._v(" "),
-              _c("div", [_vm._v("General Settings")])
+              _c("div", { staticClass: "heading-font-weight" }, [
+                _vm._v("GENERAL SETTINGS")
+              ])
             ])
           ])
         ]),
@@ -1201,7 +1204,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-info",
+                          staticClass: "btn btn-outline-alternate-new",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -1303,7 +1306,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-outline-info",
+                          staticClass: "btn btn-outline-success-new",
                           attrs: { type: "submit" }
                         },
                         [_vm._v("SUBMIT")]
@@ -1354,14 +1357,23 @@ var render = function() {
     [
       _c("div", { staticClass: "app-main__inner" }, [
         _c("div", { staticClass: "app-page-title" }, [
-          _c("div", { staticClass: "page-title-wrapper" }, [
-            _c("div", { staticClass: "page-title-heading" }, [
-              _c("div", { staticClass: "page-title-icon" }, [
-                _c("i", { staticClass: "metismenu-icon pe-7s-tools" })
-              ]),
-              _vm._v(" "),
-              _c("div", [_vm._v("USER PERMISSIONS")])
-            ])
+          _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+            _c(
+              "div",
+              { staticClass: "page-title-heading mr-auto align-content-start" },
+              [
+                _c("div", { staticClass: "page-title-icon" }, [
+                  _c("i", {
+                    staticClass:
+                      "pe-7s-tools icon-gradient bg-premium-dark text-danger"
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "heading-font-weight" }, [
+                  _vm._v("USER PERMISSIONS")
+                ])
+              ]
+            )
           ])
         ]),
         _vm._v(" "),
@@ -1761,7 +1773,7 @@ var render = function() {
                 _c(
                   "button",
                   {
-                    staticClass: "btn btn-success btn-lg mt-3",
+                    staticClass: "btn btn-outline-success-new btn-lg mt-3",
                     attrs: { disabled: _vm.isSubmit },
                     on: { click: _vm.submitForm }
                   },
@@ -1801,14 +1813,20 @@ var render = function() {
   return _c("DashboardPage", [
     _c("div", { staticClass: "app-main__inner" }, [
       _c("div", { staticClass: "app-page-title" }, [
-        _c("div", { staticClass: "page-title-wrapper" }, [
-          _c("div", { staticClass: "page-title-heading" }, [
-            _c("div", { staticClass: "page-title-icon" }, [
-              _c("i", { staticClass: "metismenu-icon pe-7s-tools" })
-            ]),
-            _vm._v(" "),
-            _c("div", [_vm._v("User Profile")])
-          ])
+        _c("div", { staticClass: "page-title-wrapper d-flex" }, [
+          _c(
+            "div",
+            { staticClass: "page-title-heading mr-auto align-content-start" },
+            [
+              _c("div", { staticClass: "page-title-icon" }, [
+                _c("i", { staticClass: "metismenu-icon pe-7s-tools" })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "heading-font-weight" }, [
+                _vm._v("USER PROFILE")
+              ])
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -1963,7 +1981,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-info",
+                        staticClass: "btn btn-outline-alternate-new",
                         on: {
                           click: function($event) {
                             $event.preventDefault()
@@ -2213,7 +2231,7 @@ var render = function() {
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-outline-info",
+                        staticClass: "btn btn-outline-success-new",
                         attrs: { type: "submit" }
                       },
                       [_vm._v("SUBMIT")]

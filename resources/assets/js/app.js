@@ -14,7 +14,7 @@ import VueI18n from 'vue-i18n'
 import messageEn from '@i18n/en';
 import Snotify from 'vue-snotify';
 import VeeValidate from 'vee-validate';
-
+import ClickOutside from 'vue-click-outside'
 import "./assets/js/jquery.dataTables.js";
 
 const options = {
@@ -28,6 +28,7 @@ const options = {
 Vue.use(Snotify, options)
 Vue.use(VueI18n)
 Vue.use(VeeValidate)
+Vue.use(ClickOutside)
 const messages = {
 	en: messageEn
 }

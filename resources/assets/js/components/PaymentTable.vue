@@ -1,14 +1,13 @@
 <template>
     <VueDatatable ref="vueDatatable" v-can:view__payment :columns="columns" :url="url" @gaction="onAction">
 		<th>Id</th>
-		<th>Subscriber Name</th>
+		<th>Subscriber</th>
 		<th>Package</th>
-		<th>Paid Amount</th>
-		<th>Remaining Amount</th>
-		<th>Payment Source</th>
-        <th>Payment Date</th>
-		
-		<th v-show="$can('add_invoice')">Action</th>
+		<th>Paid</th>
+		<th>Remaining</th>
+		<th>Source</th>
+        <th>Date</th>
+		<th v-show="$can('add__invoice')">Action</th>
 	</VueDatatable>
 </template>
 <script> 
@@ -23,26 +22,25 @@ export default {
 	data() {
 		return {
 			columns: [
-				{data:'id', name:'id' ,width:"80px"},
+				{data:'id', name:'id' ,width:"40px"},
 				{data:function(data){
 					return data.subscription.user.first_name+' '+data.subscription.user.last_name;
-				}, name:'subscription_id', width:"230px"},
+				}, name:'subscription_id', width:"100px"},
 				{data:function(data){
 					return data.subscription.package_name ;
 				}, name:'package'},
 				{data:(data) => {
 					return data.paid_amount+' '+this.$store.getters['init/currency'];
-				}, name:'paid_amount', width:"80px"},
+				}, name:'paid_amount', width:"60px"},
 				{data:(data) =>{
 					return data.remaining_amount+' '+this.$store.getters['init/currency'];
-				}, name:'remaining_amount', width:"80px"},
-				{data:'payment_source', name:'payment_source', width:"100px"},
+				}, name:'remaining_amount', width:"60px"},
+				{data:'payment_source', name:'payment_source', width:"80px"},
 				{data:'updated_at', name:'updated_at', width:"120px"},
-				
 				{data:(data) => {
 					let actions = "";
 					if(this.$can('add__invoice')) {
-						actions += "<button class='btn btn-outline-info' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button>";
+						actions += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-file-invoice'></i> <span class='button-text'>Invoice</span></button>";
 					}
 					return actions;
 				}, name:'action', width:"100px"}

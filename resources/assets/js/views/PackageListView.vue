@@ -2,24 +2,24 @@
     <DashboardPage v-can:view__package>
         <div class="app-main__inner">
             <div class="app-page-title">
-                <div class="page-title-wrapper">
-                    <div class="page-title-heading">
+                <div class="page-title-wrapper d-flex">
+                    <div class="page-title-heading mr-auto align-content-start">
                         <div class="page-title-icon">
                             <i class="pe-7s-gift icon-gradient bg-premium-dark text-danger"></i>
                         </div>
-                        <div>PACKAGE LIST</div>
+                        <div class="heading-font-weight">PACKAGE LIST</div>
+                    </div>
+                    <div v-can:add__package class="align-content-end">
+                        <router-link
+                            to="/add-package"
+                            class="btn btn-outline-alternate-new all-add-new"
+                            >Add Package</router-link
+                        >
                     </div>
                 </div>
             </div>
             <div class="main-card mb-3 card">
                 <div class="card-body col-sm-12">
-                    <h5 v-can:add__package class="card-title">
-                        <router-link
-                            to="/add-package"
-                            class="btn btn-outline-primary mb-5 pull-right"
-                            >Add Package</router-link
-                        >
-                    </h5>
                     <div class="table-responsive">
                         <PackageTable></PackageTable>
                     </div>

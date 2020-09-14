@@ -39,11 +39,11 @@
         </div>
         <div class="position-relative form-group">
             <label></label>
-            <button class="btn btn-info" @click.prevent="$refs.packagePath.click()">Upload Image</button>
+            <button class="btn btn-outline-alternate-new" @click.prevent="$refs.packagePath.click()">Upload Image</button>
         </div>
         
         <div class="text-center">
-            <button class="btn btn-outline-info" type="submit">SUBMIT</button>
+            <button class="btn btn-outline-success-new" type="submit">SUBMIT</button>
         </div>
     </form>
 </template>

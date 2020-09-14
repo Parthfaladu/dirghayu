@@ -9,7 +9,7 @@
 			<label for="attendanceDate" class="mr-3 mt-2">To</label>
 			<VueJqueryCalendar v-model="toDate" :class-name="'form-control'" date-format="dd-mm-yy" :readonly="true" @change="changeFilter" />
 		</div>
-		<div class="col-sm-2">
+		<div class="col-sm-3">
 			<span v-if="$can('add__attendance')">
 				<label for="attendanceDate" class="mr-3 mt-2">Customer</label>
 				<select v-model="customerId" class="form-control" @change="changeFilter">
@@ -18,16 +18,18 @@
 				</select>
 			</span>
 		</div>
-		<div v-can:view__attendance  class="col-sm-4 offset-2 text-right mt-4">
-			<button class="btn btn-danger" @click="downloadReport()">Download in PDF</button>
+		<div v-can:view__attendance  class="col-sm-3 offset-2 text-right mt-4">
+			<button class="btn btn-outline-alternate-new" @click="downloadReport()">Download in PDF</button>
 		</div>
 	</div>
+	<div class="table-responsive">
     <VueDatatable ref="vueDatatable" :columns="columns" :url="url">
 		<th>Id</th>
 		<th>Customer Name</th>
 		<th>Date</th>
 		<th>Status</th>
 	</VueDatatable>
+	</div>
 </div>
 </template>
 <script>
@@ -50,7 +52,7 @@ export default {
 			customerId: null,
 			customerList: [],
 			columns: [
-				{data:'id', name:'id', width:"20%"},
+				{data:'id', name:'id', width:"15%"},
                 {data:function(data){
                     if(data && data.user){
 						return data.user.first_name+' '+data.user.last_name
@@ -59,7 +61,7 @@ export default {
 				}, name:'name'},
 				{data:(data) => {
                     return   moment(data.date).format("DD-MM-YYYY");
-				}, name:'date'},
+				}, name:'date', width:"20%"},
 				{data:function(data){
 					return 'Present';
 				}, name:'status', width:"20%"}

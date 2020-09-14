@@ -4,10 +4,10 @@
 		<th>Customer</th>
 		<th>Package</th>
 		<th>Start Date</th>
-		<th>Duration(In Month)</th>
+		<th>Duration</th>
 		<th>End Date</th>
-		<th>Paid Amount</th>
-		<th>Remaining Amount</th>
+		<th>Paid</th>
+		<th>Remaining</th>
 		<th v-show="$can('delete__subscription')">Action</th>
 	</VueDatatable>
 </template>
@@ -25,15 +25,15 @@ export default {
 	data() {
 		return {
 			columns: [
-				{data:'id', name:'id', width:"100px"},
+				{data:'id', name:'id', width:"40px"},
 				{data:function(data){
 					return data.user.first_name+' '+data.user.last_name;
 				}, name:'name'},
 				{data:'package_name', name:'package_name'},
 				{data:(data) => {
 					return moment(data.start_date).format("DD-MM-YYYY");
-				}, name:'start_date', width:"100px"},
-				{data:'duration', name:'duration', width:"80px"},
+				}, name:'start_date', width:"110px"},
+				{data:'duration', name:'duration', width:"20px"},
 				{data:(data) => {
 					return moment(data.end_date).format("DD-MM-YYYY");
 				}, name:'end_date', width:"100px"},
@@ -56,10 +56,10 @@ export default {
 				{data:(data) => {
 					let actions = "";
 					if(this.$can('delete__subscription')) {
-						actions += "<button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += "<button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return actions;
-				}, name:'action', width:"100px"}
+				}, name:'action', width:"80px"}
 			],
 			url: '/api/v1/subscription/list',
 		}

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="position-relative form-group row mb-5">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <span v-can:add__subscription>
                     <label for="attendanceDate" class="mr-3 mt-2">Customer</label>
                     <select v-model="customerId" class="form-control" @change="changeFilter">
@@ -10,7 +10,7 @@
                     </select>
                 </span>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 <label for="attendanceDate" class="mr-3 mt-2">Package</label>
                 <select v-model="packageName" class="form-control" @change="changeFilter">
                     <option :value="null">All Package</option>
@@ -25,21 +25,23 @@
                     <option :value="'expired'">Expired</option>
                 </select>
             </div>
-            <div v-can:view__subscription class="col-sm-4 offset-2 text-right mt-4">
-                <button class="btn btn-danger" @click="downloadReport()">Download in PDF</button>
+            <div v-can:view__subscription class="col-sm-3 offset-1 text-right mt-4">
+                <button class="btn btn-outline-alternate-new" @click="downloadReport()">Download in PDF</button>
             </div>
         </div>
+        <div class="table-responsive">
         <VueDatatable ref="vueDatatable" :columns="columns" :url="url">
             <th>Id</th>
             <th>Customer</th>
             <th>Package</th>
             <th>Start Date</th>
-            <th>Duration(In Month)</th>
+            <th>Duration</th>
             <th>End Date</th>
-            <th>Paid Amount</th>
-            <th>Remaining Amount</th>
+            <th>Paid</th>
+            <th>Remaining</th>
             <th>Status</th>
         </VueDatatable>
+        </div>
     </div>
 </template>
 <script>
@@ -62,15 +64,15 @@ export default {
             customerList: [],
             packageList: [],
 			columns: [
-				{data:'id', name:'id', width:"80px"},
+				{data:'id', name:'id', width:"40px"},
 				{data:function(data){
 					return data.user.first_name+' '+data.user.last_name;
 				}, name:'name'},
 				{data:'package_name', name:'package_name'},
 				{data:(data) => {
 					return moment(data.start_date).format("DD-MM-YYYY");
-				}, name:'start_date', width:"100px"},
-				{data:'duration', name:'duration', width:"50px"},
+				}, name:'start_date', width:"120px"},
+				{data:'duration', name:'duration', width:"40px"},
 				{data:(data) => {
 					return moment(data.end_date).format("DD-MM-YYYY");
 				}, name:'end_date', width:"100px"},
@@ -81,7 +83,7 @@ export default {
 					else{
 						return '0'+' '+this.$store.getters['init/currency'];
 					}
-				}, name:'paid_amount', width:"80px"},
+				}, name:'paid_amount', width:"50px"},
 				{data: (data) =>{
 					if(data.payment.length > 0){
 						return data.payment[0].remaining_amount+' '+this.$store.getters['init/currency'];
@@ -89,10 +91,10 @@ export default {
 					else{
 						return data.amount+' '+this.$store.getters['init/currency'];;
 					}
-                }, name:'remaining_amount', width:"80px"},
+                }, name:'remaining_amount', width:"50px"},
                 {data: (data) => {
                     return moment(data.end_date).isSameOrAfter(moment()) ? 'Active' : 'Expired';
-				}, name:'status', width:"100px"}
+				}, name:'status', width:"60px"}
 			],
 			url: '/api/v1/subscription/report',
 		}

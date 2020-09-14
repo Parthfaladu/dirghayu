@@ -1,6 +1,6 @@
 <template>
 	<VueDatatable ref="vueDatatable" v-can:view__invoice :columns="columns" :url="url" @gaction="onAction">
-		<th>Invoice No.</th>
+		<th>Invoice #</th>
 		<th>Client</th>
 		<th>Date</th>
 		<th>Total</th>
@@ -21,29 +21,29 @@ export default {
 	data() {
 		return {
 			columns: [
-		        {data:'id', name:'id', width:"100px"},
+		        {data:'id', name:'id', width:"80px"},
 		        {data:function(data){
                     return data.billto.first_name+' '+data.billto.last_name;
                 }, name:'bill_to'},
                 {data:(data) => {
 					return moment(data.invoice_date).format("DD-MM-YYYY");
-				}, name:'invoice_date'},
+				}, name:'invoice_date', width:"70px"},
                 {data:(data) => {
 					return data.total+' '+this.$store.getters['init/currency'];
-				}, name:'total', width:"100px"},
+				}, name:'total', width:"50px"},
 		        {data:function(data){
                     return data.user.first_name+' '+data.user.last_name;
                 }, name:'user_id'},
 		        {data:(data) => {
 					let actions = "";
 					if(this.$can('view__invoice')) {
-						actions += "<button class='btn btn-outline-alternate' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
+						actions += "<button class='btn btn-outline-info-new' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-eye'></i> <span class='button-text'>View</span></button>";
 					}
 					if(this.$can('delete__invoice')) {
-						actions += " <button class='btn btn-outline-danger' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
+						actions += " <button class='btn btn-outline-danger-new' data-g-action='delete' data-g-actiondata="+data.id+"><i class='fas fa-trash-alt'></i> <span class='button-text'>Delete</span></button>";
 					}
 					return actions;
-	          	}, name:'action', width:"150px"}
+	          	}, name:'action', width:"140px"}
 		    ],
 		    url: '/api/v1/invoice/list',
 		}

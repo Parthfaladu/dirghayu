@@ -58,7 +58,7 @@
                             </div>
                             <div class="position-relative form-group">
                                 <label></label>
-                                <button class="btn btn-info" @click.prevent="$refs.profilePath.click()">Upload Image</button>
+                                <button class="btn btn-outline-alternate-new" @click.prevent="$refs.profilePath.click()">Upload Image</button>
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                 </div>
 
                 <div class="text-center mb-4 mt-3 col-sm-12">
-                    <button class="btn btn-outline-info" style="width:23%" type="submit">SUBMIT</button>
+                    <button class="btn btn-outline-success-new" style="width:23%" type="submit">SUBMIT</button>
                 </div>
             </div>
         </form>
