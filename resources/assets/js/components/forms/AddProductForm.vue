@@ -74,12 +74,11 @@ export default {
 				let res = null
 				if(this.$route.params.id != null) {
 					res = await axios.post('/api/v1/product/update', this.product)
-				}else
-				{
+					this.$snotify.success(null, res.data.message);
+				} else {
 					res = await axios.post('/api/v1/product/create', this.product)
+					this.$router.push({name: 'productlistview', params: { message: res.data.message }});
 				}
-
-				this.$router.push('/product-list');
 		  	}
 		  	catch(err){
 		  		this.$snotify.error(null, err.message);

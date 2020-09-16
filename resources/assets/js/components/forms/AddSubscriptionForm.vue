@@ -129,7 +129,7 @@ export default {
 					res = await axios.post('/api/v1/subscription/create', this.subscription)
 				}
 		
-				this.$router.push('/subscription-list');
+				this.$router.push({name: 'subscriptionlist', params: { message: res.data.message }});
 		  	}
 		  	catch(err) {
 		  		this.$snotify.error(null, err.message);

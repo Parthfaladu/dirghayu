@@ -48,6 +48,11 @@ export default {
 		    url: '/api/v1/invoice/list',
 		}
 	},
+	mounted() {
+		if(this.$route.params.message){
+			this.$snotify.success(null, this.$route.params.message);
+		}
+	},
 	methods: {
 		async onAction(action) {
 			if(action.action === 'view') {

@@ -175,7 +175,7 @@ export default {
                     this.$snotify.success(null, res.data.message);
                 } else {
                     res = await this.createEnquiry();
-                    this.$router.push("/enquiry-list");
+                    this.$router.push({name: "enquirylist", params: { message: res.data.message }});
                 }
             } catch (err) {
                 this.$snotify.error(null, err.message);

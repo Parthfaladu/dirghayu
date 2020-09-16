@@ -28,6 +28,7 @@ const router = new Router({
         {
             path: '/package-list',
             name: 'packagelistview',
+            props: true,
             component: () => import(/* webpackChunkName: "package" */ '@views/PackageListView.vue'),
             meta: {
                 authenticated: true,
@@ -52,6 +53,7 @@ const router = new Router({
         {
             path: '/product-list',
             name: 'productlistview',
+            props: true,
             component: () => import(/* webpackChunkName: "product" */ '@views/ProductListView.vue'),
             meta: {
                 authenticated: true,
@@ -100,6 +102,7 @@ const router = new Router({
         {
             path: '/staff-member-list',
             name: 'staffmemberlist',
+            props: true,
             component: () => import(/* webpackChunkName: "staff" */ '@views/StaffMemberList.vue'),
             meta: {
                 authenticated: true,
@@ -124,6 +127,7 @@ const router = new Router({
         {
             path: '/payment-list',
             name: 'paymentlist',
+            props: true,
             component: () => import(/* webpackChunkName: "payment" */ '@views/PaymentList.vue'),
             meta: {
                 authenticated: true,
@@ -148,6 +152,7 @@ const router = new Router({
         {
             path: '/enquiry-list',
             name: 'enquirylist',
+            props: true,
             component: () => import(/* webpackChunkName: "enquiry" */ '@views/EnquiryList.vue'),
             meta: {
                 authenticated: true,
@@ -172,6 +177,7 @@ const router = new Router({
         {
             path: '/customer-list',
             name: 'customerlist',
+            props: true,
             component: () => import(/* webpackChunkName: "customer" */ '@views/CustomerList.vue'),
             meta: {
                 authenticated: true,
@@ -196,6 +202,7 @@ const router = new Router({
         {
             path: '/subscription-list',
             name: 'subscriptionlist',
+            props: true,
             component: () => import(/* webpackChunkName: "subscription" */ '@views/SubscriptionList.vue'),
             meta: {
                 authenticated: true,
@@ -220,6 +227,7 @@ const router = new Router({
         {
             path: '/notice-list',
             name: 'noticelist',
+            props: true,
             component: () => import(/* webpackChunkName: "notice" */ '@views/NoticeList.vue'),
             meta: {
                 authenticated: true,
@@ -252,6 +260,7 @@ const router = new Router({
         {
             path: '/expense-list',
             name: 'expenselist',
+            props: true,
             component: () => import(/* webpackChunkName: "expense" */ '@views/ExpenseList.vue'),
             meta: {
                 authenticated: true,
@@ -300,6 +309,7 @@ const router = new Router({
         {
             path: '/invoice-list',
             name: 'invoicelist',
+            props: true,
             component: () => import(/* webpackChunkName: "invoice" */ '@views/InvoiceList.vue'),
             meta: {
                 authenticated: true,

@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="col-sm-12">
-<div align="center"><h5>DIRGHAYU FITNESS FACTORY INVOICE</h5></div>
+<div align="center" class="mb-5"><h5>DIRGHAYU FITNESS FACTORY INVOICE</h5></div>
     <div class="row">
         <div class="col-sm-3 offset-sm-9">
             <h5><b>Invoice #0{{$invoice['id']}}</b></h5>

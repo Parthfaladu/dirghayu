@@ -49,6 +49,11 @@ export default {
 			url: '/api/v1/customer/list',
 		}
 	},
+	mounted() {
+		if(this.$route.params.message){
+			this.$snotify.success(null, this.$route.params.message);
+		}
+	},
 	methods: {
 		async onAction(action) {
 			if(action.action === 'view') {

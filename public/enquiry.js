@@ -89,6 +89,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/v1/enquiry/list'
     };
   },
+  mounted: function mounted() {
+    if (this.$route.params.message) {
+      this.$snotify.success(null, this.$route.params.message);
+    }
+  },
   methods: {
     onAction: function onAction(action) {
       var _this2 = this;
@@ -428,7 +433,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 res = _context3.sent;
 
-                _this3.$router.push("/enquiry-list");
+                _this3.$router.push({
+                  name: "enquirylist",
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
               case 18:
                 _context3.next = 23;
@@ -1120,7 +1130,7 @@ var render = function() {
         _c("div", { staticClass: "main-card mb-3 card" }, [
           _c(
             "div",
-            { staticClass: "card-body col-sm-6 offset-sm-3" },
+            { staticClass: "card-body col-sm-8 offset-sm-2" },
             [
               _c("h5", { staticClass: "card-title" }),
               _vm._v(" "),

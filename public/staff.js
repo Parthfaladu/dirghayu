@@ -85,9 +85,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             action += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata=" + _data3.id + "><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning-new' data-g-action='status' data-g-actiondata=" + _data3.id + "><i class='fas fa-toggle-on'></i> ";
 
             if (_data3.is_active == 1) {
-              action += "<span class='button-text'>Active</span>";
-            } else {
               action += "<span class='button-text'>In Active</span>";
+            } else {
+              action += "<span class='button-text'>Active</span>";
             }
           }
 
@@ -103,6 +103,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/v1/staff/member/list',
       type: 'POST'
     };
+  },
+  mounted: function mounted() {
+    if (this.$route.params.message) {
+      this.$snotify.success(null, this.$route.params.message);
+    }
   },
   methods: {
     onAction: function onAction(action) {
@@ -444,7 +449,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 28:
                 res = _context3.sent;
 
-                _this3.$router.push('/staff-member-list');
+                _this3.$router.push({
+                  name: 'staffmemberlist',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
               case 30:
                 _context3.next = 35;
@@ -1292,7 +1302,7 @@ var render = function() {
         _c("div", { staticClass: "main-card mb-3 card" }, [
           _c(
             "div",
-            { staticClass: "card-body col-sm-6 offset-sm-3" },
+            { staticClass: "card-body col-sm-8 offset-sm-2" },
             [
               _c("h5", { staticClass: "card-title" }),
               _vm._v(" "),

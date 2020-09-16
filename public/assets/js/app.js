@@ -113536,6 +113536,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/package-list',
     name: 'packagelistview',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | package */[__webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("package")]).then(__webpack_require__.bind(null, /*! @views/PackageListView.vue */ "./resources/assets/js/views/PackageListView.vue"));
     },
@@ -113563,6 +113564,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/product-list',
     name: 'productlistview',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~invoice~notice~payment~product~setting~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductListView.vue */ "./resources/assets/js/views/ProductListView.vue"));
     },
@@ -113617,6 +113619,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/staff-member-list',
     name: 'staffmemberlist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | staff */[__webpack_require__.e("vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("staff")]).then(__webpack_require__.bind(null, /*! @views/StaffMemberList.vue */ "./resources/assets/js/views/StaffMemberList.vue"));
     },
@@ -113644,6 +113647,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/payment-list',
     name: 'paymentlist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | payment */[__webpack_require__.e("vendors~invoice~notice~payment~product~setting~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("payment")]).then(__webpack_require__.bind(null, /*! @views/PaymentList.vue */ "./resources/assets/js/views/PaymentList.vue"));
     },
@@ -113671,6 +113675,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/enquiry-list',
     name: 'enquirylist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | enquiry */[__webpack_require__.e("vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("enquiry")]).then(__webpack_require__.bind(null, /*! @views/EnquiryList.vue */ "./resources/assets/js/views/EnquiryList.vue"));
     },
@@ -113698,6 +113703,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/customer-list',
     name: 'customerlist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | customer */[__webpack_require__.e("vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user"), __webpack_require__.e("vendors~customer~report~subscription"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("customer")]).then(__webpack_require__.bind(null, /*! @views/CustomerList.vue */ "./resources/assets/js/views/CustomerList.vue"));
     },
@@ -113725,6 +113731,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/subscription-list',
     name: 'subscriptionlist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | subscription */[__webpack_require__.e("vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user"), __webpack_require__.e("vendors~customer~report~subscription"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("subscription")]).then(__webpack_require__.bind(null, /*! @views/SubscriptionList.vue */ "./resources/assets/js/views/SubscriptionList.vue"));
     },
@@ -113751,6 +113758,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   {
     path: '/notice-list',
     name: 'noticelist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | notice */[__webpack_require__.e("vendors~invoice~notice~payment~product~setting~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("notice")]).then(__webpack_require__.bind(null, /*! @views/NoticeList.vue */ "./resources/assets/js/views/NoticeList.vue"));
     },
@@ -113787,6 +113795,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/expense-list',
     name: 'expenselist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | expense */[__webpack_require__.e("vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("expense")]).then(__webpack_require__.bind(null, /*! @views/ExpenseList.vue */ "./resources/assets/js/views/ExpenseList.vue"));
     },
@@ -113841,6 +113850,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/invoice-list',
     name: 'invoicelist',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | invoice */[__webpack_require__.e("vendors~customer~enquiry~expense~invoice~report~setting~staff~subscription~user"), __webpack_require__.e("vendors~invoice~notice~payment~product~setting~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("invoice")]).then(__webpack_require__.bind(null, /*! @views/InvoiceList.vue */ "./resources/assets/js/views/InvoiceList.vue"));
     },

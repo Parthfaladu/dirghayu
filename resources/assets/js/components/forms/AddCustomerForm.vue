@@ -274,7 +274,7 @@ export default {
 
                 let res = await axios.post('/api/v1/customer/create', customerData ,{ headers: {'Content-Type': 'multipart/form-data'}})
                 
-                this.$router.push('/customer-list');
+                this.$router.push({name: 'customerlist', params: { message: res.data.message }});
 		  	}
 		  	catch(err){
 		  		this.$snotify.error(null, err.message);

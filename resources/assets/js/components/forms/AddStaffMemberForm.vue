@@ -141,7 +141,7 @@ export default {
                 } else {
                     data.append('password', this.staff.password)
                     res = await axios.post('/api/v1/staff/member', data,{headers: {'Content-Type': 'multipart/form-data'}})
-                    this.$router.push('/staff-member-list');
+                    this.$router.push({name: 'staffmemberlist', params: { message: res.data.message }});
                 }
 		  	}
 		  	catch(err) {

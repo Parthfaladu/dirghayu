@@ -214,6 +214,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/v1/product/list'
     };
   },
+  mounted: function mounted() {
+    if (this.$route.params.message) {
+      this.$snotify.success(null, this.$route.params.message);
+    }
+  },
   methods: {
     onAction: function onAction(action) {
       var _this2 = this;
@@ -434,7 +439,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = null;
 
                 if (!(_this3.$route.params.id != null)) {
-                  _context3.next = 13;
+                  _context3.next = 14;
                   break;
                 }
 
@@ -443,34 +448,42 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 10:
                 res = _context3.sent;
-                _context3.next = 16;
+
+                _this3.$snotify.success(null, res.data.message);
+
+                _context3.next = 18;
                 break;
 
-              case 13:
-                _context3.next = 15;
+              case 14:
+                _context3.next = 16;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/v1/product/create', _this3.product);
 
-              case 15:
+              case 16:
                 res = _context3.sent;
 
-              case 16:
-                _this3.$router.push('/product-list');
+                _this3.$router.push({
+                  name: 'productlistview',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
-                _context3.next = 22;
+              case 18:
+                _context3.next = 23;
                 break;
 
-              case 19:
-                _context3.prev = 19;
+              case 20:
+                _context3.prev = 20;
                 _context3.t0 = _context3["catch"](0);
 
                 _this3.$snotify.error(null, _context3.t0.message);
 
-              case 22:
+              case 23:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 19]]);
+        }, _callee3, null, [[0, 20]]);
       }))();
     }
   }
@@ -1523,7 +1536,7 @@ var render = function() {
         _c("div", { staticClass: "main-card mb-3 card" }, [
           _c(
             "div",
-            { staticClass: "card-body col-sm-6 offset-sm-3" },
+            { staticClass: "card-body col-sm-8 offset-sm-2" },
             [
               _c("h5", { staticClass: "card-title" }),
               _vm._v(" "),
@@ -1833,7 +1846,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "main-card mb-3 card" }, [
-          _c("div", { staticClass: "card-body col-sm-6 offset-sm-3" }, [
+          _c("div", { staticClass: "card-body col-sm-8 offset-sm-2" }, [
             _c("h5", { staticClass: "card-title" }),
             _vm._v(" "),
             _c(

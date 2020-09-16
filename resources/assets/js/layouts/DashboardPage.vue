@@ -25,7 +25,9 @@ export default {
         Sidebar
     },
     mounted() {
-        this.$snotify.clear();
+        if(!this.$route.params.message){
+            this.$snotify.clear();
+        }
     }
 }
 </script>

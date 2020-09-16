@@ -12,7 +12,7 @@
                 </div>
             </div>           
 	    <div class="main-card mb-3 card">
-	        <div class="card-body col-sm-6 offset-sm-3">
+	        <div class="card-body col-sm-8 offset-sm-2">
 	            <h5 class="card-title"></h5>
 	            <AddNoticeForm></AddNoticeForm>
 	        </div>

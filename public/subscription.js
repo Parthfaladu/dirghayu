@@ -115,6 +115,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/v1/subscription/list'
     };
   },
+  mounted: function mounted() {
+    if (this.$route.params.message) {
+      this.$snotify.success(null, this.$route.params.message);
+    }
+  },
   methods: {
     onAction: function onAction(action) {
       var _this2 = this;
@@ -469,7 +474,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context5.sent;
 
               case 17:
-                _this5.$router.push('/subscription-list');
+                _this5.$router.push({
+                  name: 'subscriptionlist',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
                 _context5.next = 23;
                 break;
@@ -1208,7 +1218,7 @@ var render = function() {
         _c("div", { staticClass: "main-card mb-3 card" }, [
           _c(
             "div",
-            { staticClass: "card-body col-sm-6 offset-sm-3" },
+            { staticClass: "card-body col-sm-8 offset-sm-2" },
             [
               _c("h5", { staticClass: "card-title" }),
               _vm._v(" "),

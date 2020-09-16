@@ -72,7 +72,7 @@ export default {
 					this.$snotify.success(null, res.data.message);
 				} else {
 					res = await axios.post('/api/v1/notice/create', this.notice);
-					this.$router.push('/notice-list');
+					this.$router.push({name: 'noticelist', params: { message: res.data.message }});
 				}
 		  	}
 		  	catch(err) {

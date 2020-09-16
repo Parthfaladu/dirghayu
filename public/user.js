@@ -368,7 +368,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 11:
                 res = _context3.sent;
 
-                _this3.$router.push('/customer-list');
+                _this3.$router.push({
+                  name: 'customerlist',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
                 _context3.next = 18;
                 break;

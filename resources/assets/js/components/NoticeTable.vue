@@ -48,6 +48,9 @@ export default {
 	},
 	async mounted() {
 		try {
+			if(this.$route.params.message){
+				this.$snotify.success(null, this.$route.params.message);
+			}
             await this.getUserRole();
 		} catch (err) {
 			this.$snotify.error(null, err.message);

@@ -98,25 +98,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              _context.next = 3;
+
+              if (_this2.$route.params.message) {
+                _this2.$snotify.success(null, _this2.$route.params.message);
+              }
+
+              _context.next = 4;
               return _this2.getUserRole();
 
-            case 3:
-              _context.next = 8;
+            case 4:
+              _context.next = 9;
               break;
 
-            case 5:
-              _context.prev = 5;
+            case 6:
+              _context.prev = 6;
               _context.t0 = _context["catch"](0);
 
               _this2.$snotify.error(null, _context.t0.message);
 
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 5]]);
+      }, _callee, null, [[0, 6]]);
     }))();
   },
   methods: {
@@ -416,7 +421,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 16:
                 res = _context4.sent;
 
-                _this4.$router.push('/notice-list');
+                _this4.$router.push({
+                  name: 'noticelist',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
               case 18:
                 _context4.next = 23;
@@ -1104,7 +1114,7 @@ var render = function() {
         _c("div", { staticClass: "main-card mb-3 card" }, [
           _c(
             "div",
-            { staticClass: "card-body col-sm-6 offset-sm-3" },
+            { staticClass: "card-body col-sm-8 offset-sm-2" },
             [
               _c("h5", { staticClass: "card-title" }),
               _vm._v(" "),

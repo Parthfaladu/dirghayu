@@ -93,6 +93,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/v1/customer/list'
     };
   },
+  mounted: function mounted() {
+    if (this.$route.params.message) {
+      this.$snotify.success(null, this.$route.params.message);
+    }
+  },
   methods: {
     onAction: function onAction(action) {
       var _this2 = this;

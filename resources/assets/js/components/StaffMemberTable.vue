@@ -44,10 +44,10 @@ export default {
 						action += "<button class='btn btn-outline-primary-new' data-g-action='view' data-g-actiondata="+data.id+"><i class='fas fa-edit'></i> <span class='button-text'>Edit</span></button> <button class='btn btn-outline-warning-new' data-g-action='status' data-g-actiondata="+data.id+"><i class='fas fa-toggle-on'></i> ";
 						if(data.is_active == 1)
 						{
-							action += "<span class='button-text'>Active</span>";
+							action += "<span class='button-text'>In Active</span>";
 						}
 						else {
-							action += "<span class='button-text'>In Active</span>";
+							action += "<span class='button-text'>Active</span>";
 						}
 					}
 					if(this.$can('delete__staff_member')) {
@@ -58,6 +58,11 @@ export default {
 			],
 			url: '/api/v1/staff/member/list',
 			type: 'POST',
+		}
+	},
+	mounted() {
+		if(this.$route.params.message){
+			this.$snotify.success(null, this.$route.params.message);
 		}
 	},
 	methods: {

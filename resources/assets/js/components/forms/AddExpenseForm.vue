@@ -105,7 +105,7 @@ export default {
                     this.$snotify.success(null, res.data.message);
 				} else {
                     res = await axios.post('/api/v1/expense/create', data,{headers: {'Content-Type': 'multipart/form-data'}})
-                    this.$router.push('/expense-list');
+                    this.$router.push({name: 'expenselist', params: { message: res.data.message }});
 				}
 		  	}
 		  	catch(err){

@@ -94,6 +94,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       url: '/api/v1/payment/list'
     };
   },
+  mounted: function mounted() {
+    if (this.$route.params.message) {
+      this.$snotify.success(null, this.$route.params.message);
+    }
+  },
   methods: {
     onAction: function onAction(action) {
       var _this2 = this;
@@ -395,7 +400,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 17:
                 res = _context4.sent;
 
-                _this4.$router.push('/payment-list');
+                _this4.$router.push({
+                  name: 'paymentlist',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
               case 19:
                 _context4.next = 24;
@@ -1153,7 +1163,7 @@ var render = function() {
         _c("div", { staticClass: "main-card mb-3 card" }, [
           _c(
             "div",
-            { staticClass: "card-body col-sm-6 offset-sm-3" },
+            { staticClass: "card-body col-sm-8 offset-sm-2" },
             [
               _c("h5", { staticClass: "card-title" }),
               _vm._v(" "),

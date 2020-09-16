@@ -537,7 +537,9 @@ __webpack_require__.r(__webpack_exports__);
     Sidebar: _components_Sidebar_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   mounted: function mounted() {
-    this.$snotify.clear();
+    if (!this.$route.params.message) {
+      this.$snotify.clear();
+    }
   }
 });
 

@@ -116,7 +116,7 @@ export default {
 					this.$snotify.success(null, res.data.message);
 				} else {
 					res = await axios.post('/api/v1/payment/create', this.payment)
-					this.$router.push('/payment-list');
+					this.$router.push({name: 'paymentlist', params: { message: res.data.message }});
 				}
 		  	}
 		  	catch(err) {
