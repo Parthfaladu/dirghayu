@@ -78,6 +78,7 @@ const router = new Router({
         {
             path: '/productsell-list',
             name: 'productselllistview',
+            props: true,
             component: () => import(/* webpackChunkName: "product" */ '@views/ProductSellListView.vue'),
             meta: {
                 authenticated: true,

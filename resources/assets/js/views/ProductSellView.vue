@@ -131,7 +131,7 @@ export default {
 					res = await axios.post('/api/v1/productsell/create', this.productSell)
 				}
 		
-				this.$router.push('/productsell-list');
+				this.$router.push({name: 'productselllistview', params: { message: res.data.message }});
 		  	}
 		  	catch(err) {
 		  		this.$snotify.error(null, err.message);

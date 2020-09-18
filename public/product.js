@@ -1014,7 +1014,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context5.sent;
 
               case 16:
-                _this6.$router.push('/productsell-list');
+                _this6.$router.push({
+                  name: 'productselllistview',
+                  params: {
+                    message: res.data.message
+                  }
+                });
 
                 _context5.next = 22;
                 break;

@@ -113592,6 +113592,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   }, {
     path: '/productsell-list',
     name: 'productselllistview',
+    props: true,
     component: function component() {
       return Promise.all(/*! import() | product */[__webpack_require__.e("vendors~invoice~notice~payment~product~setting~user"), __webpack_require__.e("branch~customer~dashboard~enquiry~expense~invoice~notice~package~payment~product~report~setting~staf~e0e40757"), __webpack_require__.e("product")]).then(__webpack_require__.bind(null, /*! @views/ProductSellListView.vue */ "./resources/assets/js/views/ProductSellListView.vue"));
     },
