@@ -516,7 +516,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "dashboard-head-font" }, [
-              _vm._v("Dirghayu Fitness Factory\n                            "),
+              _vm._v("DIRGHAYU FITNESS FACTORY\n                            "),
               _c("div", { staticClass: "page-title-subheading" })
             ])
           ])
